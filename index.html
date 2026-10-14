@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="TestKaro: AI-scored IELTS and PTE mock tests. Frontend demo.">
+<title>TestKaro Mock Tests</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+html,body{margin:0}
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Layout: a demo switcher bar on top; each view is a full app screen — marketing site, student dashboard, timed test room, admin console. */
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --sunk:#eef2f8; --ink:#0d1a2d; --muted:#5b6880; --line:#dbe2ec;
+  --accent:#1a66d9; --accent-ink:#ffffff; --accent-soft:#e5eefc; --band:#e59a0c; --band-soft:#fdf2dc;
+  --good:#16895a; --good-soft:#e2f5ec; --bad:#c93b3b; --bad-soft:#fbe7e7; --shadow:0 1px 2px rgba(13,26,45,.06),0 8px 24px rgba(13,26,45,.06);
+  --f-display:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a111d; --surface:#111a29; --sunk:#0d1522; --ink:#e7edf6; --muted:#93a0b6; --line:#233148;
+  --accent:#4a8ff0; --accent-ink:#06101f; --accent-soft:#14284a; --band:#f3b444; --band-soft:#33280f;
+  --good:#3cc286; --good-soft:#10301f; --bad:#f07171; --bad-soft:#3a1717; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a111d; --surface:#111a29; --sunk:#0d1522; --ink:#e7edf6; --muted:#93a0b6; --line:#233148;
+  --accent:#4a8ff0; --accent-ink:#06101f; --accent-soft:#14284a; --band:#f3b444; --band-soft:#33280f;
+  --good:#3cc286; --good-soft:#10301f; --bad:#f07171; --bad-soft:#3a1717; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:8px;padding:10px 16px;font-weight:600;font-size:14px;background:var(--accent);color:var(--accent-ink);transition:transform .12s,filter .12s}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{background:var(--sunk)}
+.btn.sm{padding:6px 11px;font-size:13px}
+.btn.good{background:var(--good);color:#fff}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--band-soft);color:var(--band)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.acc{background:var(--accent-soft);color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+input[type=text],input[type=email],input[type=number],textarea,select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+label.f{display:grid;gap:6px;font-size:13px;font-weight:600}
+
+/* Demo switcher */
+.demobar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--ink);color:var(--bg)}
+.demobar .wrap{display:flex;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
+.demobar .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
+.seg{display:flex;gap:4px;background:rgba(127,127,127,.18);padding:3px;border-radius:8px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:inherit;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:600;opacity:.75}
+.seg button.on{background:var(--bg);color:var(--ink);opacity:1}
+.demobar .note{margin-left:auto;font-size:12px;opacity:.65}
+
+/* Site */
+.promo{background:var(--accent);color:var(--accent-ink);font-size:13px;text-align:center}
+.promo .wrap{padding-block:8px}
+.nav{background:var(--surface);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo svg{flex:none}
+.nav .links{display:flex;gap:20px;font-size:14px;color:var(--muted);font-weight:500}
+.nav .links a{color:inherit;text-decoration:none}
+.nav .links a:hover{color:var(--ink)}
+.nav .act{margin-left:auto;display:flex;gap:8px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:56px 48px}
+.hero h1{font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin-top:16px}
+.hero .ctas{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.hero .trust{margin-top:22px;display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.hero .trust b{color:var(--ink);font-family:var(--f-mono)}
+.scorecard{padding:22px;box-shadow:var(--shadow)}
+.scorecard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.bandbig{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:1;color:var(--band);font-variant-numeric:tabular-nums}
+.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.sec{background:var(--sunk);border-radius:8px;padding:10px}
+.sec span{display:block;font-size:12px;color:var(--muted)}
+.sec b{font-family:var(--f-mono);font-size:18px}
+.meter{height:6px;background:var(--line);border-radius:4px;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;font-size:13px;display:grid;gap:8px}
+.fb div{display:flex;gap:8px}
+.fb .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
+
+section.block{padding-block:56px}
+section.block.alt{background:var(--surface);border-block:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.sh h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;margin-top:6px}
+.sh p{color:var(--muted);max-width:46ch}
+.exams{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.exam{padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
+.exam:hover{border-color:var(--accent);transform:translateY(-2px)}
+.exam .code{font-family:var(--f-display);font-weight:800;font-size:22px}
+.exam .meta{font-size:13px;color:var(--muted)}
+.exam .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:4px 22px 4px 0;position:relative}
+.step .n{font-family:var(--f-mono);font-size:13px;color:var(--accent);font-weight:600}
+.step h3{font-size:18px;margin:8px 0 6px}
+.step p{font-size:14px;color:var(--muted)}
+.step .rule{height:2px;background:var(--line);margin:12px 0 0;position:relative}
+.step .rule::before{content:"";position:absolute;left:0;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pack{padding:24px;display:flex;flex-direction:column;gap:14px;position:relative}
+.pack.pop{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pack .pill{position:absolute;top:16px;right:16px}
+.pack .price{font-family:var(--f-display);font-weight:800;font-size:44px;letter-spacing:-.02em}
+.pack .price small{font-size:15px;color:var(--muted);font-weight:500;font-family:var(--f-body)}
+.pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.pack li{display:flex;gap:8px}
+.pack li::before{content:"✓";color:var(--good);font-weight:700}
+.pack .btn{margin-top:auto}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.feat h3{font-size:17px;margin:12px 0 6px}
+.feat p{font-size:14px;color:var(--muted)}
+.ico{width:38px;height:38px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.faq{display:grid;gap:10px;max-width:780px}
+.faq details{padding:14px 18px}
+.faq summary{font-weight:600;cursor:pointer}
+.faq details p{margin-top:8px;color:var(--muted);font-size:14px}
+footer.site{border-top:1px solid var(--line);background:var(--surface)}
+footer.site .wrap{display:flex;justify-content:space-between;gap:20px;padding-block:28px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+/* Modal */
+.scrim{position:fixed;inset:0;background:rgba(5,10,20,.55);z-index:60;display:grid;place-items:center;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.modal{width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto;background:var(--surface);border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.modal header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.modal .body{padding:20px;display:grid;gap:16px}
+.x{border:0;background:var(--sunk);width:32px;height:32px;border-radius:8px;font-size:18px;line-height:1}
+.stepper{display:flex;gap:6px;font-size:12px;color:var(--muted)}
+.stepper span{flex:1;padding-top:6px;border-top:3px solid var(--line)}
+.stepper span.on{border-color:var(--accent);color:var(--ink);font-weight:600}
+.qrbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--sunk);border-radius:10px;padding:16px}
+.qrbox canvas{width:148px;height:148px;background:#fff;border-radius:8px;padding:8px}
+.upi{font-family:var(--f-mono);font-size:13px;background:var(--surface);border:1px solid var(--line);padding:6px 9px;border-radius:6px;display:inline-block}
+.done{text-align:center;display:grid;gap:10px;justify-items:center;padding:10px 0}
+.check{width:56px;height:56px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center}
+
+/* App shell (student/admin) */
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 46px)}
+.side{background:var(--surface);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px}
+.side nav{display:grid;gap:2px}
+.side nav button{border:0;background:transparent;text-align:left;padding:9px 12px;border-radius:8px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:10px}
+.side nav button:hover{background:var(--sunk);color:var(--ink)}
+.side nav button.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.side .who{margin-top:auto;display:flex;gap:10px;align-items:center;font-size:13px;padding:10px;border-radius:8px;background:var(--sunk)}
+.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.main{padding:26px max(16px,env(safe-area-inset-right,0px)) 40px 28px;min-width:0}
+.main h1{font-size:26px;font-weight:800}
+.head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.tile{padding:16px}
+.tile span{font-size:13px;color:var(--muted)}
+.tile b{display:block;font-family:var(--f-display);font-size:30px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile small{font-size:12px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.panel{padding:18px;min-width:0}
+.panel h3{font-size:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tlist{display:grid;gap:10px}
+.trow{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:9px}
+.trow .badge{width:46px;height:46px;border-radius:9px;background:var(--sunk);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:13px;flex:none}
+.trow .info{flex:1;min-width:0}
+.trow .info b{display:block;font-size:14px}
+.trow .info span{font-size:12px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td .acts{display:flex;gap:6px}
+.chart svg{width:100%;height:auto;display:block}
+.emailprev{border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:13px}
+.emailprev .eh{background:var(--sunk);padding:10px 12px;display:grid;gap:2px}
+.emailprev .eb{padding:14px 12px;display:grid;gap:8px}
+.packedit{display:grid;gap:10px}
+.packedit .pr{display:grid;grid-template-columns:1fr 90px 100px;gap:8px;align-items:center}
+.drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;display:flex;gap:14px;align-items:center}
+.drop img,.drop canvas{width:86px;height:86px;border-radius:6px;background:#fff;object-fit:contain;padding:4px}
+
+/* Test room */
+.troom{min-height:calc(100vh - 46px);display:flex;flex-direction:column}
+.tbar{background:var(--surface);border-bottom:1px solid var(--line)}
+.tbar .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
+.timer{font-family:var(--f-mono);font-weight:600;font-size:20px;padding:4px 12px;border-radius:8px;background:var(--sunk)}
+.timer.low{background:var(--bad-soft);color:var(--bad)}
+.tabs{display:flex;gap:4px}
+.tabs button{border:1px solid var(--line);background:var(--surface);padding:6px 14px;border-radius:7px;font-weight:600;font-size:13px}
+.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tbody{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0}
+.tbody > div{padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));min-width:0}
+.passage{border-right:1px solid var(--line);background:var(--surface)}
+.passage h2{font-size:22px;margin:6px 0 14px}
+.passage p{max-width:62ch;margin-bottom:12px;font-size:15.5px;line-height:1.7}
+.q{padding:16px 0;border-bottom:1px solid var(--line)}
+.q .qt{font-weight:600;margin-bottom:10px;display:flex;gap:10px}
+.q .qn{font-family:var(--f-mono);color:var(--accent);flex:none}
+.opts{display:grid;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:14px}
+.opt:hover{background:var(--sunk)}
+.opt input{margin-top:3px;accent-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.palette{display:flex;gap:6px;flex-wrap:wrap}
+.palette span{width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);background:var(--surface)}
+.palette span.a{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.wc{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px}
+textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
+.evaluating{display:grid;place-items:center;gap:14px;padding:80px 16px;text-align:center}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--accent);animation:sp 0.9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.res-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:24px}
+.ring{width:150px;height:150px}
+.crit{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.crit .sec b{color:var(--ink)}
+.review{display:grid;gap:8px}
+.review div{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 10px;border-radius:8px;background:var(--sunk)}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:80;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:9px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px);display:flex;gap:10px;align-items:center}
+
+@media (max-width:900px){
+  .hero .wrap,.grid2{grid-template-columns:1fr}
+  .exams,.tiles{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);row-gap:24px}
+  .packs,.feat{grid-template-columns:1fr}
+  .nav .links{display:none}
+  .shell{grid-template-columns:1fr}
+  .side{border-right:0;border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+  .side nav{display:flex;overflow-x:auto;gap:4px}
+  .side nav button{white-space:nowrap}
+  .side .who,.side .logo{display:none}
+  .main{padding:20px max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px))}
+  .tbody{grid-template-columns:1fr}
+  .passage{border-right:0;border-bottom:1px solid var(--line)}
+  .crit{grid-template-columns:repeat(2,1fr)}
+  .res-top{grid-template-columns:1fr;justify-items:start}
+  .demobar .note{display:none}
+}
+@media (max-width:480px){
+  .sec-grid{grid-template-columns:repeat(2,1fr)}
+  .exams,.steps{grid-template-columns:1fr}
+  .qrbox{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .nav .act .ghost{display:none}
+  .packedit .pr{grid-template-columns:1fr 70px 80px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="demobar"><div class="wrap">
+  <span class="tag">Demo</span>
+  <div class="seg" id="seg">
+    <button data-go="site" class="on">Website</button>
+    <button data-go="student">Student</button>
+    <button data-go="admin">Admin panel</button>
+  </div>
+  <span class="note">Frontend preview with sample data. Payments and emails are simulated.</span>
+</div></div>
+<div id="app"></div>
+<div id="modal"></div>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+const LOGO=`<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="var(--accent)"/><path d="M7 18a7 7 0 0 1 14 0" fill="none" stroke="var(--accent-ink)" stroke-width="2.4" stroke-linecap="round"/><path d="M14 18l4-5" stroke="var(--band)" stroke-width="2.4" stroke-linecap="round"/><circle cx="14" cy="18" r="2" fill="var(--accent-ink)"/></svg>`;
+const ME={name:"Aarav Mehta",email:"aarav.demo@gmail.com"};
+const S={
+  view:"site", sub:"dash", credits:2,
+  packs:[{id:"p1",name:"Single test",tests:1,price:10},{id:"p5",name:"Starter pack",tests:5,price:50},{id:"p10",name:"Full prep pack",tests:10,price:100}],
+  pending:[
+    {id:1,email:"priya.k.demo@gmail.com",pack:"p5",utr:"428917365520",at:"Today, 2:41 pm"},
+    {id:2,email:"rohit.s.demo@yahoo.com",pack:"p1",utr:"428911093481",at:"Today, 1:15 pm"},
+    {id:3,email:"neha.demo@outlook.com",pack:"p10",utr:"428874012963",at:"Today, 11:02 am"}
+  ],
+  granted:[
+    {email:"karan.demo@gmail.com",pack:"p10",utr:"428790551274",at:"Yesterday, 6:20 pm"},
+    {email:"sana.demo@gmail.com",pack:"p5",utr:"428761204418",at:"Yesterday, 4:05 pm"}
+  ],
+  attempts:[
+    {name:"IELTS Academic · Mock 1",date:"28 Sep",band:5.5},{name:"IELTS Academic · Mock 2",date:"2 Oct",band:6.0},
+    {name:"PTE Academic · Mock 1",date:"4 Oct",band:6.0},{name:"IELTS Academic · Mock 3",date:"8 Oct",band:6.5},
+    {name:"IELTS General · Mock 1",date:"11 Oct",band:6.5}
+  ],
+  lastEmail:null, qrImg:null, test:null, nextId:10
+};
+const $=s=>document.querySelector(s);
+const pk=id=>S.packs.find(p=>p.id===id);
+const inr=n=>"₹"+n.toLocaleString("en-IN");
+let timerInt=null;
+
+function toast(msg){const t=$("#toast");t.innerHTML=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,3600)}
+function go(v,sub){S.view=v;if(sub)S.sub=sub;if(v!=="test"&&timerInt){clearInterval(timerInt);timerInt=null}
+  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go===(v==="test"?"student":v)));render();window.scrollTo(0,0)}
+
+/* ---------- Website ---------- */
+function site(){
+  const exams=[["IELTS","Academic & General","Listening · Reading · Writing · Speaking","Band 0–9"],["PTE","Academic & Core","Speaking & Writing · Reading · Listening","Score 10–90"],["TOEFL","iBT","Reading · Listening · Speaking · Writing","Score 0–120"],["Duolingo","English Test","Adaptive · Interview · Writing sample","Score 10–160"]];
+  return `
+  <div class="promo"><div class="wrap">Launch offer: your first mock test is just ₹10. <u style="cursor:pointer" data-buy="p1">Buy now</u></div></div>
+  <header class="nav"><div class="wrap">
+    <div class="logo">${LOGO}TestKaro</div>
+    <nav class="links"><a href="#exams">Exams</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <div class="act"><button class="btn ghost sm" data-go="student">Log in</button><button class="btn sm" data-scroll="pricing">Buy tests</button></div>
+  </div></header>
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="eyebrow">AI-scored mock tests</span>
+      <h1 style="margin-top:12px">Practise IELTS &amp; PTE the way the real exam <em>feels</em>.</h1>
+      <p class="lead">Full-length timed mock tests with instant AI feedback on your writing. Pay per test from ₹10. No subscription.</p>
+      <div class="ctas"><button class="btn" data-scroll="pricing">Buy a mock test</button><button class="btn ghost" data-go="student">Try the student dashboard</button></div>
+      <div class="trust"><span><b>4</b> exams covered</span><span><b>60 min</b> timed format</span><span><b>~2 min</b> AI result</span></div>
+    </div>
+    <div class="card scorecard">
+      <div class="top"><div><span class="eyebrow" style="color:var(--muted)">Sample result</span><h3 style="margin-top:6px">IELTS Academic · Mock 3</h3></div><span class="pill good">+0.5 since last test</span></div>
+      <div style="display:flex;align-items:end;gap:14px;margin-top:14px"><div class="bandbig">6.5</div><div class="muted" style="font-size:13px;padding-bottom:8px">Overall band<br>Target 7.0</div></div>
+      <div class="sec-grid">${[["Listening",7.0],["Reading",6.5],["Writing",6.0],["Speaking",6.5]].map(([n,b])=>`<div class="sec"><span>${n}</span><b>${b.toFixed(1)}</b><div class="meter"><i style="width:${b/9*100}%"></i></div></div>`).join("")}</div>
+      <div class="fb">
+        <div><span class="dot" style="background:var(--good)"></span><span>Clear position in the introduction. Ideas follow a logical order.</span></div>
+        <div><span class="dot" style="background:var(--band)"></span><span>Repeated "very important" 4 times. Try "crucial" or "essential".</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="block alt" id="exams"><div class="wrap">
+    <div class="sh"><div><span class="eyebrow">Exams</span><h2>Mock tests built on the real exam pattern</h2></div><p>Each test follows the official section order, question types and time limits.</p></div>
+    <div class="exams">${exams.map(e=>`<div class="card exam"><div class="code">${e[0]}</div><div><b style="font-size:14px">${e[1]}</b><div class="meta">${e[2]}</div></div><div class="row"><span class="pill acc">${e[3]}</span><button class="btn ghost sm" data-scroll="pricing">Practise</button></div></div>`).join("")}</div>
+  </div></section>
+
+  <section class="block" id="how"><div class="wrap">
+    <div class="sh"><div><span class="eyebrow">How it works</span><h2>From payment to your first test in four steps</h2></div><p>Pay straight to our UPI. We verify it and unlock your tests, then you get an email.</p></div>
+    <div class="steps">
+      ${[["Pick a pack","Choose 1, 5 or 10 mock tests."],["Scan &amp; pay","Pay by any UPI app using the QR code, then enter your email and UTR number."],["We verify","Our team checks the payment and unlocks your tests."],["Get the email","You get a confirmation email and can start your test right away."]].map((s,i)=>`<div class="step"><span class="n">Step ${i+1}</span><div class="rule"></div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("")}
+    </div>
+  </div></section>
+
+  <section class="block alt" id="pricing"><div class="wrap">
+    <div class="sh"><div><span class="eyebrow">Pricing</span><h2>Pay only for the tests you take</h2></div><p>Credits never expire. Each credit unlocks one full mock test with AI feedback.</p></div>
+    <div class="packs">${S.packs.map((p,i)=>`<div class="card pack ${i===1?"pop":""}">${i===1?'<span class="pill acc">Most picked</span>':""}
+      <div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div>
+      <div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div>
+      <ul><li>Full timed mock test${p.tests>1?"s":""}</li><li>AI writing feedback with band score</li><li>Answer review and explanations</li>${p.tests>=5?"<li>Progress chart across attempts</li>":""}</ul>
+      <button class="btn ${i===1?"":"ghost"}" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="sh"><div><span class="eyebrow">Features</span><h2>Everything you need for a higher score</h2></div></div>
+    <div class="feat">
+      ${[["AI writing evaluation","Your essay is scored on the four official criteria with line-by-line suggestions.","M4 17l4-4 3 3 7-8"],["Real exam timing","A countdown timer and question palette, just like test day.","M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"],["Instant results","Band score, section scores and correct answers right after you submit.","M5 12l4 4L19 6"],["Progress tracking","See your band move across attempts and spot weak sections.","M4 19V5M4 19h16M8 15l3-4 3 2 4-6"],["Simple UPI payment","Scan the QR with GPay, PhonePe or Paytm. No card needed.","M4 6h16v12H4zM4 10h16"],["Email updates","Get an email the moment your tests are unlocked.","M4 6h16v12H4zM4 7l8 6 8-6"]].map(f=>`<div><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${f[2]}"/></svg></div><h3>${f[0]}</h3><p>${f[1]}</p></div>`).join("")}
+    </div>
+  </div></section>
+
+  <section class="block alt" id="faq"><div class="wrap">
+    <div class="sh"><div><span class="eyebrow">FAQ</span><h2>Common questions</h2></div></div>
+    <div class="faq">
+      <details class="card" open><summary>How long does access take after I pay?</summary><p>We verify each UPI payment by hand, usually within a few hours. You get an email as soon as your tests are unlocked.</p></details>
+      <details class="card"><summary>What is a UTR number?</summary><p>It is the 12-digit transaction reference your UPI app shows after payment. It helps us match your payment quickly.</p></details>
+      <details class="card"><summary>Is the AI score the same as the real exam?</summary><p>It is an estimate based on the official band descriptors. Use it to track progress, not as an official result.</p></details>
+    </div>
+  </div></section>
+  <footer class="site"><div class="wrap"><div class="logo" style="font-size:16px">${LOGO}TestKaro</div><span>Independent practice platform. Not affiliated with IELTS, Pearson, ETS or Duolingo.</span></div></footer>`;
+}
+
+/* ---------- Buy modal ---------- */
+function drawQR(cv){
+  const n=25,ctx=cv.getContext("2d"),sz=cv.width/n;ctx.fillStyle="#fff";ctx.fillRect(0,0,cv.width,cv.width);ctx.fillStyle="#0d1a2d";
+  let seed=7;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){if(r()>.52)ctx.fillRect(x*sz,y*sz,sz,sz)}
+  [[0,0],[n-7,0],[0,n-7]].forEach(([x,y])=>{ctx.fillStyle="#fff";ctx.fillRect((x-1)*sz,(y-1)*sz,9*sz,9*sz);ctx.fillStyle="#0d1a2d";ctx.fillRect(x*sz,y*sz,7*sz,7*sz);ctx.fillStyle="#fff";ctx.fillRect((x+1)*sz,(y+1)*sz,5*sz,5*sz);ctx.fillStyle="#0d1a2d";ctx.fillRect((x+2)*sz,(y+2)*sz,3*sz,3*sz)});
+}
+function qrInto(el){ if(S.qrImg){el.outerHTML=`<img src="${S.qrImg}" alt="Payment QR code" style="width:148px;height:148px;background:#fff;border-radius:8px;padding:8px;object-fit:contain">`}else drawQR(el) }
+function openBuy(id,step=1){
+  const p=pk(id);const m=$("#modal");
+  const steps=`<div class="stepper"><span class="${step>=1?"on":""}">1. Pay</span><span class="${step>=2?"on":""}">2. Confirm</span><span class="${step>=3?"on":""}">3. Done</span></div>`;
+  let body="";
+  if(step===1) body=`${steps}
+    <div style="display:flex;justify-content:space-between;align-items:center"><div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div><div class="price" style="font-family:var(--f-display);font-weight:800;font-size:28px">${inr(p.price)}</div></div>
+    <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Demo QR. The client's real UPI QR is uploaded from the admin panel.</span></div></div>
+    <button class="btn" data-buystep="${id}:2">I've paid, continue</button>`;
+  if(step===2) body=`${steps}
+    <p class="muted" style="font-size:14px">Enter the email you want access on and the UTR number from your UPI app.</p>
+    <form id="payform" style="display:grid;gap:14px" data-pack="${id}">
+      <label class="f">Email<input type="email" id="pay-email" required value="${ME.email}"></label>
+      <label class="f">UTR / transaction ID<input type="text" id="pay-utr" inputmode="numeric" maxlength="12" placeholder="12-digit number" value="4289${Math.floor(10000000+Math.random()*89999999)}"></label>
+      <div style="display:flex;gap:8px"><button type="button" class="btn ghost" data-buystep="${id}:1">Back</button><button class="btn" style="flex:1">Submit payment</button></div>
+    </form>`;
+  if(step===3) body=`<div class="done"><div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg></div><h3>Payment submitted</h3><p class="muted" style="max-width:36ch">We'll check your ${inr(p.price)} payment and email you once your ${p.tests} test${p.tests>1?"s are":" is"} unlocked.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px"><button class="btn" data-close data-go="admin">See it in the admin panel</button><button class="btn ghost" data-close>Close</button></div></div>`;
+  m.innerHTML=`<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-label="Buy tests"><header><b>Buy mock tests</b><button class="x" data-close aria-label="Close">×</button></header><div class="body">${body}</div></div></div>`;
+  const cv=$("#qr");if(cv)qrInto(cv);
+}
+
+/* ---------- Student ---------- */
+const TESTS=[
+  {code:"IELTS",name:"IELTS Academic · Mock 4",meta:"Reading + Writing Task 2 · 60 min"},
+  {code:"IELTS",name:"IELTS General · Mock 2",meta:"Reading + Writing Task 2 · 60 min"},
+  {code:"PTE",name:"PTE Academic · Mock 2",meta:"Reading + Essay · 60 min"},
+  {code:"TOEFL",name:"TOEFL iBT · Mock 1",meta:"Reading + Academic discussion · 60 min"}
+];
+function chart(){
+  const a=S.attempts.slice(-6),W=520,H=190,pl=34,pr=14,pt=14,pb=30,min=4,max=8;
+  const x=i=>pl+(a.length===1?0:i*(W-pl-pr)/(a.length-1)),y=b=>pt+(max-b)/(max-min)*(H-pt-pb);
+  const pts=a.map((d,i)=>[x(i),y(d.band)]);
+  const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
+  const area=line+` L${pts.at(-1)[0]} ${H-pb} L${pts[0][0]} ${H-pb} Z`;
+  let g="";for(let b=min;b<=max;b++){g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(b)}" y2="${y(b)}" stroke="var(--line)" stroke-width="1"/><text x="${pl-8}" y="${y(b)+4}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--f-mono)">${b}.0</text>`}
+  const tgt=`<line x1="${pl}" x2="${W-pr}" y1="${y(7)}" y2="${y(7)}" stroke="var(--band)" stroke-dasharray="4 4" stroke-width="1.5"/><text x="${W-pr}" y="${y(7)-6}" text-anchor="end" font-size="11" fill="var(--band)" font-weight="600">Target 7.0</text>`;
+  const labels=a.map((d,i)=>`<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="11" fill="var(--muted)">${d.date}</text>`).join("");
+  const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?5:3.5}" fill="${i===pts.length-1?"var(--accent)":"var(--surface)"}" stroke="var(--accent)" stroke-width="2"/>`).join("");
+  const last=pts.at(-1);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Band score over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
+}
+function sideNav(items,cur,role){
+  return `<aside class="side"><div class="logo" style="font-size:18px;padding:4px 8px">${LOGO}TestKaro</div>
+  <nav>${items.map(([k,l])=>`<button data-sub="${role}:${k}" class="${cur===k?"on":""}">${l}</button>`).join("")}</nav>
+  <div class="who"><div class="av">${role==="admin"?"AD":"AM"}</div><div><b>${role==="admin"?"Admin":ME.name}</b><div class="muted" style="font-size:12px">${role==="admin"?"Owner":ME.email}</div></div></div></aside>`;
+}
+function student(){
+  const best=Math.max(...S.attempts.map(a=>a.band)),last=S.attempts.at(-1);
+  const testList=`<div class="tlist">${TESTS.map((t,i)=>`<div class="trow"><div class="badge">${t.code}</div><div class="info"><b>${t.name}</b><span>${t.meta}</span></div><button class="btn sm" data-start="${i}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("")}</div>
+    ${S.credits<1?`<p style="margin-top:12px;font-size:14px">You have no credits left. <a href="#" data-buylink="p5" style="color:var(--accent);font-weight:600">Buy a pack</a> to start another test.</p>`:""}`;
+  const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Date</th><th>Band</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${a.name}</td><td class="muted">${a.date}</td><td><b class="mono">${a.band.toFixed(1)}</b></td></tr>`).join("")}</tbody></table></div>`;
+  let content="";
+  if(S.sub==="dash") content=`
+    <div class="head"><div><span class="muted" style="font-size:14px">Welcome back,</span><h1>${ME.name.split(" ")[0]}</h1></div><button class="btn" data-buylink="p5">Buy more tests</button></div>
+    <div class="tiles">
+      <div class="card tile"><span>Test credits left</span><b style="color:${S.credits?"var(--ink)":"var(--bad)"}">${S.credits}</b><small>Each credit = 1 full mock</small></div>
+      <div class="card tile"><span>Latest band</span><b style="color:var(--band)">${last.band.toFixed(1)}</b><small>${last.name.split(" · ")[0]}</small></div>
+      <div class="card tile"><span>Best band</span><b>${best.toFixed(1)}</b><small>Target 7.0</small></div>
+      <div class="card tile"><span>Tests taken</span><b>${S.attempts.length}</b><small>Since 28 Sep</small></div>
+    </div>
+    <div class="grid2">
+      <div class="card panel"><h3>Band score trend <span class="pill">Last ${Math.min(6,S.attempts.length)} attempts</span></h3><div class="chart">${chart()}</div></div>
+      <div class="card panel"><h3>Start a mock test</h3>${testList}</div>
+    </div>`;
+  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><span class="pill acc">${S.credits} credit${S.credits===1?"":"s"} left</span></div><div class="card panel">${testList}</div>`;
+  if(S.sub==="results") content=`<div class="head"><h1>My results</h1></div><div class="card panel">${history}</div>`;
+  if(S.sub==="buy") content=`<div class="head"><h1>Buy tests</h1></div><div class="packs">${S.packs.map(p=>`<div class="card pack"><b>${p.name}</b><div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div><button class="btn" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>`;
+  return `<div class="shell">${sideNav([["dash","Dashboard"],["tests","Mock tests"],["results","My results"],["buy","Buy tests"]],S.sub,"student")}<main class="main">${content}</main></div>`;
+}
+
+/* ---------- Test room ---------- */
+const PASSAGE={title:"Farming on the rooftops",paras:[
+  "In the early 2000s, a handful of city restaurants began growing herbs on their own rooftops. Most of these first gardens were abandoned within two years. Owners found that the cost of carrying soil, water and tools up several floors outweighed the savings on fresh produce.",
+  "The second wave of rooftop farming looked very different. Instead of heavy soil, growers used lightweight mixes of coconut fibre and compost, and many switched to hydroponic trays that need no soil at all. Building engineers were brought in early to check how much weight each roof could safely hold.",
+  "Supporters argue that rooftop farms cool the buildings beneath them, reduce storm-water run-off and cut the distance food travels to reach a plate. Critics reply that the total amount of food produced is tiny compared with a city's needs, and that the same roofs could generate more value from solar panels.",
+  "Researchers now suggest the two uses need not compete. Some trial sites place panels on raised frames, with shade-loving crops such as lettuce growing underneath. Early results show that the plants stay cooler and the panels, in turn, run more efficiently."
+]};
+const QS=[
+  {t:"Why were most early rooftop gardens abandoned?",o:["Plants failed to grow at that height","Moving materials up the building cost too much","Restaurants could not find staff","City rules banned them"],a:1},
+  {t:"Second-wave growers often used no soil at all.",o:["True","False","Not given"],a:0},
+  {t:"Building engineers were consulted only after farms were built.",o:["True","False","Not given"],a:1},
+  {t:"What is the critics' main concern about rooftop farms?",o:["They attract pests","They make buildings hotter","They produce very little food for the city","They use too much water"],a:2},
+  {t:"What did the trial sites with raised solar panels find?",o:["Crops grew faster in full sun","Panels and plants both benefited","Panels produced less power","Lettuce could not grow in shade"],a:1}
+];
+const PROMPT="Some people believe city rooftops should be used to grow food, while others think they are better used for solar panels. Discuss both views and give your own opinion.";
+function startTest(i){
+  if(S.credits<1)return;S.credits--;
+  S.test={i,tab:"reading",ans:{},essay:"",left:60*60,phase:"taking"};S.view="test";
+  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go==="student"));
+  render();window.scrollTo(0,0);
+  clearInterval(timerInt);timerInt=setInterval(()=>{if(!S.test||S.test.phase!=="taking")return;S.test.left--;const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<300)}if(S.test.left<=0)submitTest()},1000);
+  toast(`1 credit used · ${S.credits} left`);
+}
+const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+function testRoom(){
+  const T=S.test,meta=TESTS[T.i];
+  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>AI is marking your test</h2><p class="muted">Checking reading answers and scoring your essay on four criteria…</p></div></div>`;
+  if(T.phase==="done") return results();
+  const answered=Object.keys(T.ans).length;
+  const left=T.tab==="reading"
+    ? `<span class="eyebrow">Reading passage</span><h2>${PASSAGE.title}</h2>${PASSAGE.paras.map(p=>`<p>${p}</p>`).join("")}`
+    : `<span class="eyebrow">Writing Task 2</span><h2>Write at least 250 words</h2><p>${PROMPT}</p><p class="muted" style="font-size:14px">You should spend about 40 minutes on this task. Your essay is scored on Task Response, Coherence &amp; Cohesion, Lexical Resource and Grammatical Range &amp; Accuracy.</p>`;
+  const right=T.tab==="reading"
+    ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>Questions 1–5</b><div class="palette">${QS.map((q,i)=>`<span class="${T.ans[i]!=null?"a":""}">${i+1}</span>`).join("")}</div></div>
+       ${QS.map((q,i)=>`<div class="q"><div class="qt"><span class="qn">${i+1}</span><span>${q.t}</span></div><div class="opts">${q.o.map((o,j)=>`<label class="opt ${T.ans[i]===j?"sel":""}"><input type="radio" name="q${i}" id="q${i}o${j}" data-ans="${i}:${j}" ${T.ans[i]===j?"checked":""}><span>${o}</span></label>`).join("")}</div></div>`).join("")}
+       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" data-tab="writing">Next: Writing →</button></div>`
+    : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing your essay here…">${T.essay}</textarea>
+       <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum 250</span></div>
+       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" data-sample>Fill sample essay</button><button class="btn" data-submit>Submit test</button></span></div>`;
+  return `<div class="troom"><div class="tbar"><div class="wrap">
+    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:600;font-family:var(--f-body);font-size:14px">${meta.name}</span></div>
+    <div class="tabs"><button data-tab="reading" class="${T.tab==="reading"?"on":""}">Reading · ${answered}/5</button><button data-tab="writing" class="${T.tab==="writing"?"on":""}">Writing</button></div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<300?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" data-submit>Submit</button></div>
+  </div></div>
+  <div class="tbody"><div class="passage">${left}</div><div>${right}</div></div></div>`;
+}
+const SAMPLE="In many crowded cities, space is limited, so people disagree about how rooftops should be used. Some believe these areas should grow food, while others argue that solar panels are a better choice. This essay will discuss both views before giving my own opinion.\n\nOn the one hand, rooftop farms bring clear benefits to local communities. They provide fresh vegetables that travel a very short distance, which reduces transport pollution. In addition, plants cool the buildings below them and absorb rain water, which can reduce flooding during heavy storms. For example, several schools in Mumbai now grow vegetables on their roofs and use them in student meals. Children also learn where their food comes from.\n\nOn the other hand, solar panels can produce a large amount of clean energy from the same space. Since cities use a huge amount of electricity, panels may have a bigger effect on pollution than a small garden. They also need very little care once they are installed, whereas farms need water, workers and regular attention.\n\nIn my opinion, cities do not have to choose only one option. New designs place panels on raised frames with crops growing in the shade underneath, so both uses can share one roof. Governments should support these mixed projects because they combine the benefits of food and energy.\n\nIn conclusion, both rooftop farms and solar panels help cities in different ways. Each option has real strengths, but combining them on the same roof is the most sensible solution for the future of crowded cities.";
+function submitTest(){
+  const T=S.test;if(!T||T.phase!=="taking")return;const ta=$("#essay");if(ta)T.essay=ta.value;
+  clearInterval(timerInt);timerInt=null;T.phase="eval";render();window.scrollTo(0,0);
+  setTimeout(()=>{
+    const correct=QS.filter((q,i)=>T.ans[i]===q.a).length;
+    const rb=[3.5,4.5,5.5,6.5,7.5,8.5][correct];
+    const w=words(T.essay);
+    let wb=w<50?4.0:w<150?5.0:w<250?6.0:6.5;
+    const lr=/however|whereas|in addition|for example|on the other hand/i.test(T.essay)?0.5:0;
+    const crit=[["Task Response",Math.min(9,wb+(w>=250?0.5:0))],["Coherence & Cohesion",Math.min(9,wb+lr)],["Lexical Resource",wb],["Grammatical Range & Accuracy",Math.max(4,wb-(w>0?0:0.5))]];
+    const wband=Math.round(crit.reduce((s,c)=>s+c[1],0)/4*2)/2;
+    const overall=Math.round((rb+wband)/2*2)/2;
+    T.result={correct,rb,wband,crit,overall,w};T.phase="done";
+    S.attempts.push({name:TESTS[T.i].name,date:"Today",band:overall});
+    render();window.scrollTo(0,0);
+  },1800);
+}
+function ring(b){const r=62,c=2*Math.PI*r,f=b/9;return `<svg class="ring" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--band)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="80" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="40" fill="var(--ink)">${b.toFixed(1)}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">out of 9</text></svg>`}
+function results(){
+  const T=S.test,R=T.result;
+  const fb=R.w<250?[["bad",`Your essay has ${R.w} words. Under 250 words loses marks in Task Response.`],["warn","Plan four paragraphs: introduction, view one, view two with your opinion, conclusion."]]:[["good","Both views are discussed and your opinion is clear in paragraph four."],["good","Linking words like \"On the other hand\" and \"In addition\" guide the reader well."],["warn","\"very\" appears several times. Try \"significant\" or \"considerable\" for range."],["warn","Add one complex sentence with a relative clause to lift your grammar score."]];
+  return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
+    <div class="head" style="margin:0"><div><span class="eyebrow">Test complete</span><h1 style="font-size:28px;margin-top:6px">${TESTS[T.i].name}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" data-go="student">Back to dashboard</button></div></div>
+    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall band ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Demo scoring. The live version uses the AI model and the official band descriptors.</p></div>
+      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,200px));margin:0"><div class="sec"><span>Reading · ${R.correct}/5 correct</span><b>${R.rb.toFixed(1)}</b><div class="meter"><i style="width:${R.rb/9*100}%"></i></div></div><div class="sec"><span>Writing · ${R.w} words</span><b>${R.wband.toFixed(1)}</b><div class="meter"><i style="width:${R.wband/9*100}%"></i></div></div></div></div></div>
+    <div class="grid2">
+      <div class="card panel"><h3>AI writing feedback <span class="pill acc">AI</span></h3>
+        <div class="crit">${R.crit.map(c=>`<div class="sec"><span>${c[0]}</span><b class="mono">${c[1].toFixed(1)}</b></div>`).join("")}</div>
+        <div class="fb" style="margin-top:14px">${fb.map(f=>`<div><span class="dot" style="background:var(--${f[0]==="warn"?"band":f[0]})"></span><span>${f[1]}</span></div>`).join("")}</div>
+      </div>
+      <div class="card panel"><h3>Reading answers</h3><div class="review">${QS.map((q,i)=>{const ok=T.ans[i]===q.a;return `<div><span class="pill ${ok?"good":"bad"}">${ok?"✓":"✗"} Q${i+1}</span><span style="min-width:0;white-space:normal">${q.o[q.a]}${!ok&&T.ans[i]!=null?` <span class="muted">(you chose: ${q.o[T.ans[i]]})</span>`:""}${T.ans[i]==null?' <span class="muted">(not answered)</span>':""}</span></div>`}).join("")}</div></div>
+    </div></div>`;
+}
+
+/* ---------- Admin ---------- */
+function admin(){
+  const rev=S.granted.reduce((s,g)=>s+pk(g.pack).price,0)+2340;
+  let content="";
+  if(S.sub==="dash"||S.sub==="pay"){
+    content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR in your bank app, then grant access. The student gets an email automatically.</p></div><span class="pill">Sample data</span></div>
+    <div class="tiles">
+      <div class="card tile"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs your check":"All clear"}</small></div>
+      <div class="card tile"><span>Active students</span><b>${148+S.granted.length}</b><small>With credits left</small></div>
+      <div class="card tile"><span>Tests taken this month</span><b>612</b><small>AI-marked</small></div>
+      <div class="card tile"><span>Revenue this month</span><b>${inr(rev)}</b><small>Via UPI</small></div>
+    </div>
+    <div style="display:grid;gap:18px">
+        <div class="card panel"><h3>Waiting for approval <span class="pill warn">${S.pending.length}</span></h3>
+          ${S.pending.length?`<div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>UTR</th><th>Submitted</th><th></th></tr></thead><tbody>
+          ${S.pending.map(p=>`<tr><td>${p.email}${p.email===ME.email?' <span class="pill acc">new</span>':""}</td><td>${pk(p.pack).tests} test${pk(p.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(p.pack).price)}</td><td class="mono">${p.utr}</td><td class="muted">${p.at}</td><td><div class="acts"><button class="btn good sm" data-grant="${p.id}">Grant access</button><button class="btn ghost sm" data-reject="${p.id}">Reject</button></div></td></tr>`).join("")}
+          </tbody></table></div>`:`<p class="muted">No payments waiting. New submissions appear here.</p>`}
+        </div>
+      <div class="grid2">
+        <div class="card panel"><h3>Access granted</h3><div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>Status</th></tr></thead><tbody>
+          ${S.granted.map(g=>`<tr><td>${g.email}</td><td>${pk(g.pack).tests} test${pk(g.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(g.pack).price)}</td><td><span class="pill good">Email sent</span></td></tr>`).join("")}
+        </tbody></table></div></div>
+      <div class="card panel"><h3>Last email sent <span class="pill">via Resend</span></h3>
+        ${S.lastEmail?`<div class="emailprev"><div class="eh"><span><b>To:</b> ${S.lastEmail.to}</span><span><b>Subject:</b> Your TestKaro mock tests are unlocked</span></div><div class="eb"><b>Hi there,</b><p>We've received your payment of ${inr(S.lastEmail.price)}. ${S.lastEmail.tests} mock test${S.lastEmail.tests>1?"s have":" has"} been added to your account.</p><p>Log in and start your first test whenever you're ready.</p><span class="btn sm" style="justify-self:start">Start my test</span><span class="muted" style="font-size:12px">TestKaro · UTR ${S.lastEmail.utr}</span></div></div>`:`<p class="muted" style="font-size:14px">Grant access to a payment to see the email the student receives.</p>`}
+      </div>
+      </div>
+    </div>`;
+  }
+  if(S.sub==="packs") content=`<div class="head"><div><h1>Test packs &amp; QR</h1><p class="muted" style="font-size:14px">Changes show on the website straight away.</p></div></div>
+    <div class="grid2"><div class="card panel"><h3>Packs and prices</h3><div class="packedit"><div class="pr muted" style="font-size:12px;font-weight:600"><span>Pack name</span><span>Tests</span><span>Price (₹)</span></div>
+      ${S.packs.map(p=>`<div class="pr"><input type="text" id="pn-${p.id}" value="${p.name}" data-pf="${p.id}:name"><input type="number" id="pt-${p.id}" min="1" value="${p.tests}" data-pf="${p.id}:tests"><input type="number" id="pp-${p.id}" min="1" value="${p.price}" data-pf="${p.id}:price"></div>`).join("")}
+      <div><button class="btn sm" data-savepacks>Save prices</button></div></div></div>
+      <div class="card panel"><h3>Payment QR code</h3><div class="drop">${S.qrImg?`<img src="${S.qrImg}" alt="Uploaded QR">`:`<canvas id="qr" width="200" height="200"></canvas>`}<div style="display:grid;gap:8px"><b style="font-size:14px">Your UPI QR (GPay / PhonePe)</b><span class="muted" style="font-size:13px">Upload the QR image from your UPI app. Students see it at checkout.</span><label class="btn ghost sm" style="justify-self:start">Upload QR image<input type="file" id="qrfile" accept="image/*" hidden></label></div></div></div></div>`;
+  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><button class="btn sm" data-toast="Test editor opens here in the full build">Add mock test</button></div>
+    <div class="card panel"><div class="tablewrap"><table><thead><tr><th>Test</th><th>Sections</th><th>Attempts</th><th>Avg band</th><th>Status</th></tr></thead><tbody>
+    ${TESTS.map((t,i)=>`<tr><td><b>${t.name}</b></td><td class="muted">${t.meta}</td><td class="mono">${[214,131,168,99][i]}</td><td class="mono">${[6.0,6.5,5.5,6.0][i].toFixed(1)}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
+    </tbody></table></div></div>`;
+  if(S.sub==="students") content=`<div class="head"><h1>Students</h1></div><div class="card panel"><div class="tablewrap"><table><thead><tr><th>Email</th><th>Credits left</th><th>Tests taken</th><th>Latest band</th></tr></thead><tbody>
+    <tr><td>${ME.email}</td><td class="mono">${S.credits}</td><td class="mono">${S.attempts.length}</td><td class="mono">${S.attempts.at(-1).band.toFixed(1)}</td></tr>
+    ${S.granted.map((g,i)=>`<tr><td>${g.email}</td><td class="mono">${pk(g.pack).tests-[3,1,0,2][i%4]}</td><td class="mono">${[3,1,0,2][i%4]}</td><td class="mono">${["6.5","5.5","–","7.0"][i%4]}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+  return `<div class="shell">${sideNav([["pay","Payments"],["packs","Packs & QR"],["tests","Mock tests"],["students","Students"]],S.sub==="dash"?"pay":S.sub,"admin")}<main class="main">${content}</main></div>`;
+}
+
+/* ---------- Render & events ---------- */
+function render(){
+  const a=$("#app");
+  a.innerHTML=S.view==="site"?site():S.view==="student"?student():S.view==="test"?testRoom():admin();
+  const cv=a.querySelector("#qr");if(cv)drawQR(cv);
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-sample],[data-grant],[data-reject],[data-savepacks],[data-toast]");
+  if(!t)return;
+  if(t.hasAttribute("data-scrim")&&e.target!==t)return;
+  if(t.dataset.close!==undefined||t.hasAttribute("data-scrim")){$("#modal").innerHTML="";}
+  if(t.dataset.go){const v=t.dataset.go;go(v,v==="admin"?"pay":v==="student"?"dash":undefined);return}
+  if(t.dataset.buy){openBuy(t.dataset.buy);return}
+  if(t.dataset.buylink){e.preventDefault();openBuy(t.dataset.buylink);return}
+  if(t.dataset.buystep){const[id,s]=t.dataset.buystep.split(":");openBuy(id,+s);return}
+  if(t.dataset.scroll){document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"});return}
+  if(t.dataset.sub){const[r,k]=t.dataset.sub.split(":");S.sub=k;render();return}
+  if(t.dataset.start){startTest(+t.dataset.start);return}
+  if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay=ta.value;S.test.tab=t.dataset.tab;render();window.scrollTo(0,0);return}
+  if(t.hasAttribute("data-sample")){S.test.essay=SAMPLE;render();return}
+  if(t.hasAttribute("data-submit")){submitTest();return}
+  if(t.dataset.grant){const i=S.pending.findIndex(p=>p.id==t.dataset.grant),p=S.pending[i];S.pending.splice(i,1);
+    S.granted.unshift({...p,at:"Just now"});const P=pk(p.pack);S.lastEmail={to:p.email,price:P.price,tests:P.tests,utr:p.utr};
+    if(p.email===ME.email)S.credits+=P.tests;render();toast(`Access granted. Email sent to ${p.email}`);return}
+  if(t.dataset.reject){const i=S.pending.findIndex(p=>p.id==t.dataset.reject),p=S.pending[i];S.pending.splice(i,1);render();toast(`Payment from ${p.email} rejected`);return}
+  if(t.hasAttribute("data-savepacks")){document.querySelectorAll("[data-pf]").forEach(inp=>{const[id,f]=inp.dataset.pf.split(":");const p=pk(id);p[f]=f==="name"?inp.value:Math.max(1,+inp.value||1)});toast("Prices saved. The website now shows the new prices.");return}
+  if(t.dataset.toast){toast(t.dataset.toast);return}
+});
+document.addEventListener("change",e=>{
+  const a=e.target.dataset.ans;if(a){const[q,o]=a.split(":").map(Number);S.test.ans[q]=o;render();return}
+  if(e.target.id==="qrfile"&&e.target.files[0]){const r=new FileReader();r.onload=()=>{S.qrImg=r.result;render();toast("QR updated. Students now see this code at checkout.")};r.readAsDataURL(e.target.files[0])}
+});
+document.addEventListener("input",e=>{if(e.target.id==="essay"){S.test.essay=e.target.value;const w=$("#wc");if(w)w.textContent=words(e.target.value)+" words"}});
+document.addEventListener("submit",e=>{
+  if(e.target.id!=="payform")return;e.preventDefault();
+  const email=$("#pay-email").value.trim(),utr=$("#pay-utr").value.trim(),id=e.target.dataset.pack;
+  if(!/^\S+@\S+\.\S+$/.test(email)){toast("Enter a valid email so we can send your access");return}
+  if(!/^\d{12}$/.test(utr)){toast("UTR should be the 12-digit number from your UPI app");return}
+  S.pending.unshift({id:S.nextId++,email,pack:id,utr,at:"Just now"});openBuy(id,3);
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").innerHTML=""});
+render();
+</script>
+</body>
+</html>

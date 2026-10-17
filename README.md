@@ -1,11 +1,24 @@
-# TestKaro mock test platform (frontend demo)
+# TestKaro · IELTS Mind Map Academy
 
-Static demo: no build step, no dependencies. All data is sample data; payments, emails and AI scoring are simulated.
+Static site for IELTS Mind Map Academy, with the TestKaro mock-test desk built in. No build step.
+
+## Pages
+Routes are handled in the browser. On Vercel, every path falls back to `index.html`.
+
+- `/` homepage bento: IELTS, PTE, TOEFL, GMAT, GRE, Spoken English
+- `/ielts` `/pte` `/toefl` `/gmat` `/gre` `/spoken-english`
+- `/testimonials` reviews and sample score-report slots
+- Student desk and admin panel from the demo bar
+
+Spoken English levels: `/spoken-english#beginner`, `#intermediate`, `#advanced`.
+
+Colours follow the academy logo: plum, gold, warm white. Reviews on the testimonials page are sample layout copy. Replace them with real student words and screenshots before a public launch.
 
 ## Deploy to Vercel
-- Drag-and-drop: unzip, then on vercel.com > Add New > Project, upload the `testkaro-demo` folder.
-- CLI: `cd testkaro-demo && npx vercel --prod`
-- GitHub: push this folder to a repo and import it in Vercel. Framework preset: **Other**. Leave build command and output directory empty.
+Import this repo. Framework preset: **Other**. Leave the build command and output directory empty.
 
 ## Run locally
-Open `index.html` in a browser, or run `npx serve .`
+```bash
+python3 -m http.server 8765
+```
+Open `http://127.0.0.1:8765/`. Direct routes such as `/ielts` need the Vercel rewrite, or open them from the homepage links after the first page load (the demo server above does not rewrite unknown paths).

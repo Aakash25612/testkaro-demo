@@ -3,287 +3,390 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="TestKaro: AI-scored IELTS and PTE mock tests. Frontend demo.">
-<title>TestKaro Mock Tests</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#2A1248">
+<meta name="description" content="IELTS Mind Map Academy on TestKaro. IELTS, PTE, TOEFL, GMAT, GRE and Spoken English, plus timed mock tests.">
+<title>IELTS Mind Map Academy · TestKaro</title>
+<link rel="icon" href="/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
-html,body{margin:0}
-:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{margin:0;overflow-x:hidden}
+:root{
+  color-scheme:light;
+  --bg:#f7f2ea;
+  --surface:#ffffff;
+  --sunk:#f4eef8;
+  --ink:#241244;
+  --muted:#5c5470;
+  --line:rgba(36,18,68,.12);
+  --accent:#4c1d78;
+  --accent-ink:#fffaf2;
+  --accent-soft:#f3e9fb;
+  --band:#a8843a;
+  --band-soft:#f8efd4;
+  --good:#1c7a4a;
+  --good-soft:#e5f6ee;
+  --bad:#b42318;
+  --bad-soft:#fde8e6;
+  --gold:#c6a15a;
+  --gold-2:#8c6820;
+  --violet:#6b2d91;
+  --shadow:0 18px 40px rgba(36,18,68,.1);
+  --f-display:"Outfit","Segoe UI",sans-serif;
+  --f-serif:"Cormorant Garamond",Georgia,serif;
+  --f-script:"Great Vibes",cursive;
+  --f-body:"Manrope","Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --r:18px;
+  --demo-h:48px;
+}
+*{box-sizing:border-box}
+body{background:
+  radial-gradient(900px 420px at 100% -10%, rgba(198,161,90,.28), transparent 55%),
+  radial-gradient(720px 480px at -10% 8%, rgba(76,29,120,.14), transparent 50%),
+  var(--bg);
+  color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%}
 [hidden]{display:none!important}
-
-/* Layout: a demo switcher bar on top; each view is a full app screen — marketing site, student dashboard, timed test room, admin console. */
-:root{
-  --bg:#f5f7fb; --surface:#ffffff; --sunk:#eef2f8; --ink:#0d1a2d; --muted:#5b6880; --line:#dbe2ec;
-  --accent:#1a66d9; --accent-ink:#ffffff; --accent-soft:#e5eefc; --band:#e59a0c; --band-soft:#fdf2dc;
-  --good:#16895a; --good-soft:#e2f5ec; --bad:#c93b3b; --bad-soft:#fbe7e7; --shadow:0 1px 2px rgba(13,26,45,.06),0 8px 24px rgba(13,26,45,.06);
-  --f-display:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
-  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --r:10px;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0a111d; --surface:#111a29; --sunk:#0d1522; --ink:#e7edf6; --muted:#93a0b6; --line:#233148;
-  --accent:#4a8ff0; --accent-ink:#06101f; --accent-soft:#14284a; --band:#f3b444; --band-soft:#33280f;
-  --good:#3cc286; --good-soft:#10301f; --bad:#f07171; --bad-soft:#3a1717; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0a111d; --surface:#111a29; --sunk:#0d1522; --ink:#e7edf6; --muted:#93a0b6; --line:#233148;
-  --accent:#4a8ff0; --accent-ink:#06101f; --accent-soft:#14284a; --band:#f3b444; --band-soft:#33280f;
-  --good:#3cc286; --good-soft:#10301f; --bad:#f07171; --bad-soft:#3a1717; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
-
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.03em}
 p{margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.kicker,.eyebrow{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
 .muted{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:8px;padding:10px 16px;font-weight:600;font-size:14px;background:var(--accent);color:var(--accent-ink);transition:transform .12s,filter .12s}
-.btn:hover{filter:brightness(1.07)}
+.gold{background:linear-gradient(180deg,#f3dc8a,#b8892e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #f6e7b8;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;background:linear-gradient(180deg,#f6e3a4,#c6a15a 46%,#8c6820);color:#241244;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 20px rgba(140,104,32,.25);text-decoration:none;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .btn:active{transform:translateY(1px)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{background:var(--sunk)}
-.btn.sm{padding:6px 11px;font-size:13px}
-.btn.good{background:var(--good);color:#fff}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:rgba(36,18,68,.2);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.7)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn.good{background:var(--good);color:#fff;border-color:transparent;box-shadow:none}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--sunk);color:var(--muted)}
 .pill.good{background:var(--good-soft);color:var(--good)}
 .pill.warn{background:var(--band-soft);color:var(--band)}
 .pill.bad{background:var(--bad-soft);color:var(--bad)}
 .pill.acc{background:var(--accent-soft);color:var(--accent)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
-input[type=text],input[type=email],input[type=number],textarea,select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;outline:none}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.88));border:1px solid rgba(255,255,255,.8);border-radius:var(--r);box-shadow:inset 0 1px 0 #fff,0 12px 30px rgba(36,18,68,.06)}
+input[type=text],input[type=email],input[type=number],textarea,select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
 input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-label.f{display:grid;gap:6px;font-size:13px;font-weight:600}
+label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 
-/* Demo switcher */
-.demobar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--ink);color:var(--bg)}
+.demobar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#2a1248,#4c1d78 55%,#2a1248);color:#fbf7f1}
 .demobar .wrap{display:flex;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
-.demobar .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
-.seg{display:flex;gap:4px;background:rgba(127,127,127,.18);padding:3px;border-radius:8px;flex-wrap:wrap}
-.seg button{border:0;background:transparent;color:inherit;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:600;opacity:.75}
-.seg button.on{background:var(--bg);color:var(--ink);opacity:1}
-.demobar .note{margin-left:auto;font-size:12px;opacity:.65}
+.demobar .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#f0d48a}
+.seg{display:flex;gap:4px;background:rgba(255,255,255,.1);padding:3px;border-radius:999px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:inherit;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700;opacity:.8}
+.seg button.on{background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;opacity:1}
+.demobar .note{margin-left:auto;font-size:12px;opacity:.72}
 
-/* Site */
-.promo{background:var(--accent);color:var(--accent-ink);font-size:13px;text-align:center}
-.promo .wrap{padding-block:8px}
-.nav{background:var(--surface);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
-.logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
-.logo svg{flex:none}
-.nav .links{display:flex;gap:20px;font-size:14px;color:var(--muted);font-weight:500}
-.nav .links a{color:inherit;text-decoration:none}
-.nav .links a:hover{color:var(--ink)}
-.nav .act{margin-left:auto;display:flex;gap:8px}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:56px 48px}
-.hero h1{font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-.03em}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin-top:16px}
-.hero .ctas{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
-.hero .trust{margin-top:22px;display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.hero .trust b{color:var(--ink);font-family:var(--f-mono)}
-.scorecard{padding:22px;box-shadow:var(--shadow)}
-.scorecard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.bandbig{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:1;color:var(--band);font-variant-numeric:tabular-nums}
-.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
-.sec{background:var(--sunk);border-radius:8px;padding:10px}
-.sec span{display:block;font-size:12px;color:var(--muted)}
-.sec b{font-family:var(--f-mono);font-size:18px}
-.meter{height:6px;background:var(--line);border-radius:4px;margin-top:8px;overflow:hidden}
-.meter i{display:block;height:100%;background:var(--accent);border-radius:4px}
-.fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;font-size:13px;display:grid;gap:8px}
-.fb div{display:flex;gap:8px}
-.fb .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
+.topbar{position:sticky;top:var(--demo-h);z-index:40;background:color-mix(in srgb,#fff 78%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(36,18,68,.08)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;padding-block:10px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 8px 18px rgba(36,18,68,.2)}
+.word b{display:block;font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;line-height:1.15}
+.word small{display:block;margin-top:2px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.links{display:flex;gap:14px;margin-left:8px;font-size:13px;font-weight:700}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover,.links a[aria-current="page"]{color:var(--ink)}
+.act{margin-left:auto;display:flex;gap:8px}
+.menu{display:none;margin-left:auto;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.menu span{display:block;width:16px;height:2px;background:var(--ink);border-radius:2px}
 
-section.block{padding-block:56px}
-section.block.alt{background:var(--surface);border-block:1px solid var(--line)}
-.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
-.sh h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;margin-top:6px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-top:48px;padding-bottom:12px}
+.est{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:700;letter-spacing:.18em;font-size:12px;text-transform:uppercase;color:var(--accent)}
+.est::before,.est::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-copy h1{font-size:clamp(40px,5.6vw,72px);font-weight:800;margin-top:14px}
+.tagline{font-family:var(--f-script);font-size:clamp(30px,4vw,44px);line-height:1.15;color:#2a1248;margin-top:8px;font-weight:400}
+.lede{margin-top:14px;font-size:18px;color:var(--muted);max-width:46ch}
+.hero-copy .ctas{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.emblem{position:relative;width:min(440px,100%);aspect-ratio:1;margin-inline:auto}
+.emblem img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(42,18,72,.28));position:relative;z-index:1}
+.ring{position:absolute;inset:7%;border-radius:50%;border:1.5px dashed rgba(198,161,90,.85);animation:spin 28s linear infinite}
+.flyer{position:absolute;top:0;left:0;width:36px;height:36px;z-index:2;offset-path:ellipse(40% 40% at 50% 50%);offset-rotate:auto;animation:fly 14s linear infinite;filter:drop-shadow(0 6px 8px rgba(140,104,32,.35))}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fly{to{offset-distance:100%}}
+
+.bento-wrap{padding-top:28px;padding-bottom:10px}
+.bento-wrap .intro{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:16px;flex-wrap:wrap}
+.bento-wrap h2{font-size:clamp(28px,3vw,40px)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:14px}
+.bcard{position:relative;overflow:hidden;border-radius:24px;padding:20px;min-height:168px;text-decoration:none;color:var(--ink);background:
+  linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.62)),#fff;
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);
+  display:flex;flex-direction:column;gap:8px;transition:transform .2s,box-shadow .2s}
+.bcard::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.55) 48%,transparent 64%);transform:translateX(-130%);transition:transform .7s;pointer-events:none}
+.bcard:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #fff,0 22px 44px rgba(36,18,68,.14)}
+.bcard:hover::after{transform:translateX(130%)}
+.bcard .code{font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.bcard p{color:var(--muted);font-size:14.5px;max-width:36ch}
+.bcard .meta{margin-top:auto;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.bcard .go{position:absolute;right:16px;bottom:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-weight:800;z-index:1}
+.bcard.ielts{grid-column:span 4;grid-row:span 2;min-height:340px;color:#fbf7f1;background:
+  radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.5),transparent 42%),
+  radial-gradient(80% 70% at 0% 100%,rgba(160,90,210,.45),transparent 46%),
+  linear-gradient(155deg,#7a3aaa,#3a1468 58%,#241244);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 22px 50px rgba(36,18,72,.28)}
+.bcard.ielts::before{content:"";position:absolute;width:210px;height:210px;border:1.5px solid rgba(240,212,138,.5);border-left-color:transparent;border-radius:50%;right:-48px;top:-60px;transform:rotate(18deg)}
+.bcard.ielts p{color:rgba(251,247,241,.82)}
+.bcard.ielts .kicker,.bcard.ielts .meta{color:#f0d48a}
+.bcard.ielts .code{font-size:clamp(48px,6vw,84px)}
+.bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre,.bcard.spoken{grid-column:span 2}
+.bcard.spoken{padding:0}
+.bmain{display:flex;flex-direction:column;gap:8px;padding:20px 20px 8px;text-decoration:none;color:inherit;flex:1;position:relative;z-index:1}
+.lvls{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px;position:relative;z-index:2}
+.lvls a{text-decoration:none;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid rgba(36,18,68,.12)}
+.lvls a:hover{border-color:var(--gold);background:#fff}
+
+.method{padding-top:34px;padding-bottom:10px}
+.method h2{font-size:clamp(32px,4vw,52px);margin:8px 0 18px}
+.route{width:min(640px,100%);height:70px;display:block;margin-bottom:8px}
+.route path{stroke-dasharray:6 8;animation:dash 16s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-420}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;margin:0;padding:0}
+.steps li{padding:22px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.55));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 12px 28px rgba(36,18,68,.06)}
+.steps b{display:block;font-family:var(--f-display);font-size:22px;margin-bottom:6px}
+.steps span{color:var(--muted);font-size:14.5px}
+.steps a{color:var(--accent);font-weight:700}
+
+.block{padding-top:36px;padding-bottom:36px}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px;flex-wrap:wrap}
+.sh h2{font-size:clamp(28px,3.4vw,40px);margin-top:6px}
 .sh p{color:var(--muted);max-width:46ch}
-.exams{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.exam{padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
-.exam:hover{border-color:var(--accent);transform:translateY(-2px)}
-.exam .code{font-family:var(--f-display);font-weight:800;font-size:22px}
-.exam .meta{font-size:13px;color:var(--muted)}
-.exam .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:13px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
-.step{padding:4px 22px 4px 0;position:relative}
-.step .n{font-family:var(--f-mono);font-size:13px;color:var(--accent);font-weight:600}
-.step h3{font-size:18px;margin:8px 0 6px}
-.step p{font-size:14px;color:var(--muted)}
-.step .rule{height:2px;background:var(--line);margin:12px 0 0;position:relative}
-.step .rule::before{content:"";position:absolute;left:0;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pack{padding:24px;display:flex;flex-direction:column;gap:14px;position:relative}
-.pack.pop{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pack.pop{border-color:rgba(198,161,90,.8);box-shadow:inset 0 1px 0 #fff,0 0 0 3px rgba(198,161,90,.25),0 18px 40px rgba(36,18,68,.1)}
 .pack .pill{position:absolute;top:16px;right:16px}
-.pack .price{font-family:var(--f-display);font-weight:800;font-size:44px;letter-spacing:-.02em}
-.pack .price small{font-size:15px;color:var(--muted);font-weight:500;font-family:var(--f-body)}
+.pack .price{font-family:var(--f-display);font-weight:800;font-size:42px;letter-spacing:-.03em}
+.pack .price small{font-size:15px;color:var(--muted);font-weight:600;font-family:var(--f-body)}
 .pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
 .pack li{display:flex;gap:8px}
-.pack li::before{content:"✓";color:var(--good);font-weight:700}
+.pack li::before{content:"✓";color:var(--good);font-weight:800}
 .pack .btn{margin-top:auto}
-.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.feat h3{font-size:17px;margin:12px 0 6px}
-.feat p{font-size:14px;color:var(--muted)}
-.ico{width:38px;height:38px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
 .faq{display:grid;gap:10px;max-width:780px}
 .faq details{padding:14px 18px}
-.faq summary{font-weight:600;cursor:pointer}
+.faq summary{font-weight:700;cursor:pointer}
 .faq details p{margin-top:8px;color:var(--muted);font-size:14px}
-footer.site{border-top:1px solid var(--line);background:var(--surface)}
-footer.site .wrap{display:flex;justify-content:space-between;gap:20px;padding-block:28px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 
-/* Modal */
-.scrim{position:fixed;inset:0;background:rgba(5,10,20,.55);z-index:60;display:grid;place-items:center;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
-.modal{width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto;background:var(--surface);border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.page{padding:28px 0 48px}
+.back{display:inline-flex;margin-bottom:16px;font-size:13px;font-weight:700;text-decoration:none;color:var(--muted)}
+.back:hover{color:var(--ink)}
+.pagehead h1{font-size:clamp(46px,7vw,88px);margin:8px 0 12px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.fact{padding:16px;border-radius:18px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.7));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 10px 24px rgba(36,18,68,.06)}
+.fact b{display:block;font-family:var(--f-display);font-size:16px}
+.fact span{display:block;margin-top:4px;color:var(--muted);font-size:13.5px}
+.split{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;margin-top:22px;align-items:start}
+.ticks{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.ticks li{padding-left:18px;position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#f0d48a,#8c6820)}
+.gloss{padding:22px;border-radius:22px;background:
+  radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.45),transparent 46%),
+  linear-gradient(160deg,#fff,#f6efff);
+  border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);display:grid;gap:12px}
+.levels{margin-top:28px}
+.levels h2{font-size:clamp(28px,3vw,40px);margin-bottom:14px}
+.levelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+#programmes,#mocks,.level{scroll-margin-top:calc(var(--demo-h) + 88px)}
+.level{padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(36,18,68,.08);box-shadow:0 14px 30px rgba(36,18,68,.06)}
+.level h2{font-size:28px;margin:6px 0 8px}
+.level ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-weight:700;font-size:13px}
+.filters button.on{background:var(--ink);color:#fbf7f1;border-color:var(--ink)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{padding:22px;border-radius:22px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.78));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 14px 30px rgba(36,18,68,.07);display:flex;flex-direction:column;gap:14px}
+.quote q{font-family:var(--f-serif);font-size:24px;line-height:1.25;quotes:none}
+.quote footer{margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.shot{margin:0}
+.plaque{position:relative;overflow:hidden;border-radius:20px;min-height:210px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fbf7f1;background:
+  radial-gradient(80% 60% at 80% 0%,rgba(240,212,138,.55),transparent 50%),
+  linear-gradient(165deg,#6d2d9a,#2a1248);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 16px 30px rgba(36,18,68,.18)}
+.plaque b{font-family:var(--f-display);font-size:48px;letter-spacing:-.04em;line-height:.9}
+.ribbon{position:absolute;top:14px;right:-28px;transform:rotate(28deg);background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 36px}
+.shot figcaption{margin-top:8px;font-size:12px;color:var(--muted)}
+.sample-note{font-size:14px;color:var(--muted);max-width:62ch}
+
+footer.site{margin-top:20px;border-top:1px solid rgba(36,18,68,.08);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.75))}
+footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-block:32px 40px}
+.footlinks{display:flex;flex-wrap:wrap;gap:10px 16px;align-content:start}
+.footlinks a{font-weight:700;font-size:14px;text-decoration:none}
+.script{font-family:var(--f-script);font-size:28px;line-height:1;margin-top:8px}
+.fine{grid-column:1/-1;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800}
+.logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+
+.rise{opacity:0;transform:translateY(16px);animation:rise .7s ease forwards}
+.rise:nth-child(2){animation-delay:.05s}
+@keyframes rise{to{opacity:1;transform:none}}
+#app.enter{animation:enter .45s ease}
+@keyframes enter{from{opacity:.01;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.scrim{position:fixed;inset:0;background:rgba(20,8,36,.55);z-index:60;display:grid;place-items:center;padding:16px}
+.modal{width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto;background:var(--surface);border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow)}
 .modal header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
 .modal .body{padding:20px;display:grid;gap:16px}
 .x{border:0;background:var(--sunk);width:32px;height:32px;border-radius:8px;font-size:18px;line-height:1}
 .stepper{display:flex;gap:6px;font-size:12px;color:var(--muted)}
 .stepper span{flex:1;padding-top:6px;border-top:3px solid var(--line)}
-.stepper span.on{border-color:var(--accent);color:var(--ink);font-weight:600}
-.qrbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--sunk);border-radius:10px;padding:16px}
+.stepper span.on{border-color:var(--gold);color:var(--ink);font-weight:700}
+.qrbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--sunk);border-radius:12px;padding:16px}
 .qrbox canvas{width:148px;height:148px;background:#fff;border-radius:8px;padding:8px}
 .upi{font-family:var(--f-mono);font-size:13px;background:var(--surface);border:1px solid var(--line);padding:6px 9px;border-radius:6px;display:inline-block}
 .done{text-align:center;display:grid;gap:10px;justify-items:center;padding:10px 0}
 .check{width:56px;height:56px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center}
 
-/* App shell (student/admin) */
 .shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 46px)}
-.side{background:var(--surface);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px}
+.side{background:rgba(255,255,255,.8);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px}
 .side nav{display:grid;gap:2px}
-.side nav button{border:0;background:transparent;text-align:left;padding:9px 12px;border-radius:8px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:10px}
+.side nav button{border:0;background:transparent;text-align:left;padding:9px 12px;border-radius:10px;font-weight:600;color:var(--muted)}
 .side nav button:hover{background:var(--sunk);color:var(--ink)}
-.side nav button.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
-.side .who{margin-top:auto;display:flex;gap:10px;align-items:center;font-size:13px;padding:10px;border-radius:8px;background:var(--sunk)}
-.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
-.main{padding:26px max(16px,env(safe-area-inset-right,0px)) 40px 28px;min-width:0}
-.main h1{font-size:26px;font-weight:800}
+.side nav button.on{background:var(--accent-soft);color:var(--accent)}
+.side .who{margin-top:auto;display:flex;gap:10px;align-items:center;font-size:13px;padding:10px;border-radius:12px;background:var(--sunk)}
+.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.main{padding:26px 22px 40px;min-width:0}
+.main h1{font-size:28px}
 .head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
 .tile{padding:16px}
 .tile span{font-size:13px;color:var(--muted)}
-.tile b{display:block;font-family:var(--f-display);font-size:30px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile b{display:block;font-family:var(--f-display);font-size:30px;margin-top:4px}
 .tile small{font-size:12px;color:var(--muted)}
 .grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
 .panel{padding:18px;min-width:0}
 .panel h3{font-size:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .tlist{display:grid;gap:10px}
-.trow{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:9px}
-.trow .badge{width:46px;height:46px;border-radius:9px;background:var(--sunk);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:13px;flex:none}
+.trow{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.55)}
+.trow .badge{width:52px;height:46px;border-radius:10px;background:var(--sunk);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:12px;flex:none}
 .trow .info{flex:1;min-width:0}
 .trow .info b{display:block;font-size:14px}
 .trow .info span{font-size:12px;color:var(--muted)}
 .tablewrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th{text-align:left;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{text-align:left;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
 td{padding:12px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
 tr:last-child td{border-bottom:0}
 td .acts{display:flex;gap:6px}
 .chart svg{width:100%;height:auto;display:block}
-.emailprev{border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:13px}
+.emailprev{border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
 .emailprev .eh{background:var(--sunk);padding:10px 12px;display:grid;gap:2px}
 .emailprev .eb{padding:14px 12px;display:grid;gap:8px}
 .packedit{display:grid;gap:10px}
 .packedit .pr{display:grid;grid-template-columns:1fr 90px 100px;gap:8px;align-items:center}
-.drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;display:flex;gap:14px;align-items:center}
-.drop img,.drop canvas{width:86px;height:86px;border-radius:6px;background:#fff;object-fit:contain;padding:4px}
+.drop{border:1.5px dashed var(--line);border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center}
+.drop img,.drop canvas{width:86px;height:86px;border-radius:8px;background:#fff;object-fit:contain;padding:4px}
 
-/* Test room */
 .troom{min-height:calc(100vh - 46px);display:flex;flex-direction:column}
-.tbar{background:var(--surface);border-bottom:1px solid var(--line)}
+.tbar{background:rgba(255,255,255,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
 .tbar .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
-.timer{font-family:var(--f-mono);font-weight:600;font-size:20px;padding:4px 12px;border-radius:8px;background:var(--sunk)}
+.timer{font-family:var(--f-mono);font-weight:600;font-size:20px;padding:4px 12px;border-radius:10px;background:var(--sunk)}
 .timer.low{background:var(--bad-soft);color:var(--bad)}
 .tabs{display:flex;gap:4px}
-.tabs button{border:1px solid var(--line);background:var(--surface);padding:6px 14px;border-radius:7px;font-weight:600;font-size:13px}
-.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button{border:1px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
+.tabs button.on{background:var(--ink);color:#fbf7f1;border-color:var(--ink)}
 .tbody{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0}
-.tbody > div{padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));min-width:0}
-.passage{border-right:1px solid var(--line);background:var(--surface)}
+.tbody>div{padding:24px;min-width:0}
+.passage{border-right:1px solid var(--line);background:rgba(255,255,255,.72)}
 .passage h2{font-size:22px;margin:6px 0 14px}
-.passage p{max-width:62ch;margin-bottom:12px;font-size:15.5px;line-height:1.7}
+.passage p{max-width:62ch;margin-bottom:12px}
 .q{padding:16px 0;border-bottom:1px solid var(--line)}
-.q .qt{font-weight:600;margin-bottom:10px;display:flex;gap:10px}
+.q .qt{font-weight:700;margin-bottom:10px;display:flex;gap:10px}
 .q .qn{font-family:var(--f-mono);color:var(--accent);flex:none}
 .opts{display:grid;gap:6px}
-.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:14px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:14px;background:#fff}
 .opt:hover{background:var(--sunk)}
 .opt input{margin-top:3px;accent-color:var(--accent)}
 .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
 .palette{display:flex;gap:6px;flex-wrap:wrap}
-.palette span{width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);background:var(--surface)}
-.palette span.a{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.palette span{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);background:#fff}
+.palette span.a{background:var(--accent);color:#fff;border-color:var(--accent)}
 .wc{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px}
 textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
 .evaluating{display:grid;place-items:center;gap:14px;padding:80px 16px;text-align:center}
-.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--accent);animation:sp 0.9s linear infinite}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--gold);animation:sp .9s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 .res-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:24px}
-.ring{width:150px;height:150px}
+.ring-score{width:150px;height:150px}
+.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.sec{background:var(--sunk);border-radius:12px;padding:10px}
+.sec span{display:block;font-size:12px;color:var(--muted)}
+.sec b{font-family:var(--f-mono);font-size:18px}
+.meter{height:6px;background:rgba(36,18,68,.1);border-radius:4px;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,#6b2d91,#c6a15a);border-radius:4px}
+.fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;font-size:13px;display:grid;gap:8px}
+.fb div{display:flex;gap:8px}
+.fb .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
 .crit{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.crit .sec b{color:var(--ink)}
 .review{display:grid;gap:8px}
-.review div{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 10px;border-radius:8px;background:var(--sunk)}
+.review div{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 10px;border-radius:10px;background:var(--sunk)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom));z-index:80;background:#241244;color:#fbf7f1;padding:11px 16px;border-radius:12px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
 
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:80;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:9px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px);display:flex;gap:10px;align-items:center}
-
-@media (max-width:900px){
-  .hero .wrap,.grid2{grid-template-columns:1fr}
-  .exams,.tiles{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(2,1fr);row-gap:24px}
-  .packs,.feat{grid-template-columns:1fr}
-  .nav .links{display:none}
+@media (max-width:980px){
+  .hero-grid,.split,.grid2{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .bcard.ielts,.bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre,.bcard.spoken{grid-column:span 1;grid-row:auto}
+  .bcard.ielts{grid-column:1 / -1;min-height:240px}
+  .facts,.levelgrid,.quotes{grid-template-columns:1fr 1fr}
+  .shots,.tiles,.packs,.steps{grid-template-columns:1fr 1fr}
+  .links,.act .btn.ghost{display:none}
+  .menu{display:flex}
+  .topbar.navopen .links{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:12px;right:12px;background:#fff;border-radius:18px;padding:14px;box-shadow:var(--shadow);z-index:30}
   .shell{grid-template-columns:1fr}
-  .side{border-right:0;border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+  .side{border-right:0;border-bottom:1px solid var(--line)}
   .side nav{display:flex;overflow-x:auto;gap:4px}
   .side nav button{white-space:nowrap}
   .side .who,.side .logo{display:none}
-  .main{padding:20px max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px))}
+  .main{padding:20px 16px 32px}
   .tbody{grid-template-columns:1fr}
   .passage{border-right:0;border-bottom:1px solid var(--line)}
-  .crit{grid-template-columns:repeat(2,1fr)}
-  .res-top{grid-template-columns:1fr;justify-items:start}
+  .crit{grid-template-columns:1fr 1fr}
+  .res-top{grid-template-columns:1fr}
   .demobar .note{display:none}
+  footer.site .wrap{grid-template-columns:1fr}
 }
-@media (max-width:480px){
-  .sec-grid{grid-template-columns:repeat(2,1fr)}
-  .exams,.steps{grid-template-columns:1fr}
+@media (max-width:640px){
+  .bento,.facts,.levelgrid,.quotes,.shots,.tiles,.packs,.steps,.sec-grid{grid-template-columns:1fr}
   .qrbox{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .nav .act .ghost{display:none}
   .packedit .pr{grid-template-columns:1fr 70px 80px}
+  .word b{font-size:11px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 <div class="demobar"><div class="wrap">
-  <span class="tag">Demo</span>
+  <span class="tag">TestKaro demo</span>
   <div class="seg" id="seg">
-    <button data-go="site" class="on">Website</button>
-    <button data-go="student">Student</button>
-    <button data-go="admin">Admin panel</button>
+    <button type="button" data-go="site" class="on">Website</button>
+    <button type="button" data-go="student">Student</button>
+    <button type="button" data-go="admin">Admin panel</button>
   </div>
-  <span class="note">Frontend preview with sample data. Payments and emails are simulated.</span>
+  <span class="note">Sample data. Payments, emails and scores are simulated.</span>
 </div></div>
 <div id="app"></div>
 <div id="modal"></div>
 <div id="toast" class="toast" hidden></div>
 
 <script>
-const LOGO=`<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="var(--accent)"/><path d="M7 18a7 7 0 0 1 14 0" fill="none" stroke="var(--accent-ink)" stroke-width="2.4" stroke-linecap="round"/><path d="M14 18l4-5" stroke="var(--band)" stroke-width="2.4" stroke-linecap="round"/><circle cx="14" cy="18" r="2" fill="var(--accent-ink)"/></svg>`;
+const LOGO=`<img src="/images/logo.jpg" alt="" width="36" height="36">`;
+const PLANE=`<svg class="flyer" viewBox="0 0 64 64" aria-hidden="true"><path fill="#F3DC8A" d="M6 34 L40 26 L58 14 L50 22 L60 30 L44 34 L34 54 L26 50 L32 36 L16 42 L10 52 L6 48 L12 36 Z"/><path fill="#8C6820" d="M20 32l8 3-3 2z" opacity=".55"/></svg>`;
 const ME={name:"Aarav Mehta",email:"aarav.demo@gmail.com"};
 const S={
-  view:"site", sub:"dash", credits:2,
+  view:"home", sub:"dash", credits:2,
   packs:[{id:"p1",name:"Single test",tests:1,price:10},{id:"p5",name:"Starter pack",tests:5,price:50},{id:"p10",name:"Full prep pack",tests:10,price:100}],
   pending:[
     {id:1,email:"priya.k.demo@gmail.com",pack:"p5",utr:"428917365520",at:"Today, 2:41 pm"},
@@ -301,89 +404,184 @@ const S={
   ],
   lastEmail:null, qrImg:null, test:null, nextId:10
 };
+const SERVICES={
+  ielts:{key:"ielts",name:"IELTS",kicker:"Academic and General Training",score:"Band 0–9",
+    lede:"The academy's home paper. Listening, reading, writing and speaking are drawn as a map before the timer starts.",
+    facts:[["Listening","Four recordings, questions in order"],["Reading","Academic passages or General workplace texts"],["Writing","A short task, then the essay"],["Speaking","Interview, cue card, discussion"]],
+    train:["Each question type gets a one-page map, so the shape is familiar before you read.","Task 2 is planned as four branches: position, reason, example, return.","Cue cards are a two-minute route, not a memorised speech.","A TestKaro mock opens reading and Writing Task 2 once the map feels steady."],
+    note:"The mock desk currently times an IELTS-style reading passage and a Writing Task 2. Listening and speaking coaching stays with the academy."},
+  pte:{key:"pte",name:"PTE",kicker:"PTE Academic",score:"Score 10–90",
+    lede:"A computer test that scores how you speak as well as what you write. Short integrated tasks, one sitting.",
+    facts:[["Speaking","Read aloud, repeat, describe, answer short questions"],["Writing","Summaries and an essay"],["Reading","Reorder, fill blanks, multiple choice"],["Listening","Write from dictation and highlight the point"]],
+    train:["Fluency is mapped as pauses, stress and endings, not a script to rush through.","Summaries follow a fixed shape: topic, two supports, a close.","Microphone drills are short, so a stumble is easy to see and fix.","TestKaro opens a PTE-style reading set and essay when you are ready to time it."],
+    note:"PTE Academic is the paper we prepare. The mock desk marks a reading section and an essay. It is practice, not a Pearson score."},
+  toefl:{key:"toefl",name:"TOEFL",kicker:"TOEFL iBT",score:"Score 0–120",
+    lede:"For universities that ask for TOEFL. Campus lectures, academic discussion, and a writing clock.",
+    facts:[["Reading","University passages and purpose questions"],["Listening","Conversations and lectures"],["Speaking","Independent answers and integrated responses"],["Writing","A reading-listening task and an academic discussion"]],
+    train:["Lectures are mapped as claim, example, contrast, so notes stay short.","Speaking answers use a three-beat route: point, reason, detail.","The academic discussion is planned as agree, add, and one careful disagreement.","TestKaro times a TOEFL-style reading set and an academic discussion essay."],
+    note:"This is preparation for TOEFL iBT. The academy is not ETS, and the mock score is an estimate."},
+  gmat:{key:"gmat",name:"GMAT",kicker:"For management programmes",score:"Quantitative · Verbal · Data Insights",
+    lede:"Arguments, data and quant, drawn so a crowded chart becomes a route you can revise.",
+    facts:[["Quantitative","Arithmetic, algebra and word problems"],["Verbal","Critical reasoning and reading"],["Data Insights","Tables, graphs and multi-source sets"],["Timing","Section clocks, not a memory contest"]],
+    train:["Critical reasoning is a map: conclusion, assumption, gap.","Data sets are read for the question first, then the chart.","Quant mistakes are grouped by pattern, so the same slip is not repeated.","GMAT mocks are not on the TestKaro desk yet. This page is the training route."],
+    note:"Use the mock desk for the English papers while GMAT timing is still taught in class. We are not affiliated with GMAC."},
+  gre:{key:"gre",name:"GRE",kicker:"General Test",score:"Verbal · Quant · Analytical Writing",
+    lede:"Vocabulary in clusters, quant as patterns, and essays as a structure you can see.",
+    facts:[["Verbal","Text completion, sentence equivalence, reading"],["Quant","Arithmetic, algebra, geometry, data"],["Writing","Analyse an issue"],["Use","Graduate and some business programmes"]],
+    train:["Words are stored in small maps, not a flat list.","Reading passages are sketched as claim and turn.","The issue essay uses a visible fork: position, objection, answer.","GRE mocks are not on the desk yet. English timing still lives on TestKaro."],
+    note:"Preparation for the GRE General Test. Not affiliated with ETS."},
+  spoken:{key:"spoken",name:"Spoken English",kicker:"Beginner to advanced",score:"Three levels",
+    lede:"From a first sentence to a visa interview. Real travel, campus and workplace speech. No cartoon drills.",
+    facts:[["Beginner","Sounds, greetings, slow conversation"],["Intermediate","Opinions, stories, phone calls"],["Advanced","Interviews, presentations, nuance"],["Setting","Airport, campus, office, not a cartoon classroom"]],
+    train:["Each level has a spoken route you can finish out loud.","Mistakes stay in the lesson. That is the academy line, and it is how the class works.","Pronunciation is marked on stress and endings, not on shame.","Pair a speaking level with a TestKaro writing mock when the exam date is real."],
+    note:"Spoken English is a coaching path. The mock desk still times reading and writing for IELTS, PTE and TOEFL.",
+    levels:[
+      {id:"beginner",k:"Level 01",t:"Beginner",d:"For anyone who hesitates before a simple sentence.",points:["Vowel and consonant contrasts that change meaning.","Greetings, directions, a café order, a gate change.","Short answers that stay in English the whole way through."]},
+      {id:"intermediate",k:"Level 02",t:"Intermediate",d:"For people who can talk and now need to keep going.",points:["Opinions with a reason and an example.","Campus life, a workplace update, a phone call.","Linking words you can actually say at speed."]},
+      {id:"advanced",k:"Level 03",t:"Advanced",d:"For interviews, presentations and disagreement without freezing.",points:["A two-minute answer with a clean ending.","Hedging, emphasis and a polite challenge.","Visa and university interviews rehearsed as a route."]}
+    ]}
+};
 const $=s=>document.querySelector(s);
 const pk=id=>S.packs.find(p=>p.id===id);
 const inr=n=>"₹"+n.toLocaleString("en-IN");
 let timerInt=null;
 
+function viewFromLocation(){
+  let p=location.pathname.replace(/\/index\.html$/,"");
+  if(p.length>1&&p.endsWith("/"))p=p.slice(0,-1);
+  if(!p)p="/";
+  return ({"/":"home","/ielts":"ielts","/pte":"pte","/toefl":"toefl","/gmat":"gmat","/gre":"gre","/spoken-english":"spoken","/testimonials":"stories","/student":"student","/admin":"admin"})[p]||"home";
+}
 function toast(msg){const t=$("#toast");t.innerHTML=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,3600)}
-function go(v,sub){S.view=v;if(sub)S.sub=sub;if(v!=="test"&&timerInt){clearInterval(timerInt);timerInt=null}
-  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go===(v==="test"?"student":v)));render();window.scrollTo(0,0)}
-
-/* ---------- Website ---------- */
-function site(){
-  const exams=[["IELTS","Academic & General","Listening · Reading · Writing · Speaking","Band 0–9"],["PTE","Academic & Core","Speaking & Writing · Reading · Listening","Score 10–90"],["TOEFL","iBT","Reading · Listening · Speaking · Writing","Score 0–120"],["Duolingo","English Test","Adaptive · Interview · Writing sample","Score 10–160"]];
-  return `
-  <div class="promo"><div class="wrap">Launch offer: your first mock test is just ₹10. <u style="cursor:pointer" data-buy="p1">Buy now</u></div></div>
-  <header class="nav"><div class="wrap">
-    <div class="logo">${LOGO}TestKaro</div>
-    <nav class="links"><a href="#exams">Exams</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
-    <div class="act"><button class="btn ghost sm" data-go="student">Log in</button><button class="btn sm" data-scroll="pricing">Buy tests</button></div>
-  </div></header>
-  <section class="hero"><div class="wrap">
-    <div>
-      <span class="eyebrow">AI-scored mock tests</span>
-      <h1 style="margin-top:12px">Practise IELTS &amp; PTE the way the real exam <em>feels</em>.</h1>
-      <p class="lead">Full-length timed mock tests with instant AI feedback on your writing. Pay per test from ₹10. No subscription.</p>
-      <div class="ctas"><button class="btn" data-scroll="pricing">Buy a mock test</button><button class="btn ghost" data-go="student">Try the student dashboard</button></div>
-      <div class="trust"><span><b>4</b> exams covered</span><span><b>60 min</b> timed format</span><span><b>~2 min</b> AI result</span></div>
-    </div>
-    <div class="card scorecard">
-      <div class="top"><div><span class="eyebrow" style="color:var(--muted)">Sample result</span><h3 style="margin-top:6px">IELTS Academic · Mock 3</h3></div><span class="pill good">+0.5 since last test</span></div>
-      <div style="display:flex;align-items:end;gap:14px;margin-top:14px"><div class="bandbig">6.5</div><div class="muted" style="font-size:13px;padding-bottom:8px">Overall band<br>Target 7.0</div></div>
-      <div class="sec-grid">${[["Listening",7.0],["Reading",6.5],["Writing",6.0],["Speaking",6.5]].map(([n,b])=>`<div class="sec"><span>${n}</span><b>${b.toFixed(1)}</b><div class="meter"><i style="width:${b/9*100}%"></i></div></div>`).join("")}</div>
-      <div class="fb">
-        <div><span class="dot" style="background:var(--good)"></span><span>Clear position in the introduction. Ideas follow a logical order.</span></div>
-        <div><span class="dot" style="background:var(--band)"></span><span>Repeated "very important" 4 times. Try "crucial" or "essential".</span></div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="block alt" id="exams"><div class="wrap">
-    <div class="sh"><div><span class="eyebrow">Exams</span><h2>Mock tests built on the real exam pattern</h2></div><p>Each test follows the official section order, question types and time limits.</p></div>
-    <div class="exams">${exams.map(e=>`<div class="card exam"><div class="code">${e[0]}</div><div><b style="font-size:14px">${e[1]}</b><div class="meta">${e[2]}</div></div><div class="row"><span class="pill acc">${e[3]}</span><button class="btn ghost sm" data-scroll="pricing">Practise</button></div></div>`).join("")}</div>
-  </div></section>
-
-  <section class="block" id="how"><div class="wrap">
-    <div class="sh"><div><span class="eyebrow">How it works</span><h2>From payment to your first test in four steps</h2></div><p>Pay straight to our UPI. We verify it and unlock your tests, then you get an email.</p></div>
-    <div class="steps">
-      ${[["Pick a pack","Choose 1, 5 or 10 mock tests."],["Scan &amp; pay","Pay by any UPI app using the QR code, then enter your email and UTR number."],["We verify","Our team checks the payment and unlocks your tests."],["Get the email","You get a confirmation email and can start your test right away."]].map((s,i)=>`<div class="step"><span class="n">Step ${i+1}</span><div class="rule"></div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("")}
-    </div>
-  </div></section>
-
-  <section class="block alt" id="pricing"><div class="wrap">
-    <div class="sh"><div><span class="eyebrow">Pricing</span><h2>Pay only for the tests you take</h2></div><p>Credits never expire. Each credit unlocks one full mock test with AI feedback.</p></div>
-    <div class="packs">${S.packs.map((p,i)=>`<div class="card pack ${i===1?"pop":""}">${i===1?'<span class="pill acc">Most picked</span>':""}
-      <div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div>
-      <div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div>
-      <ul><li>Full timed mock test${p.tests>1?"s":""}</li><li>AI writing feedback with band score</li><li>Answer review and explanations</li>${p.tests>=5?"<li>Progress chart across attempts</li>":""}</ul>
-      <button class="btn ${i===1?"":"ghost"}" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>
-  </div></section>
-
-  <section class="block"><div class="wrap">
-    <div class="sh"><div><span class="eyebrow">Features</span><h2>Everything you need for a higher score</h2></div></div>
-    <div class="feat">
-      ${[["AI writing evaluation","Your essay is scored on the four official criteria with line-by-line suggestions.","M4 17l4-4 3 3 7-8"],["Real exam timing","A countdown timer and question palette, just like test day.","M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"],["Instant results","Band score, section scores and correct answers right after you submit.","M5 12l4 4L19 6"],["Progress tracking","See your band move across attempts and spot weak sections.","M4 19V5M4 19h16M8 15l3-4 3 2 4-6"],["Simple UPI payment","Scan the QR with GPay, PhonePe or Paytm. No card needed.","M4 6h16v12H4zM4 10h16"],["Email updates","Get an email the moment your tests are unlocked.","M4 6h16v12H4zM4 7l8 6 8-6"]].map(f=>`<div><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${f[2]}"/></svg></div><h3>${f[0]}</h3><p>${f[1]}</p></div>`).join("")}
-    </div>
-  </div></section>
-
-  <section class="block alt" id="faq"><div class="wrap">
-    <div class="sh"><div><span class="eyebrow">FAQ</span><h2>Common questions</h2></div></div>
-    <div class="faq">
-      <details class="card" open><summary>How long does access take after I pay?</summary><p>We verify each UPI payment by hand, usually within a few hours. You get an email as soon as your tests are unlocked.</p></details>
-      <details class="card"><summary>What is a UTR number?</summary><p>It is the 12-digit transaction reference your UPI app shows after payment. It helps us match your payment quickly.</p></details>
-      <details class="card"><summary>Is the AI score the same as the real exam?</summary><p>It is an estimate based on the official band descriptors. Use it to track progress, not as an official result.</p></details>
-    </div>
-  </div></section>
-  <footer class="site"><div class="wrap"><div class="logo" style="font-size:16px">${LOGO}TestKaro</div><span>Independent practice platform. Not affiliated with IELTS, Pearson, ETS or Duolingo.</span></div></footer>`;
+function go(v,sub){
+  const paths={home:"/",ielts:"/ielts",pte:"/pte",toefl:"/toefl",gmat:"/gmat",gre:"/gre",spoken:"/spoken-english",stories:"/testimonials",student:"/student",admin:"/admin"};
+  if(v!=="test"&&paths[v]){
+    let cur=location.pathname.replace(/\/index\.html$/,"")||"/";
+    if(cur.length>1&&cur.endsWith("/"))cur=cur.slice(0,-1);
+    if(cur!==paths[v])history.pushState({v},"",paths[v]);
+  }
+  S.view=v;if(sub)S.sub=sub;
+  if(v!=="test"&&timerInt){clearInterval(timerInt);timerInt=null}
+  render();window.scrollTo(0,0);
 }
 
-/* ---------- Buy modal ---------- */
+function chrome(active){
+  const links=[["IELTS","/ielts","ielts"],["PTE","/pte","pte"],["TOEFL","/toefl","toefl"],["GMAT","/gmat","gmat"],["GRE","/gre","gre"],["Spoken","/spoken-english","spoken"],["Testimonials","/testimonials","stories"]];
+  return `<header class="topbar"><div class="wrap">
+    <a class="brand" href="/" data-nav><img src="/images/logo.jpg" alt="" width="56" height="56"><span class="word"><b>IELTS MIND MAP <span class="gold">ACADEMY</span></b><small>TestKaro</small></span></a>
+    <nav class="links" aria-label="Programmes">${links.map(([l,h,k])=>`<a href="${h}" data-nav ${active===k?'aria-current="page"':""}>${l}</a>`).join("")}</nav>
+    <div class="act"><button class="btn ghost sm" type="button" data-go="student">Student</button><a class="btn sm" href="/#mocks" data-nav>Mock tests</a></div>
+    <button class="menu" type="button" data-menu aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div></header>`;
+}
+function footer(){
+  const links=[["IELTS","/ielts"],["PTE","/pte"],["TOEFL","/toefl"],["GMAT","/gmat"],["GRE","/gre"],["Spoken English","/spoken-english"],["Testimonials","/testimonials"],["Mock tests","/#mocks"]];
+  return `<footer class="site"><div class="wrap">
+    <div><div class="logo">${LOGO}<span class="word"><b>IELTS MIND MAP <span class="gold">ACADEMY</span></b></span></div><p class="script">Mistakes are proof that you're trying!</p></div>
+    <nav class="footlinks" aria-label="Footer">${links.map(([l,h])=>`<a href="${h}" data-nav>${l}</a>`).join("")}</nav>
+    <p class="fine">Est. 2022. TestKaro is the mock-test desk for this academy. Independent preparation. Not affiliated with IELTS, IDP, the British Council, Pearson, ETS or GMAC.</p>
+  </div></footer>`;
+}
+function card(id,href,cls,k,t,d,meta){
+  return `<a class="bcard ${cls}" href="${href}" data-nav><span class="kicker">${k}</span><strong class="code">${t}</strong><p>${d}</p><span class="meta">${meta}</span><span class="go" aria-hidden="true">→</span></a>`;
+}
+function home(){
+  const cards=[
+    ["ielts","/ielts","ielts","Flagship paper","IELTS","Academic and General Training. Four skills, mapped before the clock starts.","Band 0–9"],
+    ["pte","/pte","pte","Computer test","PTE","Integrated speaking, reading and writing. The microphone is part of the paper.","Score 10–90"],
+    ["toefl","/toefl","toefl","Campus route","TOEFL","iBT lectures, discussions and a timed essay for university admission.","Score 0–120"],
+    ["gmat","/gmat","gmat","Management","GMAT","Data Insights, verbal arguments and quant, drawn so a chart has a route.","Focus structure"],
+    ["gre","/gre","gre","Graduate school","GRE","Verbal clusters, quant patterns, and an essay you can see.","General Test"]
+  ];
+  return `${chrome("home")}
+  <main>
+    <section class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="est">Est. 2022</p>
+        <h1>IELTS Mind Map Academy</h1>
+        <p class="tagline">Mistakes are proof that you're trying!</p>
+        <p class="lede">A prep studio for people going abroad. Pick a paper, open its page, and time a mock on the TestKaro desk when you are ready.</p>
+        <div class="ctas"><a class="btn" href="#programmes">Choose a programme</a><a class="btn ghost" href="/testimonials" data-nav>Testimonials</a></div>
+      </div>
+      <div class="emblem" aria-hidden="true"><div class="ring"></div><img src="/images/logo.jpg" alt="">${PLANE}</div>
+    </section>
+    <section class="wrap bento-wrap" id="programmes">
+      <div class="intro"><div><span class="kicker">Programmes</span><h2>Open a paper directly.</h2></div><p class="lede" style="margin:0">Six routes. Each card is the page.</p></div>
+      <div class="bento">
+        ${cards.slice(0,1).map(c=>card(...c)).join("")}
+        ${cards.slice(1,3).map(c=>card(...c)).join("")}
+        ${cards.slice(3).map(c=>card(...c)).join("")}
+        <div class="bcard spoken">
+          <a class="bmain" href="/spoken-english" data-nav><span class="kicker">Speaking path</span><strong class="code">Spoken English</strong><p>Beginner, intermediate and advanced. Travel, campus and interviews. No cartoons.</p></a>
+          <div class="lvls"><a href="/spoken-english#beginner" data-nav>Beginner</a><a href="/spoken-english#intermediate" data-nav>Intermediate</a><a href="/spoken-english#advanced" data-nav>Advanced</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap method">
+      <span class="kicker">The route</span>
+      <h2>Map it. Practise it. Then fly.</h2>
+      <svg class="route" viewBox="0 0 640 80" aria-hidden="true"><path d="M8 58 C 120 58, 150 14, 230 16 S 380 66, 470 36 590 18, 632 22" fill="none" stroke="#c6a15a" stroke-width="1.6"/><circle cx="8" cy="58" r="4" fill="#4c1d78"/><circle cx="230" cy="16" r="4" fill="#4c1d78"/><circle cx="470" cy="36" r="4" fill="#4c1d78"/><circle cx="632" cy="22" r="4" fill="#c6a15a"/></svg>
+      <ol class="steps">
+        <li><b>Map</b><span>The paper becomes a diagram you can revise in minutes.</span></li>
+        <li><b>Practise</b><span>TestKaro times the mock and marks the writing.</span></li>
+        <li><b>Proof</b><span>Reviews and score reports stay on the <a href="/testimonials" data-nav>testimonials page</a>.</span></li>
+      </ol>
+    </section>
+    <section class="wrap block" id="mocks">
+      <div class="sh"><div><span class="kicker">TestKaro mock desk</span><h2>Pay only for the tests you time</h2></div><p>Credits do not expire. Each credit unlocks one timed mock. The score is an estimate for practice.</p></div>
+      <div class="packs">${S.packs.map((p,i)=>`<div class="card pack ${i===1?"pop":""}">${i===1?'<span class="pill acc">Most picked</span>':""}
+        <div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div>
+        <div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div>
+        <ul><li>Timed reading and writing</li><li>Estimated score and notes</li><li>Answer review</li>${p.tests>=5?"<li>Progress across attempts</li>":""}</ul>
+        <button class="btn ${i===1?"":"ghost"}" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button>
+      </div>`).join("")}</div>
+    </section>
+    <section class="wrap block" style="padding-top:0">
+      <div class="sh"><div><span class="kicker">FAQ</span><h2>Before you pay</h2></div></div>
+      <div class="faq">
+        <details class="card" open><summary>How long after I pay?</summary><p>Each UPI payment is checked by hand, usually within a few hours. You get an email when the tests unlock.</p></details>
+        <details class="card"><summary>What is a UTR number?</summary><p>The 12-digit reference your UPI app shows after payment. It is how the payment is matched.</p></details>
+        <details class="card"><summary>Is the score official?</summary><p>No. It is a practice estimate. IELTS, PTE, TOEFL, GMAT and GRE results come only from the exam bodies.</p></details>
+      </div>
+    </section>
+  </main>${footer()}`;
+}
+function servicePage(s){
+  const levels=(s.levels||[]).map(lv=>`<article class="level" id="${lv.id}"><span class="kicker">${lv.k}</span><h2>${lv.t}</h2><p>${lv.d}</p><ul>${lv.points.map(p=>`<li>${p}</li>`).join("")}</ul></article>`).join("");
+  return `${chrome(s.key)}<article class="page"><div class="wrap">
+    <a class="back" href="/" data-nav>← All programmes</a>
+    <header class="pagehead"><span class="kicker">${s.kicker}</span><h1>${s.name}</h1><p class="lede">${s.lede}</p><p style="margin-top:14px"><span class="pill acc">${s.score}</span></p></header>
+    <div class="facts">${s.facts.map(([n,d])=>`<div class="fact"><b>${n}</b><span>${d}</span></div>`).join("")}</div>
+    <section class="split"><div><h2>How the map is used</h2><ul class="ticks">${s.train.map(t=>`<li>${t}</li>`).join("")}</ul></div>
+      <aside class="gloss"><span class="kicker">On TestKaro</span><p>${s.note}</p><a class="btn" href="/#mocks" data-nav>Open the mock desk</a></aside></section>
+    ${levels?`<section class="levels"><h2>Beginner to advanced</h2><div class="levelgrid">${levels}</div></section>`:""}
+  </div></article>${footer()}`;
+}
+function stories(){
+  const quotes=[
+    ["ielts","The cue-card map stopped the silence in speaking part 2. I still make mistakes. I can see them now.","Meera S.","IELTS"],
+    ["pte","Hearing the pause on the recording was more useful than another grammar list.","Arjun P.","PTE"],
+    ["toefl","Lecture notes finally had a shape: claim, example, contrast.","Lina K.","TOEFL"],
+    ["gmat","Data Insights stopped looking like a pile of charts and started looking like a route.","Rahul D.","GMAT"],
+    ["gre","The words stayed when they sat in a cluster, not in a list of a hundred.","Sara N.","GRE"],
+    ["spoken","I asked for a gate change and stayed in English the whole time.","Kabir V.","Spoken English"]
+  ];
+  const shots=[["ielts","7.5","IELTS Academic"],["pte","76","PTE Academic"],["toefl","102","TOEFL iBT"],["spoken","Level 02","Spoken English"]];
+  return `${chrome("stories")}<article class="page stories"><div class="wrap">
+    <header class="pagehead"><span class="kicker">Testimonials</span><h1>Proof, kept apart from the homepage.</h1><p class="lede">Reviews and score reports live only on this page. The notes below are sample layout copy. Replace them with your students' words and screenshots before you publish.</p></header>
+    <div class="filters" role="tablist"><button type="button" data-filter="all" class="on">All</button>${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>`<button type="button" data-filter="${k}">${k==="spoken"?"Spoken":k.toUpperCase()}</button>`).join("")}</div>
+    <div class="quotes">${quotes.map(q=>`<figure class="quote" data-story="${q[0]}"><span class="pill">Sample</span><q>${q[1]}</q><footer><b>${q[2]}</b><span>${q[3]}</span></footer></figure>`).join("")}</div>
+    <h2 style="margin:32px 0 8px">Score-report slots</h2>
+    <p class="sample-note">These plaques are marked Sample. Drop the real screenshot in place of the number when you have permission to show it.</p>
+    <div class="shots">${shots.map(s=>`<figure class="shot" data-story="${s[0]}"><div class="plaque"><span class="ribbon">Sample</span><b>${s[1]}</b><span>${s[2]}</span></div><figcaption>Screenshot slot · ${s[2]}</figcaption></figure>`).join("")}</div>
+  </div></article>${footer()}`;
+}
+
 function drawQR(cv){
-  const n=25,ctx=cv.getContext("2d"),sz=cv.width/n;ctx.fillStyle="#fff";ctx.fillRect(0,0,cv.width,cv.width);ctx.fillStyle="#0d1a2d";
+  const n=25,ctx=cv.getContext("2d"),sz=cv.width/n;ctx.fillStyle="#fff";ctx.fillRect(0,0,cv.width,cv.width);ctx.fillStyle="#241244";
   let seed=7;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
   for(let y=0;y<n;y++)for(let x=0;x<n;x++){if(r()>.52)ctx.fillRect(x*sz,y*sz,sz,sz)}
-  [[0,0],[n-7,0],[0,n-7]].forEach(([x,y])=>{ctx.fillStyle="#fff";ctx.fillRect((x-1)*sz,(y-1)*sz,9*sz,9*sz);ctx.fillStyle="#0d1a2d";ctx.fillRect(x*sz,y*sz,7*sz,7*sz);ctx.fillStyle="#fff";ctx.fillRect((x+1)*sz,(y+1)*sz,5*sz,5*sz);ctx.fillStyle="#0d1a2d";ctx.fillRect((x+2)*sz,(y+2)*sz,3*sz,3*sz)});
+  [[0,0],[n-7,0],[0,n-7]].forEach(([x,y])=>{ctx.fillStyle="#fff";ctx.fillRect((x-1)*sz,(y-1)*sz,9*sz,9*sz);ctx.fillStyle="#241244";ctx.fillRect(x*sz,y*sz,7*sz,7*sz);ctx.fillStyle="#fff";ctx.fillRect((x+1)*sz,(y+1)*sz,5*sz,5*sz);ctx.fillStyle="#241244";ctx.fillRect((x+2)*sz,(y+2)*sz,3*sz,3*sz)});
 }
 function qrInto(el){ if(S.qrImg){el.outerHTML=`<img src="${S.qrImg}" alt="Payment QR code" style="width:148px;height:148px;background:#fff;border-radius:8px;padding:8px;object-fit:contain">`}else drawQR(el) }
 function openBuy(id,step=1){
@@ -392,8 +590,8 @@ function openBuy(id,step=1){
   let body="";
   if(step===1) body=`${steps}
     <div style="display:flex;justify-content:space-between;align-items:center"><div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div><div class="price" style="font-family:var(--f-display);font-weight:800;font-size:28px">${inr(p.price)}</div></div>
-    <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Demo QR. The client's real UPI QR is uploaded from the admin panel.</span></div></div>
-    <button class="btn" data-buystep="${id}:2">I've paid, continue</button>`;
+    <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Demo QR. The real UPI QR is uploaded from the admin panel.</span></div></div>
+    <button class="btn" type="button" data-buystep="${id}:2">I've paid, continue</button>`;
   if(step===2) body=`${steps}
     <p class="muted" style="font-size:14px">Enter the email you want access on and the UTR number from your UPI app.</p>
     <form id="payform" style="display:grid;gap:14px" data-pack="${id}">
@@ -402,12 +600,11 @@ function openBuy(id,step=1){
       <div style="display:flex;gap:8px"><button type="button" class="btn ghost" data-buystep="${id}:1">Back</button><button class="btn" style="flex:1">Submit payment</button></div>
     </form>`;
   if(step===3) body=`<div class="done"><div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg></div><h3>Payment submitted</h3><p class="muted" style="max-width:36ch">We'll check your ${inr(p.price)} payment and email you once your ${p.tests} test${p.tests>1?"s are":" is"} unlocked.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px"><button class="btn" data-close data-go="admin">See it in the admin panel</button><button class="btn ghost" data-close>Close</button></div></div>`;
-  m.innerHTML=`<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-label="Buy tests"><header><b>Buy mock tests</b><button class="x" data-close aria-label="Close">×</button></header><div class="body">${body}</div></div></div>`;
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px"><button class="btn" type="button" data-close data-go="admin">See it in the admin panel</button><button class="btn ghost" type="button" data-close>Close</button></div></div>`;
+  m.innerHTML=`<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-label="Buy tests"><header><b>Buy mock tests</b><button class="x" type="button" data-close aria-label="Close">×</button></header><div class="body">${body}</div></div></div>`;
   const cv=$("#qr");if(cv)qrInto(cv);
 }
 
-/* ---------- Student ---------- */
 const TESTS=[
   {code:"IELTS",name:"IELTS Academic · Mock 4",meta:"Reading + Writing Task 2 · 60 min"},
   {code:"IELTS",name:"IELTS General · Mock 2",meta:"Reading + Writing Task 2 · 60 min"},
@@ -428,18 +625,18 @@ function chart(){
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Band score over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
 }
 function sideNav(items,cur,role){
-  return `<aside class="side"><div class="logo" style="font-size:18px;padding:4px 8px">${LOGO}TestKaro</div>
-  <nav>${items.map(([k,l])=>`<button data-sub="${role}:${k}" class="${cur===k?"on":""}">${l}</button>`).join("")}</nav>
+  return `<aside class="side"><div class="logo" style="font-size:16px;padding:4px 8px">${LOGO}TestKaro</div>
+  <nav>${items.map(([k,l])=>`<button type="button" data-sub="${role}:${k}" class="${cur===k?"on":""}">${l}</button>`).join("")}</nav>
   <div class="who"><div class="av">${role==="admin"?"AD":"AM"}</div><div><b>${role==="admin"?"Admin":ME.name}</b><div class="muted" style="font-size:12px">${role==="admin"?"Owner":ME.email}</div></div></div></aside>`;
 }
 function student(){
   const best=Math.max(...S.attempts.map(a=>a.band)),last=S.attempts.at(-1);
-  const testList=`<div class="tlist">${TESTS.map((t,i)=>`<div class="trow"><div class="badge">${t.code}</div><div class="info"><b>${t.name}</b><span>${t.meta}</span></div><button class="btn sm" data-start="${i}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("")}</div>
-    ${S.credits<1?`<p style="margin-top:12px;font-size:14px">You have no credits left. <a href="#" data-buylink="p5" style="color:var(--accent);font-weight:600">Buy a pack</a> to start another test.</p>`:""}`;
+  const testList=`<div class="tlist">${TESTS.map((t,i)=>`<div class="trow"><div class="badge">${t.code}</div><div class="info"><b>${t.name}</b><span>${t.meta}</span></div><button class="btn sm" type="button" data-start="${i}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("")}</div>
+    ${S.credits<1?`<p style="margin-top:12px;font-size:14px">You have no credits left. <a href="#" data-buylink="p5" style="color:var(--accent);font-weight:700">Buy a pack</a> to start another test.</p>`:""}`;
   const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Date</th><th>Band</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${a.name}</td><td class="muted">${a.date}</td><td><b class="mono">${a.band.toFixed(1)}</b></td></tr>`).join("")}</tbody></table></div>`;
   let content="";
   if(S.sub==="dash") content=`
-    <div class="head"><div><span class="muted" style="font-size:14px">Welcome back,</span><h1>${ME.name.split(" ")[0]}</h1></div><button class="btn" data-buylink="p5">Buy more tests</button></div>
+    <div class="head"><div><span class="muted" style="font-size:14px">Welcome back,</span><h1>${ME.name.split(" ")[0]}</h1></div><button class="btn" type="button" data-buylink="p5">Buy more tests</button></div>
     <div class="tiles">
       <div class="card tile"><span>Test credits left</span><b style="color:${S.credits?"var(--ink)":"var(--bad)"}">${S.credits}</b><small>Each credit = 1 full mock</small></div>
       <div class="card tile"><span>Latest band</span><b style="color:var(--band)">${last.band.toFixed(1)}</b><small>${last.name.split(" · ")[0]}</small></div>
@@ -452,11 +649,10 @@ function student(){
     </div>`;
   if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><span class="pill acc">${S.credits} credit${S.credits===1?"":"s"} left</span></div><div class="card panel">${testList}</div>`;
   if(S.sub==="results") content=`<div class="head"><h1>My results</h1></div><div class="card panel">${history}</div>`;
-  if(S.sub==="buy") content=`<div class="head"><h1>Buy tests</h1></div><div class="packs">${S.packs.map(p=>`<div class="card pack"><b>${p.name}</b><div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div><button class="btn" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>`;
+  if(S.sub==="buy") content=`<div class="head"><h1>Buy tests</h1></div><div class="packs">${S.packs.map(p=>`<div class="card pack"><b>${p.name}</b><div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div><button class="btn" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>`;
   return `<div class="shell">${sideNav([["dash","Dashboard"],["tests","Mock tests"],["results","My results"],["buy","Buy tests"]],S.sub,"student")}<main class="main">${content}</main></div>`;
 }
 
-/* ---------- Test room ---------- */
 const PASSAGE={title:"Farming on the rooftops",paras:[
   "In the early 2000s, a handful of city restaurants began growing herbs on their own rooftops. Most of these first gardens were abandoned within two years. Owners found that the cost of carrying soil, water and tools up several floors outweighed the savings on fresh produce.",
   "The second wave of rooftop farming looked very different. Instead of heavy soil, growers used lightweight mixes of coconut fibre and compost, and many switched to hydroponic trays that need no soil at all. Building engineers were brought in early to check how much weight each roof could safely hold.",
@@ -474,7 +670,6 @@ const PROMPT="Some people believe city rooftops should be used to grow food, whi
 function startTest(i){
   if(S.credits<1)return;S.credits--;
   S.test={i,tab:"reading",ans:{},essay:"",left:60*60,phase:"taking"};S.view="test";
-  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go==="student"));
   render();window.scrollTo(0,0);
   clearInterval(timerInt);timerInt=setInterval(()=>{if(!S.test||S.test.phase!=="taking")return;S.test.left--;const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<300)}if(S.test.left<=0)submitTest()},1000);
   toast(`1 credit used · ${S.credits} left`);
@@ -483,23 +678,23 @@ const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(
 const words=t=>(t.trim().match(/\S+/g)||[]).length;
 function testRoom(){
   const T=S.test,meta=TESTS[T.i];
-  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>AI is marking your test</h2><p class="muted">Checking reading answers and scoring your essay on four criteria…</p></div></div>`;
+  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>Marking your test</h2><p class="muted">Checking reading answers and scoring the essay…</p></div></div>`;
   if(T.phase==="done") return results();
   const answered=Object.keys(T.ans).length;
   const left=T.tab==="reading"
-    ? `<span class="eyebrow">Reading passage</span><h2>${PASSAGE.title}</h2>${PASSAGE.paras.map(p=>`<p>${p}</p>`).join("")}`
-    : `<span class="eyebrow">Writing Task 2</span><h2>Write at least 250 words</h2><p>${PROMPT}</p><p class="muted" style="font-size:14px">You should spend about 40 minutes on this task. Your essay is scored on Task Response, Coherence &amp; Cohesion, Lexical Resource and Grammatical Range &amp; Accuracy.</p>`;
+    ? `<span class="kicker">Reading passage</span><h2>${PASSAGE.title}</h2>${PASSAGE.paras.map(p=>`<p>${p}</p>`).join("")}`
+    : `<span class="kicker">Writing Task 2</span><h2>Write at least 250 words</h2><p>${PROMPT}</p><p class="muted" style="font-size:14px">Spend about 40 minutes here. The essay is scored on task response, coherence, vocabulary and grammar. This score is a practice estimate.</p>`;
   const right=T.tab==="reading"
     ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>Questions 1–5</b><div class="palette">${QS.map((q,i)=>`<span class="${T.ans[i]!=null?"a":""}">${i+1}</span>`).join("")}</div></div>
        ${QS.map((q,i)=>`<div class="q"><div class="qt"><span class="qn">${i+1}</span><span>${q.t}</span></div><div class="opts">${q.o.map((o,j)=>`<label class="opt ${T.ans[i]===j?"sel":""}"><input type="radio" name="q${i}" id="q${i}o${j}" data-ans="${i}:${j}" ${T.ans[i]===j?"checked":""}><span>${o}</span></label>`).join("")}</div></div>`).join("")}
-       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" data-tab="writing">Next: Writing →</button></div>`
+       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" type="button" data-tab="writing">Next: Writing →</button></div>`
     : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing your essay here…">${T.essay}</textarea>
        <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum 250</span></div>
-       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" data-sample>Fill sample essay</button><button class="btn" data-submit>Submit test</button></span></div>`;
+       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-sample>Fill sample essay</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
   return `<div class="troom"><div class="tbar"><div class="wrap">
-    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:600;font-family:var(--f-body);font-size:14px">${meta.name}</span></div>
-    <div class="tabs"><button data-tab="reading" class="${T.tab==="reading"?"on":""}">Reading · ${answered}/5</button><button data-tab="writing" class="${T.tab==="writing"?"on":""}">Writing</button></div>
-    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<300?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" data-submit>Submit</button></div>
+    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${meta.name}</span></div>
+    <div class="tabs"><button type="button" data-tab="reading" class="${T.tab==="reading"?"on":""}">Reading · ${answered}/5</button><button type="button" data-tab="writing" class="${T.tab==="writing"?"on":""}">Writing</button></div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<300?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" type="button" data-submit>Submit</button></div>
   </div></div>
   <div class="tbody"><div class="passage">${left}</div><div>${right}</div></div></div>`;
 }
@@ -513,24 +708,24 @@ function submitTest(){
     const w=words(T.essay);
     let wb=w<50?4.0:w<150?5.0:w<250?6.0:6.5;
     const lr=/however|whereas|in addition|for example|on the other hand/i.test(T.essay)?0.5:0;
-    const crit=[["Task Response",Math.min(9,wb+(w>=250?0.5:0))],["Coherence & Cohesion",Math.min(9,wb+lr)],["Lexical Resource",wb],["Grammatical Range & Accuracy",Math.max(4,wb-(w>0?0:0.5))]];
+    const crit=[["Task Response",Math.min(9,wb+(w>=250?0.5:0))],["Coherence & Cohesion",Math.min(9,wb+lr)],["Lexical Resource",wb],["Grammatical Range & Accuracy",Math.max(4,wb)]];
     const wband=Math.round(crit.reduce((s,c)=>s+c[1],0)/4*2)/2;
     const overall=Math.round((rb+wband)/2*2)/2;
     T.result={correct,rb,wband,crit,overall,w};T.phase="done";
     S.attempts.push({name:TESTS[T.i].name,date:"Today",band:overall});
     render();window.scrollTo(0,0);
-  },1800);
+  },1600);
 }
-function ring(b){const r=62,c=2*Math.PI*r,f=b/9;return `<svg class="ring" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--band)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="80" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="40" fill="var(--ink)">${b.toFixed(1)}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">out of 9</text></svg>`}
+function ring(b){const r=62,c=2*Math.PI*r,f=b/9;return `<svg class="ring-score" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--gold)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="80" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="40" fill="var(--ink)">${b.toFixed(1)}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">out of 9</text></svg>`}
 function results(){
   const T=S.test,R=T.result;
-  const fb=R.w<250?[["bad",`Your essay has ${R.w} words. Under 250 words loses marks in Task Response.`],["warn","Plan four paragraphs: introduction, view one, view two with your opinion, conclusion."]]:[["good","Both views are discussed and your opinion is clear in paragraph four."],["good","Linking words like \"On the other hand\" and \"In addition\" guide the reader well."],["warn","\"very\" appears several times. Try \"significant\" or \"considerable\" for range."],["warn","Add one complex sentence with a relative clause to lift your grammar score."]];
+  const fb=R.w<250?[["bad",`The essay has ${R.w} words. Under 250 words loses marks on task response.`],["warn","Plan four paragraphs: introduction, one view, the other view with your opinion, conclusion."]]:[["good","Both views are discussed and the opinion is clear."],["good","Linking words such as \"On the other hand\" and \"In addition\" guide the reader."],["warn","\"very\" can be swapped for a more precise word."],["warn","One relative clause would lift the grammar range."]];
   return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
-    <div class="head" style="margin:0"><div><span class="eyebrow">Test complete</span><h1 style="font-size:28px;margin-top:6px">${TESTS[T.i].name}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" data-go="student">Back to dashboard</button></div></div>
-    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall band ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Demo scoring. The live version uses the AI model and the official band descriptors.</p></div>
-      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,200px));margin:0"><div class="sec"><span>Reading · ${R.correct}/5 correct</span><b>${R.rb.toFixed(1)}</b><div class="meter"><i style="width:${R.rb/9*100}%"></i></div></div><div class="sec"><span>Writing · ${R.w} words</span><b>${R.wband.toFixed(1)}</b><div class="meter"><i style="width:${R.wband/9*100}%"></i></div></div></div></div></div>
+    <div class="head" style="margin:0"><div><span class="kicker">Practice result</span><h1 style="font-size:28px;margin-top:6px">${TESTS[T.i].name}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div></div>
+    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Demo scoring for practice. It is not an official band or test-centre result.</p></div>
+      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,220px));margin:0"><div class="sec"><span>Reading · ${R.correct}/5 correct</span><b>${R.rb.toFixed(1)}</b><div class="meter"><i style="width:${R.rb/9*100}%"></i></div></div><div class="sec"><span>Writing · ${R.w} words</span><b>${R.wband.toFixed(1)}</b><div class="meter"><i style="width:${R.wband/9*100}%"></i></div></div></div></div></div>
     <div class="grid2">
-      <div class="card panel"><h3>AI writing feedback <span class="pill acc">AI</span></h3>
+      <div class="card panel"><h3>Writing notes <span class="pill acc">Estimate</span></h3>
         <div class="crit">${R.crit.map(c=>`<div class="sec"><span>${c[0]}</span><b class="mono">${c[1].toFixed(1)}</b></div>`).join("")}</div>
         <div class="fb" style="margin-top:14px">${fb.map(f=>`<div><span class="dot" style="background:var(--${f[0]==="warn"?"band":f[0]})"></span><span>${f[1]}</span></div>`).join("")}</div>
       </div>
@@ -538,40 +733,39 @@ function results(){
     </div></div>`;
 }
 
-/* ---------- Admin ---------- */
 function admin(){
   const rev=S.granted.reduce((s,g)=>s+pk(g.pack).price,0)+2340;
   let content="";
   if(S.sub==="dash"||S.sub==="pay"){
-    content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR in your bank app, then grant access. The student gets an email automatically.</p></div><span class="pill">Sample data</span></div>
+    content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR, then grant access. The student gets an email in this demo.</p></div><span class="pill">Sample data</span></div>
     <div class="tiles">
-      <div class="card tile"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs your check":"All clear"}</small></div>
+      <div class="card tile"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs a check":"All clear"}</small></div>
       <div class="card tile"><span>Active students</span><b>${148+S.granted.length}</b><small>With credits left</small></div>
-      <div class="card tile"><span>Tests taken this month</span><b>612</b><small>AI-marked</small></div>
+      <div class="card tile"><span>Tests taken this month</span><b>612</b><small>Practice marked</small></div>
       <div class="card tile"><span>Revenue this month</span><b>${inr(rev)}</b><small>Via UPI</small></div>
     </div>
     <div style="display:grid;gap:18px">
         <div class="card panel"><h3>Waiting for approval <span class="pill warn">${S.pending.length}</span></h3>
           ${S.pending.length?`<div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>UTR</th><th>Submitted</th><th></th></tr></thead><tbody>
-          ${S.pending.map(p=>`<tr><td>${p.email}${p.email===ME.email?' <span class="pill acc">new</span>':""}</td><td>${pk(p.pack).tests} test${pk(p.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(p.pack).price)}</td><td class="mono">${p.utr}</td><td class="muted">${p.at}</td><td><div class="acts"><button class="btn good sm" data-grant="${p.id}">Grant access</button><button class="btn ghost sm" data-reject="${p.id}">Reject</button></div></td></tr>`).join("")}
-          </tbody></table></div>`:`<p class="muted">No payments waiting. New submissions appear here.</p>`}
+          ${S.pending.map(p=>`<tr><td>${p.email}${p.email===ME.email?' <span class="pill acc">new</span>':""}</td><td>${pk(p.pack).tests} test${pk(p.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(p.pack).price)}</td><td class="mono">${p.utr}</td><td class="muted">${p.at}</td><td><div class="acts"><button class="btn good sm" type="button" data-grant="${p.id}">Grant access</button><button class="btn ghost sm" type="button" data-reject="${p.id}">Reject</button></div></td></tr>`).join("")}
+          </tbody></table></div>`:`<p class="muted">No payments waiting.</p>`}
         </div>
       <div class="grid2">
         <div class="card panel"><h3>Access granted</h3><div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>Status</th></tr></thead><tbody>
           ${S.granted.map(g=>`<tr><td>${g.email}</td><td>${pk(g.pack).tests} test${pk(g.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(g.pack).price)}</td><td><span class="pill good">Email sent</span></td></tr>`).join("")}
         </tbody></table></div></div>
-      <div class="card panel"><h3>Last email sent <span class="pill">via Resend</span></h3>
-        ${S.lastEmail?`<div class="emailprev"><div class="eh"><span><b>To:</b> ${S.lastEmail.to}</span><span><b>Subject:</b> Your TestKaro mock tests are unlocked</span></div><div class="eb"><b>Hi there,</b><p>We've received your payment of ${inr(S.lastEmail.price)}. ${S.lastEmail.tests} mock test${S.lastEmail.tests>1?"s have":" has"} been added to your account.</p><p>Log in and start your first test whenever you're ready.</p><span class="btn sm" style="justify-self:start">Start my test</span><span class="muted" style="font-size:12px">TestKaro · UTR ${S.lastEmail.utr}</span></div></div>`:`<p class="muted" style="font-size:14px">Grant access to a payment to see the email the student receives.</p>`}
+      <div class="card panel"><h3>Last email sent</h3>
+        ${S.lastEmail?`<div class="emailprev"><div class="eh"><span><b>To:</b> ${S.lastEmail.to}</span><span><b>Subject:</b> Your TestKaro mock tests are unlocked</span></div><div class="eb"><b>Hi there,</b><p>We've received your payment of ${inr(S.lastEmail.price)}. ${S.lastEmail.tests} mock test${S.lastEmail.tests>1?"s have":" has"} been added to your account.</p><p>Log in and start your first test whenever you're ready.</p><span class="btn sm" style="justify-self:start">Start my test</span><span class="muted" style="font-size:12px">IELTS Mind Map Academy · TestKaro · UTR ${S.lastEmail.utr}</span></div></div>`:`<p class="muted" style="font-size:14px">Grant access to a payment to see the email the student receives.</p>`}
       </div>
       </div>
     </div>`;
   }
   if(S.sub==="packs") content=`<div class="head"><div><h1>Test packs &amp; QR</h1><p class="muted" style="font-size:14px">Changes show on the website straight away.</p></div></div>
-    <div class="grid2"><div class="card panel"><h3>Packs and prices</h3><div class="packedit"><div class="pr muted" style="font-size:12px;font-weight:600"><span>Pack name</span><span>Tests</span><span>Price (₹)</span></div>
+    <div class="grid2"><div class="card panel"><h3>Packs and prices</h3><div class="packedit"><div class="pr muted" style="font-size:12px;font-weight:700"><span>Pack name</span><span>Tests</span><span>Price (₹)</span></div>
       ${S.packs.map(p=>`<div class="pr"><input type="text" id="pn-${p.id}" value="${p.name}" data-pf="${p.id}:name"><input type="number" id="pt-${p.id}" min="1" value="${p.tests}" data-pf="${p.id}:tests"><input type="number" id="pp-${p.id}" min="1" value="${p.price}" data-pf="${p.id}:price"></div>`).join("")}
-      <div><button class="btn sm" data-savepacks>Save prices</button></div></div></div>
-      <div class="card panel"><h3>Payment QR code</h3><div class="drop">${S.qrImg?`<img src="${S.qrImg}" alt="Uploaded QR">`:`<canvas id="qr" width="200" height="200"></canvas>`}<div style="display:grid;gap:8px"><b style="font-size:14px">Your UPI QR (GPay / PhonePe)</b><span class="muted" style="font-size:13px">Upload the QR image from your UPI app. Students see it at checkout.</span><label class="btn ghost sm" style="justify-self:start">Upload QR image<input type="file" id="qrfile" accept="image/*" hidden></label></div></div></div></div>`;
-  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><button class="btn sm" data-toast="Test editor opens here in the full build">Add mock test</button></div>
+      <div><button class="btn sm" type="button" data-savepacks>Save prices</button></div></div></div>
+      <div class="card panel"><h3>Payment QR code</h3><div class="drop">${S.qrImg?`<img src="${S.qrImg}" alt="Uploaded QR">`:`<canvas id="qr" width="200" height="200"></canvas>`}<div style="display:grid;gap:8px"><b style="font-size:14px">Your UPI QR</b><span class="muted" style="font-size:13px">Upload the QR from your UPI app. Students see it at checkout.</span><label class="btn ghost sm" style="justify-self:start">Upload QR image<input type="file" id="qrfile" accept="image/*" hidden></label></div></div></div></div>`;
+  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><button class="btn sm" type="button" data-toast="The test editor opens in the full build">Add mock test</button></div>
     <div class="card panel"><div class="tablewrap"><table><thead><tr><th>Test</th><th>Sections</th><th>Attempts</th><th>Avg band</th><th>Status</th></tr></thead><tbody>
     ${TESTS.map((t,i)=>`<tr><td><b>${t.name}</b></td><td class="muted">${t.meta}</td><td class="mono">${[214,131,168,99][i]}</td><td class="mono">${[6.0,6.5,5.5,6.0][i].toFixed(1)}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
     </tbody></table></div></div>`;
@@ -582,23 +776,56 @@ function admin(){
   return `<div class="shell">${sideNav([["pay","Payments"],["packs","Packs & QR"],["tests","Mock tests"],["students","Students"]],S.sub==="dash"?"pay":S.sub,"admin")}<main class="main">${content}</main></div>`;
 }
 
-/* ---------- Render & events ---------- */
 function render(){
   const a=$("#app");
-  a.innerHTML=S.view==="site"?site():S.view==="student"?student():S.view==="test"?testRoom():admin();
+  const v=S.view;
+  const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",student:"Student desk",admin:"Admin",test:"Mock test"};
+  const label=SERVICES[v]?.name||titles[v]||"IELTS Mind Map Academy";
+  document.title=v==="home"?"IELTS Mind Map Academy · TestKaro":`${label} · IELTS Mind Map Academy`;
+  const seg=v==="admin"?"admin":(v==="student"||v==="test")?"student":"site";
+  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go===seg));
+  const marketing=v==="home"||v==="stories"||!!SERVICES[v];
+  a.className=marketing?"enter":"";
+  a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():SERVICES[v]?servicePage(SERVICES[v]):home();
   const cv=a.querySelector("#qr");if(cv)drawQR(cv);
+  const bar=$(".demobar");if(bar)document.documentElement.style.setProperty("--demo-h",bar.offsetHeight+"px");
+}
+function focusHash(){
+  if(!location.hash)return;
+  const el=document.querySelector(location.hash);
+  if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),30);
 }
 document.addEventListener("click",e=>{
-  const t=e.target.closest("[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-sample],[data-grant],[data-reject],[data-savepacks],[data-toast]");
+  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-sample],[data-grant],[data-reject],[data-savepacks],[data-toast]");
   if(!t)return;
+  if(t.matches("a[data-nav]")){
+    const url=new URL(t.getAttribute("href"),location.origin);
+    if(url.origin!==location.origin)return;
+    e.preventDefault();
+    history.pushState({},"",url.pathname+url.hash);
+    if(timerInt){clearInterval(timerInt);timerInt=null}
+    S.view=viewFromLocation();
+    if(S.view==="student")S.sub="dash";
+    if(S.view==="admin")S.sub="pay";
+    render();
+    if(url.hash)focusHash();else window.scrollTo(0,0);
+    return;
+  }
+  if(t.hasAttribute("data-menu")){const bar=t.closest(".topbar");bar.classList.toggle("navopen");t.setAttribute("aria-expanded",bar.classList.contains("navopen"));return}
+  if(t.dataset.filter){
+    const root=t.closest(".stories");
+    root.querySelectorAll("[data-filter]").forEach(b=>b.classList.toggle("on",b===t));
+    root.querySelectorAll("[data-story]").forEach(el=>{el.hidden=t.dataset.filter!=="all"&&el.dataset.story!==t.dataset.filter});
+    return;
+  }
   if(t.hasAttribute("data-scrim")&&e.target!==t)return;
-  if(t.dataset.close!==undefined||t.hasAttribute("data-scrim")){$("#modal").innerHTML="";}
-  if(t.dataset.go){const v=t.dataset.go;go(v,v==="admin"?"pay":v==="student"?"dash":undefined);return}
+  if(t.dataset.close!==undefined||t.hasAttribute("data-scrim")){$("#modal").innerHTML=""}
+  if(t.dataset.go){const raw=t.dataset.go;const v=raw==="site"?"home":raw;go(v,v==="admin"?"pay":v==="student"?"dash":undefined);return}
   if(t.dataset.buy){openBuy(t.dataset.buy);return}
   if(t.dataset.buylink){e.preventDefault();openBuy(t.dataset.buylink);return}
   if(t.dataset.buystep){const[id,s]=t.dataset.buystep.split(":");openBuy(id,+s);return}
   if(t.dataset.scroll){document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"});return}
-  if(t.dataset.sub){const[r,k]=t.dataset.sub.split(":");S.sub=k;render();return}
+  if(t.dataset.sub){const[,k]=t.dataset.sub.split(":");S.sub=k;render();return}
   if(t.dataset.start){startTest(+t.dataset.start);return}
   if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay=ta.value;S.test.tab=t.dataset.tab;render();window.scrollTo(0,0);return}
   if(t.hasAttribute("data-sample")){S.test.essay=SAMPLE;render();return}
@@ -623,7 +850,19 @@ document.addEventListener("submit",e=>{
   S.pending.unshift({id:S.nextId++,email,pack:id,utr,at:"Just now"});openBuy(id,3);
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").innerHTML=""});
+window.addEventListener("popstate",()=>{
+  if(timerInt){clearInterval(timerInt);timerInt=null}
+  S.view=viewFromLocation();
+  if(S.view==="admin")S.sub="pay";
+  if(S.view==="student")S.sub="dash";
+  render();
+  focusHash();
+});
+S.view=viewFromLocation();
+if(S.view==="admin")S.sub="pay";
+if(S.view==="student")S.sub="dash";
 render();
+focusHash();
 </script>
 </body>
 </html>

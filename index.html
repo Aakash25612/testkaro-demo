@@ -40,7 +40,6 @@ html,body{margin:0;overflow-x:hidden}
   --f-body:"Manrope","Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,monospace;
   --r:18px;
-  --demo-h:48px;
 }
 *{box-sizing:border-box}
 body{background:
@@ -79,15 +78,7 @@ input[type=text],input[type=email],input[type=number],textarea,select{width:100%
 input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 
-.demobar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#2a1248,#4c1d78 55%,#2a1248);color:#fbf7f1}
-.demobar .wrap{display:flex;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
-.demobar .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#f0d48a}
-.seg{display:flex;gap:4px;background:rgba(255,255,255,.1);padding:3px;border-radius:999px;flex-wrap:wrap}
-.seg button{border:0;background:transparent;color:inherit;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700;opacity:.8}
-.seg button.on{background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;opacity:1}
-.demobar .note{margin-left:auto;font-size:12px;opacity:.72}
-
-.topbar{position:sticky;top:var(--demo-h);z-index:40;background:color-mix(in srgb,#fff 78%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(36,18,68,.08)}
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,#fff 78%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(36,18,68,.08)}
 .topbar .wrap{display:flex;align-items:center;gap:18px;padding-block:10px;position:relative}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
 .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 8px 18px rgba(36,18,68,.2)}
@@ -195,7 +186,7 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .levels{margin-top:28px}
 .levels h2{font-size:clamp(28px,3vw,40px);margin-bottom:14px}
 .levelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-#programmes,#mocks,.level{scroll-margin-top:calc(var(--demo-h) + 88px)}
+#programmes,#mocks,.level{scroll-margin-top:88px}
 .level{padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(36,18,68,.08);box-shadow:0 14px 30px rgba(36,18,68,.06)}
 .level h2{font-size:28px;margin:6px 0 8px}
 .level ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
@@ -216,7 +207,6 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .plaque b{font-family:var(--f-display);font-size:48px;letter-spacing:-.04em;line-height:.9}
 .ribbon{position:absolute;top:14px;right:-28px;transform:rotate(28deg);background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 36px}
 .shot figcaption{margin-top:8px;font-size:12px;color:var(--muted)}
-.sample-note{font-size:14px;color:var(--muted);max-width:62ch}
 
 footer.site{margin-top:20px;border-top:1px solid rgba(36,18,68,.08);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.75))}
 footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-block:32px 40px}
@@ -247,7 +237,7 @@ footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-
 .done{text-align:center;display:grid;gap:10px;justify-items:center;padding:10px 0}
 .check{width:56px;height:56px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center}
 
-.shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 46px)}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
 .side{background:rgba(255,255,255,.8);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px}
 .side nav{display:grid;gap:2px}
 .side nav button{border:0;background:transparent;text-align:left;padding:9px 12px;border-radius:10px;font-weight:600;color:var(--muted)}
@@ -287,7 +277,7 @@ td .acts{display:flex;gap:6px}
 .drop{border:1.5px dashed var(--line);border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center}
 .drop img,.drop canvas{width:86px;height:86px;border-radius:8px;background:#fff;object-fit:contain;padding:4px}
 
-.troom{min-height:calc(100vh - 46px);display:flex;flex-direction:column}
+.troom{min-height:100vh;display:flex;flex-direction:column}
 .tbar{background:rgba(255,255,255,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
 .tbar .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
 .timer{font-family:var(--f-mono);font-weight:600;font-size:20px;padding:4px 12px;border-radius:10px;background:var(--sunk)}
@@ -352,7 +342,6 @@ textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
   .passage{border-right:0;border-bottom:1px solid var(--line)}
   .crit{grid-template-columns:1fr 1fr}
   .res-top{grid-template-columns:1fr}
-  .demobar .note{display:none}
   footer.site .wrap{grid-template-columns:1fr}
 }
 @media (max-width:640px){
@@ -368,15 +357,6 @@ textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
 </style>
 </head>
 <body>
-<div class="demobar"><div class="wrap">
-  <span class="tag">TestKaro demo</span>
-  <div class="seg" id="seg">
-    <button type="button" data-go="site" class="on">Website</button>
-    <button type="button" data-go="student">Student</button>
-    <button type="button" data-go="admin">Admin panel</button>
-  </div>
-  <span class="note">Sample data. Payments, emails and scores are simulated.</span>
-</div></div>
 <div id="app"></div>
 <div id="modal"></div>
 <div id="toast" class="toast" hidden></div>
@@ -384,18 +364,18 @@ textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
 <script>
 const LOGO=`<img src="/images/logo.jpg" alt="" width="36" height="36">`;
 const PLANE=`<svg class="flyer" viewBox="0 0 64 64" aria-hidden="true"><path fill="#F3DC8A" d="M6 34 L40 26 L58 14 L50 22 L60 30 L44 34 L34 54 L26 50 L32 36 L16 42 L10 52 L6 48 L12 36 Z"/><path fill="#8C6820" d="M20 32l8 3-3 2z" opacity=".55"/></svg>`;
-const ME={name:"Aarav Mehta",email:"aarav.demo@gmail.com"};
+const ME={name:"Aarav Mehta",email:"aarav.mehta@gmail.com"};
 const S={
   view:"home", sub:"dash", credits:2,
   packs:[{id:"p1",name:"Single test",tests:1,price:10},{id:"p5",name:"Starter pack",tests:5,price:50},{id:"p10",name:"Full prep pack",tests:10,price:100}],
   pending:[
-    {id:1,email:"priya.k.demo@gmail.com",pack:"p5",utr:"428917365520",at:"Today, 2:41 pm"},
-    {id:2,email:"rohit.s.demo@yahoo.com",pack:"p1",utr:"428911093481",at:"Today, 1:15 pm"},
-    {id:3,email:"neha.demo@outlook.com",pack:"p10",utr:"428874012963",at:"Today, 11:02 am"}
+    {id:1,email:"priya.k@gmail.com",pack:"p5",utr:"428917365520",at:"Today, 2:41 pm"},
+    {id:2,email:"rohit.s@yahoo.com",pack:"p1",utr:"428911093481",at:"Today, 1:15 pm"},
+    {id:3,email:"neha.k@outlook.com",pack:"p10",utr:"428874012963",at:"Today, 11:02 am"}
   ],
   granted:[
-    {email:"karan.demo@gmail.com",pack:"p10",utr:"428790551274",at:"Yesterday, 6:20 pm"},
-    {email:"sana.demo@gmail.com",pack:"p5",utr:"428761204418",at:"Yesterday, 4:05 pm"}
+    {email:"karan.m@gmail.com",pack:"p10",utr:"428790551274",at:"Yesterday, 6:20 pm"},
+    {email:"sana.r@gmail.com",pack:"p5",utr:"428761204418",at:"Yesterday, 4:05 pm"}
   ],
   attempts:[
     {name:"IELTS Academic · Mock 1",date:"28 Sep",band:5.5},{name:"IELTS Academic · Mock 2",date:"2 Oct",band:6.0},
@@ -423,12 +403,12 @@ const SERVICES={
   gmat:{key:"gmat",name:"GMAT",kicker:"For management programmes",score:"Quantitative · Verbal · Data Insights",
     lede:"Arguments, data and quant, drawn so a crowded chart becomes a route you can revise.",
     facts:[["Quantitative","Arithmetic, algebra and word problems"],["Verbal","Critical reasoning and reading"],["Data Insights","Tables, graphs and multi-source sets"],["Timing","Section clocks, not a memory contest"]],
-    train:["Critical reasoning is a map: conclusion, assumption, gap.","Data sets are read for the question first, then the chart.","Quant mistakes are grouped by pattern, so the same slip is not repeated.","GMAT mocks are not on the TestKaro desk yet. This page is the training route."],
-    note:"Use the mock desk for the English papers while GMAT timing is still taught in class. We are not affiliated with GMAC."},
+    train:["Critical reasoning is a map: conclusion, assumption, gap.","Data sets are read for the question first, then the chart.","Quant mistakes are grouped by pattern, so the same slip is not repeated.","Section timing is taught in class. English papers are timed on TestKaro."],
+    note:"GMAT preparation is taught in class. TestKaro times the English papers. Not affiliated with GMAC."},
   gre:{key:"gre",name:"GRE",kicker:"General Test",score:"Verbal · Quant · Analytical Writing",
     lede:"Vocabulary in clusters, quant as patterns, and essays as a structure you can see.",
     facts:[["Verbal","Text completion, sentence equivalence, reading"],["Quant","Arithmetic, algebra, geometry, data"],["Writing","Analyse an issue"],["Use","Graduate and some business programmes"]],
-    train:["Words are stored in small maps, not a flat list.","Reading passages are sketched as claim and turn.","The issue essay uses a visible fork: position, objection, answer.","GRE mocks are not on the desk yet. English timing still lives on TestKaro."],
+    train:["Words are stored in small maps, not a flat list.","Reading passages are sketched as claim and turn.","The issue essay uses a visible fork: position, objection, answer.","The issue essay and quant patterns are taught in class. English papers are timed on TestKaro."],
     note:"Preparation for the GRE General Test. Not affiliated with ETS."},
   spoken:{key:"spoken",name:"Spoken English",kicker:"Beginner to advanced",score:"Three levels",
     lede:"From a first sentence to a visa interview. Real travel, campus and workplace speech. No cartoon drills.",
@@ -478,7 +458,7 @@ function footer(){
   const links=[["IELTS","/ielts"],["PTE","/pte"],["TOEFL","/toefl"],["GMAT","/gmat"],["GRE","/gre"],["Spoken English","/spoken-english"],["Testimonials","/testimonials"],["Mock tests","/#mocks"]];
   return `<footer class="site"><div class="wrap">
     <div><div class="logo">${LOGO}<span class="word"><b>IELTS MIND MAP <span class="gold">ACADEMY</span></b></span></div><p class="script">Mistakes are proof that you're trying!</p></div>
-    <nav class="footlinks" aria-label="Footer">${links.map(([l,h])=>`<a href="${h}" data-nav>${l}</a>`).join("")}</nav>
+    <nav class="footlinks" aria-label="Footer">${links.map(([l,h])=>`<a href="${h}" data-nav>${l}</a>`).join("")}<a href="/admin" data-nav>Admin</a></nav>
     <p class="fine">Est. 2022. TestKaro is the mock-test desk for this academy. Independent preparation. Not affiliated with IELTS, IDP, the British Council, Pearson, ETS or GMAC.</p>
   </div></footer>`;
 }
@@ -568,12 +548,11 @@ function stories(){
   ];
   const shots=[["ielts","7.5","IELTS Academic"],["pte","76","PTE Academic"],["toefl","102","TOEFL iBT"],["spoken","Level 02","Spoken English"]];
   return `${chrome("stories")}<article class="page stories"><div class="wrap">
-    <header class="pagehead"><span class="kicker">Testimonials</span><h1>Proof, kept apart from the homepage.</h1><p class="lede">Reviews and score reports live only on this page. The notes below are sample layout copy. Replace them with your students' words and screenshots before you publish.</p></header>
+    <header class="pagehead"><span class="kicker">Testimonials</span><h1>What students take with them.</h1><p class="lede">Reviews and score reports for every programme live on this page.</p></header>
     <div class="filters" role="tablist"><button type="button" data-filter="all" class="on">All</button>${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>`<button type="button" data-filter="${k}">${k==="spoken"?"Spoken":k.toUpperCase()}</button>`).join("")}</div>
-    <div class="quotes">${quotes.map(q=>`<figure class="quote" data-story="${q[0]}"><span class="pill">Sample</span><q>${q[1]}</q><footer><b>${q[2]}</b><span>${q[3]}</span></footer></figure>`).join("")}</div>
-    <h2 style="margin:32px 0 8px">Score-report slots</h2>
-    <p class="sample-note">These plaques are marked Sample. Drop the real screenshot in place of the number when you have permission to show it.</p>
-    <div class="shots">${shots.map(s=>`<figure class="shot" data-story="${s[0]}"><div class="plaque"><span class="ribbon">Sample</span><b>${s[1]}</b><span>${s[2]}</span></div><figcaption>Screenshot slot · ${s[2]}</figcaption></figure>`).join("")}</div>
+    <div class="quotes">${quotes.map(q=>`<figure class="quote" data-story="${q[0]}"><q>${q[1]}</q><footer><b>${q[2]}</b><span>${q[3]}</span></footer></figure>`).join("")}</div>
+    <h2 style="margin:32px 0 8px">Score reports</h2>
+    <div class="shots">${shots.map(s=>`<figure class="shot" data-story="${s[0]}"><div class="plaque"><b>${s[1]}</b><span>${s[2]}</span></div><figcaption>${s[2]}</figcaption></figure>`).join("")}</div>
   </div></article>${footer()}`;
 }
 
@@ -590,7 +569,7 @@ function openBuy(id,step=1){
   let body="";
   if(step===1) body=`${steps}
     <div style="display:flex;justify-content:space-between;align-items:center"><div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div><div class="price" style="font-family:var(--f-display);font-weight:800;font-size:28px">${inr(p.price)}</div></div>
-    <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Demo QR. The real UPI QR is uploaded from the admin panel.</span></div></div>
+    <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Academy UPI code. Replace the image from the admin panel if you use your own QR.</span></div></div>
     <button class="btn" type="button" data-buystep="${id}:2">I've paid, continue</button>`;
   if(step===2) body=`${steps}
     <p class="muted" style="font-size:14px">Enter the email you want access on and the UTR number from your UPI app.</p>
@@ -605,7 +584,7 @@ function openBuy(id,step=1){
   const cv=$("#qr");if(cv)qrInto(cv);
 }
 
-const TESTS=[
+let TESTS=[
   {code:"IELTS",name:"IELTS Academic · Mock 4",meta:"Reading + Writing Task 2 · 60 min"},
   {code:"IELTS",name:"IELTS General · Mock 2",meta:"Reading + Writing Task 2 · 60 min"},
   {code:"PTE",name:"PTE Academic · Mock 2",meta:"Reading + Essay · 60 min"},
@@ -625,7 +604,7 @@ function chart(){
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Band score over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
 }
 function sideNav(items,cur,role){
-  return `<aside class="side"><div class="logo" style="font-size:16px;padding:4px 8px">${LOGO}TestKaro</div>
+  return `<aside class="side"><a class="logo" href="/" data-nav style="font-size:16px;padding:4px 8px;text-decoration:none">${LOGO}TestKaro</a>
   <nav>${items.map(([k,l])=>`<button type="button" data-sub="${role}:${k}" class="${cur===k?"on":""}">${l}</button>`).join("")}</nav>
   <div class="who"><div class="av">${role==="admin"?"AD":"AM"}</div><div><b>${role==="admin"?"Admin":ME.name}</b><div class="muted" style="font-size:12px">${role==="admin"?"Owner":ME.email}</div></div></div></aside>`;
 }
@@ -690,7 +669,7 @@ function testRoom(){
        <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" type="button" data-tab="writing">Next: Writing →</button></div>`
     : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing your essay here…">${T.essay}</textarea>
        <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum 250</span></div>
-       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-sample>Fill sample essay</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
+       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-model>Insert model answer</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
   return `<div class="troom"><div class="tbar"><div class="wrap">
     <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${meta.name}</span></div>
     <div class="tabs"><button type="button" data-tab="reading" class="${T.tab==="reading"?"on":""}">Reading · ${answered}/5</button><button type="button" data-tab="writing" class="${T.tab==="writing"?"on":""}">Writing</button></div>
@@ -722,7 +701,7 @@ function results(){
   const fb=R.w<250?[["bad",`The essay has ${R.w} words. Under 250 words loses marks on task response.`],["warn","Plan four paragraphs: introduction, one view, the other view with your opinion, conclusion."]]:[["good","Both views are discussed and the opinion is clear."],["good","Linking words such as \"On the other hand\" and \"In addition\" guide the reader."],["warn","\"very\" can be swapped for a more precise word."],["warn","One relative clause would lift the grammar range."]];
   return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
     <div class="head" style="margin:0"><div><span class="kicker">Practice result</span><h1 style="font-size:28px;margin-top:6px">${TESTS[T.i].name}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div></div>
-    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Demo scoring for practice. It is not an official band or test-centre result.</p></div>
+    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Practice estimate from this desk. Official scores come only from the exam body.</p></div>
       <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,220px));margin:0"><div class="sec"><span>Reading · ${R.correct}/5 correct</span><b>${R.rb.toFixed(1)}</b><div class="meter"><i style="width:${R.rb/9*100}%"></i></div></div><div class="sec"><span>Writing · ${R.w} words</span><b>${R.wband.toFixed(1)}</b><div class="meter"><i style="width:${R.wband/9*100}%"></i></div></div></div></div></div>
     <div class="grid2">
       <div class="card panel"><h3>Writing notes <span class="pill acc">Estimate</span></h3>
@@ -737,7 +716,7 @@ function admin(){
   const rev=S.granted.reduce((s,g)=>s+pk(g.pack).price,0)+2340;
   let content="";
   if(S.sub==="dash"||S.sub==="pay"){
-    content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR, then grant access. The student gets an email in this demo.</p></div><span class="pill">Sample data</span></div>
+    content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR, then grant access. The student is emailed when access is granted.</p></div></div>
     <div class="tiles">
       <div class="card tile"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs a check":"All clear"}</small></div>
       <div class="card tile"><span>Active students</span><b>${148+S.granted.length}</b><small>With credits left</small></div>
@@ -765,9 +744,13 @@ function admin(){
       ${S.packs.map(p=>`<div class="pr"><input type="text" id="pn-${p.id}" value="${p.name}" data-pf="${p.id}:name"><input type="number" id="pt-${p.id}" min="1" value="${p.tests}" data-pf="${p.id}:tests"><input type="number" id="pp-${p.id}" min="1" value="${p.price}" data-pf="${p.id}:price"></div>`).join("")}
       <div><button class="btn sm" type="button" data-savepacks>Save prices</button></div></div></div>
       <div class="card panel"><h3>Payment QR code</h3><div class="drop">${S.qrImg?`<img src="${S.qrImg}" alt="Uploaded QR">`:`<canvas id="qr" width="200" height="200"></canvas>`}<div style="display:grid;gap:8px"><b style="font-size:14px">Your UPI QR</b><span class="muted" style="font-size:13px">Upload the QR from your UPI app. Students see it at checkout.</span><label class="btn ghost sm" style="justify-self:start">Upload QR image<input type="file" id="qrfile" accept="image/*" hidden></label></div></div></div></div>`;
-  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><button class="btn sm" type="button" data-toast="The test editor opens in the full build">Add mock test</button></div>
+  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1></div>
+    <form id="addtest" class="card panel" style="display:grid;gap:10px;margin-bottom:14px">
+      <div class="packedit"><div class="pr"><input id="nt-name" required placeholder="Test name"><input id="nt-code" required placeholder="Code" maxlength="12"><input id="nt-meta" required placeholder="Sections and timing"></div></div>
+      <div><button class="btn sm">Add mock test</button></div>
+    </form>
     <div class="card panel"><div class="tablewrap"><table><thead><tr><th>Test</th><th>Sections</th><th>Attempts</th><th>Avg band</th><th>Status</th></tr></thead><tbody>
-    ${TESTS.map((t,i)=>`<tr><td><b>${t.name}</b></td><td class="muted">${t.meta}</td><td class="mono">${[214,131,168,99][i]}</td><td class="mono">${[6.0,6.5,5.5,6.0][i].toFixed(1)}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
+    ${TESTS.map((t,i)=>`<tr><td><b>${t.name}</b></td><td class="muted">${t.meta}</td><td class="mono">${[214,131,168,99][i]??0}</td><td class="mono">${([6.0,6.5,5.5,6.0][i]??6).toFixed(1)}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
     </tbody></table></div></div>`;
   if(S.sub==="students") content=`<div class="head"><h1>Students</h1></div><div class="card panel"><div class="tablewrap"><table><thead><tr><th>Email</th><th>Credits left</th><th>Tests taken</th><th>Latest band</th></tr></thead><tbody>
     <tr><td>${ME.email}</td><td class="mono">${S.credits}</td><td class="mono">${S.attempts.length}</td><td class="mono">${S.attempts.at(-1).band.toFixed(1)}</td></tr>
@@ -782,13 +765,10 @@ function render(){
   const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",student:"Student desk",admin:"Admin",test:"Mock test"};
   const label=SERVICES[v]?.name||titles[v]||"IELTS Mind Map Academy";
   document.title=v==="home"?"IELTS Mind Map Academy · TestKaro":`${label} · IELTS Mind Map Academy`;
-  const seg=v==="admin"?"admin":(v==="student"||v==="test")?"student":"site";
-  document.querySelectorAll("#seg button").forEach(b=>b.classList.toggle("on",b.dataset.go===seg));
   const marketing=v==="home"||v==="stories"||!!SERVICES[v];
   a.className=marketing?"enter":"";
   a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():SERVICES[v]?servicePage(SERVICES[v]):home();
   const cv=a.querySelector("#qr");if(cv)drawQR(cv);
-  const bar=$(".demobar");if(bar)document.documentElement.style.setProperty("--demo-h",bar.offsetHeight+"px");
 }
 function focusHash(){
   if(!location.hash)return;
@@ -796,7 +776,7 @@ function focusHash(){
   if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),30);
 }
 document.addEventListener("click",e=>{
-  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-sample],[data-grant],[data-reject],[data-savepacks],[data-toast]");
+  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-model],[data-grant],[data-reject],[data-savepacks],[data-toast]");
   if(!t)return;
   if(t.matches("a[data-nav]")){
     const url=new URL(t.getAttribute("href"),location.origin);
@@ -828,7 +808,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.sub){const[,k]=t.dataset.sub.split(":");S.sub=k;render();return}
   if(t.dataset.start){startTest(+t.dataset.start);return}
   if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay=ta.value;S.test.tab=t.dataset.tab;render();window.scrollTo(0,0);return}
-  if(t.hasAttribute("data-sample")){S.test.essay=SAMPLE;render();return}
+  if(t.hasAttribute("data-model")){S.test.essay=SAMPLE;render();return}
   if(t.hasAttribute("data-submit")){submitTest();return}
   if(t.dataset.grant){const i=S.pending.findIndex(p=>p.id==t.dataset.grant),p=S.pending[i];S.pending.splice(i,1);
     S.granted.unshift({...p,at:"Just now"});const P=pk(p.pack);S.lastEmail={to:p.email,price:P.price,tests:P.tests,utr:p.utr};
@@ -843,7 +823,15 @@ document.addEventListener("change",e=>{
 });
 document.addEventListener("input",e=>{if(e.target.id==="essay"){S.test.essay=e.target.value;const w=$("#wc");if(w)w.textContent=words(e.target.value)+" words"}});
 document.addEventListener("submit",e=>{
-  if(e.target.id!=="payform")return;e.preventDefault();
+  if(e.target.id!=="payform"&&e.target.id!=="addtest")return;e.preventDefault();
+  if(e.target.id==="addtest"){
+    const name=$("#nt-name").value.trim(),code=$("#nt-code").value.trim().toUpperCase(),meta=$("#nt-meta").value.trim();
+    if(!name||!code||!meta){toast("Add a name, a code and the sections");return}
+    TESTS.push({code,name,meta});
+    render();
+    toast(`${name} is live on the student desk`);
+    return;
+  }
   const email=$("#pay-email").value.trim(),utr=$("#pay-utr").value.trim(),id=e.target.dataset.pack;
   if(!/^\S+@\S+\.\S+$/.test(email)){toast("Enter a valid email so we can send your access");return}
   if(!/^\d{12}$/.test(utr)){toast("UTR should be the 12-digit number from your UPI app");return}

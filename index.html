@@ -5,71 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#2A1248">
-<meta name="description" content="IELTS Mind Map Academy on TestKaro. IELTS, PTE, TOEFL, GMAT, GRE and Spoken English, plus timed mock tests.">
+<meta name="description" content="IELTS Mind Map Academy on TestKaro. IELTS, PTE, TOEFL, GMAT, GRE and Spoken English, with a separate timed mock test for each exam.">
 <title>IELTS Mind Map Academy · TestKaro</title>
 <link rel="icon" href="/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
 html,body{margin:0;overflow-x:hidden}
 :root{
   color-scheme:light;
-  --bg:#f7f2ea;
-  --surface:#ffffff;
-  --sunk:#f4eef8;
-  --ink:#241244;
-  --muted:#5c5470;
-  --line:rgba(36,18,68,.12);
-  --accent:#4c1d78;
-  --accent-ink:#fffaf2;
-  --accent-soft:#f3e9fb;
-  --band:#a8843a;
-  --band-soft:#f8efd4;
-  --good:#1c7a4a;
-  --good-soft:#e5f6ee;
-  --bad:#b42318;
-  --bad-soft:#fde8e6;
-  --gold:#c6a15a;
-  --gold-2:#8c6820;
-  --violet:#6b2d91;
-  --shadow:0 18px 40px rgba(36,18,68,.1);
-  --f-display:"Outfit","Segoe UI",sans-serif;
-  --f-serif:"Cormorant Garamond",Georgia,serif;
-  --f-script:"Great Vibes",cursive;
-  --f-body:"Manrope","Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,monospace;
-  --r:18px;
+  --bg:#f7f2ea;--surface:#fff;--sunk:#f4eef8;--ink:#241244;--muted:#5c5470;--line:rgba(36,18,68,.12);
+  --accent:#4c1d78;--accent-soft:#f3e9fb;--band:#a8843a;--band-soft:#f8efd4;
+  --good:#1c7a4a;--good-soft:#e5f6ee;--bad:#b42318;--bad-soft:#fde8e6;
+  --gold:#c6a15a;--gold-2:#8c6820;--shadow:0 18px 40px rgba(36,18,68,.1);
+  --f-display:"Outfit","Segoe UI",sans-serif;--f-serif:"Cormorant Garamond",Georgia,serif;--f-script:"Great Vibes",cursive;
+  --f-body:"Manrope","Segoe UI",sans-serif;--f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.16,.84,.32,1);--r:18px;
 }
 *{box-sizing:border-box}
 body{background:
-  radial-gradient(900px 420px at 100% -10%, rgba(198,161,90,.28), transparent 55%),
-  radial-gradient(720px 480px at -10% 8%, rgba(76,29,120,.14), transparent 50%),
-  var(--bg);
-  background-repeat:no-repeat;
-  animation:bgDrift 22s ease-in-out infinite;
-  color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-@keyframes bgDrift{50%{background-position:70% 0, 18% 16%, 0 0}}
+  radial-gradient(900px 420px at 100% -10%,rgba(198,161,90,.28),transparent 55%),
+  radial-gradient(720px 480px at -10% 8%,rgba(76,29,120,.14),transparent 50%),var(--bg);
+  background-repeat:no-repeat;color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:84px}
 img{max-width:100%}
 [hidden]{display:none!important}
-h1,h2,h3,h4{font-family:var(--f-display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.03em}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.03em}
 p{margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.kicker,.eyebrow{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
+.kicker{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
 .muted{color:var(--muted)}
 .gold{background:linear-gradient(180deg,#f3dc8a,#b8892e);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #f6e7b8;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;background:linear-gradient(180deg,#f6e3a4,#c6a15a 46%,#8c6820);color:#241244;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 20px rgba(140,104,32,.25);text-decoration:none;transition:transform .35s cubic-bezier(.16,.84,.32,1),filter .35s}
-.btn:not(.ghost)::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-130%);animation:sheen 4.2s ease-in-out infinite}
-@keyframes sheen{0%,55%{transform:translateX(-130%)}75%,100%{transform:translateX(130%)}}
-.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+
+.btn{position:relative;overflow:hidden;display:inline-flex;white-space:nowrap;align-items:center;justify-content:center;gap:8px;border:1px solid #f6e7b8;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;background:linear-gradient(180deg,#f6e3a4,#c6a15a 46%,#8c6820);color:#241244;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 20px rgba(140,104,32,.25);text-decoration:none;transition:transform .35s var(--ease),filter .35s}
+.btn:not(.ghost):not(.good)::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-130%);animation:sheen 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{0%,60%{transform:translateX(-130%)}80%,100%{transform:translateX(130%)}}
+.btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
 .btn:active{transform:translateY(1px)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:rgba(36,18,68,.2);box-shadow:none}
 .btn.ghost:hover{background:rgba(255,255,255,.7)}
+.btn.ghost.light{color:#fbf7f1;border-color:rgba(255,255,255,.35)}
+.btn.ghost.light:hover{background:rgba(255,255,255,.12)}
 .btn.sm{padding:7px 12px;font-size:13px}
 .btn.good{background:var(--good);color:#fff;border-color:transparent;box-shadow:none}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
@@ -83,162 +64,225 @@ input[type=text],input[type=email],input[type=number],textarea,select{width:100%
 input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 
+/* page transition curtain, scroll progress */
+#curtain{position:fixed;inset:0;z-index:100;display:grid;place-content:center;justify-items:center;gap:14px;pointer-events:none;color:#f0d48a;font-family:var(--f-display);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;
+  background:radial-gradient(70% 60% at 80% 0%,rgba(240,212,138,.35),transparent 60%),linear-gradient(160deg,#5b2390,#241244);transform:translateY(100%);visibility:hidden}
+#curtain.boot,#curtain.cover,#curtain.lift{visibility:visible}
+#curtain img{width:84px;height:84px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px rgba(240,212,138,.25),0 20px 40px rgba(0,0,0,.35);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+#curtain.boot{transform:none}
+#curtain.cover{transform:none;transition:transform .48s cubic-bezier(.76,0,.24,1);pointer-events:auto}
+#curtain.lift{transform:translateY(-100%);transition:transform .62s cubic-bezier(.76,0,.24,1)}
+#progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#6b2d91,#c6a15a)}
+
+/* top bar */
 .topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,#fff 78%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(36,18,68,.08)}
 .topbar .wrap{display:flex;align-items:center;gap:18px;padding-block:10px;position:relative}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
-.brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 8px 18px rgba(36,18,68,.2)}
+.brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 8px 18px rgba(36,18,68,.2);transition:transform .8s var(--ease)}
+.brand:hover img{transform:rotate(-12deg) scale(1.05)}
 .word b{display:block;font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;line-height:1.15}
 .word small{display:block;margin-top:2px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.links{display:flex;gap:14px;margin-left:8px;font-size:13px;font-weight:700}
-.links a{text-decoration:none;color:var(--muted)}
+.links{display:flex;gap:16px;margin-left:8px;font-size:13px;font-weight:700}
+.links a{text-decoration:none;color:var(--muted);position:relative;padding-block:4px}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.links a:hover::after,.links a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left}
 .links a:hover,.links a[aria-current="page"]{color:var(--ink)}
 .act{margin-left:auto;display:flex;gap:8px}
 .menu{display:none;margin-left:auto;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-.menu span{display:block;width:16px;height:2px;background:var(--ink);border-radius:2px}
+.menu span{display:block;width:16px;height:2px;background:var(--ink);border-radius:2px;transition:transform .35s var(--ease),opacity .2s}
+.navopen .menu span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navopen .menu span:nth-child(2){opacity:0}
+.navopen .menu span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-top:48px;padding-bottom:12px}
-.est{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:700;letter-spacing:.18em;font-size:12px;text-transform:uppercase;color:var(--accent)}
-.est::before,.est::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.hero-copy h1{font-size:clamp(40px,5.6vw,72px);font-weight:800;margin-top:14px}
-.tagline{font-family:var(--f-script);font-size:clamp(30px,4vw,44px);line-height:1.15;color:#2a1248;margin-top:8px;font-weight:400}
-.lede{margin-top:14px;font-size:18px;color:var(--muted);max-width:46ch}
-.hero-copy .ctas{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-.emblem{position:relative;width:min(440px,100%);aspect-ratio:1;margin-inline:auto}
-.emblem img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(42,18,72,.28));position:relative;z-index:1}
-.ring{position:absolute;inset:7%;border-radius:50%;border:1.5px dashed rgba(198,161,90,.85);animation:spin 28s linear infinite}
-.flyer{position:absolute;top:0;left:0;width:36px;height:36px;z-index:2;offset-path:ellipse(40% 40% at 50% 50%);offset-rotate:auto;animation:fly 14s linear infinite;filter:drop-shadow(0 6px 8px rgba(140,104,32,.35))}
+/* bento */
+.section{padding-top:44px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,3.6vw,46px);margin-top:6px}
+.sec-head p{color:var(--muted);max-width:46ch}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(112px,auto);gap:14px;grid-auto-flow:dense}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.r2{grid-row:span 2}.r3{grid-row:span 3}
+.reveal{opacity:0;translate:0 30px;transition:opacity .9s var(--ease) calc(var(--i,0)*75ms),translate .9s var(--ease) calc(var(--i,0)*75ms)}
+.reveal.in{opacity:1;translate:0 0}
+.tile{--spot:rgba(198,161,90,.22);position:relative;overflow:hidden;isolation:isolate;border-radius:26px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0;text-decoration:none;color:var(--ink);
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.72));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);
+  transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease),opacity .9s var(--ease) calc(var(--i,0)*75ms),translate .9s var(--ease) calc(var(--i,0)*75ms)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),var(--spot),transparent 62%);opacity:0;transition:opacity .45s}
+.tile:hover::before{opacity:1}
+a.tile:hover,.tile.lift:hover{--lift:-4px;box-shadow:inset 0 1px 0 #fff,0 26px 50px rgba(36,18,68,.16)}
+.tile p{color:var(--muted);font-size:14.5px;max-width:44ch}
+.t-plum,.t-ink{--spot:rgba(240,212,138,.2);color:#fbf7f1;border-color:rgba(255,255,255,.1)}
+.t-plum{background:radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.42),transparent 42%),radial-gradient(80% 70% at 0% 100%,rgba(160,90,210,.42),transparent 46%),linear-gradient(155deg,#7a3aaa,#3a1468 58%,#241244);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 22px 50px rgba(36,18,72,.28)}
+.t-ink{background:radial-gradient(90% 70% at 100% 100%,rgba(198,161,90,.3),transparent 55%),#1d0e38;box-shadow:0 22px 50px rgba(20,8,36,.28)}
+.t-plum p,.t-ink p{color:rgba(251,247,241,.8)}
+.t-plum .kicker,.t-ink .kicker{color:#f0d48a}
+.t-gold{--spot:rgba(255,255,255,.4);background:linear-gradient(160deg,#f8e7b0,#d9b86c 52%,#a8843a);border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 18px 40px rgba(140,104,32,.25)}
+.t-gold p{color:rgba(36,18,68,.78)}
+.t-gold .kicker{color:#4c1d78}
+.t-lilac{background:linear-gradient(170deg,#fff,#efe3fa)}
+.t-cream{background:linear-gradient(170deg,#fffdf8,#f4e8d2)}
+.tile .big{display:block;font-family:var(--f-display);font-weight:800;letter-spacing:-.045em;line-height:.95;font-size:clamp(34px,4vw,54px)}
+.tile .huge{font-size:clamp(56px,8.5vw,118px);line-height:.9}
+.tile .mid{font-size:clamp(30px,3.2vw,42px)}
+.tile .meta{margin-top:auto;padding-right:52px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.t-plum .meta,.t-ink .meta{color:#f0d48a}
+.t-gold .meta{color:#241244}
+.tile .go{position:absolute;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-weight:800;transition:transform .6s var(--ease);box-shadow:0 8px 18px rgba(140,104,32,.25)}
+.t-gold .go{background:#241244;color:#f6e3a4}
+a.tile:hover .go{transform:rotate(-45deg) scale(1.08)}
+.tile .bgword{position:absolute;right:-4px;bottom:-26px;z-index:-1;font-family:var(--f-display);font-weight:800;font-size:150px;letter-spacing:-.07em;line-height:1;opacity:.06;pointer-events:none;transition:transform 1.2s var(--ease)}
+.tile:hover .bgword{transform:translateX(-14px)}
+.ico{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:none;transition:transform .6s var(--ease)}
+.tile:hover .ico{transform:rotate(-8deg) scale(1.06)}
+.t-plum .ico,.t-ink .ico{background:rgba(255,255,255,.1);color:#f0d48a}
+.tname{font-family:var(--f-display);font-size:19px;letter-spacing:-.02em;margin-top:4px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tile .row{margin-top:auto;padding-top:8px}
+.chip{display:inline-flex;align-items:center;font-size:12px;font-weight:800;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(36,18,68,.12);text-decoration:none;color:inherit;transition:background .3s,transform .4s var(--ease)}
+a.chip:hover{background:#fff;transform:translateY(-2px)}
+.t-plum .chip,.t-ink .chip{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+.slot{background:repeating-linear-gradient(135deg,rgba(198,161,90,.08) 0 12px,transparent 12px 24px),#fffdf8;border:1.5px dashed rgba(198,161,90,.95);box-shadow:none}
+.slot small{margin-top:auto;font-family:var(--f-mono);font-size:12px;color:var(--gold-2)}
+.prose p{color:var(--ink);font-size:16px;max-width:70ch}
+.prose p+p{margin-top:10px}
+
+/* hero */
+.hero{padding-top:28px}
+.hero-main{padding:clamp(24px,4vw,44px);justify-content:center}
+.hero-main h1{font-size:clamp(42px,6vw,82px);font-weight:800;margin-top:10px;max-width:11ch}
+.est{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:700;letter-spacing:.18em;font-size:12px;text-transform:uppercase;color:#f0d48a}
+.est::before,.est::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,#f0d48a,transparent)}
+.tagline{font-family:var(--f-script);font-size:clamp(28px,3.6vw,42px);line-height:1.15;color:#f6e3a4;margin-top:6px}
+.hero-main .lede{margin-top:12px;font-size:17px;color:rgba(251,247,241,.82);max-width:48ch}
+.emblem-tile{align-items:center;justify-content:center;padding:14px}
+.emblem{position:relative;width:min(300px,100%);aspect-ratio:1;margin-inline:auto;will-change:translate}
+.emblem img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:drop-shadow(0 24px 40px rgba(42,18,72,.28));position:relative;z-index:1;animation:floaty 7s ease-in-out infinite}
+.ring{position:absolute;inset:5%;border-radius:50%;border:1.5px dashed rgba(198,161,90,.85);animation:spin 24s linear infinite}
+.flyer{position:absolute;top:0;left:0;width:34px;height:34px;z-index:2;offset-path:ellipse(46% 46% at 50% 50%);offset-rotate:auto;animation:fly 12s linear infinite;filter:drop-shadow(0 6px 8px rgba(140,104,32,.35))}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fly{to{offset-distance:100%}}
+@keyframes floaty{50%{transform:translateY(-10px)}}
+.stat .big{font-size:clamp(40px,4.6vw,60px)}
+.stat span.lbl{font-weight:800;font-size:14px}
 
-.bento-wrap{padding-top:28px;padding-bottom:10px}
-.bento-wrap .intro{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:16px;flex-wrap:wrap}
-.bento-wrap h2{font-size:clamp(28px,3vw,40px)}
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(88px,auto);gap:14px}
-.bcard{position:relative;overflow:hidden;border-radius:24px;padding:20px;min-height:0;text-decoration:none;color:var(--ink);background:
-  linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.62)),#fff;
-  border:1px solid rgba(255,255,255,.85);
-  box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);
-  display:flex;flex-direction:column;gap:8px;transition:transform .55s cubic-bezier(.16,.84,.32,1),box-shadow .55s}
-.bcard .mark{position:absolute;right:14px;top:8px;font-family:var(--f-display);font-weight:800;font-size:42px;letter-spacing:-.04em;opacity:.16;line-height:1}
-.bcard::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.55) 48%,transparent 64%);transform:translateX(-130%);transition:transform .7s;pointer-events:none}
-.bcard:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #fff,0 22px 44px rgba(36,18,68,.14)}
-.bcard:hover::after{transform:translateX(130%)}
-.bcard .code{font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1}
-.bcard p{color:var(--muted);font-size:14.5px;max-width:36ch}
-.bcard .meta{margin-top:auto;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.bcard .go{position:absolute;right:16px;bottom:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-weight:800;z-index:1}
-.bcard.ielts{grid-column:span 7;grid-row:span 4;min-height:320px;color:#fbf7f1;background:
-  radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.5),transparent 42%),
-  radial-gradient(80% 70% at 0% 100%,rgba(160,90,210,.45),transparent 46%),
-  linear-gradient(155deg,#7a3aaa,#3a1468 58%,#241244);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 22px 50px rgba(36,18,72,.28)}
-.bcard.ielts::before{content:"";position:absolute;width:210px;height:210px;border:1.5px solid rgba(240,212,138,.5);border-left-color:transparent;border-radius:50%;right:-48px;top:-60px;transform:rotate(18deg)}
-.bcard.ielts p{color:rgba(251,247,241,.82)}
-.bcard.ielts .kicker,.bcard.ielts .meta{color:#f0d48a}
-.bcard.ielts .code{font-size:clamp(48px,6vw,84px)}
-.bcard.pte{grid-column:span 5;grid-row:span 2;background:linear-gradient(180deg,#fff,#f8f1e4)}
-.bcard.toefl{grid-column:span 5;grid-row:span 2;color:#fbf7f1;background:linear-gradient(160deg,#4c1d78,#241244)}
-.bcard.toefl p,.bcard.gmat p{color:rgba(251,247,241,.82)}
-.bcard.toefl .kicker,.bcard.gmat .kicker,.bcard.toefl .meta,.bcard.gmat .meta{color:#f0d48a}
-.bcard.gmat{grid-column:span 3;grid-row:span 2;color:#fbf7f1;background:#241244}
-.bcard.gre{grid-column:span 4;grid-row:span 2;background:linear-gradient(180deg,#fff,#f4e8fb)}
-.bcard.spoken{grid-column:span 5;grid-row:span 3;background:linear-gradient(165deg,#f8e7b0,#c6a15a 55%,#8c6820);color:#241244}
-.bcard.spoken.has-levels{padding:0}
-.bcard.spoken p{color:rgba(36,18,68,.78)}
-.bmain{display:flex;flex-direction:column;gap:8px;padding:20px 20px 8px;text-decoration:none;color:inherit;flex:1;position:relative;z-index:1}
-.lvls{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px;position:relative;z-index:2}
-.lvls a{text-decoration:none;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid rgba(36,18,68,.12)}
-.lvls a:hover{border-color:var(--gold);background:#fff}
+/* marquee */
+.marquee{margin-top:40px;overflow:hidden;border-block:1px solid rgba(36,18,68,.1);background:rgba(255,255,255,.45);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{display:flex;align-items:center;gap:28px;padding:14px 14px;font-family:var(--f-display);font-weight:800;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;white-space:nowrap}
+.track span::after{content:"✦";color:var(--gold);font-size:.7em}
+.track span:nth-child(even){color:transparent;-webkit-text-stroke:1px rgba(36,18,68,.45)}
+@keyframes marq{to{transform:translateX(-50%)}}
 
-.method{padding-top:34px;padding-bottom:10px}
-.method h2{font-size:clamp(32px,4vw,52px);margin:8px 0 18px}
-.route{width:min(640px,100%);height:70px;display:block;margin-bottom:8px}
-.route path{stroke-dasharray:6 8;animation:dash 16s linear infinite}
+/* text split reveal */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.split .w>*{display:inline-block;transform:translateY(108%);transition:transform 1s var(--ease) calc(var(--wi,0)*60ms + 120ms)}
+.split.in .w>*{transform:none}
+
+/* route */
+.route{width:100%;height:auto;display:block}
+.route .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s var(--ease) .2s}
+.route .dash{stroke-dasharray:6 8;animation:dash 20s linear infinite;opacity:0;transition:opacity .6s 2.4s}
+.in .route .draw,.route.in .draw{stroke-dashoffset:0}
+.in .route .dash,.route.in .dash{opacity:1}
+.route circle{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .7s var(--ease)}
+.in .route circle,.route.in circle{transform:scale(1)}
+.route circle:nth-of-type(2){transition-delay:.9s}.route circle:nth-of-type(3){transition-delay:1.6s}.route circle:nth-of-type(4){transition-delay:2.3s}
 @keyframes dash{to{stroke-dashoffset:-420}}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;margin:0;padding:0}
-.steps li{padding:22px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.55));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 12px 28px rgba(36,18,68,.06)}
-.steps b{display:block;font-family:var(--f-display);font-size:22px;margin-bottom:6px}
-.steps span{color:var(--muted);font-size:14.5px}
-.steps a{color:var(--accent);font-weight:700}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps3 li,.steps4 li{counter-increment:s;padding:16px;border-radius:18px;background:rgba(255,255,255,.7);border:1px solid rgba(36,18,68,.08)}
+.steps3 li::before,.steps4 li::before{content:"0" counter(s);display:block;font-family:var(--f-mono);font-size:12px;color:var(--gold-2);margin-bottom:6px}
+.steps3 b,.steps4 b{display:block;font-family:var(--f-display);font-size:20px}
+.steps3 span,.steps4 span{color:var(--muted);font-size:14px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 0;padding:0;list-style:none;counter-reset:s}
 
-.block{padding-top:36px;padding-bottom:36px}
-.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px;flex-wrap:wrap}
-.sh h2{font-size:clamp(28px,3.4vw,40px);margin-top:6px}
-.sh p{color:var(--muted);max-width:46ch}
-.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.pack{padding:24px;display:flex;flex-direction:column;gap:14px;position:relative}
-.pack.pop{border-color:rgba(198,161,90,.8);box-shadow:inset 0 1px 0 #fff,0 0 0 3px rgba(198,161,90,.25),0 18px 40px rgba(36,18,68,.1)}
-.pack .pill{position:absolute;top:16px;right:16px}
-.pack .price{font-family:var(--f-display);font-weight:800;font-size:42px;letter-spacing:-.03em}
-.pack .price small{font-size:15px;color:var(--muted);font-weight:600;font-family:var(--f-body)}
-.pack ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+/* packs */
+.pack{gap:12px}
+.pack .price{font-family:var(--f-display);font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1}
+.pack .price small{font-size:15px;color:var(--muted);font-weight:600;font-family:var(--f-body);letter-spacing:0}
+.pack ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
 .pack li{display:flex;gap:8px}
 .pack li::before{content:"✓";color:var(--good);font-weight:800}
 .pack .btn{margin-top:auto}
-.faq{display:grid;gap:10px;max-width:780px}
-.faq details{padding:14px 18px}
-.faq summary{font-weight:700;cursor:pointer}
-.faq details p{margin-top:8px;color:var(--muted);font-size:14px}
+.pack.pop{box-shadow:inset 0 1px 0 #fff,0 0 0 3px rgba(198,161,90,.45),0 18px 40px rgba(36,18,68,.12)}
+.pack .pill{position:absolute;top:16px;right:16px}
 
-.page{padding:28px 0 48px}
-.back{display:inline-flex;margin-bottom:16px;font-size:13px;font-weight:700;text-decoration:none;color:var(--muted)}
-.back:hover{color:var(--ink)}
-.pagehead h1{font-size:clamp(46px,7vw,88px);margin:8px 0 12px}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
-.fact{padding:16px;border-radius:18px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.7));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 10px 24px rgba(36,18,68,.06)}
-.fact b{display:block;font-family:var(--f-display);font-size:16px}
-.fact span{display:block;margin-top:4px;color:var(--muted);font-size:13.5px}
-.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:18px;margin-top:22px;align-items:start}
-.split>*,.facts>*,.bento>*,.ticks,.gloss,.founder-layout>*{min-width:0}
-.ticks{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.ticks li{padding-left:18px;position:relative;overflow-wrap:anywhere}
-.ticks li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#f0d48a,#8c6820)}
-.gloss{padding:22px;border-radius:22px;background:
-  radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.45),transparent 46%),
-  linear-gradient(160deg,#fff,#f6efff);
-  border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);display:grid;gap:12px}
-.levels{margin-top:28px}
-.levels h2{font-size:clamp(28px,3vw,40px);margin-bottom:14px}
-.levelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-#programmes,#mocks,.level{scroll-margin-top:88px}
-.level{padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(36,18,68,.08);box-shadow:0 14px 30px rgba(36,18,68,.06)}
-.level h2{font-size:28px;margin:6px 0 8px}
-.level ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+/* exam pages */
+.page{padding:24px 0 48px}
+.switch{display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--line);gap:4px;margin-bottom:16px;position:relative}
+.switch a{position:relative;z-index:1;padding:8px 16px;border-radius:999px;font-weight:800;font-size:13px;text-decoration:none;color:var(--muted);transition:color .3s}
+.switch a.on{background:var(--ink);color:#fbf7f1}
+.lede-l{font-size:18px;max-width:52ch}
+.seclist{display:grid;gap:8px;margin-top:6px}
+.seclist div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.seclist span{font-size:13px;color:rgba(251,247,241,.75);text-align:right}
+.timebar{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;border-top:1px dashed rgba(255,255,255,.25)}
+.timebar b{font-family:var(--f-display);font-size:28px}
+.fmt{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
+.fmt li{display:grid;gap:2px;padding-left:16px;position:relative}
+.fmt li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:linear-gradient(180deg,#f0d48a,#8c6820)}
+.fmt b{font-family:var(--f-display);font-size:16px}
+.fmt span{color:var(--muted);font-size:14px}
+.fine-note{margin-top:14px;font-size:12.5px;color:var(--muted)}
+.credit{font-size:13px;font-weight:700;color:rgba(251,247,241,.8)}
+.level h2{font-size:30px;margin:4px 0 6px}
+.level ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+#programmes,#mocks,#contact,#faq,.level{scroll-margin-top:90px}
 
+/* founder + testimonials */
+.portrait{position:relative;aspect-ratio:3/4;border-radius:28px;overflow:hidden;background:radial-gradient(80% 60% at 80% 0%,rgba(240,212,138,.35),transparent 50%),linear-gradient(180deg,#f6f1e8,#e7d7f4);border:1px dashed rgba(198,161,90,.85);box-shadow:inset 0 1px 0 #fff,0 18px 40px rgba(36,18,68,.12)}
+.portrait img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.portrait-slot{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font-family:var(--f-display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--accent)}
+.founder-layout{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:36px;align-items:start;margin-top:18px}
+.founder-copy{display:grid;gap:14px;align-content:center}
+.founder-copy h1{font-size:clamp(48px,6vw,80px)}
+.pagehead h1{font-size:clamp(44px,6.5vw,84px);margin:8px 0 12px}
+.lede{margin-top:10px;font-size:18px;color:var(--muted);max-width:50ch}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-weight:700;font-size:13px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-weight:700;font-size:13px;transition:background .3s,color .3s}
 .filters button.on{background:var(--ink);color:#fbf7f1;border-color:var(--ink)}
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.quote{padding:22px;border-radius:22px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.78));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 14px 30px rgba(36,18,68,.07);display:flex;flex-direction:column;gap:14px}
+.quote{margin:0}
 .quote q{font-family:var(--f-serif);font-size:24px;line-height:1.25;quotes:none}
 .quote footer{margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
 .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
 .shot{margin:0}
-.plaque{position:relative;overflow:hidden;border-radius:20px;min-height:210px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fbf7f1;background:
-  radial-gradient(80% 60% at 80% 0%,rgba(240,212,138,.55),transparent 50%),
-  linear-gradient(165deg,#6d2d9a,#2a1248);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 16px 30px rgba(36,18,68,.18)}
+.plaque{border-radius:20px;min-height:200px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fbf7f1;background:radial-gradient(80% 60% at 80% 0%,rgba(240,212,138,.55),transparent 50%),linear-gradient(165deg,#6d2d9a,#2a1248);box-shadow:0 16px 30px rgba(36,18,68,.18)}
 .plaque b{font-family:var(--f-display);font-size:48px;letter-spacing:-.04em;line-height:.9}
-.ribbon{position:absolute;top:14px;right:-28px;transform:rotate(28deg);background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 36px}
 .shot figcaption{margin-top:8px;font-size:12px;color:var(--muted)}
 
-footer.site{margin-top:20px;border-top:1px solid rgba(36,18,68,.08);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.75))}
+/* faq + contact */
+.faq{display:grid;gap:12px}
+.faq details{padding:0;border-radius:18px;overflow:hidden;transition:transform .45s var(--ease),opacity .9s var(--ease) calc(var(--i,0)*75ms),translate .9s var(--ease) calc(var(--i,0)*75ms)}
+.faq details:hover{transform:translateY(-2px)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;font-weight:700;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:28px;height:28px;display:grid;place-items:center;font-size:22px;font-weight:500;color:var(--accent);transition:transform .45s var(--ease)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq details p{padding:0 20px 18px;color:var(--muted);font-size:15px;animation:fadeIn .45s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.contact-card{padding:26px;display:grid;gap:14px}
+.phone-row{display:grid;grid-template-columns:128px 1fr;gap:8px}
+.req{color:var(--bad)}
+
+footer.site{margin-top:40px;border-top:1px solid rgba(36,18,68,.08);background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.75))}
 footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-block:32px 40px}
 .footlinks{display:flex;flex-wrap:wrap;gap:10px 16px;align-content:start}
 .footlinks a{font-weight:700;font-size:14px;text-decoration:none}
+.footlinks a:hover{color:var(--accent)}
 .script{font-family:var(--f-script);font-size:28px;line-height:1;margin-top:8px}
 .fine{grid-column:1/-1;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800}
 .logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+#app.enter{animation:enter .5s ease}
+@keyframes enter{from{opacity:.01}to{opacity:1}}
 
-.rise{opacity:0;transform:translateY(16px);animation:rise .7s ease forwards}
-.rise:nth-child(2){animation-delay:.05s}
-@keyframes rise{to{opacity:1;transform:none}}
-#app.enter{animation:enter .45s ease}
-@keyframes enter{from{opacity:.01;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-.scrim{position:fixed;inset:0;background:rgba(20,8,36,.55);z-index:60;display:grid;place-items:center;padding:16px}
-.modal{width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto;background:var(--surface);border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow)}
+/* modal */
+.scrim{position:fixed;inset:0;background:rgba(20,8,36,.55);z-index:60;display:grid;place-items:center;padding:16px;animation:fadeIn .3s ease}
+.modal{width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto;background:var(--surface);border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);animation:pop .45s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}}
 .modal header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
 .modal .body{padding:20px;display:grid;gap:16px}
 .x{border:0;background:var(--sunk);width:32px;height:32px;border-radius:8px;font-size:18px;line-height:1}
@@ -249,8 +293,9 @@ footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-
 .qrbox canvas{width:148px;height:148px;background:#fff;border-radius:8px;padding:8px}
 .upi{font-family:var(--f-mono);font-size:13px;background:var(--surface);border:1px solid var(--line);padding:6px 9px;border-radius:6px;display:inline-block}
 .done{text-align:center;display:grid;gap:10px;justify-items:center;padding:10px 0}
-.check{width:56px;height:56px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center}
+.check{width:56px;height:56px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center;animation:pop .6s var(--ease)}
 
+/* student / admin desk */
 .shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
 .side{background:rgba(255,255,255,.8);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px}
 .side nav{display:grid;gap:2px}
@@ -262,17 +307,17 @@ footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;padding-
 .main{padding:26px 22px 40px;min-width:0}
 .main h1{font-size:28px}
 .head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
-.tile{padding:16px}
-.tile span{font-size:13px;color:var(--muted)}
-.tile b{display:block;font-family:var(--f-display);font-size:30px;margin-top:4px}
-.tile small{font-size:12px;color:var(--muted)}
-.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.stat-c{padding:16px}
+.stat-c span{font-size:13px;color:var(--muted)}
+.stat-c b{display:block;font-family:var(--f-display);font-size:28px;margin-top:4px}
+.stat-c small{font-size:12px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
 .panel{padding:18px;min-width:0}
 .panel h3{font-size:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .tlist{display:grid;gap:10px}
 .trow{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.55)}
-.trow .badge{width:52px;height:46px;border-radius:10px;background:var(--sunk);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:12px;flex:none}
+.trow .badge{width:56px;height:46px;border-radius:10px;background:var(--sunk);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:12px;flex:none;color:var(--accent)}
 .trow .info{flex:1;min-width:0}
 .trow .info b{display:block;font-size:14px}
 .trow .info span{font-size:12px;color:var(--muted)}
@@ -288,27 +333,41 @@ td .acts{display:flex;gap:6px}
 .emailprev .eb{padding:14px 12px;display:grid;gap:8px}
 .packedit{display:grid;gap:10px}
 .packedit .pr{display:grid;grid-template-columns:1fr 90px 100px;gap:8px;align-items:center}
+.packedit .pr.four{grid-template-columns:1fr 120px 1fr}
 .drop{border:1.5px dashed var(--line);border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center}
 .drop img,.drop canvas{width:86px;height:86px;border-radius:8px;background:#fff;object-fit:contain;padding:4px}
+.packrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.packrow .card{padding:20px;display:grid;gap:10px}
 
+/* test room */
 .troom{min-height:100vh;display:flex;flex-direction:column}
-.tbar{background:rgba(255,255,255,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-.tbar .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
+.tbar{background:rgba(255,255,255,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);position:sticky;top:0;z-index:20}
+.tbar .wrap{display:flex;align-items:center;gap:14px;padding-block:10px;flex-wrap:wrap}
 .timer{font-family:var(--f-mono);font-weight:600;font-size:20px;padding:4px 12px;border-radius:10px;background:var(--sunk)}
-.timer.low{background:var(--bad-soft);color:var(--bad)}
-.tabs{display:flex;gap:4px}
+.timer.low{background:var(--bad-soft);color:var(--bad);animation:pulse 1s ease-in-out infinite}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
 .tabs button{border:1px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
 .tabs button.on{background:var(--ink);color:#fbf7f1;border-color:var(--ink)}
 .tbody{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0}
+.tbody.swap{animation:fadeIn .45s ease}
+.tbody.single{grid-template-columns:minmax(0,820px);justify-content:center}
 .tbody>div{padding:24px;min-width:0}
 .passage{border-right:1px solid var(--line);background:rgba(255,255,255,.72)}
 .passage h2{font-size:22px;margin:6px 0 14px}
 .passage p{max-width:62ch;margin-bottom:12px}
+.posts{display:grid;gap:10px;margin-top:14px}
+.post{padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:14.5px}
+.post b{display:block;font-size:13px;color:var(--accent);margin-bottom:2px}
+.post.prof{background:var(--accent-soft);border-color:transparent}
+.ctx{padding:12px 14px;border-radius:12px;background:var(--band-soft);font-size:14px;margin-bottom:10px}
+table.di{width:auto;min-width:min(420px,100%);background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+table.di td,table.di th{padding:10px 14px;font-family:var(--f-mono);font-size:13px}
+table.di td:first-child{font-family:var(--f-body);font-weight:700}
 .q{padding:16px 0;border-bottom:1px solid var(--line)}
 .q .qt{font-weight:700;margin-bottom:10px;display:flex;gap:10px}
 .q .qn{font-family:var(--f-mono);color:var(--accent);flex:none}
 .opts{display:grid;gap:6px}
-.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:14px;background:#fff}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:14px;background:#fff;transition:background .25s,border-color .25s}
 .opt:hover{background:var(--sunk)}
 .opt input{margin-top:3px;accent-color:var(--accent)}
 .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
@@ -318,123 +377,60 @@ td .acts{display:flex;gap:6px}
 .wc{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px}
 textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
 .evaluating{display:grid;place-items:center;gap:14px;padding:80px 16px;text-align:center}
-.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--gold);animation:sp .9s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--gold);animation:spin .9s linear infinite}
 .res-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:24px}
-.ring-score{width:150px;height:150px}
-.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.ring-score{width:160px;height:160px}
+.ring-score .arc{stroke-dasharray:0 999;animation:arc 1.6s var(--ease) .2s forwards}
+@keyframes arc{to{stroke-dasharray:var(--len) 999}}
+.sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
 .sec{background:var(--sunk);border-radius:12px;padding:10px}
 .sec span{display:block;font-size:12px;color:var(--muted)}
 .sec b{font-family:var(--f-mono);font-size:18px}
 .meter{height:6px;background:rgba(36,18,68,.1);border-radius:4px;margin-top:8px;overflow:hidden}
-.meter i{display:block;height:100%;background:linear-gradient(90deg,#6b2d91,#c6a15a);border-radius:4px}
-.fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;font-size:13px;display:grid;gap:8px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,#6b2d91,#c6a15a);border-radius:4px;transform-origin:0 50%;animation:grow 1.4s var(--ease) .3s both}
+@keyframes grow{from{transform:scaleX(0)}}
+.fb{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;font-size:13px;display:grid;gap:8px}
 .fb div{display:flex;gap:8px}
 .fb .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
-.crit{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .review{display:grid;gap:8px}
+.review h4{font-size:13px;margin-top:6px;color:var(--muted);letter-spacing:.02em}
 .review div{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 10px;border-radius:10px;background:var(--sunk)}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:80;background:#241244;color:#fbf7f1;padding:11px 16px;border-radius:12px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:80;background:#241244;color:#fbf7f1;padding:11px 16px;border-radius:12px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px);animation:pop .4s var(--ease)}
 
-.hero-copy>*{animation:riseLong 1.15s cubic-bezier(.16,.84,.32,1) both}
-.hero-copy>*:nth-child(1){animation-delay:.05s}
-.hero-copy>*:nth-child(2){animation-delay:.16s}
-.hero-copy>*:nth-child(3){animation-delay:.28s}
-.hero-copy>*:nth-child(4){animation-delay:.4s}
-.hero-copy>*:nth-child(5){animation-delay:.52s}
-.est::before,.est::after{transform-origin:center;animation:lineGrow 1.3s cubic-bezier(.16,.84,.32,1) both}
-@keyframes lineGrow{from{transform:scaleX(0)}}
-@keyframes riseLong{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
-.emblem{animation:floaty 8s ease-in-out infinite}
-@keyframes floaty{50%{transform:translateY(-12px)}}
-@keyframes floatSoft{0%,100%{translate:0 0}50%{translate:0 -10px}}
-.bento .bcard{animation:riseLong .95s cubic-bezier(.16,.84,.32,1) both,floatSoft 8s ease-in-out infinite}
-.bento .bcard:nth-child(1){animation-delay:.05s,-.4s}
-.bento .bcard:nth-child(2){animation-delay:.14s,-1.4s}
-.bento .bcard:nth-child(3){animation-delay:.23s,-2.2s}
-.bento .bcard:nth-child(4){animation-delay:.32s,-3s}
-.bento .bcard:nth-child(5){animation-delay:.41s,-3.8s}
-.bento .bcard:nth-child(6){animation-delay:.5s,-4.6s}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 1.05s cubic-bezier(.16,.84,.32,1),transform 1.05s cubic-bezier(.16,.84,.32,1)}
-.reveal.in{opacity:1;transform:none}
-.ring{animation:spin 18s linear infinite}
-.route path{animation-duration:22s}
-
-.founder-bento{grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:minmax(180px,auto)}
-.founder-bento .wide{grid-column:span 2}
-.founder-card{grid-row:span 2;min-height:380px;color:#fbf7f1;background:radial-gradient(90% 70% at 100% 0%,rgba(240,212,138,.45),transparent 46%),linear-gradient(165deg,#6d2d9a,#2a1248);text-decoration:none}
-.founder-card p{color:rgba(251,247,241,.84)}
-.portrait{position:relative;aspect-ratio:3/4;border-radius:28px;overflow:hidden;background:
-  radial-gradient(80% 60% at 80% 0%,rgba(240,212,138,.35),transparent 50%),
-  linear-gradient(180deg,#f6f1e8,#e7d7f4);
-  border:1px dashed rgba(198,161,90,.85);box-shadow:inset 0 1px 0 #fff,0 18px 40px rgba(36,18,68,.12)}
-.portrait img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
-.portrait-slot{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font-family:var(--f-display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--accent)}
-.founder-layout{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:36px;align-items:start;margin-top:18px}
-.founder-copy{display:grid;gap:14px;align-content:center}
-.founder-copy h1{font-size:clamp(48px,6vw,80px)}
-.founder-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.founder-actions .btn:not(a){cursor:default}
-.founder-layout{animation:riseLong 1.05s cubic-bezier(.16,.84,.32,1) both}
-.faq details{transition:transform .45s cubic-bezier(.16,.84,.32,1),box-shadow .45s}
-.faq details:hover{transform:translateY(-2px)}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-}
-
-.faq{display:grid;gap:12px;max-width:820px}
-.faq details{padding:0;border-radius:18px;overflow:hidden}
-.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;font-weight:700;cursor:pointer}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:none;width:28px;height:28px;display:grid;place-items:center;font-size:22px;font-weight:500;color:var(--accent);transition:transform .45s cubic-bezier(.16,.84,.32,1)}
-.faq details[open] summary::after{transform:rotate(135deg)}
-.faq details p{padding:0 20px 18px;color:var(--muted);font-size:15px;animation:fadeIn .45s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-
-.touch{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;align-items:start}
-.touch h2{font-size:clamp(32px,4vw,48px);color:var(--accent)}
-.contact-card{padding:26px;display:grid;gap:14px}
-.phone-row{display:grid;grid-template-columns:128px 1fr;gap:8px}
-.req{color:var(--bad)}
-
+/* dock, library, join bar */
 .dock{position:fixed;right:16px;bottom:108px;z-index:45;display:grid;gap:10px;justify-items:end}
-.dock button,.dock a.chip{display:flex;align-items:center;gap:8px;border:0;background:#fff;color:var(--accent);border-radius:16px;padding:10px 12px;font-weight:800;font-size:13px;box-shadow:0 10px 28px rgba(36,18,68,.16);text-decoration:none;transition:transform .4s cubic-bezier(.16,.84,.32,1),box-shadow .4s}
-.dock button:hover,.dock a.chip:hover{transform:translateY(-3px) scale(1.03)}
+.dock button,.dock a.chipb{display:flex;align-items:center;gap:8px;border:0;background:#fff;color:var(--accent);border-radius:16px;padding:10px 12px;font-weight:800;font-size:13px;box-shadow:0 10px 28px rgba(36,18,68,.16);text-decoration:none;transition:transform .4s var(--ease)}
+.dock button:hover,.dock a.chipb:hover{transform:translateY(-3px) scale(1.03)}
 .dock .up{width:46px;height:46px;border-radius:50%;padding:0;justify-content:center;background:#241244;color:#f6e3a4;font-size:18px}
 .lib{position:fixed;inset:0;z-index:70;background:rgba(20,8,36,.45);display:grid;justify-items:end;align-items:end;padding:16px 16px 120px}
-.lib[hidden]{display:none}
-.lib-card{width:min(420px,100%);background:#fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);animation:riseLong .45s cubic-bezier(.16,.84,.32,1)}
+.lib-card{width:min(440px,100%);background:#fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);animation:pop .45s var(--ease)}
 .lib-card header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.lib-card h5{margin:12px 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);font-family:var(--f-display)}
 .lib-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.lib-grid a{text-decoration:none;padding:14px;border-radius:16px;background:linear-gradient(180deg,#fff,#f6efff);border:1px solid rgba(36,18,68,.08);font-weight:800}
-
-.joinbar{position:fixed;left:0;right:0;bottom:0;z-index:44;display:flex;align-items:center;gap:16px;padding:14px max(18px,env(safe-area-inset-right)) calc(14px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));background:linear-gradient(90deg,#2a1248,#4c1d78 55%,#3a1860);color:#fbf7f1;box-shadow:0 -12px 30px rgba(36,18,68,.2);animation:barIn .7s cubic-bezier(.16,.84,.32,1) both}
+.lib-grid a{text-decoration:none;padding:12px 14px;border-radius:16px;background:linear-gradient(180deg,#fff,#f6efff);border:1px solid rgba(36,18,68,.08);font-weight:800;font-size:14px}
+.joinbar{position:fixed;left:0;right:0;bottom:0;z-index:44;display:flex;align-items:center;gap:16px;padding:14px max(18px,env(safe-area-inset-right)) calc(14px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));background:linear-gradient(90deg,#2a1248,#4c1d78 55%,#3a1860);color:#fbf7f1;box-shadow:0 -12px 30px rgba(36,18,68,.2);animation:barIn .8s var(--ease) 1s both}
 @keyframes barIn{from{transform:translateY(100%)}to{transform:none}}
 .joinbar b{display:block;font-family:var(--f-display);font-size:22px;letter-spacing:-.03em}
 .joinbar span{font-size:13px;opacity:.85}
 .joinbar .wa{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;flex:none;margin-left:auto}
 .joinbar .x{background:transparent;color:#fff;border:0;font-size:22px}
-body{padding-bottom:84px}
 body.desk{padding-bottom:0}
 body.desk .dock,body.desk .joinbar,body.no-join .joinbar{display:none}
 body.no-join{padding-bottom:0}
 body.desk .toast,body.no-join .toast{bottom:calc(20px + env(safe-area-inset-bottom))}
 
 @media (max-width:980px){
-  .hero-grid,.split,.grid2{grid-template-columns:1fr}
-  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(132px,auto)}
-  .bcard.ielts{grid-column:1 / -1;grid-row:span 2;min-height:240px}
-  .bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre{grid-column:span 1;grid-row:span 2}
-  .bcard.spoken{grid-column:1 / -1;grid-row:span 2}
-  body:not(.desk) main .wrap,body:not(.desk) .page .wrap{padding-right:max(68px,env(safe-area-inset-right))}
-  .facts,.levelgrid,.quotes,.founder-bento,.founder-layout,.touch{grid-template-columns:1fr}
-  .founder-card{grid-row:auto;min-height:240px}
-  .founder-bento .wide{grid-column:auto}
-  .dock{right:10px;bottom:96px}
-  .shots,.tiles,.packs,.steps{grid-template-columns:1fr 1fr}
+  .bento{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .c2,.c3,.c4{grid-column:span 3}
+  .c5,.c6,.c7,.c8,.c12{grid-column:span 6}
+  .r3{grid-row:span 2}
+  .steps4{grid-template-columns:1fr 1fr}
+  .grid2,.founder-layout{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr 1fr}
+  .shots,.stats,.packrow{grid-template-columns:1fr 1fr}
   .links,.act .btn.ghost{display:none}
   .menu{display:flex}
-  .topbar.navopen .links{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:12px;right:12px;background:#fff;border-radius:18px;padding:14px;box-shadow:var(--shadow);z-index:30}
+  .topbar.navopen .links{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:12px;right:12px;background:#fff;border-radius:18px;padding:14px;box-shadow:var(--shadow);z-index:30;animation:pop .35s var(--ease)}
   .shell{grid-template-columns:1fr}
   .side{border-right:0;border-bottom:1px solid var(--line)}
   .side nav{display:flex;overflow-x:auto;gap:4px}
@@ -443,67 +439,139 @@ body.desk .toast,body.no-join .toast{bottom:calc(20px + env(safe-area-inset-bott
   .main{padding:20px 16px 32px}
   .tbody{grid-template-columns:1fr}
   .passage{border-right:0;border-bottom:1px solid var(--line)}
-  .crit{grid-template-columns:1fr 1fr}
-  .res-top{grid-template-columns:1fr}
+  .res-top{grid-template-columns:1fr;justify-items:center;text-align:center}
   footer.site .wrap{grid-template-columns:1fr}
+  .dock{right:10px;bottom:96px}
 }
 @media (max-width:640px){
-  .facts,.levelgrid,.quotes,.shots,.tiles,.packs,.steps,.sec-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;grid-auto-rows:minmax(96px,auto)}
+  .c2,.c3,.c4{grid-column:span 1}
+  .c5,.c6,.c7,.c8,.c12,.m-full{grid-column:span 2}
+  .r2,.r3{grid-row:auto}
+  .tile{padding:18px;border-radius:22px}
+  .tile .bgword{font-size:110px}
+  .tile p{font-size:14px}
+  .hero-main{min-height:420px}
+  .emblem{width:min(220px,100%)}
+  .steps3,.steps4,.quotes,.shots,.stats,.packrow{grid-template-columns:1fr}
   .qrbox{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .packedit .pr{grid-template-columns:1fr 70px 80px}
+  .packedit .pr,.packedit .pr.four{grid-template-columns:1fr 70px 80px}
   .word b{font-size:11px}
-  .dock button,.dock a.chip{width:46px;height:46px;padding:0;border-radius:50%;font-size:0;gap:0;justify-content:center}
+  .brand img{width:44px;height:44px}
+  .topbar .wrap{gap:10px}
+  .act .btn{padding:8px 12px;font-size:12.5px}
+  .dock button,.dock a.chipb{width:46px;height:46px;padding:0;border-radius:50%;font-size:0;gap:0;justify-content:center}
+  .joinbar b{font-size:18px}
+  .joinbar span{display:none}
+  .seclist div{flex-direction:column;gap:2px}
+  .seclist span{text-align:left}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rise,.reveal{opacity:1;transform:none}
+  .reveal{opacity:1;translate:none}
+  .split .w>*{transform:none}
+  .route .draw{stroke-dashoffset:0}.route .dash{opacity:1}.route circle{transform:none}
+  #curtain{display:none}
 }
 </style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+<div id="curtain" class="boot" aria-hidden="true"><img src="/images/logo.jpg" alt=""><span>IELTS Mind Map Academy</span></div>
 <div id="app"></div>
 <div id="modal"></div>
 <div id="toast" class="toast" hidden></div>
 <aside class="dock" aria-label="Shortcuts">
-  <button type="button" data-library><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4M8 12h8M8 16h6"/></svg>Library</button>
-  <a class="chip" href="/#contact" data-nav><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M4 12v5h3v-5M17 12v5h3v-5"/><path d="M9 18h6"/></svg>Contact us</a>
+  <button type="button" data-library aria-label="Library"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4M8 12h8M8 16h6"/></svg>Library</button>
+  <a class="chipb" href="/#contact" data-nav aria-label="Contact us"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M4 12v5h3v-5M17 12v5h3v-5"/><path d="M9 18h6"/></svg>Contact us</a>
   <button class="up" type="button" data-top aria-label="Back to top">↑</button>
 </aside>
 <div id="library" class="lib" hidden>
   <div class="lib-card" role="dialog" aria-label="Library">
     <header><b>Library</b><button class="x" type="button" data-lib-close aria-label="Close">×</button></header>
+    <h5>Programmes</h5>
     <div class="lib-grid">
-      <a href="/ielts" data-nav>IELTS</a>
-      <a href="/pte" data-nav>PTE</a>
-      <a href="/toefl" data-nav>TOEFL</a>
-      <a href="/gmat" data-nav>GMAT</a>
-      <a href="/gre" data-nav>GRE</a>
-      <a href="/spoken-english" data-nav>Spoken English</a>
-      <a href="/mock/ielts" data-nav>IELTS mock</a>
-      <a href="/mock/pte" data-nav>PTE mock</a>
-      <a href="/mock/toefl" data-nav>TOEFL mock</a>
-      <a href="/mock/gmat" data-nav>GMAT mock</a>
-      <a href="/mock/gre" data-nav>GRE mock</a>
-      <a href="/mock/spoken" data-nav>Speaking drill</a>
+      <a href="/ielts" data-nav>IELTS</a><a href="/pte" data-nav>PTE</a><a href="/toefl" data-nav>TOEFL</a>
+      <a href="/gmat" data-nav>GMAT</a><a href="/gre" data-nav>GRE</a><a href="/spoken-english" data-nav>Spoken English</a>
+    </div>
+    <h5>Mock tests</h5>
+    <div class="lib-grid">
+      <a href="/ielts/mock-test" data-nav>IELTS mock</a><a href="/pte/mock-test" data-nav>PTE mock</a><a href="/toefl/mock-test" data-nav>TOEFL mock</a>
+      <a href="/gmat/mock-test" data-nav>GMAT mock</a><a href="/gre/mock-test" data-nav>GRE mock</a>
     </div>
   </div>
 </div>
 <div class="joinbar">
-  <div><b>Write to the academy</b><span>A question about a paper, a level, or a mock.</span></div>
+  <div><b>Write to the academy</b><span>A question about an exam, a level, or a mock.</span></div>
   <a class="wa" id="join-wa" href="/#contact" data-nav aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5 12.4c-.2.6-1.2 1.1-1.6 1.1-.4 0-1-.2-3.2-1.1-2.7-1.1-4.4-3.8-4.5-4-.2-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.2 0 .3-.1.5l-.3.4c-.1.1-.2.3-.1.5.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.2.1.4.1.5-.1l.5-.6c.1-.2.3-.2.5-.1.2.1 1.4.7 1.6.8.2.1.4.2.4.3.1.3 0 .8-.2 1.3z"/></svg></a>
   <a class="btn sm" id="join" href="/#contact" data-nav>Join them</a>
   <button class="x" type="button" data-join-close aria-label="Dismiss">×</button>
 </div>
 
+<script src="/content.js"></script>
+<script src="/mocks.js"></script>
 <script>
 const FOUNDER_LINKEDIN = "";
 const WHATSAPP = "";
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const LOGO=`<img src="/images/logo.jpg" alt="" width="36" height="36">`;
-const PLANE=`<svg class="flyer" viewBox="0 0 64 64" aria-hidden="true"><path fill="#F3DC8A" d="M6 34 L40 26 L58 14 L50 22 L60 30 L44 34 L34 54 L26 50 L32 36 L16 42 L10 52 L6 48 L12 36 Z"/><path fill="#8C6820" d="M20 32l8 3-3 2z" opacity=".55"/></svg>`;
-const ME={name:"Aarav Mehta",email:"aarav.mehta@gmail.com"};
-const S={
-  view:"home", sub:"dash", credits:2,
+
+const TC = window.TK_CONTENT || {};
+const SLOTS = TC.showSlots !== false;
+const MOCKS = window.TK_MOCKS || {};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const paras = t => esc(t).split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+const LOGO = `<img src="/images/logo.jpg" alt="" width="36" height="36">`;
+const PLANE = `<svg class="flyer" viewBox="0 0 64 64" aria-hidden="true"><path fill="#F3DC8A" d="M6 34 L40 26 L58 14 L50 22 L60 30 L44 34 L34 54 L26 50 L32 36 L16 42 L10 52 L6 48 L12 36 Z"/><path fill="#8C6820" d="M20 32l8 3-3 2z" opacity=".55"/></svg>`;
+const ICON = {
+  listen: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+  read: '<path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3zM21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/>',
+  write: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>',
+  speak: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+  quant: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
+  verbal: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+  data: '<path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'
+};
+const ico = k => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]||ICON.clock}</svg>`;
+
+/* Exam facts: format and scoring of each official test. Course write-ups live in content.js. */
+const EXAMS = {
+  ielts: { key:"ielts", name:"IELTS", official:"IELTS Academic and General Training", kicker:"Academic · General Training",
+    lede:"Preparation for IELTS Academic and General Training.", scale:"0–9", scaleUnit:"Band score",
+    length:"≈ 2 h 45 min", lengthNote:"Speaking can be on a separate day.", tileLine:"Academic and General Training. Listening, reading, writing and speaking.",
+    sections:[["Listening","4 parts · 40 questions · about 30 min","listen"],["Reading","3 passages · 40 questions · 60 min","read"],["Writing","Task 1 and Task 2 · 60 min","write"],["Speaking","3 parts · 11–14 min, face to face","speak"]],
+    body:"Independent preparation. Not affiliated with IELTS, IDP or the British Council." },
+  pte: { key:"pte", name:"PTE", official:"PTE Academic", kicker:"Computer-based",
+    lede:"Preparation for PTE Academic.", scale:"10–90", scaleUnit:"Overall score",
+    length:"≈ 2 h 15 min", lengthNote:"22 tasks in one sitting.", tileLine:"Computer-based. 22 tasks in one sitting.",
+    sections:[["Speaking & Writing","Read aloud, repeat sentence, describe image, respond to a situation, essay","speak"],["Reading","Multiple choice, reorder paragraphs, fill in the blanks","read"],["Listening","Summarise spoken text, fill in the blanks, write from dictation","listen"],["Scoring","Computer-scored on the Global Scale of English","data"]],
+    body:"Independent preparation. Not affiliated with Pearson." },
+  toefl: { key:"toefl", name:"TOEFL", official:"TOEFL iBT", kicker:"Updated January 2026",
+    lede:"Preparation for the TOEFL iBT.", scale:"1–6", scaleUnit:"Band score",
+    length:"Adaptive", lengthNote:"Reading and Listening adjust to your level. A 0–120 score is also reported for now.", tileLine:"iBT, updated January 2026. Scored in bands from 1 to 6.",
+    sections:[["Reading","Complete the words, read in daily life, academic passage","read"],["Listening","Choose a response, conversation, announcement, academic talk","listen"],["Writing","Build a sentence, write an email, academic discussion","write"],["Speaking","Listen and repeat, take an interview","speak"]],
+    body:"Independent preparation. Not affiliated with ETS." },
+  gmat: { key:"gmat", name:"GMAT", official:"GMAT Focus Edition", kicker:"Focus Edition",
+    lede:"Preparation for the GMAT Focus Edition.", scale:"205–805", scaleUnit:"Total score",
+    length:"2 h 15 min", lengthNote:"Three 45-minute sections. No essay.", tileLine:"Focus Edition. Quant, Verbal and Data Insights.",
+    sections:[["Quantitative","21 questions · 45 min","quant"],["Verbal","23 questions · 45 min","verbal"],["Data Insights","20 questions · 45 min","data"],["Section scores","60–90 each","clock"]],
+    body:"Independent preparation. Not affiliated with GMAC." },
+  gre: { key:"gre", name:"GRE", official:"GRE General Test", kicker:"General Test",
+    lede:"Preparation for the GRE General Test.", scale:"130–170", scaleUnit:"Verbal and Quant, each",
+    length:"1 h 58 min", lengthNote:"No scheduled break. Writing is scored 0–6.", tileLine:"General Test. Verbal, Quant and Analytical Writing.",
+    sections:[["Analytical Writing","1 issue essay · 30 min","write"],["Verbal Reasoning","2 sections · 27 questions · 41 min","verbal"],["Quantitative Reasoning","2 sections · 27 questions · 47 min","quant"],["Adaptive","Section 2 of Verbal and Quant depends on section 1","data"]],
+    body:"Independent preparation. Not affiliated with ETS." }
+};
+const ORDER = ["ielts","pte","toefl","gmat","gre"];
+const SPOKEN = { key:"spoken", name:"Spoken English", kicker:"Beginner to advanced", lede:"Spoken English in three levels.",
+  levels:[
+    {id:"beginner",k:"Level 01",t:"Beginner",d:"For anyone who hesitates before a simple sentence.",points:["Vowel and consonant contrasts that change meaning.","Greetings, directions, a café order, a gate change.","Short answers that stay in English the whole way through."]},
+    {id:"intermediate",k:"Level 02",t:"Intermediate",d:"For people who can talk and now need to keep going.",points:["Opinions with a reason and an example.","Campus life, a workplace update, a phone call.","Linking words you can actually say at speed."]},
+    {id:"advanced",k:"Level 03",t:"Advanced",d:"For interviews, presentations and disagreement without freezing.",points:["A two-minute answer with a clean ending.","Hedging, emphasis and a polite challenge.","Visa and university interviews rehearsed out loud."]}
+  ]};
+
+const ME = {name:"Aarav Mehta", email:"aarav.mehta@gmail.com"};
+const S = {
+  view:"home", exam:null, sub:"dash", credits:2,
   packs:[{id:"p1",name:"Single test",tests:1,price:10},{id:"p5",name:"Starter pack",tests:5,price:50},{id:"p10",name:"Full prep pack",tests:10,price:100}],
   pending:[
     {id:1,email:"priya.k@gmail.com",pack:"p5",utr:"428917365520",at:"Today, 2:41 pm"},
@@ -515,154 +583,62 @@ const S={
     {email:"sana.r@gmail.com",pack:"p5",utr:"428761204418",at:"Yesterday, 4:05 pm"}
   ],
   attempts:[
-    {name:"IELTS Academic · Mock 1",date:"28 Sep",band:5.5},{name:"IELTS Academic · Mock 2",date:"2 Oct",band:6.0},
-    {name:"PTE Academic · Mock 1",date:"4 Oct",band:6.0},{name:"IELTS Academic · Mock 3",date:"8 Oct",band:6.5},
-    {name:"IELTS General · Mock 1",date:"11 Oct",band:6.5}
+    {exam:"ielts",name:"IELTS Academic mock",date:"28 Sep",score:5.5,label:"Band 5.5"},
+    {exam:"ielts",name:"IELTS Academic mock",date:"2 Oct",score:6.0,label:"Band 6.0"},
+    {exam:"pte",name:"PTE Academic mock",date:"4 Oct",score:58,label:"58 / 90"},
+    {exam:"ielts",name:"IELTS Academic mock",date:"8 Oct",score:6.5,label:"Band 6.5"},
+    {exam:"toefl",name:"TOEFL iBT mock",date:"11 Oct",score:4,label:"Band 4.0"}
   ],
-  lastEmail:null, qrImg:null, test:null, nextId:10, messages:[], paper:"ielts"
+  lastEmail:null, qrImg:null, test:null, nextId:10, messages:[]
 };
-const SERVICES={
-  ielts:{key:"ielts",short:"IELTS",name:"IELTS",kicker:"Academic and General Training",score:"Band 0–9",
-    lede:"Listening, reading, writing and speaking. This page is only the IELTS paper.",
-    facts:[["Listening","Four recordings, questions in order"],["Reading","Academic passages or General workplace texts"],["Writing","Task 1, then Task 2"],["Speaking","Interview, cue card, discussion"]],
-    desk:["One reading passage written for this IELTS mock","Five questions on that passage","Writing Task 2, at least 250 words","A practice band for this sitting only"],
-    note:"Listening and speaking stay in class. This mock times reading and Writing Task 2. It is not an IELTS result.",
-    mock:{kind:"paper",minutes:60,read:"Reading",write:"Writing Task 2",minWords:250,scale:{max:9,unit:"band",step:0.5},
-      passage:{title:"Late hours at the city library",paras:[
-        "For twenty years the main library in the harbour district closed at six. Students who worked day shifts had to choose between a wage and a quiet table. In 2019 the council kept the reading room open until ten on weeknights.",
-        "The change was not only about hours. Staff moved the noisy returns desk away from the study tables and added a small room where a phone could be used without disturbing other readers. Visits after eight rose through the first year.",
-        "Some residents objected to the cost of evening staff and lighting. The council published a one-page note showing that most of the new visits were from people who had not used the library at all when it shut at six."
-      ]},
-      questions:[
-        {t:"Why did many students avoid the library before 2019?",o:["The building was outside the city","It closed before their shift ended","Books could not be borrowed","The reading room was too loud"],a:1},
-        {t:"The evening opening also moved the returns desk.",o:["True","False","Not given"],a:0},
-        {t:"Evening visits fell during the first year.",o:["True","False","Not given"],a:1},
-        {t:"What did the council's note claim?",o:["Lighting cost nothing","New readers were mostly people who had not come before","Staff refused to work past six","The phone room was closed"],a:1},
-        {t:"The passage is mainly about",o:["A change in library hours and who used them","The price of printing books","A new university campus","Fines for late returns"],a:0}
-      ],
-      prompt:"Some people think public libraries should stay open late on weeknights. Others think the money is better spent on more books. Discuss both views and give your own opinion.",
-      sample:"In many cities, public libraries still close before people finish work. Some residents want those libraries to stay open late on weeknights, while others believe the same money should buy more books. This essay will discuss both views and then give my own opinion.\n\nOn the one hand, late opening helps people who cannot visit during the day. A student with a morning job, or a parent who is free only after dinner, can finally use a quiet table. The library then serves the city for more hours, not only for people with free afternoons. In addition, a later closing time makes the building feel like a public room rather than an office.\n\nOn the other hand, a library with a poor collection is not useful, even if the doors stay open. Books, journals and reliable computers are the reason people come. If the budget is small, buying those materials may help more readers than paying for evening staff and lighting. A large collection can also be used in the morning, so the benefit is not limited to one part of the day.\n\nIn my opinion, the two aims should be balanced, but late opening deserves priority when the current hours shut out working people. A library that closes at six excludes the very readers who need a free place to study. Once those readers can enter, the council can add books with the next round of funding.\n\nIn conclusion, both more hours and more books strengthen a library. Late opening should come first when the present timetable leaves working residents outside."}},
-  pte:{key:"pte",short:"PTE",name:"PTE",kicker:"PTE Academic",score:"Score 10–90",
-    lede:"A computer paper. Speaking, writing, reading and listening are scored in one sitting.",
-    facts:[["Speaking","Read aloud, repeat, describe, short answers"],["Writing","Summaries and an essay"],["Reading","Reorder, blanks, multiple choice"],["Listening","Write from dictation, highlight the point"]],
-    desk:["A PTE reading set, not the IELTS passage","Five questions on a workplace text","An essay of at least 200 words","A practice mark on the 10–90 scale"],
-    note:"This page does not open the IELTS mock. The passage, the essay and the score scale belong to PTE practice. Not a Pearson score.",
-    mock:{kind:"paper",minutes:50,read:"Reading",write:"Write essay",minWords:200,scale:{max:90,unit:"10–90",step:1,floor:10},
-      passage:{title:"Choosing where the week is spent",paras:[
-        "A design studio in Pune let staff work from home on three days and required two days in the office. After six months, managers compared output, sick days and how often people asked a colleague for help.",
-        "Output stayed level. Sick days fell. The drop in quick questions was the part nobody had expected: junior staff waited until an office day to ask something they would once have asked in a minute.",
-        "The studio then kept the split, but added a short morning call on home days so a blocked task did not wait forty-eight hours."
-      ]},
-      questions:[
-        {t:"What did the studio measure after six months?",o:["Only travel time","Output, sick days and requests for help","The cost of laptops","Client complaints"],a:1},
-        {t:"Output went down when people worked from home.",o:["True","False","Not given"],a:1},
-        {t:"Junior staff asked fewer quick questions.",o:["True","False","Not given"],a:0},
-        {t:"Why was a morning call added?",o:["To replace the office entirely","So a blocked task was not left until the next office day","To cut salaries","To record sick days"],a:1},
-        {t:"The studio finally",o:["Ended home working","Kept the split and added a call","Closed the Pune office","Hired only senior staff"],a:1}
-      ],
-      prompt:"Some employers want staff in the office every day. Others allow people to choose where they work. Write an essay of at least 200 words giving your opinion, with reasons and examples.",
-      sample:"Many employers still want every person at a desk in the office. Others let staff choose home or office. I believe a mix is better than either extreme.\n\nDaily office attendance makes quick help easy. A junior designer can turn and ask a question instead of waiting. Clients also like to meet a team in one room. However, a long commute costs time that could be spent on the work itself, and people who are unwell often come in and spread the illness.\n\nHome days protect that time and let someone concentrate. The risk is silence. In one studio, junior staff saved their questions for the next office day, so a small problem sat for two days. A short morning call fixed that without ending home working.\n\nIn my view, two or three office days are enough for help and meetings, and the other days should be chosen by the employee. The goal is finished work and a team that still talks, not a full room for its own sake."}},
-  toefl:{key:"toefl",short:"TOEFL",name:"TOEFL",kicker:"TOEFL iBT",score:"Score 0–120",
-    lede:"The campus paper: reading, lectures, speaking and an academic discussion.",
-    facts:[["Reading","University passages"],["Listening","Conversations and lectures"],["Speaking","Independent and integrated responses"],["Writing","Integrated task and an academic discussion"]],
-    desk:["A campus reading passage used only on this TOEFL mock","Five purpose and detail questions","An academic discussion of at least 100 words","A practice mark toward 120, not an ETS score"],
-    note:"Listening and speaking are coached in class. This mock is the reading passage plus the academic discussion. The academy is not ETS.",
-    mock:{kind:"paper",minutes:45,read:"Reading",write:"Academic discussion",minWords:100,scale:{max:120,unit:"0–120",step:1},
-      passage:{title:"Trees and hot streets",paras:[
-        "Cities store heat in asphalt and dark roofs. A street with mature trees can be several degrees cooler at noon than the same street a block away with none. The shade is only part of the effect. Leaves also release water, and that evaporation cools the air around them.",
-        "Planting is slower than it sounds. A sapling does not shade a lane for years, and roots can lift pavements if the pit is too small. Forestry teams now specify a soil volume before they specify a species.",
-        "A campus study found that students walking the planted path arrived less flushed and rated the walk as shorter, even when the distance was the same."
-      ]},
-      questions:[
-        {t:"What cools the air besides shade?",o:["Darker asphalt","Water leaving the leaves","Taller buildings","Fewer cars"],a:1},
-        {t:"A sapling shades a street in the first season.",o:["True","False","Not given"],a:1},
-        {t:"Roots can damage a pavement when the pit is small.",o:["True","False","Not given"],a:0},
-        {t:"What did the campus study notice about students?",o:["They walked a longer path","They arrived less flushed and felt the walk was shorter","They avoided the trees","They measured the soil"],a:1},
-        {t:"The passage says forestry teams now decide",o:["The paint colour of the road","The soil volume before the species","Which students may walk","The price of water"],a:1}
-      ],
-      prompt:"Professor: Our campus is adding trees along the main walk. Some of you think shade is the whole benefit. Others think the cost of soil and pavement repairs is too high. Write a contribution of at least 100 words. State your view and respond to one of those points.",
-      sample:"I support planting along the main walk, and I do not think shade is the only benefit. The reading on hot streets points to a second effect: leaves release water, and that cools the air itself, so the path is easier to walk at noon.\n\nThe cost objection is fair. A sapling does not help for years, and roots lift a pavement when the pit is too small. That is a reason to specify enough soil at the start, not a reason to leave the walk bare. Repairing a badly planted tree is expensive. Planting it correctly once is cheaper than years of a hotter path.\n\nStudents in the campus study also felt the planted walk was shorter. If the main route feels easier, more people will use it instead of a shuttle. I would spend the money on soil volume and a few mature trees at the hottest corner, rather than on many saplings that will not shade anyone soon."}},
-  gmat:{key:"gmat",short:"GMAT",name:"GMAT",kicker:"Focus Edition practice",score:"Quantitative · Verbal · Data Insights",
-    lede:"A separate GMAT desk. This is not the IELTS reading passage and not the IELTS essay.",
-    facts:[["Quantitative","Arithmetic, algebra, word problems"],["Verbal","Critical reasoning and reading"],["Data Insights","Tables, graphs, multi-source sets"],["Score","Official scale 205–805"]],
-    desk:["One short argument, written for this GMAT mock","Five critical-reasoning questions","A short written note on the flaw, at least 80 words","A practice mark out of 10. Not a GMAC score"],
-    note:"Quant and Data Insights are taught in class. This mock is the verbal argument only. Not affiliated with GMAC.",
-    mock:{kind:"paper",minutes:35,read:"Argument",write:"Name the flaw",minWords:80,scale:{max:10,unit:"practice / 10",step:1},
-      passage:{title:"The bakery chain's new ovens",paras:[
-        "Last spring a bakery chain replaced the ovens in half its shops. Those shops sold more loaves in June than in April. The director concluded that the new ovens caused the increase and ordered the same ovens for every remaining shop.",
-        "June is also the month local schools finish and several neighbourhoods hold food fairs. The shops that kept the old ovens were not included in the June comparison the director quoted."
-      ]},
-      questions:[
-        {t:"The director assumes that",o:["June sales rose only because of the ovens","Customers dislike fresh bread","Old ovens are cheaper to run","Every shop already had the new oven"],a:0},
-        {t:"Which fact weakens the director's conclusion?",o:["The new ovens use less electricity","Schools finish in June and fairs bring extra buyers","Staff prefer the new ovens","Bread is baked in the morning"],a:1},
-        {t:"The comparison left out",o:["Shops that kept the old ovens","The price of flour","The names of the fairs","Morning customers"],a:0},
-        {t:"The argument would be stronger if",o:["April and June were compared in both groups of shops","Only one shop was measured","The director ignored sales","Fairs were cancelled and not mentioned"],a:0},
-        {t:"The conclusion is about",o:["The cause of higher June sales","The taste of the bread","Hiring more bakers","Closing the chain"],a:0}
-      ],
-      prompt:"In your own words, state the flaw in the director's reasoning. Mention one alternative explanation for the June increase. At least 80 words.",
-      sample:"The director sees higher June sales in the shops that received new ovens and treats the ovens as the cause. That does not follow. June is also when schools finish and food fairs bring extra buyers, so the month itself can lift sales.\n\nThe comparison is incomplete. Shops that kept the old ovens were not shown for June, so we cannot tell whether they rose as well. If those shops rose by the same amount, the ovens are not the explanation.\n\nA fair test would compare April and June in both groups. Until that is done, ordering new ovens for every shop rests on a coincidence of timing, not on evidence that the ovens caused the increase."}},
-  gre:{key:"gre",short:"GRE",name:"GRE",kicker:"General Test",score:"Verbal · Quant · Analytical Writing",
-    lede:"A separate GRE desk: a short verbal passage and an issue task.",
-    facts:[["Verbal","Text completion, equivalence, reading"],["Quant","Arithmetic, algebra, geometry, data"],["Writing","Analyse an issue"],["Score","Verbal and Quant 130–170"]],
-    desk:["A verbal passage that is not the IELTS or GMAT text","Five reading questions","An issue essay of at least 120 words","A practice mark out of 10. Not an ETS score"],
-    note:"Quant is taught in class. This mock is verbal plus the issue task. Not affiliated with ETS.",
-    mock:{kind:"paper",minutes:40,read:"Verbal",write:"Analyse an issue",minWords:120,scale:{max:10,unit:"practice / 10",step:1},
-      passage:{title:"A museum label in two lengths",paras:[
-        "A city museum rewrote the labels beside its oldest objects. The old labels were a single sentence. The new ones added where the object was made, who used it, and one reason it survived.",
-        "Visitors spent longer at those cases. Staff worried that people were simply reading more words, not looking more carefully. They then tested a third version: the short sentence on the rail, and the longer note on a card a visitor could pick up.",
-        "Dwell time stayed high, and more visitors could still name the object an hour later. The card let a hurried guest skip the detail without losing the point of the case."
-      ]},
-      questions:[
-        {t:"The new labels added",o:["Only a price","Origin, user, and a reason the object survived","A map of the city","The director's name"],a:1},
-        {t:"Visitors left the rewritten cases more quickly.",o:["True","False","Not given"],a:1},
-        {t:"Staff feared the extra time was only from extra words.",o:["True","False","Not given"],a:0},
-        {t:"The third version put the longer note",o:["On the ceiling","On a card the visitor could pick up","In the café","On the ticket"],a:1},
-        {t:"An hour later, more visitors could",o:["Name the object","Draw the building","Recall the ticket price","Find the exit"],a:0}
-      ],
-      prompt:"Issue: Museums should keep every label to one sentence so visitors look at the object rather than read about it. Write a response of at least 120 words. Say how far you agree, and use a reason and an example.",
-      sample:"I only partly agree. A single sentence can stop a label from becoming a small essay, and it pushes the visitor to look at the object. A hurried guest needs that short line.\n\nA single sentence is not always enough. Knowing where an object was made, who used it, and why it survived changes what a person sees. In one museum, longer labels kept visitors at the case, and a later test still found that people could name the object an hour afterwards.\n\nThe better design is the one that museum tried next: one sentence on the rail, and the longer note on a card. People who want to look can look. People who want the story can read it. Forcing every label into one sentence protects neither the object nor the curious visitor."}},
-  spoken:{key:"spoken",short:"SPEAK",name:"Spoken English",kicker:"Beginner to advanced",score:"Three levels",
-    lede:"A speaking path with its own drill. It does not open a reading passage or an essay.",
-    facts:[["Beginner","Sounds, greetings, a slow exchange"],["Intermediate","An opinion, a reason, a short story"],["Advanced","A two-minute answer and a polite challenge"],["Setting","Airport, campus, office"]],
-    desk:["Three cue cards, one for each level","Two minutes on the card in front of you","No reading passage and no essay","A finished drill, not a band score"],
-    note:"This is the speaking drill. IELTS, PTE and TOEFL keep their own mock pages. Not a cartoon exercise.",
-    mock:{kind:"speak",minutes:6,cards:[
-      {level:"Beginner",prompt:"You are at an airport gate. Ask for a later flight, give your name, and thank the agent. Stay in English the whole way."},
-      {level:"Intermediate",prompt:"Tell a classmate about a teacher who changed how you work. Give one reason and one example. About one minute."},
-      {level:"Advanced",prompt:"A visa officer says your study plan is too vague. Answer in two minutes: what you will study, why this country, and what you will do if the plan slips."}
-    ]},
-    levels:[
-      {id:"beginner",k:"Level 01",t:"Beginner",d:"For anyone who hesitates before a simple sentence.",points:["Vowel and consonant contrasts that change meaning.","Greetings, directions, a café order, a gate change.","Short answers that stay in English the whole way through."]},
-      {id:"intermediate",k:"Level 02",t:"Intermediate",d:"For people who can talk and now need to keep going.",points:["Opinions with a reason and an example.","Campus life, a workplace update, a phone call.","Linking words you can actually say at speed."]},
-      {id:"advanced",k:"Level 03",t:"Advanced",d:"For interviews, presentations and disagreement without freezing.",points:["A two-minute answer with a clean ending.","Hedging, emphasis and a polite challenge.","Visa and university interviews rehearsed as a route."]}
-    ]}
-};
-const $=s=>document.querySelector(s);
-const pk=id=>S.packs.find(p=>p.id===id);
-const inr=n=>"₹"+n.toLocaleString("en-IN");
-let timerInt=null;
+let TESTS = ORDER.filter(k => MOCKS[k]).map(k => ({exam:k, code:EXAMS[k].name, name:MOCKS[k].title, meta:`${MOCKS[k].short} · ${MOCKS[k].minutes} min`}));
 
-function viewFromLocation(){
-  let p=location.pathname.replace(/\/index\.html$/,"");
-  if(p.length>1&&p.endsWith("/"))p=p.slice(0,-1);
-  if(!p)p="/";
-  const mock=p.match(/^\/mock\/(ielts|pte|toefl|gmat|gre|spoken)$/);
-  if(mock){S.paper=mock[1];return "mock"}
-  return ({"/":"home","/ielts":"ielts","/pte":"pte","/toefl":"toefl","/gmat":"gmat","/gre":"gre","/spoken-english":"spoken","/founder":"founder","/testimonials":"stories","/student":"student","/admin":"admin"})[p]||"home";
+const $ = s => document.querySelector(s);
+const pk = id => S.packs.find(p => p.id === id);
+const inr = n => "₹" + n.toLocaleString("en-IN");
+const half = x => Math.round(x * 2) / 2;
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+let timerInt = null;
+
+/* ---------- routing ---------- */
+function route(path){
+  let p = path.replace(/\/index\.html$/, "");
+  if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+  if (!p) p = "/";
+  const m = p.match(/^\/(ielts|pte|toefl|gmat|gre)\/mock-test$/);
+  if (m) return {view:"mock", exam:m[1]};
+  const map = {"/":"home","/ielts":"ielts","/pte":"pte","/toefl":"toefl","/gmat":"gmat","/gre":"gre","/spoken-english":"spoken","/founder":"founder","/testimonials":"stories","/student":"student","/admin":"admin"};
+  return {view:map[p] || "home", exam:null};
+}
+function applyRoute(){
+  const r = route(location.pathname);
+  S.view = r.view; S.exam = r.exam;
+  if (S.view === "student") S.sub = "dash";
+  if (S.view === "admin") S.sub = "pay";
+}
+const PATHS = {home:"/",student:"/student",admin:"/admin"};
+function go(v, sub){
+  if (PATHS[v] && location.pathname !== PATHS[v]) history.pushState({}, "", PATHS[v]);
+  S.view = v; S.exam = null; if (sub) S.sub = sub;
+  if (timerInt) { clearInterval(timerInt); timerInt = null }
+  render(); window.scrollTo(0, 0);
+}
+let navTok = 0;
+function curtain(apply){
+  const c = $("#curtain");
+  if (RM.matches) { apply(); return }
+  const t = ++navTok;
+  c.classList.remove("lift", "boot"); void c.offsetWidth; c.classList.add("cover");
+  setTimeout(() => {
+    if (t !== navTok) return;
+    apply();
+    c.classList.replace("cover", "lift");
+    setTimeout(() => { if (t === navTok) c.classList.remove("lift") }, 680);
+  }, 500);
 }
 function toast(msg){const t=$("#toast");t.innerHTML=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,3600)}
-function go(v,sub){
-  const paths={home:"/",ielts:"/ielts",pte:"/pte",toefl:"/toefl",gmat:"/gmat",gre:"/gre",spoken:"/spoken-english",founder:"/founder",stories:"/testimonials",student:"/student",admin:"/admin"};
-  if(v!=="test"&&paths[v]){
-    let cur=location.pathname.replace(/\/index\.html$/,"")||"/";
-    if(cur.length>1&&cur.endsWith("/"))cur=cur.slice(0,-1);
-    if(cur!==paths[v])history.pushState({v},"",paths[v]);
-  }
-  S.view=v;if(sub)S.sub=sub;
-  if(v!=="test"&&timerInt){clearInterval(timerInt);timerInt=null}
-  render();window.scrollTo(0,0);
-}
 
+/* ---------- shared chrome ---------- */
 function chrome(active){
   const links=[["IELTS","/ielts","ielts"],["PTE","/pte","pte"],["TOEFL","/toefl","toefl"],["GMAT","/gmat","gmat"],["GRE","/gre","gre"],["Spoken","/spoken-english","spoken"],["Founder","/founder","founder"],["Testimonials","/testimonials","stories"]];
   return `<header class="topbar"><div class="wrap">
@@ -677,127 +653,114 @@ function footer(){
   return `<footer class="site"><div class="wrap">
     <div><div class="logo">${LOGO}<span class="word"><b>IELTS MIND MAP <span class="gold">ACADEMY</span></b></span></div><p class="script">Mistakes are proof that you're trying!</p></div>
     <nav class="footlinks" aria-label="Footer">${links.map(([l,h])=>`<a href="${h}" data-nav>${l}</a>`).join("")}<a href="/admin" data-nav>Admin</a></nav>
-    <p class="fine">Est. 2022. TestKaro is the mock-test desk for this academy. Independent preparation. Not affiliated with IELTS, IDP, the British Council, Pearson, ETS or GMAC.</p>
+    <p class="fine">Est. 2022. TestKaro is the mock-test desk for this academy. Independent preparation. Not affiliated with IELTS, IDP, the British Council, Pearson, ETS or GMAC. Mock scores are practice estimates.</p>
   </div></footer>`;
 }
-function card(id,href,cls,k,t,d,meta,n){
-  return `<a class="bcard ${cls}" href="${href}" data-nav><span class="mark">${n||""}</span><span class="kicker">${k}</span><strong class="code">${t}</strong><p>${d}</p><span class="meta">${meta}</span><span class="go" aria-hidden="true">→</span></a>`;
+function packTiles(cls){
+  return S.packs.map((p,i)=>`<div class="tile ${i===1?"t-cream pop":"t-light"} ${cls} pack lift">${i===1?'<span class="pill acc">Most picked</span>':""}
+    <span class="kicker">${esc(p.name)}</span>
+    <div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div>
+    <ul><li>Any exam: IELTS, PTE, TOEFL, GMAT, GRE</li><li>Timed paper, exam-style score</li><li>Answer review</li>${p.tests>=5?"<li>Progress across attempts</li>":""}</ul>
+    <button class="btn ${i===1?"":"ghost"}" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("");
 }
+function slotTile(cls, label, where){
+  return `<div class="tile slot ${cls}"><span class="kicker">${label}</span><p>The academy team's write-up goes here.</p><small>content.js → ${where}</small></div>`;
+}
+
+/* ---------- home ---------- */
 function home(){
-  const cards=[
-    ["ielts","/ielts","ielts","Flagship paper","IELTS","Academic and General Training. Four skills, mapped before the clock starts.","Band 0–9","01"],
-    ["pte","/pte","pte","Computer test","PTE","Integrated speaking, reading and writing. The microphone is part of the paper.","Score 10–90","02"],
-    ["toefl","/toefl","toefl","Campus route","TOEFL","iBT lectures, discussions and a timed essay for university admission.","Score 0–120","03"],
-    ["gmat","/gmat","gmat","Management","GMAT","A verbal argument of its own. Not the English-paper mock.","Practice / 10","04"],
-    ["gre","/gre","gre","Graduate school","GRE","A verbal passage and an issue task, separate from IELTS.","Practice / 10","05"]
-  ];
+  const marquee = ["IELTS","PTE Academic","TOEFL iBT","GMAT Focus","GRE General","Spoken English","Mind maps","Timed mocks"];
+  const mockThemes = {ielts:"t-plum c4 r2",pte:"t-gold c4 r2",toefl:"t-lilac c4 r2",gmat:"t-ink c6 r2",gre:"t-cream c6 r2"};
   return `${chrome("home")}
   <main>
-    <section class="wrap hero-grid">
-      <div class="hero-copy">
+    <section class="wrap hero"><div class="bento">
+      <div class="tile t-plum c8 r3 hero-main">
         <p class="est">Est. 2022</p>
-        <h1>IELTS Mind Map Academy</h1>
+        <h1 data-split>IELTS Mind Map Academy</h1>
         <p class="tagline">Mistakes are proof that you're trying!</p>
-        <p class="lede">A prep studio for people going abroad. Pick a paper, open its page, and time a mock on the TestKaro desk when you are ready.</p>
-        <div class="ctas"><a class="btn" href="#programmes">Choose a programme</a><a class="btn ghost" href="/founder" data-nav>Meet the founder</a></div>
+        <p class="lede">A prep studio for people going abroad. Pick your exam, open its page, then sit a mock built for that exam on TestKaro.</p>
+        <div class="row"><a class="btn" href="#programmes" data-nav>Choose an exam</a><a class="btn ghost light" href="/#mocks" data-nav>See mock tests</a></div>
       </div>
-      <div class="emblem" aria-hidden="true"><div class="ring"></div><img src="/images/logo.jpg" alt="">${PLANE}</div>
-    </section>
-    <section class="wrap bento-wrap" id="programmes">
-      <div class="intro"><div><span class="kicker">Programmes</span><h2>Open a paper directly.</h2></div><p class="lede" style="margin:0">Six routes. Each card is the page.</p></div>
+      <div class="tile t-cream c4 r2 emblem-tile m-full"><div class="emblem" id="emblem"><div class="ring"></div><img src="/images/logo.jpg" alt="">${PLANE}</div></div>
+      <div class="tile t-gold c2 stat"><b class="big" data-count="6">6</b><span class="lbl">Programmes</span></div>
+      <div class="tile t-lilac c2 stat"><b class="big" data-count="5">5</b><span class="lbl">Exam mocks</span></div>
+      <div class="tile t-ink c4"><span class="kicker">Since</span><b class="big" data-count="2022" data-from="1990">2022</b><p>Teaching students headed abroad.</p></div>
+      <div class="tile t-lilac c4"><span class="ico">${ico("read")}</span><b class="tname">Mind maps</b><p>Each paper is drawn as a map before it is timed.</p></div>
+      <a class="tile t-gold c4 m-full" href="/#mocks" data-nav><span class="kicker">Mock tests from</span><b class="big">${inr(S.packs[0].price)}</b><p>One credit, one timed mock, any exam.</p><span class="go">→</span></a>
+    </div></section>
+
+    <div class="marquee" aria-hidden="true"><div class="track">${[...marquee,...marquee].map(m=>`<span>${m}</span>`).join("")}</div></div>
+
+    <section class="wrap section" id="programmes">
+      <div class="sec-head"><div><span class="kicker">Programmes</span><h2 data-split>Open an exam directly.</h2></div><p>Six programmes. Every exam has its own page and its own mock test.</p></div>
       <div class="bento">
-        ${cards.slice(0,1).map(c=>card(...c)).join("")}
-        ${cards.slice(1,3).map(c=>card(...c)).join("")}
-        ${cards.slice(3).map(c=>card(...c)).join("")}
-        <div class="bcard spoken has-levels">
-          <a class="bmain" href="/spoken-english" data-nav><span class="mark">06</span><span class="kicker">Speaking path</span><strong class="code">Spoken English</strong><p>Beginner, intermediate and advanced. Travel, campus and interviews. No cartoons.</p></a>
-          <div class="lvls"><a href="/spoken-english#beginner" data-nav>Beginner</a><a href="/spoken-english#intermediate" data-nav>Intermediate</a><a href="/spoken-english#advanced" data-nav>Advanced</a></div>
+        ${examTile("ielts","t-plum c7 r3","Flagship","9.0",true)}
+        ${examTile("pte","t-cream c5 r2","Computer test","90")}
+        ${examTile("toefl","t-ink c5 r2","Campus route","6")}
+        ${examTile("gmat","t-gold c4 r2","Management","805")}
+        ${examTile("gre","t-lilac c3 r2","Graduate school","170")}
+        <div class="tile t-cream c5 r2">
+          <a href="/spoken-english" data-nav style="text-decoration:none;color:inherit;display:grid;gap:8px"><span class="kicker">Speaking path</span><b class="big mid">Spoken English</b><p>Beginner, intermediate and advanced.</p></a>
+          <div class="row">${SPOKEN.levels.map(l=>`<a class="chip" href="/spoken-english#${l.id}" data-nav>${l.t}</a>`).join("")}</div>
+          <span class="bgword">Aa</span>
+        </div>
+        <a class="tile t-gold c7" href="/#contact" data-nav><span class="kicker">Not sure which exam?</span><b class="big mid">Ask the academy</b><p>Tell us where you are applying and we will point you to the right paper.</p><span class="go">→</span></a>
+      </div>
+    </section>
+
+    <section class="wrap section" id="mocks">
+      <div class="sec-head"><div><span class="kicker">TestKaro mock desk</span><h2 data-split>A separate mock for every exam.</h2></div><p>Each exam has its own paper, its own timing and its own score scale. Open one to see what is inside.</p></div>
+      <div class="bento">
+        ${ORDER.map(k=>{const e=EXAMS[k],m=MOCKS[k];return `<a class="tile ${mockThemes[k]}" href="/${k}/mock-test" data-nav>
+          <span class="kicker">${e.name} mock test</span><b class="big">${e.scale}</b><p>${e.scaleUnit}. ${esc(m.short)}.</p>
+          <div class="row"><span class="chip">${m.sections.length} section${m.sections.length>1?"s":""}</span><span class="chip">${m.minutes} min</span></div><span class="go">→</span><span class="bgword">${e.name}</span></a>`}).join("")}
+        ${packTiles("c4 m-full")}
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head"><div><span class="kicker">The route</span><h2 data-split>Map it. Practise it. Then fly.</h2></div></div>
+      <div class="bento">
+        <div class="tile t-light c12 route-tile">
+          <svg class="route" viewBox="0 0 1100 120" aria-hidden="true"><path class="draw" pathLength="1" d="M10 92 C 190 92, 250 22, 380 24 S 640 104, 790 58 980 26, 1090 32" fill="none" stroke="#c6a15a" stroke-width="2"/><path class="dash" d="M10 92 C 190 92, 250 22, 380 24 S 640 104, 790 58 980 26, 1090 32" fill="none" stroke="#4c1d78" stroke-opacity=".35" stroke-width="1.4"/><circle cx="10" cy="92" r="7" fill="#4c1d78"/><circle cx="380" cy="24" r="7" fill="#4c1d78"/><circle cx="790" cy="58" r="7" fill="#4c1d78"/><circle cx="1090" cy="32" r="7" fill="#c6a15a"/></svg>
+          <ol class="steps3"><li><b>Map</b><span>The paper becomes a diagram you can revise in minutes.</span></li><li><b>Practise</b><span>Sit the mock for your exam. TestKaro times and scores it.</span></li><li><b>Fly</b><span>Book the real test when the mock scores are steady.</span></li></ol>
         </div>
       </div>
     </section>
-    <section class="wrap method reveal">
-      <span class="kicker">The route</span>
-      <h2>Map it. Practise it. Then fly.</h2>
-      <svg class="route" viewBox="0 0 640 80" aria-hidden="true"><path d="M8 58 C 120 58, 150 14, 230 16 S 380 66, 470 36 590 18, 632 22" fill="none" stroke="#c6a15a" stroke-width="1.6"/><circle cx="8" cy="58" r="4" fill="#4c1d78"/><circle cx="230" cy="16" r="4" fill="#4c1d78"/><circle cx="470" cy="36" r="4" fill="#4c1d78"/><circle cx="632" cy="22" r="4" fill="#c6a15a"/></svg>
-      <ol class="steps">
-        <li><b>Map</b><span>The paper becomes a diagram you can revise in minutes.</span></li>
-        <li><b>Practise</b><span>TestKaro times the mock and marks the writing.</span></li>
-        <li><b>Proof</b><span>After you know the founder, reviews live on the <a href="/testimonials" data-nav>testimonials page</a>.</span></li>
-      </ol>
-    </section>
-    <section class="wrap bento-wrap reveal" id="founder-home">
-      <div class="intro"><div><span class="kicker">Founder</span><h2>Know the teacher before the reviews.</h2></div><p class="lede" style="margin:0">The testimonials page comes after this.</p></div>
-      <div class="bento founder-bento">
-        <a class="bcard founder-card" href="/founder" data-nav>
-          <span class="kicker" style="color:#f0d48a">Est. 2022</span>
-          <strong class="code">Founder</strong>
-          <p>See who started the academy, then read what students take with them.</p>
-          <span class="go" aria-hidden="true">→</span>
-        </a>
-        <div class="bcard"><span class="kicker">Method</span><strong class="code" style="font-size:28px">Mind maps</strong><p>Papers are drawn before they are timed.</p></div>
-        <div class="bcard"><span class="kicker">Since</span><strong class="code" style="font-size:28px">2022</strong><p>IELTS Mind Map Academy.</p></div>
-        <a class="bcard wide" href="/testimonials" data-nav><span class="kicker">Next</span><strong class="code" style="font-size:28px">Testimonials</strong><p>Reviews and score reports, after the founder.</p><span class="go" aria-hidden="true">→</span></a>
-      </div>
-    </section>
-    <section class="wrap bento-wrap reveal" id="mocks">
-      <div class="intro"><div><span class="kicker">Mock desk</span><h2>Each paper has its own mock.</h2></div><p class="lede" style="margin:0">The passage, the task and the score scale change with the exam. A credit opens the one you pick.</p></div>
+
+    <section class="wrap section" id="founder-home">
+      <div class="sec-head"><div><span class="kicker">Founder</span><h2 data-split>Know the teacher before the reviews.</h2></div></div>
       <div class="bento">
-        ${["ielts","pte","toefl","gmat","gre","spoken"].map((k,n)=>{const s=SERVICES[k];return card(k,"/mock/"+k,k,s.kicker,s.name,s.desk[0],s.score,String(n+1).padStart(2,"0"))}).join("")}
+        <a class="tile t-plum c7 r2" href="/founder" data-nav><span class="kicker">Est. 2022</span><b class="big">Founder</b><p>See who started the academy, then read what students take with them.</p><span class="go">→</span><span class="bgword">2022</span></a>
+        <a class="tile t-lilac c5" href="/testimonials" data-nav><span class="kicker">Next</span><b class="big mid">Testimonials</b><p>Reviews and score reports.</p><span class="go">→</span></a>
+        <div class="tile t-cream c5"><span class="kicker">Our line</span><p class="script" style="color:var(--ink);font-size:32px;max-width:none">Mistakes are proof that you're trying!</p></div>
       </div>
     </section>
-    <section class="wrap block reveal" id="packs">
-      <div class="sh"><div><span class="kicker">TestKaro mock desk</span><h2>Pay only for the tests you time</h2></div><p>Credits do not expire. Each credit unlocks one timed mock. The score is an estimate for practice.</p></div>
-      <div class="packs">${S.packs.map((p,i)=>`<div class="card pack ${i===1?"pop":""}">${i===1?'<span class="pill acc">Most picked</span>':""}
-        <div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div>
-        <div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div>
-        <ul><li>Timed reading and writing</li><li>Estimated score and notes</li><li>Answer review</li>${p.tests>=5?"<li>Progress across attempts</li>":""}</ul>
-        <button class="btn ${i===1?"":"ghost"}" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button>
-      </div>`).join("")}</div>
-    </section>
-    <section class="wrap block reveal" id="faq" style="padding-top:0">
-      <div class="sh"><div><span class="kicker">Questions</span><h2>Before you book</h2></div></div>
+
+    <section class="wrap section" id="faq">
+      <div class="sec-head"><div><span class="kicker">Questions</span><h2 data-split>Before you book</h2></div></div>
       <div class="faq">
-        <details class="card" open><summary>What is the process of taking the IELTS writing practice?</summary><p>You map Task 1 and Task 2 first, then sit a timed essay on the TestKaro desk. The note you get is a practice estimate, not a test-centre score.</p></details>
-        <details class="card"><summary>How do you read a mock and find the gaps?</summary><p>The result splits reading and writing. Repeated slips are grouped, so the next map targets the gap instead of the whole paper.</p></details>
-        <details class="card"><summary>Can a speaking mock stand in for the real IELTS score?</summary><p>No. A mock shows how you handle a cue card. The official score comes only from the exam body.</p></details>
-        <details class="card"><summary>Are all the tests free?</summary><p>No. A credit buys one timed mock. Packs start at one test. Spoken English levels are taught as a path, separate from the timed desk.</p></details>
-        <details class="card"><summary>How do you take the listening practice?</summary><p>Listening is coached in class from the map of each recording. The timed desk currently marks reading and writing.</p></details>
-        <details class="card"><summary>Will a mock change the real exam result?</summary><p>No. A mock stays on this desk. It does not go to IELTS, Pearson, ETS or GMAC.</p></details>
-        <details class="card"><summary>What helps on the reading paper?</summary><p>A one-page map of the question types, then a timed passage. You see which type you miss, not only the overall number.</p></details>
+        <details class="card" open><summary>Is there a different mock for each exam?</summary><p>Yes. IELTS, PTE, TOEFL, GMAT and GRE each have their own mock page, paper, timing and score scale. Open the exam from the mock desk to see exactly what it contains.</p></details>
+        <details class="card"><summary>Is the mock score my real score?</summary><p>No. It is a practice estimate from this site. Official scores come only from the exam body.</p></details>
+        <details class="card"><summary>Can one pack be used for different exams?</summary><p>Yes. A credit is not tied to an exam. One credit opens one timed mock on any exam.</p></details>
+        <details class="card"><summary>Are the tests free?</summary><p>No. Packs start at a single test. Spoken English levels are taught in class, separate from the mock desk.</p></details>
+        <details class="card"><summary>Are listening and speaking on the mock desk?</summary><p>Not yet. They are coached in class. The mock desk times the reading, writing and reasoning parts of each exam.</p></details>
         <details class="card"><summary>How long after I pay?</summary><p>Each UPI payment is checked by hand, usually within a few hours. You get an email when the tests unlock.</p></details>
       </div>
     </section>
-    <section class="wrap block reveal" id="contact">
-      <div class="touch">
-        <div>
-          <span class="kicker">Contact</span>
-          <h2>Get in touch today.</h2>
-          <p class="lede">The academy replies within 24 hours.</p>
-        </div>
-        <form id="contactform" class="card contact-card">
+
+    <section class="wrap section" id="contact">
+      <div class="bento">
+        <div class="tile t-plum c5 r3"><span class="kicker">Contact</span><b class="big">Get in touch today.</b><p>The academy replies within 24 hours.</p><span class="bgword">@</span></div>
+        <form id="contactform" class="tile t-light c7 r3 contact-card">
           <h3>Let us contact you</h3>
           <label class="f"><span>You are… <span class="req">*</span></span>
-            <select id="c-role" required>
-              <option value="">Please select</option>
-              <option>Student</option>
-              <option>Parent</option>
-              <option>Working professional</option>
-            </select>
-          </label>
-          <label class="f"><span>Full name <span class="req">*</span></span><input id="c-name" required placeholder="Enter your full name"></label>
+            <select id="c-role" required><option value="">Please select</option><option>Student</option><option>Parent</option><option>Working professional</option></select></label>
+          <label class="f"><span>Full name <span class="req">*</span></span><input id="c-name" type="text" required placeholder="Enter your full name"></label>
           <label class="f"><span>Email <span class="req">*</span></span><input id="c-email" type="email" required placeholder="name@email.com"></label>
           <label class="f"><span>Phone number <span class="req">*</span></span>
-            <span class="phone-row">
-              <select id="c-code" aria-label="Country code">
-                <option value="+91">🇮🇳 +91</option>
-                <option value="+977">🇳🇵 +977</option>
-                <option value="+971">🇦🇪 +971</option>
-                <option value="+44">🇬🇧 +44</option>
-                <option value="+1">🇺🇸 +1</option>
-              </select>
-              <input id="c-phone" required inputmode="tel" placeholder="Phone number">
-            </span>
-          </label>
+            <span class="phone-row"><select id="c-code" aria-label="Country code"><option value="+91">🇮🇳 +91</option><option value="+977">🇳🇵 +977</option><option value="+971">🇦🇪 +971</option><option value="+44">🇬🇧 +44</option><option value="+1">🇺🇸 +1</option></select>
+            <input id="c-phone" type="text" required inputmode="tel" placeholder="Phone number"></span></label>
           <label class="f"><span>Message <span class="req">*</span></span><textarea id="c-msg" required rows="4" placeholder="Your question"></textarea></label>
           <button class="btn" type="submit">Send</button>
         </form>
@@ -805,57 +768,84 @@ function home(){
     </section>
   </main>${footer()}`;
 }
-function servicePage(s){
-  const levels=(s.levels||[]).map(lv=>`<article class="level" id="${lv.id}"><span class="kicker">${lv.k}</span><h2>${lv.t}</h2><p>${lv.d}</p><ul>${lv.points.map(p=>`<li>${p}</li>`).join("")}</ul></article>`).join("");
-  return `${chrome(s.key)}<article class="page"><div class="wrap">
-    <a class="back" href="/" data-nav>← All programmes</a>
-    <header class="pagehead"><span class="kicker">${s.kicker}</span><h1>${s.name}</h1><p class="lede">${s.lede}</p><p style="margin-top:14px"><span class="pill acc">${s.score}</span></p></header>
-    <div class="facts">${s.facts.map(([n,d])=>`<div class="fact"><b>${n}</b><span>${d}</span></div>`).join("")}</div>
-    <section class="split"><div><h2>The ${esc(s.name)} mock</h2><ul class="ticks">${s.desk.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
-      <aside class="gloss"><span class="kicker">This paper only</span><p>${esc(s.note)}</p><a class="btn" href="/mock/${s.key}" data-nav>Open the ${esc(s.name)} mock</a></aside></section>
-    ${levels?`<section class="levels"><h2>Beginner to advanced</h2><div class="levelgrid">${levels}</div></section>`:""}
-  </div></article>${footer()}`;
+function examTile(k, cls, kicker, ghost, big){
+  const e = EXAMS[k];
+  return `<a class="tile ${cls}" href="/${k}" data-nav><span class="kicker">${kicker}</span><b class="big ${big?"huge":""}">${e.name}</b><p>${e.tileLine}</p>
+    ${big?`<div class="row">${e.sections.map(s=>`<span class="chip">${s[0]}</span>`).join("")}</div>`:""}
+    <span class="meta">${e.scaleUnit} ${e.scale}</span><span class="go">→</span><span class="bgword">${ghost}</span></a>`;
 }
-function mockPage(){
-  const s=SERVICES[S.paper]||SERVICES.ielts;
-  const m=s.mock;
-  const bits=m.kind==="speak"
-    ? m.cards.map(c=>`<li><b>${esc(c.level)}.</b> ${esc(c.prompt)}</li>`)
-    : [`<li>${esc(m.read)} · ${m.questions.length} questions</li>`,`<li>${esc(m.write)} · at least ${m.minWords} words</li>`,`<li>${m.minutes} minutes on the clock</li>`,`<li>Practice scale: ${esc(m.scale.unit)}</li>`];
-  const start=S.credits>0
-    ? `<button class="btn" type="button" data-start="${s.key}">Start the ${esc(s.name)} mock · 1 credit</button>`
-    : `<a class="btn" href="/#packs" data-nav>Buy a credit to start</a>`;
-  return `${chrome(s.key)}<article class="page"><div class="wrap">
-    <a class="back" href="/${s.key==="spoken"?"spoken-english":s.key}" data-nav>← ${esc(s.name)}</a>
-    <header class="pagehead"><span class="kicker">Mock · this paper only</span><h1>${esc(s.name)}</h1><p class="lede">${esc(s.note)}</p></header>
-    <div class="facts">
-      <div class="fact"><b>${m.minutes} min</b><span>${m.kind==="speak"?"Three cue cards":esc(m.read)+" and "+esc(m.write)}</span></div>
-      <div class="fact"><b>${esc(s.score)}</b><span>The scale named on this paper</span></div>
-      <div class="fact"><b>1 credit</b><span>${S.credits} left on this desk</span></div>
-      <div class="fact"><b>Separate</b><span>Not the mock used by the other exams</span></div>
+
+/* ---------- exam pages ---------- */
+function switcher(k, on){
+  return `<nav class="switch" aria-label="${EXAMS[k].name} pages"><a href="/${k}" data-nav class="${on==="o"?"on":""}">Overview</a><a href="/${k}/mock-test" data-nav class="${on==="m"?"on":""}">Mock test</a></nav>`;
+}
+function examPage(k){
+  const e = EXAMS[k], c = TC[k] || {}, m = MOCKS[k];
+  const course = c.course ? `<div class="tile t-light c8 prose"><span class="kicker">About the course</span>${paras(c.course)}</div>`
+    : SLOTS ? slotTile("c8", "About the course", `${k}.course`) : "";
+  return `${chrome(k)}<article class="page"><div class="wrap">
+    ${switcher(k,"o")}
+    <div class="bento">
+      <header class="tile t-plum c8 r2"><span class="kicker">${e.kicker}</span><h1 class="big huge" data-split>${e.name}</h1><p class="lede-l">${c.intro?esc(c.intro):e.lede}</p>
+        <div class="row"><a class="btn" href="/${k}/mock-test" data-nav>Take the ${e.name} mock</a><a class="btn ghost light" href="/#contact" data-nav>Ask the academy</a></div></header>
+      <div class="tile t-gold c4 r2 m-full"><span class="kicker">${e.scaleUnit}</span><b class="big huge">${e.scale}</b><p>${e.official}</p></div>
+      ${e.sections.map(([n,d,i])=>`<div class="tile t-light c3 lift"><span class="ico">${ico(i)}</span><b class="tname">${n}</b><p>${d}</p></div>`).join("")}
+      ${course}
+      <div class="tile t-ink ${course?"c4":"c12"}"><span class="kicker">Test length</span><b class="big">${e.length}</b><p>${e.lengthNote}</p></div>
+      <a class="tile t-lilac c12" href="/${k}/mock-test" data-nav><span class="kicker">TestKaro · ${e.name} mock test</span><b class="big mid">${esc(m.title)}</b><p>${esc(m.short)} · ${m.minutes} minutes · scored on the ${e.name} scale.</p><div class="row">${m.sections.map(s=>`<span class="chip">${esc(s.label)}</span>`).join("")}</div><span class="go">→</span></a>
     </div>
-    <section class="split"><div><h2>What you sit</h2><ul class="ticks">${bits.join("")}</ul></div>
-      <aside class="gloss"><span class="kicker">${esc(s.short)}</span><p>${esc(s.desk.slice(0,3).join(". "))}.</p>${start}</aside></section>
+    <p class="fine-note">${e.body}</p>
   </div></article>${footer()}`;
 }
+function spokenPage(){
+  const c = TC.spoken || {};
+  const course = c.course ? `<div class="tile t-light c12 prose"><span class="kicker">About the course</span>${paras(c.course)}</div>` : SLOTS ? slotTile("c12","About the course","spoken.course") : "";
+  return `${chrome("spoken")}<article class="page"><div class="wrap">
+    <div class="bento">
+      <header class="tile t-plum c8 r2"><span class="kicker">${SPOKEN.kicker}</span><h1 class="big huge" data-split>Spoken English</h1><p class="lede-l">${c.intro?esc(c.intro):SPOKEN.lede}</p><div class="row"><a class="btn" href="/#contact" data-nav>Book a level</a></div></header>
+      <div class="tile t-gold c4 r2 m-full"><span class="kicker">Levels</span><b class="big huge" data-count="3">3</b><p>Beginner, intermediate and advanced.</p></div>
+      ${SPOKEN.levels.map((lv,i)=>`<article class="tile ${["t-light","t-cream","t-lilac"][i]} c4 r2 level m-full" id="${lv.id}"><span class="kicker">${lv.k}</span><h2>${lv.t}</h2><p>${lv.d}</p><ul>${lv.points.map(p=>`<li>${p}</li>`).join("")}</ul></article>`).join("")}
+      ${course}
+    </div>
+  </div></article>${footer()}`;
+}
+function mockPage(k){
+  const e = EXAMS[k], m = MOCKS[k], c = TC[k] || {};
+  const write = c.mock ? `<div class="tile t-light c12 prose"><span class="kicker">About this mock</span>${paras(c.mock)}</div>` : SLOTS ? slotTile("c12","About this mock",`${k}.mock`) : "";
+  return `${chrome(k)}<article class="page"><div class="wrap">
+    ${switcher(k,"m")}
+    <div class="bento">
+      <header class="tile t-plum c8 r2"><span class="kicker">TestKaro · ${e.official}</span><h1 class="big" style="font-size:clamp(44px,6vw,80px)" data-split>${e.name} mock test</h1>
+        <p class="lede-l">${esc(m.title)}. ${esc(m.short)}, timed for ${m.minutes} minutes and scored on the ${e.name} scale.</p>
+        <div class="row"><button class="btn" type="button" data-startexam="${k}">Start the ${e.name} mock · 1 credit</button><span class="credit">${S.credits} credit${S.credits===1?"":"s"} left</span></div></header>
+      <div class="tile t-gold c4 r2 m-full"><span class="kicker">Scored as</span><b class="big huge">${e.scale}</b><p>${e.scaleUnit}. A practice estimate, not an official score.</p></div>
+      <div class="tile t-ink c6 r2"><span class="kicker">What is in this mock</span>
+        <div class="seclist">${m.sections.map(s=>`<div><b>${esc(s.label)}</b><span>${s.kind==="mcq"?`${s.questions.length} questions`:`${s.minWords}+ words`} · ${s.time}</span></div>`).join("")}</div>
+        <div class="timebar"><span>Total time</span><b>${m.minutes} min</b></div></div>
+      <div class="tile t-light c6 r2"><span class="kicker">The real ${e.official}</span><ul class="fmt">${e.sections.map(([n,d])=>`<li><b>${n}</b><span>${d}</span></li>`).join("")}</ul><p style="margin-top:auto;font-size:13px">${e.length} · ${e.lengthNote}</p></div>
+      ${write}
+      <div class="tile t-lilac c12"><span class="kicker">How it works</span><ol class="steps4"><li><b>Pay</b><span>Scan the UPI QR for a pack.</span></li><li><b>Unlock</b><span>The academy checks the UTR and adds your credits.</span></li><li><b>Sit</b><span>Start the ${e.name} mock. The timer runs.</span></li><li><b>Result</b><span>See your ${e.name} estimate and every answer.</span></li></ol></div>
+      ${packTiles("c4 m-full")}
+      <div class="tile t-cream c12"><span class="kicker">Other exam mocks</span><div class="row">${ORDER.filter(x=>x!==k).map(x=>`<a class="chip" href="/${x}/mock-test" data-nav>${EXAMS[x].name} mock →</a>`).join("")}</div></div>
+    </div>
+    <p class="fine-note">${e.body}</p>
+  </div></article>${footer()}`;
+}
+
+/* ---------- founder, testimonials ---------- */
 function founderPage(){
-  const li = FOUNDER_LINKEDIN
-    ? `<a class="btn" href="${FOUNDER_LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>`
+  const li = FOUNDER_LINKEDIN ? `<a class="btn" href="${FOUNDER_LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>`
     : `<span class="btn ghost" id="founder-link">LinkedIn</span><p class="muted">Space for the founder’s LinkedIn profile.</p>`;
   return `${chrome("founder")}<article class="page"><div class="wrap">
-    <a class="back" href="/" data-nav>← Home</a>
+    <a class="back muted" href="/" data-nav style="font-size:13px;font-weight:700;text-decoration:none">← Home</a>
     <div class="founder-layout">
-      <figure class="portrait">
-        <img src="/images/founder.jpg" alt="Founder of IELTS Mind Map Academy" onerror="this.remove()">
-        <span class="portrait-slot">Photograph</span>
-      </figure>
+      <figure class="portrait reveal" style="margin:0"><img src="/images/founder.jpg" alt="Founder of IELTS Mind Map Academy" onerror="this.remove()"><span class="portrait-slot">Photograph</span></figure>
       <div class="founder-copy">
         <span class="kicker">Before the testimonials</span>
-        <h1>Founder</h1>
+        <h1 data-split>Founder</h1>
         <p class="lede">The person who started IELTS Mind Map Academy in 2022.</p>
         <p>This page sits ahead of the reviews, so a reader can see who teaches. The portrait is the founder. The LinkedIn profile is the longer record.</p>
-        <p>The academy maps a paper, then times it on TestKaro. Mistakes stay in the lesson. That is the line on the logo, and it is how the class is run.</p>
-        <div class="founder-actions">${li}<a class="btn ghost" href="/testimonials" data-nav>Testimonials</a></div>
+        <div class="row">${li}<a class="btn ghost" href="/testimonials" data-nav>Testimonials</a></div>
       </div>
     </div>
   </div></article>${footer()}`;
@@ -865,20 +855,21 @@ function stories(){
     ["ielts","The cue-card map stopped the silence in speaking part 2. I still make mistakes. I can see them now.","Meera S.","IELTS"],
     ["pte","Hearing the pause on the recording was more useful than another grammar list.","Arjun P.","PTE"],
     ["toefl","Lecture notes finally had a shape: claim, example, contrast.","Lina K.","TOEFL"],
-    ["gmat","Data Insights stopped looking like a pile of charts and started looking like a route.","Rahul D.","GMAT"],
+    ["gmat","Data Insights stopped looking like a pile of charts.","Rahul D.","GMAT"],
     ["gre","The words stayed when they sat in a cluster, not in a list of a hundred.","Sara N.","GRE"],
     ["spoken","I asked for a gate change and stayed in English the whole time.","Kabir V.","Spoken English"]
   ];
   const shots=[["ielts","7.5","IELTS Academic"],["pte","76","PTE Academic"],["toefl","102","TOEFL iBT"],["spoken","Level 02","Spoken English"]];
   return `${chrome("stories")}<article class="page stories"><div class="wrap">
-    <header class="pagehead"><span class="kicker">Testimonials</span><h1>What students take with them.</h1><p class="lede">Reviews and score reports for every programme live on this page.</p></header>
-    <div class="filters" role="tablist"><button type="button" data-filter="all" class="on">All</button>${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>`<button type="button" data-filter="${k}">${k==="spoken"?"Spoken":k.toUpperCase()}</button>`).join("")}</div>
-    <div class="quotes">${quotes.map(q=>`<figure class="quote" data-story="${q[0]}"><q>${q[1]}</q><footer><b>${q[2]}</b><span>${q[3]}</span></footer></figure>`).join("")}</div>
+    <header class="pagehead"><span class="kicker">Testimonials</span><h1 data-split>What students take with them.</h1><p class="lede">Reviews and score reports for every programme.</p></header>
+    <div class="filters"><button type="button" data-filter="all" class="on">All</button>${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>`<button type="button" data-filter="${k}">${k==="spoken"?"Spoken":k.toUpperCase()}</button>`).join("")}</div>
+    <div class="quotes">${quotes.map(q=>`<figure class="tile t-light quote" data-story="${q[0]}"><q>${q[1]}</q><footer><b>${q[2]}</b><span>${q[3]}</span></footer></figure>`).join("")}</div>
     <h2 style="margin:32px 0 8px">Score reports</h2>
     <div class="shots">${shots.map(s=>`<figure class="shot" data-story="${s[0]}"><div class="plaque"><b>${s[1]}</b><span>${s[2]}</span></div><figcaption>${s[2]}</figcaption></figure>`).join("")}</div>
   </div></article>${footer()}`;
 }
 
+/* ---------- buying ---------- */
 function drawQR(cv){
   const n=25,ctx=cv.getContext("2d"),sz=cv.width/n;ctx.fillStyle="#fff";ctx.fillRect(0,0,cv.width,cv.width);ctx.fillStyle="#241244";
   let seed=7;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
@@ -891,7 +882,7 @@ function openBuy(id,step=1){
   const steps=`<div class="stepper"><span class="${step>=1?"on":""}">1. Pay</span><span class="${step>=2?"on":""}">2. Confirm</span><span class="${step>=3?"on":""}">3. Done</span></div>`;
   let body="";
   if(step===1) body=`${steps}
-    <div style="display:flex;justify-content:space-between;align-items:center"><div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div><div class="price" style="font-family:var(--f-display);font-weight:800;font-size:28px">${inr(p.price)}</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><div><b>${esc(p.name)}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}, any exam</div></div><div style="font-family:var(--f-display);font-weight:800;font-size:28px">${inr(p.price)}</div></div>
     <div class="qrbox"><canvas id="qr" width="250" height="250"></canvas><div style="display:grid;gap:8px"><b>Scan with any UPI app</b><span class="muted" style="font-size:13px">GPay, PhonePe, Paytm or BHIM. Pay exactly ${inr(p.price)}.</span><span class="upi">testkaro@okaxis</span><span class="muted" style="font-size:12px">Academy UPI code. Replace the image from the admin panel if you use your own QR.</span></div></div>
     <button class="btn" type="button" data-buystep="${id}:2">I've paid, continue</button>`;
   if(step===2) body=`${steps}
@@ -907,223 +898,197 @@ function openBuy(id,step=1){
   const cv=$("#qr");if(cv)qrInto(cv);
 }
 
-let TESTS=Object.entries(SERVICES).map(([k,s])=>({code:s.short,exam:k,name:s.name+" mock",meta:s.mock.kind==="speak"?"Three cue cards · "+s.mock.minutes+" min":s.mock.read+" + "+s.mock.write+" · "+s.mock.minutes+" min"}));
-function examFromCode(code){
-  const c=String(code||"").toLowerCase();
-  if(c.includes("pte"))return "pte";
-  if(c.includes("toefl"))return "toefl";
-  if(c.includes("gmat"))return "gmat";
-  if(c.includes("gre"))return "gre";
-  if(c.includes("speak"))return "spoken";
-  return "ielts";
-}
-function paperOf(test){return SERVICES[(test&&test.exam)||examFromCode(test&&test.code)]||SERVICES.ielts}
-const showMark=a=>a.mark||(typeof a.band==="number"?a.band.toFixed(1):"—");
+/* ---------- student desk ---------- */
 function chart(){
-  const a=S.attempts.filter(d=>typeof d.band==="number").slice(-6);
-  if(!a.length)return `<p class="muted">The band line is for IELTS only. PTE, TOEFL, GMAT, GRE and Spoken English keep their own result.</p>`;
+  const a=S.attempts.filter(x=>x.exam==="ielts").slice(-6);
+  if(a.length<2) return `<p class="muted" style="font-size:14px">Sit two IELTS mocks to see a trend.</p>`;
   const W=520,H=190,pl=34,pr=14,pt=14,pb=30,min=4,max=8;
-  const x=i=>pl+(a.length===1?0:i*(W-pl-pr)/(a.length-1)),y=b=>pt+(max-b)/(max-min)*(H-pt-pb);
-  const pts=a.map((d,i)=>[x(i),y(d.band)]);
+  const x=i=>pl+i*(W-pl-pr)/(a.length-1),y=b=>pt+(max-b)/(max-min)*(H-pt-pb);
+  const pts=a.map((d,i)=>[x(i),y(d.score)]);
   const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
   const area=line+` L${pts.at(-1)[0]} ${H-pb} L${pts[0][0]} ${H-pb} Z`;
-  let g="";for(let b=min;b<=max;b++){g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(b)}" y2="${y(b)}" stroke="var(--line)" stroke-width="1"/><text x="${pl-8}" y="${y(b)+4}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--f-mono)">${b}.0</text>`}
+  let g="";for(let b=min;b<=max;b++){g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(b)}" y2="${y(b)}" stroke="var(--line)"/><text x="${pl-8}" y="${y(b)+4}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--f-mono)">${b}.0</text>`}
   const tgt=`<line x1="${pl}" x2="${W-pr}" y1="${y(7)}" y2="${y(7)}" stroke="var(--band)" stroke-dasharray="4 4" stroke-width="1.5"/><text x="${W-pr}" y="${y(7)-6}" text-anchor="end" font-size="11" fill="var(--band)" font-weight="600">Target 7.0</text>`;
   const labels=a.map((d,i)=>`<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="11" fill="var(--muted)">${d.date}</text>`).join("");
-  const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?5:3.5}" fill="${i===pts.length-1?"var(--accent)":"var(--surface)"}" stroke="var(--accent)" stroke-width="2"/>`).join("");
-  const last=pts.at(-1);
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="IELTS band over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
+  const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?5:3.5}" fill="${i===pts.length-1?"var(--accent)":"#fff"}" stroke="var(--accent)" stroke-width="2"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="IELTS band over the last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}${labels}</svg>`;
 }
 function sideNav(items,cur,role){
   return `<aside class="side"><a class="logo" href="/" data-nav style="font-size:16px;padding:4px 8px;text-decoration:none">${LOGO}TestKaro</a>
   <nav>${items.map(([k,l])=>`<button type="button" data-sub="${role}:${k}" class="${cur===k?"on":""}">${l}</button>`).join("")}</nav>
   <div class="who"><div class="av">${role==="admin"?"AD":"AM"}</div><div><b>${role==="admin"?"Admin":ME.name}</b><div class="muted" style="font-size:12px">${role==="admin"?"Owner":ME.email}</div></div></div></aside>`;
 }
-function student(){
-  const bands=S.attempts.map(a=>a.band).filter(n=>typeof n==="number");
-  const best=bands.length?Math.max(...bands):null,last=S.attempts.at(-1);
-  const testList=`<div class="tlist">${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>{
-    const rows=TESTS.map((t,i)=>({t,i})).filter(x=>(x.t.exam||examFromCode(x.t.code))===k);
-    if(!rows.length)return "";
-    return `<h3 style="margin:14px 0 8px">${esc(SERVICES[k].name)}</h3>`+rows.map(({t,i})=>`<div class="trow"><div class="badge">${esc(t.code)}</div><div class="info"><b>${esc(t.name)}</b><span>${esc(t.meta)}</span></div><button class="btn sm" type="button" data-start="${t.exam||k}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("");
-  }).join("")}</div>
+function testList(){
+  return `<div class="tlist">${TESTS.map((t,i)=>`<div class="trow"><div class="badge">${esc(t.code)}</div><div class="info"><b>${esc(t.name)}</b><span>${esc(t.meta)}</span></div><button class="btn sm" type="button" data-start="${i}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("")}</div>
     ${S.credits<1?`<p style="margin-top:12px;font-size:14px">You have no credits left. <a href="#" data-buylink="p5" style="color:var(--accent);font-weight:700">Buy a pack</a> to start another test.</p>`:""}`;
-  const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Date</th><th>Result</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${esc(a.name)}</td><td class="muted">${esc(a.date)}</td><td><b class="mono">${esc(showMark(a))}</b></td></tr>`).join("")}</tbody></table></div>`;
+}
+function student(){
+  const last=S.attempts.at(-1), exams=new Set(S.attempts.map(a=>a.exam)).size;
+  const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Exam</th><th>Date</th><th>Score</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${esc(a.name)}</td><td>${EXAMS[a.exam]?.name||""}</td><td class="muted">${a.date}</td><td><b class="mono">${a.label}</b></td></tr>`).join("")}</tbody></table></div>`;
   let content="";
   if(S.sub==="dash") content=`
     <div class="head"><div><span class="muted" style="font-size:14px">Welcome back,</span><h1>${ME.name.split(" ")[0]}</h1></div><button class="btn" type="button" data-buylink="p5">Buy more tests</button></div>
-    <div class="tiles">
-      <div class="card tile"><span>Test credits left</span><b style="color:${S.credits?"var(--ink)":"var(--bad)"}">${S.credits}</b><small>Each credit = 1 full mock</small></div>
-      <div class="card tile"><span>Latest result</span><b style="color:var(--band)">${showMark(last)}</b><small>${esc(last.name.split(" · ")[0])}</small></div>
-      <div class="card tile"><span>Best IELTS band</span><b>${best==null?"—":best.toFixed(1)}</b><small>Target 7.0</small></div>
-      <div class="card tile"><span>Tests taken</span><b>${S.attempts.length}</b><small>Since 28 Sep</small></div>
+    <div class="stats">
+      <div class="card stat-c"><span>Test credits left</span><b style="color:${S.credits?"var(--ink)":"var(--bad)"}">${S.credits}</b><small>One credit, one mock, any exam</small></div>
+      <div class="card stat-c"><span>Latest score</span><b style="color:var(--band)">${last.label}</b><small>${esc(last.name)}</small></div>
+      <div class="card stat-c"><span>Tests taken</span><b>${S.attempts.length}</b><small>Since 28 Sep</small></div>
+      <div class="card stat-c"><span>Exams practised</span><b>${exams}</b><small>Of 5 on the desk</small></div>
     </div>
     <div class="grid2">
-      <div class="card panel"><h3>Band score trend <span class="pill">Last ${Math.min(6,S.attempts.length)} attempts</span></h3><div class="chart">${chart()}</div></div>
-      <div class="card panel"><h3>Start a mock test</h3>${testList}</div>
+      <div class="card panel"><h3>IELTS band trend <span class="pill">Last ${Math.min(6,S.attempts.filter(a=>a.exam==="ielts").length)} IELTS mocks</span></h3><div class="chart">${chart()}</div></div>
+      <div class="card panel"><h3>Start a mock test</h3>${testList()}</div>
     </div>`;
-  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><span class="pill acc">${S.credits} credit${S.credits===1?"":"s"} left</span></div><div class="card panel">${testList}</div>`;
+  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1><span class="pill acc">${S.credits} credit${S.credits===1?"":"s"} left</span></div><div class="card panel">${testList()}</div>`;
   if(S.sub==="results") content=`<div class="head"><h1>My results</h1></div><div class="card panel">${history}</div>`;
-  if(S.sub==="buy") content=`<div class="head"><h1>Buy tests</h1></div><div class="packs">${S.packs.map(p=>`<div class="card pack"><b>${p.name}</b><div class="price">${inr(p.price)} <small>/ ${p.tests} test${p.tests>1?"s":""}</small></div><button class="btn" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>`;
+  if(S.sub==="buy") content=`<div class="head"><h1>Buy tests</h1></div><div class="packrow">${S.packs.map(p=>`<div class="card"><b>${esc(p.name)}</b><div style="font-family:var(--f-display);font-weight:800;font-size:36px">${inr(p.price)} <small style="font-size:14px;color:var(--muted)">/ ${p.tests} test${p.tests>1?"s":""}</small></div><button class="btn" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button></div>`).join("")}</div>`;
   return `<div class="shell">${sideNav([["dash","Dashboard"],["tests","Mock tests"],["results","My results"],["buy","Buy tests"]],S.sub,"student")}<main class="main">${content}</main></div>`;
 }
 
-function activePaper(){return paperOf(TESTS[S.test.i])}
-function startTest(key){
-  if(S.credits<1)return;
-  const i=typeof key==="number"?key:TESTS.findIndex(t=>(t.exam||examFromCode(t.code))===key);
-  if(i<0)return;
-  const m=paperOf(TESTS[i]).mock;
-  S.credits--;
-  S.test=m.kind==="speak"
-    ?{i,kind:"speak",card:0,left:120,phase:"taking"}
-    :{i,kind:"paper",tab:"reading",ans:{},essay:"",left:m.minutes*60,phase:"taking"};
-  S.view="test";
-  render();window.scrollTo(0,0);
-  clearInterval(timerInt);
-  timerInt=setInterval(()=>{
-    if(!S.test||S.test.phase!=="taking")return;
-    S.test.left--;
-    const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<30)}
-    if(S.test.left<=0){if(S.test.kind==="speak")nextCard();else submitTest()}
-  },1000);
-  toast(`1 credit used · ${S.credits} left`);
+/* ---------- test room ---------- */
+const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+const words=t=>(String(t||"").trim().match(/\S+/g)||[]).length;
+function startExam(k){
+  const i=TESTS.findIndex(t=>t.exam===k);
+  if(S.credits<1){openBuy("p1");toast("No credits left. Buy a test to start the "+EXAMS[k].name+" mock.");return}
+  startTest(i);
 }
-function nextCard(){
-  const T=S.test;if(!T||T.kind!=="speak"||T.phase!=="taking")return;
-  const cards=activePaper().mock.cards;
-  if(T.card<cards.length-1){T.card++;T.left=120;render();return}
-  clearInterval(timerInt);timerInt=null;T.phase="done";T.result={spoken:true};
-  S.attempts.push({name:TESTS[T.i].name,date:"Today",band:null,mark:"Drill done"});
-  render();window.scrollTo(0,0);
+function startTest(i){
+  const t=TESTS[i];if(!t||S.credits<1)return;S.credits--;
+  const mock=MOCKS[t.exam];
+  S.test={i,exam:t.exam,mock,name:t.name,tab:0,swap:true,ans:{},essay:{},left:mock.minutes*60,phase:"taking"};
+  S.view="test";render();window.scrollTo(0,0);
+  clearInterval(timerInt);timerInt=setInterval(()=>{if(!S.test||S.test.phase!=="taking")return;S.test.left--;const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<300)}if(S.test.left<=0)submitTest()},1000);
+  toast(`${EXAMS[t.exam].name} mock started · ${S.credits} credit${S.credits===1?"":"s"} left`);
 }
-const fmt=s=>String(Math.max(0,Math.floor(s/60))).padStart(2,"0")+":"+String(Math.max(0,s%60)).padStart(2,"0");
-const words=t=>(t.trim().match(/\S+/g)||[]).length;
+function answered(T,si){const s=T.mock.sections[si];return s.kind==="mcq"?s.questions.filter((q,qi)=>T.ans[si+":"+qi]!=null).length:0}
 function testRoom(){
-  const T=S.test,meta=TESTS[T.i],paper=paperOf(meta),m=paper.mock;
-  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>Marking your test</h2><p class="muted">Checking this ${esc(paper.name)} paper…</p></div></div>`;
+  const T=S.test;
+  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>Marking your ${EXAMS[T.exam].name} mock</h2><p class="muted">Checking answers and scoring on the ${EXAMS[T.exam].name} scale…</p></div></div>`;
   if(T.phase==="done") return results();
-  if(T.kind==="speak"){
-    const card=m.cards[T.card];
-    return `<div class="troom"><div class="tbar"><div class="wrap">
-      <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${esc(meta.name)}</span></div>
-      <div class="tabs"><button type="button" class="on">Card ${T.card+1} of ${m.cards.length}</button></div>
-      <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time on this card</span><span class="timer ${T.left<30?"low":""}" id="timer">${fmt(T.left)}</span></div>
-    </div></div>
-    <div class="wrap" style="padding-block:28px 48px;display:grid;gap:16px;max-width:760px">
-      <span class="kicker">${esc(card.level)}</span>
-      <h2>Say this out loud</h2>
-      <p class="lede">${esc(card.prompt)}</p>
-      <p class="muted">No passage and no essay on this paper. When the two minutes finish, go to the next card.</p>
-      <div><button class="btn" type="button" data-next>${T.card===m.cards.length-1?"Finish the drill":"Next card"}</button></div>
-    </div></div>`;
+  const m=T.mock,si=T.tab,s=m.sections[si],last=si===m.sections.length-1;
+  const nav=`<div style="display:flex;justify-content:space-between;gap:8px;margin-top:18px;flex-wrap:wrap">${si>0?`<button class="btn ghost" type="button" data-tab="${si-1}">← ${esc(m.sections[si-1].label)}</button>`:"<span></span>"}<span class="row">${s.kind==="essay"?`<button class="btn ghost" type="button" data-model>Insert model answer</button>`:""}${last?`<button class="btn" type="button" data-submit>Submit test</button>`:`<button class="btn" type="button" data-tab="${si+1}">Next: ${esc(m.sections[si+1].label)} →</button>`}</span></div>`;
+  let left="",right="",single=false;
+  if(s.kind==="mcq"){
+    if(s.passage) left=`<span class="kicker">${esc(s.label)}</span><h2>${esc(s.passage.title)}</h2>${s.passage.paras.map(p=>p.startsWith("<table")?p:`<p>${esc(p)}</p>`).join("")}`;
+    else single=true;
+    right=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>${esc(s.label)} · Questions 1–${s.questions.length}</b><div class="palette">${s.questions.map((q,qi)=>`<span class="${T.ans[si+":"+qi]!=null?"a":""}">${qi+1}</span>`).join("")}</div></div>
+      ${s.questions.map((q,qi)=>`<div class="q">${q.ctx?`<div class="ctx">${esc(q.ctx)}</div>`:""}<div class="qt"><span class="qn">${qi+1}</span><span>${esc(q.t)}</span></div><div class="opts">${q.o.map((o,oi)=>`<label class="opt ${T.ans[si+":"+qi]===oi?"sel":""}"><input type="radio" name="q${si}_${qi}" data-ans="${si}:${qi}:${oi}" ${T.ans[si+":"+qi]===oi?"checked":""}><span>${esc(o)}</span></label>`).join("")}</div></div>`).join("")}${nav}`;
+  } else {
+    left=`<span class="kicker">${esc(s.label)}</span><h2>${s.maxWords?`${s.minWords}–${s.maxWords} words`:`At least ${s.minWords} words`}</h2><p>${esc(s.prompt)}</p>
+      ${s.posts?`<div class="posts">${s.posts.map((p,i)=>`<div class="post ${i===0?"prof":""}"><b>${esc(p.who)}</b>${esc(p.text)}</div>`).join("")}</div>`:""}
+      <p class="muted" style="font-size:14px;margin-top:12px">${esc(s.guide)} This score is a practice estimate.</p>`;
+    right=`<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing here…">${esc(T.essay[si]||"")}</textarea>
+      <div class="wc"><span id="wc">${words(T.essay[si])} words</span><span>${s.maxWords?`${s.minWords}–${s.maxWords} words`:`Minimum ${s.minWords}`}</span></div>${nav}`;
   }
-  const qs=m.questions,answered=Object.keys(T.ans).length;
-  const left=T.tab==="reading"
-    ? `<span class="kicker">${esc(m.read)}</span><h2>${esc(m.passage.title)}</h2>${m.passage.paras.map(p=>`<p>${esc(p)}</p>`).join("")}`
-    : `<span class="kicker">${esc(m.write)}</span><h2>At least ${m.minWords} words</h2><p>${esc(m.prompt)}</p><p class="muted" style="font-size:14px">This task belongs to the ${esc(paper.name)} mock. The mark is a practice estimate.</p>`;
-  const right=T.tab==="reading"
-    ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>Questions 1–${qs.length}</b><div class="palette">${qs.map((q,i)=>`<span class="${T.ans[i]!=null?"a":""}">${i+1}</span>`).join("")}</div></div>
-       ${qs.map((q,i)=>`<div class="q"><div class="qt"><span class="qn">${i+1}</span><span>${esc(q.t)}</span></div><div class="opts">${q.o.map((o,j)=>`<label class="opt ${T.ans[i]===j?"sel":""}"><input type="radio" name="q${i}" id="q${i}o${j}" data-ans="${i}:${j}" ${T.ans[i]===j?"checked":""}><span>${esc(o)}</span></label>`).join("")}</div></div>`).join("")}
-       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" type="button" data-tab="writing">Next: ${esc(m.write)} →</button></div>`
-    : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing here…">${esc(T.essay)}</textarea>
-       <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum ${m.minWords}</span></div>
-       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-model>Insert model answer</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
-  return `<div class="troom"><div class="tbar"><div class="wrap">
-    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${esc(meta.name)}</span></div>
-    <div class="tabs"><button type="button" data-tab="reading" class="${T.tab==="reading"?"on":""}">${esc(m.read)} · ${answered}/${qs.length}</button><button type="button" data-tab="writing" class="${T.tab==="writing"?"on":""}">${esc(m.write)}</button></div>
-    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<30?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" type="button" data-submit>Submit</button></div>
+  const out=`<div class="troom"><div class="tbar"><div class="wrap">
+    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${esc(T.name)}</span></div>
+    <div class="tabs">${m.sections.map((x,i)=>`<button type="button" data-tab="${i}" class="${i===si?"on":""}">${esc(x.label)}${x.kind==="mcq"?` · ${answered(T,i)}/${x.questions.length}`:""}</button>`).join("")}</div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<300?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" type="button" data-submit>Submit</button></div>
   </div></div>
-  <div class="tbody"><div class="passage">${left}</div><div>${right}</div></div></div>`;
+  <div class="tbody ${single?"single":""} ${T.swap?"swap":""}">${single?"":`<div class="passage">${left}</div>`}<div>${right}</div></div></div>`;
+  T.swap=false;return out;
 }
+function mcqStat(T,si){const s=T.mock.sections[si];const c=s.questions.filter((q,qi)=>T.ans[si+":"+qi]===q.a).length;return {c,n:s.questions.length,p:c/s.questions.length}}
+function essayStat(T,si){
+  const s=T.mock.sections[si],t=T.essay[si]||"",w=words(t),p=t.split(/\n\s*\n/).filter(x=>x.trim()).length,link=/however|whereas|in addition|for example|on the other hand|therefore|in conclusion|although|firstly|secondly/i.test(t);
+  let f=w?Math.min(1,w/s.minWords)*.6+(p>=3?.15:0)+(link?.15:0)+(w>=s.minWords?.1:0):0;
+  if(s.maxWords&&w>s.maxWords)f-=.1;
+  return {w,p,link,f:Math.max(0,Math.min(1,f)),min:s.minWords,max:s.maxWords};
+}
+const SCORE={
+  ielts(T){const r=mcqStat(T,0),w=essayStat(T,1);const rb=half(3+5.5*r.p),wb=w.w?half(4+3.5*w.f):1,o=half((rb+wb)/2);
+    return {score:o,label:`Band ${o.toFixed(1)}`,head:{text:o.toFixed(1),sub:"overall band, out of 9",frac:o/9},
+      parts:[{label:`Reading · ${r.c}/${r.n} correct`,value:rb.toFixed(1),frac:rb/9},{label:`Writing Task 2 · ${w.w} words`,value:wb.toFixed(1),frac:wb/9}],essay:w}},
+  pte(T){const r=mcqStat(T,0),w=essayStat(T,1);const rs=Math.round(10+80*r.p),ws=w.w?Math.round(10+80*w.f):10,o=Math.round((rs+ws)/2);
+    return {score:o,label:`${o} / 90`,head:{text:String(o),sub:"overall, on the 10–90 scale",frac:(o-10)/80},
+      parts:[{label:`Reading · ${r.c}/${r.n} correct`,value:rs,frac:(rs-10)/80},{label:`Write Essay · ${w.w} words`,value:ws,frac:(ws-10)/80}],essay:w}},
+  toefl(T){const r=mcqStat(T,0),w=essayStat(T,1);const rb=half(1+5*r.p),wb=w.w?half(1+5*w.f):1,o=half((rb+wb)/2);
+    return {score:o,label:`Band ${o.toFixed(1)}`,head:{text:o.toFixed(1),sub:"band, on the 1–6 scale",frac:o/6},
+      parts:[{label:`Reading · ${r.c}/${r.n} correct`,value:rb.toFixed(1),frac:rb/6},{label:`Academic Discussion · ${w.w} words`,value:wb.toFixed(1),frac:wb/6}],essay:w}},
+  gmat(T){const q=mcqStat(T,0),v=mcqStat(T,1),d=mcqStat(T,2),sc=p=>Math.round(60+30*p),qs=sc(q.p),vs=sc(v.p),ds=sc(d.p);
+    const tot=Math.min(805,Math.max(205,Math.round((205+(qs+vs+ds-180)/90*600-5)/10)*10+5));
+    return {score:tot,label:String(tot),head:{text:String(tot),sub:"total, on the 205–805 scale",frac:(tot-205)/600},
+      parts:[{label:`Quantitative · ${q.c}/${q.n}`,value:qs,frac:(qs-60)/30},{label:`Verbal · ${v.c}/${v.n}`,value:vs,frac:(vs-60)/30},{label:`Data Insights · ${d.c}/${d.n}`,value:ds,frac:(ds-60)/30}]}},
+  gre(T){const a=essayStat(T,0),v=mcqStat(T,1),q=mcqStat(T,2),vs=Math.round(130+40*v.p),qs=Math.round(130+40*q.p),aw=a.w?half(1+4.5*a.f):0;
+    return {score:vs+qs,label:`V${vs} · Q${qs}`,head:{text:String(vs+qs),sub:"Verbal + Quant, out of 340",frac:(vs+qs-260)/80},
+      parts:[{label:`Verbal · ${v.c}/${v.n}`,value:vs,frac:(vs-130)/40},{label:`Quant · ${q.c}/${q.n}`,value:qs,frac:(qs-130)/40},{label:`Analytical Writing · ${a.w} words`,value:aw.toFixed(1),frac:aw/6}],essay:a}}
+};
 function submitTest(){
-  const T=S.test;if(!T||T.kind==="speak"||T.phase!=="taking")return;const ta=$("#essay");if(ta)T.essay=ta.value;
+  const T=S.test;if(!T||T.phase!=="taking")return;const ta=$("#essay");if(ta)T.essay[T.tab]=ta.value;
   clearInterval(timerInt);timerInt=null;T.phase="eval";render();window.scrollTo(0,0);
   setTimeout(()=>{
-    const paper=paperOf(TESTS[T.i]),m=paper.mock,qs=m.questions;
-    const correct=qs.filter((q,i)=>T.ans[i]===q.a).length;
-    const w=words(T.essay);
-    const read=correct/qs.length, write=Math.min(1,w/m.minWords), mix=(read+write)/2;
-    const sc=m.scale;
-    let raw=sc.floor!=null?sc.floor+mix*(sc.max-sc.floor):mix*sc.max;
-    const shown=sc.step===0.5?Math.round(raw*2)/2:Math.round(raw);
-    const labels=paper.key==="ielts"?["Task response","Coherence","Vocabulary","Grammar"]:["Task","Organisation","Word choice","Control"];
-    let base=w<m.minWords*0.4?4:w<m.minWords?5.5:6.5;
-    const crit=labels.map((name,n)=>[name,Math.min(9,base+(n%2?0.5:0))]);
-    T.result={correct,shown,w,crit,qn:qs.length,spoken:false};
-    const mark=paper.key==="ielts"?shown.toFixed(1)+" band":shown+" "+sc.unit;
-    S.attempts.push({name:TESTS[T.i].name,date:"Today",band:paper.key==="ielts"?shown:null,mark});
-    T.phase="done";render();window.scrollTo(0,0);
-  },1200);
+    T.result=SCORE[T.exam](T);T.phase="done";
+    S.attempts.push({exam:T.exam,name:T.name,date:"Today",score:T.result.score,label:T.result.label});
+    render();window.scrollTo(0,0);
+  },1600);
 }
-function ring(b,max,unit){
-  const r=62,c=2*Math.PI*r,f=Math.max(0,Math.min(1,b/max));
-  const label=max>20?String(Math.round(b)): (max===9?Number(b).toFixed(1):String(b));
-  return `<svg class="ring-score" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--gold)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="78" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="${label.length>3?28:40}" fill="var(--ink)">${label}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">${esc(unit)}</text></svg>`;
+function ring(h){const r=66,c=2*Math.PI*r,f=Math.max(0,Math.min(1,h.frac));return `<svg class="ring-score" viewBox="0 0 160 160"><circle cx="80" cy="80" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle class="arc" style="--len:${(c*f).toFixed(1)}" cx="80" cy="80" r="${r}" fill="none" stroke="var(--gold)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 80 80)"/><text x="80" y="88" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="${h.text.length>3?32:40}" fill="var(--ink)">${h.text}</text></svg>`}
+function essayNotes(w){
+  if(!w.w) return [["bad","No answer was written for this task."]];
+  const n=[];
+  n.push(w.w<w.min?["bad",`${w.w} words. The task asks for at least ${w.min}.`]:["good",`${w.w} words, above the ${w.min}-word minimum.`]);
+  if(w.max&&w.w>w.max)n.push(["warn",`Over the ${w.max}-word limit.`]);
+  n.push(w.p>=3?["good",`${w.p} paragraphs, so the structure is easy to follow.`]:["warn","Split the answer into clear paragraphs."]);
+  n.push(w.link?["good","Linking words guide the reader between ideas."]:["warn","Add linking words such as \"however\" or \"for example\"."]);
+  return n;
 }
 function results(){
-  const T=S.test,R=T.result,paper=paperOf(TESTS[T.i]),m=paper.mock;
-  if(R.spoken) return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
-    <div class="head" style="margin:0"><div><span class="kicker">Speaking drill</span><h1 style="font-size:28px;margin-top:6px">${esc(TESTS[T.i].name)}</h1></div><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div>
-    <div class="card panel"><h3>Three cards finished</h3><p>Beginner, intermediate and advanced. This paper does not give a band, a PTE score, or a TOEFL score.</p></div></div>`;
-  const qs=m.questions;
-  const fb=R.w<m.minWords?[["bad",`The answer has ${R.w} words. This ${paper.name} task asks for at least ${m.minWords}.`],["warn","Stay on the task printed for this paper."]]:[["good","The answer meets the length asked for on this paper."],["warn","A practice mark is not an official result."]];
+  const T=S.test,R=T.result,e=EXAMS[T.exam],m=T.mock;
+  const review=m.sections.map((s,si)=>s.kind!=="mcq"?"":`<h4>${esc(s.label)}</h4>${s.questions.map((q,qi)=>{const a=T.ans[si+":"+qi],ok=a===q.a;return `<div><span class="pill ${ok?"good":"bad"}">${ok?"✓":"✗"} Q${qi+1}</span><span style="min-width:0;white-space:normal">${esc(q.o[q.a])}${!ok&&a!=null?` <span class="muted">(you chose: ${esc(q.o[a])})</span>`:""}${a==null?' <span class="muted">(not answered)</span>':""}</span></div>`}).join("")}`).join("");
   return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
-    <div class="head" style="margin:0"><div><span class="kicker">${esc(paper.name)} practice</span><h1 style="font-size:28px;margin-top:6px">${esc(TESTS[T.i].name)}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div></div>
-    <div class="card res-top">${ring(R.shown,m.scale.max,m.scale.unit)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Practice ${esc(showMark(S.attempts.at(-1)))}</b><p class="muted" style="font-size:14px">Estimate for this ${esc(paper.name)} mock only. Official scores come from the exam body.</p></div>
-      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,220px));margin:0"><div class="sec"><span>${esc(m.read)} · ${R.correct}/${R.qn}</span><b>${R.correct}</b></div><div class="sec"><span>${esc(m.write)} · ${R.w} words</span><b>${m.minWords}</b><div class="meter"><i style="width:${Math.min(100,R.w/m.minWords*100)}%"></i></div></div></div></div></div>
+    <div class="head" style="margin:0"><div><span class="kicker">${e.name} practice result</span><h1 style="font-size:28px;margin-top:6px">${esc(T.name)}</h1></div><div class="row"><a class="btn ghost" href="/${T.exam}/mock-test" data-nav>${e.name} mock page</a><button class="btn" type="button" data-go="student">Dashboard</button></div></div>
+    <div class="card res-top">${ring(R.head)}<div style="display:grid;gap:14px;min-width:0;width:100%"><div><b style="font-size:18px">Estimated ${R.head.text} · ${R.head.sub}</b><p class="muted" style="font-size:14px">Practice estimate from this desk. Official ${e.name} scores come only from the exam body.</p></div>
+      <div class="sec-grid">${R.parts.map(p=>`<div class="sec"><span>${p.label}</span><b>${p.value}</b><div class="meter"><i style="width:${Math.max(0,Math.min(1,p.frac))*100}%"></i></div></div>`).join("")}</div></div></div>
     <div class="grid2">
-      <div class="card panel"><h3>Writing notes <span class="pill acc">Estimate</span></h3>
-        <div class="crit">${R.crit.map(c=>`<div class="sec"><span>${esc(c[0])}</span><b class="mono">${c[1].toFixed(1)}</b></div>`).join("")}</div>
-        <div class="fb" style="margin-top:14px">${fb.map(f=>`<div><span class="dot" style="background:var(--${f[0]==="warn"?"band":f[0]})"></span><span>${f[1]}</span></div>`).join("")}</div>
-      </div>
-      <div class="card panel"><h3>${esc(m.read)} answers</h3><div class="review">${qs.map((q,i)=>{const ok=T.ans[i]===q.a;return `<div><span class="pill ${ok?"good":"bad"}">${ok?"✓":"✗"} Q${i+1}</span><span style="min-width:0;white-space:normal">${esc(q.o[q.a])}${!ok&&T.ans[i]!=null?` <span class="muted">(you chose: ${esc(q.o[T.ans[i]])})</span>`:""}${T.ans[i]==null?' <span class="muted">(not answered)</span>':""}</span></div>`}).join("")}</div></div>
+      ${R.essay?`<div class="card panel"><h3>Writing notes <span class="pill acc">Estimate</span></h3><div class="fb">${essayNotes(R.essay).map(f=>`<div><span class="dot" style="background:var(--${f[0]==="warn"?"band":f[0]})"></span><span>${f[1]}</span></div>`).join("")}</div></div>`:""}
+      <div class="card panel" ${R.essay?"":'style="grid-column:1/-1"'}><h3>Answers</h3><div class="review">${review}</div></div>
     </div></div>`;
 }
 
+/* ---------- admin ---------- */
 function admin(){
   const rev=S.granted.reduce((s,g)=>s+pk(g.pack).price,0)+2340;
   let content="";
   if(S.sub==="dash"||S.sub==="pay"){
     content=`<div class="head"><div><h1>Payments</h1><p class="muted" style="font-size:14px">Check each UTR, then grant access. The student is emailed when access is granted.</p></div></div>
-    <div class="tiles">
-      <div class="card tile"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs a check":"All clear"}</small></div>
-      <div class="card tile"><span>Active students</span><b>${148+S.granted.length}</b><small>With credits left</small></div>
-      <div class="card tile"><span>Tests taken this month</span><b>612</b><small>Practice marked</small></div>
-      <div class="card tile"><span>Revenue this month</span><b>${inr(rev)}</b><small>Via UPI</small></div>
+    <div class="stats">
+      <div class="card stat-c"><span>Waiting for approval</span><b style="color:${S.pending.length?"var(--band)":"var(--good)"}">${S.pending.length}</b><small>${S.pending.length?"Needs a check":"All clear"}</small></div>
+      <div class="card stat-c"><span>Active students</span><b>${148+S.granted.length}</b><small>With credits left</small></div>
+      <div class="card stat-c"><span>Tests taken this month</span><b>612</b><small>Across 5 exams</small></div>
+      <div class="card stat-c"><span>Revenue this month</span><b>${inr(rev)}</b><small>Via UPI</small></div>
     </div>
     <div style="display:grid;gap:18px">
-        <div class="card panel"><h3>Waiting for approval <span class="pill warn">${S.pending.length}</span></h3>
-          ${S.pending.length?`<div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>UTR</th><th>Submitted</th><th></th></tr></thead><tbody>
-          ${S.pending.map(p=>`<tr><td>${p.email}${p.email===ME.email?' <span class="pill acc">new</span>':""}</td><td>${pk(p.pack).tests} test${pk(p.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(p.pack).price)}</td><td class="mono">${p.utr}</td><td class="muted">${p.at}</td><td><div class="acts"><button class="btn good sm" type="button" data-grant="${p.id}">Grant access</button><button class="btn ghost sm" type="button" data-reject="${p.id}">Reject</button></div></td></tr>`).join("")}
-          </tbody></table></div>`:`<p class="muted">No payments waiting.</p>`}
-        </div>
+      <div class="card panel"><h3>Waiting for approval <span class="pill warn">${S.pending.length}</span></h3>
+        ${S.pending.length?`<div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>UTR</th><th>Submitted</th><th></th></tr></thead><tbody>
+        ${S.pending.map(p=>`<tr><td>${esc(p.email)}${p.email===ME.email?' <span class="pill acc">new</span>':""}</td><td>${pk(p.pack).tests} test${pk(p.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(p.pack).price)}</td><td class="mono">${p.utr}</td><td class="muted">${p.at}</td><td><div class="acts"><button class="btn good sm" type="button" data-grant="${p.id}">Grant access</button><button class="btn ghost sm" type="button" data-reject="${p.id}">Reject</button></div></td></tr>`).join("")}
+        </tbody></table></div>`:`<p class="muted">No payments waiting.</p>`}
+      </div>
       <div class="grid2">
         <div class="card panel"><h3>Access granted</h3><div class="tablewrap"><table><thead><tr><th>Student email</th><th>Pack</th><th>Amount</th><th>Status</th></tr></thead><tbody>
-          ${S.granted.map(g=>`<tr><td>${g.email}</td><td>${pk(g.pack).tests} test${pk(g.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(g.pack).price)}</td><td><span class="pill good">Email sent</span></td></tr>`).join("")}
+          ${S.granted.map(g=>`<tr><td>${esc(g.email)}</td><td>${pk(g.pack).tests} test${pk(g.pack).tests>1?"s":""}</td><td class="mono">${inr(pk(g.pack).price)}</td><td><span class="pill good">Email sent</span></td></tr>`).join("")}
         </tbody></table></div></div>
-      <div class="card panel"><h3>Last email sent</h3>
-        ${S.lastEmail?`<div class="emailprev"><div class="eh"><span><b>To:</b> ${S.lastEmail.to}</span><span><b>Subject:</b> Your TestKaro mock tests are unlocked</span></div><div class="eb"><b>Hi there,</b><p>We've received your payment of ${inr(S.lastEmail.price)}. ${S.lastEmail.tests} mock test${S.lastEmail.tests>1?"s have":" has"} been added to your account.</p><p>Log in and start your first test whenever you're ready.</p><span class="btn sm" style="justify-self:start">Start my test</span><span class="muted" style="font-size:12px">IELTS Mind Map Academy · TestKaro · UTR ${S.lastEmail.utr}</span></div></div>`:`<p class="muted" style="font-size:14px">Grant access to a payment to see the email the student receives.</p>`}
-      </div>
+        <div class="card panel"><h3>Last email sent</h3>
+          ${S.lastEmail?`<div class="emailprev"><div class="eh"><span><b>To:</b> ${esc(S.lastEmail.to)}</span><span><b>Subject:</b> Your TestKaro mock tests are unlocked</span></div><div class="eb"><b>Hi there,</b><p>We've received your payment of ${inr(S.lastEmail.price)}. ${S.lastEmail.tests} mock test${S.lastEmail.tests>1?"s have":" has"} been added to your account. Use them on any exam.</p><span class="btn sm" style="justify-self:start">Start my test</span><span class="muted" style="font-size:12px">IELTS Mind Map Academy · TestKaro · UTR ${S.lastEmail.utr}</span></div></div>`:`<p class="muted" style="font-size:14px">Grant access to a payment to see the email the student receives.</p>`}
+        </div>
       </div>
     </div>`;
   }
   if(S.sub==="packs") content=`<div class="head"><div><h1>Test packs &amp; QR</h1><p class="muted" style="font-size:14px">Changes show on the website straight away.</p></div></div>
     <div class="grid2"><div class="card panel"><h3>Packs and prices</h3><div class="packedit"><div class="pr muted" style="font-size:12px;font-weight:700"><span>Pack name</span><span>Tests</span><span>Price (₹)</span></div>
-      ${S.packs.map(p=>`<div class="pr"><input type="text" id="pn-${p.id}" value="${p.name}" data-pf="${p.id}:name"><input type="number" id="pt-${p.id}" min="1" value="${p.tests}" data-pf="${p.id}:tests"><input type="number" id="pp-${p.id}" min="1" value="${p.price}" data-pf="${p.id}:price"></div>`).join("")}
+      ${S.packs.map(p=>`<div class="pr"><input type="text" value="${esc(p.name)}" data-pf="${p.id}:name" aria-label="Pack name"><input type="number" min="1" value="${p.tests}" data-pf="${p.id}:tests" aria-label="Tests"><input type="number" min="1" value="${p.price}" data-pf="${p.id}:price" aria-label="Price"></div>`).join("")}
       <div><button class="btn sm" type="button" data-savepacks>Save prices</button></div></div></div>
       <div class="card panel"><h3>Payment QR code</h3><div class="drop">${S.qrImg?`<img src="${S.qrImg}" alt="Uploaded QR">`:`<canvas id="qr" width="200" height="200"></canvas>`}<div style="display:grid;gap:8px"><b style="font-size:14px">Your UPI QR</b><span class="muted" style="font-size:13px">Upload the QR from your UPI app. Students see it at checkout.</span><label class="btn ghost sm" style="justify-self:start">Upload QR image<input type="file" id="qrfile" accept="image/*" hidden></label></div></div></div></div>`;
-  if(S.sub==="tests") content=`<div class="head"><h1>Mock tests</h1></div>
+  if(S.sub==="tests") content=`<div class="head"><div><h1>Mock tests</h1><p class="muted" style="font-size:14px">Each test belongs to one exam and opens that exam's paper and score scale.</p></div></div>
     <form id="addtest" class="card panel" style="display:grid;gap:10px;margin-bottom:14px">
-      <div class="packedit"><div class="pr"><input id="nt-name" required placeholder="Test name"><input id="nt-code" required placeholder="Code" maxlength="12"><input id="nt-meta" required placeholder="Sections and timing"></div></div>
+      <div class="packedit"><div class="pr four"><input id="nt-name" type="text" required placeholder="Test name, e.g. IELTS General · Mock 2"><select id="nt-exam" aria-label="Exam">${ORDER.map(k=>`<option value="${k}">${EXAMS[k].name}</option>`).join("")}</select><input id="nt-meta" type="text" required placeholder="Sections and timing"></div></div>
       <div><button class="btn sm">Add mock test</button></div>
     </form>
-    <div class="card panel"><div class="tablewrap"><table><thead><tr><th>Test</th><th>Sections</th><th>Attempts</th><th>Avg band</th><th>Status</th></tr></thead><tbody>
-    ${TESTS.map((t,i)=>`<tr><td><b>${t.name}</b></td><td class="muted">${t.meta}</td><td class="mono">${[214,131,168,99][i]??0}</td><td class="mono">${([6.0,6.5,5.5,6.0][i]??6).toFixed(1)}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
+    <div class="card panel"><div class="tablewrap"><table><thead><tr><th>Test</th><th>Exam</th><th>Sections</th><th>Scale</th><th>Status</th></tr></thead><tbody>
+    ${TESTS.map(t=>`<tr><td><b>${esc(t.name)}</b></td><td>${EXAMS[t.exam].name}</td><td class="muted">${esc(t.meta)}</td><td class="mono">${EXAMS[t.exam].scale}</td><td><span class="pill good">Live</span></td></tr>`).join("")}
     </tbody></table></div></div>`;
-  if(S.sub==="students") content=`<div class="head"><h1>Students</h1></div><div class="card panel"><div class="tablewrap"><table><thead><tr><th>Email</th><th>Credits left</th><th>Tests taken</th><th>Latest band</th></tr></thead><tbody>
-    <tr><td>${ME.email}</td><td class="mono">${S.credits}</td><td class="mono">${S.attempts.length}</td><td class="mono">${S.attempts.at(-1).band.toFixed(1)}</td></tr>
-    ${S.granted.map((g,i)=>`<tr><td>${g.email}</td><td class="mono">${pk(g.pack).tests-[3,1,0,2][i%4]}</td><td class="mono">${[3,1,0,2][i%4]}</td><td class="mono">${["6.5","5.5","–","7.0"][i%4]}</td></tr>`).join("")}
+  if(S.sub==="students") content=`<div class="head"><h1>Students</h1></div><div class="card panel"><div class="tablewrap"><table><thead><tr><th>Email</th><th>Credits left</th><th>Tests taken</th><th>Latest score</th></tr></thead><tbody>
+    <tr><td>${ME.email}</td><td class="mono">${S.credits}</td><td class="mono">${S.attempts.length}</td><td class="mono">${S.attempts.at(-1).label}</td></tr>
+    ${S.granted.map((g,i)=>`<tr><td>${esc(g.email)}</td><td class="mono">${Math.max(0,pk(g.pack).tests-[3,1,0,2][i%4])}</td><td class="mono">${[3,1,0,2][i%4]}</td><td class="mono">${["Band 6.5","61 / 90","–","Band 4.5"][i%4]}</td></tr>`).join("")}
     </tbody></table></div></div>`;
   if(S.sub==="mail") content=`<div class="head"><h1>Messages</h1><p class="muted" style="font-size:14px">Notes sent from the contact form on this browser.</p></div>
     <div class="card panel">${S.messages.length?`<div class="tablewrap"><table><thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Phone</th><th>Message</th></tr></thead><tbody>
@@ -1132,63 +1097,90 @@ function admin(){
   return `<div class="shell">${sideNav([["pay","Payments"],["packs","Packs & QR"],["tests","Mock tests"],["students","Students"],["mail","Messages"]],S.sub==="dash"?"pay":S.sub,"admin")}<main class="main">${content}</main></div>`;
 }
 
+/* ---------- render + motion ---------- */
 function render(){
-  const a=$("#app");
-  const v=S.view;
-  const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",founder:"Founder",student:"Student desk",admin:"Admin",test:"Mock test",mock:"Mock"};
-  const paperName=S.view==="mock"?(SERVICES[S.paper]||SERVICES.ielts).name:"";
-  const label=paperName||SERVICES[v]?.name||titles[v]||"IELTS Mind Map Academy";
+  const a=$("#app"),v=S.view;
+  const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",founder:"Founder",student:"Student desk",admin:"Admin",test:"Mock test",spoken:"Spoken English"};
+  const label=v==="mock"?`${EXAMS[S.exam].name} mock test`:EXAMS[v]?.name||titles[v]||"IELTS Mind Map Academy";
   document.title=v==="home"?"IELTS Mind Map Academy · TestKaro":`${label} · IELTS Mind Map Academy`;
-  const marketing=v==="home"||v==="stories"||v==="founder"||v==="mock"||!!SERVICES[v];
+  const marketing=!["student","admin","test"].includes(v);
   document.body.classList.toggle("desk",!marketing);
-  const join=document.getElementById("join");
-  const wa=document.getElementById("join-wa");
-  if(join&&wa){
-    const href=WHATSAPP?`https://wa.me/${WHATSAPP}`:"/#contact";
-    join.href=href;wa.href=href;
-    join.toggleAttribute("data-nav",!WHATSAPP);
-    wa.toggleAttribute("data-nav",!WHATSAPP);
-    if(WHATSAPP){join.target=wa.target="_blank";join.rel=wa.rel="noopener"}
-  }
+  const join=$("#join"),wa=$("#join-wa");
+  if(join&&wa){const href=WHATSAPP?`https://wa.me/${WHATSAPP}`:"/#contact";join.href=href;wa.href=href;join.toggleAttribute("data-nav",!WHATSAPP);wa.toggleAttribute("data-nav",!WHATSAPP);if(WHATSAPP){join.target=wa.target="_blank";join.rel=wa.rel="noopener"}}
   a.className=marketing?"enter":"";
-  a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():v==="founder"?founderPage():v==="mock"?mockPage():SERVICES[v]?servicePage(SERVICES[v]):home();
+  a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():v==="founder"?founderPage():v==="spoken"?spokenPage():v==="mock"?mockPage(S.exam):EXAMS[v]?examPage(v):home();
   const cv=a.querySelector("#qr");if(cv)drawQR(cv);
-  armMotion();
+  enhance();
 }
-function armMotion(){
-  const nodes=[...document.querySelectorAll(".reveal")];
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){nodes.forEach(n=>n.classList.add("in"));return}
-  if(typeof IntersectionObserver!=="function"){nodes.forEach(n=>n.classList.add("in"));return}
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12});
-  nodes.forEach(n=>io.observe(n));
+let io=null;
+function splitWords(el){
+  if(el.dataset.splitDone)return;el.dataset.splitDone="1";let i=0;const frag=document.createDocumentFragment();
+  [...el.childNodes].forEach(n=>{
+    if(n.nodeType===3){n.textContent.split(/(\s+)/).forEach(part=>{if(!part)return;if(/^\s+$/.test(part)){frag.append(" ");return}const w=document.createElement("span");w.className="w";const s=document.createElement("span");s.textContent=part;s.style.setProperty("--wi",i++);w.append(s);frag.append(w)})}
+    else{const w=document.createElement("span");w.className="w";n.style?.setProperty("--wi",i++);w.append(n);frag.append(w)}
+  });
+  el.textContent="";el.append(frag);el.classList.add("split");
 }
+function countUp(el){
+  const to=+el.dataset.count,from=+(el.dataset.from||0),dur=1500,t0=performance.now();
+  const step=t=>{const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=Math.round(from+(to-from)*e);if(k<1)requestAnimationFrame(step)};
+  el.textContent=from;requestAnimationFrame(step);
+}
+function enhance(){
+  const root=$("#app");
+  root.querySelectorAll(".tile,.sec-head,.faq details,.pagehead,.filters,.shot,.route").forEach(el=>el.classList.add("reveal"));
+  root.querySelectorAll(".bento,.faq,.quotes,.shots").forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty("--i",i%6)));
+  root.querySelectorAll("[data-split]").forEach(splitWords);
+  const targets=root.querySelectorAll(".reveal,.split,[data-count]");
+  if(RM.matches||!("IntersectionObserver" in window)){targets.forEach(el=>el.classList.add("in"));return}
+  io?.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;el.classList.add("in");if(el.dataset.count&&!el.dataset.counted){el.dataset.counted="1";countUp(el)}io.unobserve(el)}),{threshold:.12,rootMargin:"0px 0px -5% 0px"});
+  targets.forEach(el=>io.observe(el));
+}
+let hot=null;
+document.addEventListener("pointermove",e=>{
+  const t=e.target.closest?.(".tile");
+  if(hot&&hot!==t){hot.style.removeProperty("--rx");hot.style.removeProperty("--ry");hot=null}
+  if(!t||e.pointerType!=="mouse"||RM.matches)return;
+  const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  t.style.setProperty("--mx",(x*100).toFixed(1)+"%");t.style.setProperty("--my",(y*100).toFixed(1)+"%");
+  if(t.matches("a.tile,.lift")){const k=Math.min(1,320/r.width);t.style.setProperty("--rx",((.5-y)*5*k).toFixed(2)+"deg");t.style.setProperty("--ry",((x-.5)*7*k).toFixed(2)+"deg")}
+  hot=t;
+},{passive:true});
+let ticking=false;
+addEventListener("scroll",()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;const h=document.documentElement,p=h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight);$("#progress").style.setProperty("--p",p.toFixed(4));const em=$("#emblem");if(em&&!RM.matches)em.style.translate=`0 ${Math.min(60,h.scrollTop*.12).toFixed(1)}px`})},{passive:true});
+
 function focusHash(){
   if(!location.hash)return;
   const el=document.querySelector(location.hash);
-  if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),30);
+  if(el)setTimeout(()=>el.scrollIntoView({behavior:RM.matches?"auto":"smooth",block:"start"}),40);
 }
+
+/* ---------- events ---------- */
 document.addEventListener("click",e=>{
   if(e.target.id==="library"){e.target.hidden=true;return}
-  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-next],[data-tab],[data-submit],[data-model],[data-grant],[data-reject],[data-savepacks],[data-toast],[data-library],[data-lib-close],[data-top],[data-join-close]");
+  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-sub],[data-start],[data-startexam],[data-tab],[data-submit],[data-model],[data-grant],[data-reject],[data-savepacks],[data-library],[data-lib-close],[data-top],[data-join-close]");
   if(!t)return;
   if(t.matches("a[data-nav]")){
-    const url=new URL(t.getAttribute("href"),location.origin);
+    const url=new URL(t.getAttribute("href"),location.href);
     if(url.origin!==location.origin)return;
     e.preventDefault();
-    history.pushState({},"",url.pathname+url.hash);
-    document.getElementById("library").hidden=true;
-    if(timerInt){clearInterval(timerInt);timerInt=null}
-    S.view=viewFromLocation();
-    if(S.view==="student")S.sub="dash";
-    if(S.view==="admin")S.sub="pay";
-    render();
-    if(url.hash)focusHash();else window.scrollTo(0,0);
+    $("#library").hidden=true;
+    document.querySelector(".topbar.navopen")?.classList.remove("navopen");
+    const target=route(url.pathname),same=target.view===S.view&&target.exam===S.exam;
+    if(same){history.pushState({},"",url.pathname+url.hash);if(url.hash)focusHash();else window.scrollTo({top:0,behavior:RM.matches?"auto":"smooth"});return}
+    curtain(()=>{
+      history.pushState({},"",url.pathname+url.hash);
+      if(timerInt){clearInterval(timerInt);timerInt=null}
+      applyRoute();render();
+      if(url.hash)focusHash();else window.scrollTo(0,0);
+    });
     return;
   }
   if(t.hasAttribute("data-menu")){const bar=t.closest(".topbar");bar.classList.toggle("navopen");t.setAttribute("aria-expanded",bar.classList.contains("navopen"));return}
-  if(t.hasAttribute("data-library")){document.getElementById("library").hidden=false;return}
-  if(t.hasAttribute("data-lib-close")){document.getElementById("library").hidden=true;return}
-  if(t.hasAttribute("data-top")){window.scrollTo({top:0,behavior:"smooth"});return}
+  if(t.hasAttribute("data-library")){$("#library").hidden=false;return}
+  if(t.hasAttribute("data-lib-close")){$("#library").hidden=true;return}
+  if(t.hasAttribute("data-top")){window.scrollTo({top:0,behavior:RM.matches?"auto":"smooth"});return}
   if(t.hasAttribute("data-join-close")){document.body.classList.add("no-join");return}
   if(t.dataset.filter){
     const root=t.closest(".stories");
@@ -1198,66 +1190,50 @@ document.addEventListener("click",e=>{
   }
   if(t.hasAttribute("data-scrim")&&e.target!==t)return;
   if(t.dataset.close!==undefined||t.hasAttribute("data-scrim")){$("#modal").innerHTML=""}
-  if(t.dataset.go){const raw=t.dataset.go;const v=raw==="site"?"home":raw;go(v,v==="admin"?"pay":v==="student"?"dash":undefined);return}
+  if(t.dataset.go){const v=t.dataset.go==="site"?"home":t.dataset.go;go(v,v==="admin"?"pay":v==="student"?"dash":undefined);return}
   if(t.dataset.buy){openBuy(t.dataset.buy);return}
   if(t.dataset.buylink){e.preventDefault();openBuy(t.dataset.buylink);return}
   if(t.dataset.buystep){const[id,s]=t.dataset.buystep.split(":");openBuy(id,+s);return}
-  if(t.dataset.scroll){document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"});return}
-  if(t.dataset.sub){const[,k]=t.dataset.sub.split(":");S.sub=k;render();return}
-  if(t.dataset.start!==undefined&&t.dataset.start!==""){const v=t.dataset.start;startTest(/^\d+$/.test(v)?+v:v);return}
-  if(t.hasAttribute("data-next")){nextCard();return}
-  if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay=ta.value;S.test.tab=t.dataset.tab;render();window.scrollTo(0,0);return}
-  if(t.hasAttribute("data-model")){const m=activePaper().mock;if(m.sample){S.test.essay=m.sample;render()}return}
+  if(t.dataset.sub){S.sub=t.dataset.sub.split(":")[1];render();return}
+  if(t.dataset.start){startTest(+t.dataset.start);return}
+  if(t.dataset.startexam){startExam(t.dataset.startexam);return}
+  if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay[S.test.tab]=ta.value;S.test.tab=+t.dataset.tab;S.test.swap=true;render();window.scrollTo(0,0);return}
+  if(t.hasAttribute("data-model")){S.test.essay[S.test.tab]=S.test.mock.sections[S.test.tab].sample||"";render();return}
   if(t.hasAttribute("data-submit")){submitTest();return}
   if(t.dataset.grant){const i=S.pending.findIndex(p=>p.id==t.dataset.grant),p=S.pending[i];S.pending.splice(i,1);
     S.granted.unshift({...p,at:"Just now"});const P=pk(p.pack);S.lastEmail={to:p.email,price:P.price,tests:P.tests,utr:p.utr};
-    if(p.email===ME.email)S.credits+=P.tests;render();toast(`Access granted. Email sent to ${p.email}`);return}
-  if(t.dataset.reject){const i=S.pending.findIndex(p=>p.id==t.dataset.reject),p=S.pending[i];S.pending.splice(i,1);render();toast(`Payment from ${p.email} rejected`);return}
+    if(p.email===ME.email)S.credits+=P.tests;render();toast(`Access granted. Email sent to ${esc(p.email)}`);return}
+  if(t.dataset.reject){const i=S.pending.findIndex(p=>p.id==t.dataset.reject),p=S.pending[i];S.pending.splice(i,1);render();toast(`Payment from ${esc(p.email)} rejected`);return}
   if(t.hasAttribute("data-savepacks")){document.querySelectorAll("[data-pf]").forEach(inp=>{const[id,f]=inp.dataset.pf.split(":");const p=pk(id);p[f]=f==="name"?inp.value:Math.max(1,+inp.value||1)});toast("Prices saved. The website now shows the new prices.");return}
-  if(t.dataset.toast){toast(t.dataset.toast);return}
 });
 document.addEventListener("change",e=>{
-  const a=e.target.dataset.ans;if(a){const[q,o]=a.split(":").map(Number);S.test.ans[q]=o;render();return}
+  const a=e.target.dataset.ans;if(a){const[si,qi,oi]=a.split(":").map(Number);S.test.ans[si+":"+qi]=oi;render();return}
   if(e.target.id==="qrfile"&&e.target.files[0]){const r=new FileReader();r.onload=()=>{S.qrImg=r.result;render();toast("QR updated. Students now see this code at checkout.")};r.readAsDataURL(e.target.files[0])}
 });
-document.addEventListener("input",e=>{if(e.target.id==="essay"){S.test.essay=e.target.value;const w=$("#wc");if(w)w.textContent=words(e.target.value)+" words"}});
+document.addEventListener("input",e=>{if(e.target.id==="essay"){S.test.essay[S.test.tab]=e.target.value;const w=$("#wc");if(w)w.textContent=words(e.target.value)+" words"}});
 document.addEventListener("submit",e=>{
-  if(e.target.id!=="payform"&&e.target.id!=="addtest"&&e.target.id!=="contactform")return;e.preventDefault();
-  if(e.target.id==="contactform"){
+  const id=e.target.id;if(!["payform","addtest","contactform"].includes(id))return;e.preventDefault();
+  if(id==="contactform"){
     const role=$("#c-role").value,name=$("#c-name").value.trim(),email=$("#c-email").value.trim(),phone=$("#c-code").value+" "+$("#c-phone").value.trim(),msg=$("#c-msg").value.trim();
     if(!role||!name||!/^\S+@\S+\.\S+$/.test(email)||!$("#c-phone").value.trim()||!msg){toast("Fill every field so the academy can reply");return}
-    S.messages.unshift({role,name,email,phone,msg});
-    e.target.reset();
-    toast("Received. The academy will reply within 24 hours.");
-    return;
+    S.messages.unshift({role,name,email,phone,msg});e.target.reset();toast("Received. The academy will reply within 24 hours.");return;
   }
-  if(e.target.id==="addtest"){
-    const name=$("#nt-name").value.trim(),code=$("#nt-code").value.trim().toUpperCase(),meta=$("#nt-meta").value.trim();
-    if(!name||!code||!meta){toast("Add a name, a code and the sections");return}
-    TESTS.push({code,name,meta,exam:examFromCode(code)});
-    render();
-    toast(`${name} is live on the student desk`);
-    return;
+  if(id==="addtest"){
+    const name=$("#nt-name").value.trim(),exam=$("#nt-exam").value,meta=$("#nt-meta").value.trim();
+    if(!name||!meta){toast("Add a name and the sections");return}
+    TESTS.push({exam,code:EXAMS[exam].name,name,meta});render();toast(`${esc(name)} is live on the student desk`);return;
   }
-  const email=$("#pay-email").value.trim(),utr=$("#pay-utr").value.trim(),id=e.target.dataset.pack;
+  const email=$("#pay-email").value.trim(),utr=$("#pay-utr").value.trim(),pack=e.target.dataset.pack;
   if(!/^\S+@\S+\.\S+$/.test(email)){toast("Enter a valid email so we can send your access");return}
   if(!/^\d{12}$/.test(utr)){toast("UTR should be the 12-digit number from your UPI app");return}
-  S.pending.unshift({id:S.nextId++,email,pack:id,utr,at:"Just now"});openBuy(id,3);
+  S.pending.unshift({id:S.nextId++,email,pack,utr,at:"Just now"});openBuy(pack,3);
 });
-document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").innerHTML=""});
-window.addEventListener("popstate",()=>{
-  if(timerInt){clearInterval(timerInt);timerInt=null}
-  S.view=viewFromLocation();
-  if(S.view==="admin")S.sub="pay";
-  if(S.view==="student")S.sub="dash";
-  render();
-  focusHash();
-});
-S.view=viewFromLocation();
-if(S.view==="admin")S.sub="pay";
-if(S.view==="student")S.sub="dash";
-render();
-focusHash();
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#modal").innerHTML="";$("#library").hidden=true}});
+addEventListener("popstate",()=>{if(timerInt){clearInterval(timerInt);timerInt=null}applyRoute();render();focusHash()});
+
+applyRoute();render();focusHash();
+const lift=()=>{const c=$("#curtain");if(!c.classList.contains("boot"))return;c.classList.replace("boot","lift");setTimeout(()=>c.classList.remove("lift"),700)};
+if(RM.matches)$("#curtain").classList.remove("boot");else{addEventListener("load",()=>setTimeout(lift,250));setTimeout(lift,2500)}
 </script>
 </body>
 </html>

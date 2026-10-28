@@ -46,7 +46,10 @@ body{background:
   radial-gradient(900px 420px at 100% -10%, rgba(198,161,90,.28), transparent 55%),
   radial-gradient(720px 480px at -10% 8%, rgba(76,29,120,.14), transparent 50%),
   var(--bg);
+  background-repeat:no-repeat;
+  animation:bgDrift 22s ease-in-out infinite;
   color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@keyframes bgDrift{50%{background-position:70% 0, 18% 16%, 0 0}}
 img{max-width:100%}
 [hidden]{display:none!important}
 h1,h2,h3,h4{font-family:var(--f-display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.03em}
@@ -60,7 +63,9 @@ a{color:inherit}
 .kicker,.eyebrow{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
 .muted{color:var(--muted)}
 .gold{background:linear-gradient(180deg,#f3dc8a,#b8892e);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #f6e7b8;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;background:linear-gradient(180deg,#f6e3a4,#c6a15a 46%,#8c6820);color:#241244;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 20px rgba(140,104,32,.25);text-decoration:none;transition:transform .15s,filter .15s}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #f6e7b8;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;background:linear-gradient(180deg,#f6e3a4,#c6a15a 46%,#8c6820);color:#241244;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 10px 20px rgba(140,104,32,.25);text-decoration:none;transition:transform .35s cubic-bezier(.16,.84,.32,1),filter .35s}
+.btn:not(.ghost)::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-130%);animation:sheen 4.2s ease-in-out infinite}
+@keyframes sheen{0%,55%{transform:translateX(-130%)}75%,100%{transform:translateX(130%)}}
 .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .btn:active{transform:translateY(1px)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:rgba(36,18,68,.2);box-shadow:none}
@@ -108,12 +113,13 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .bento-wrap{padding-top:28px;padding-bottom:10px}
 .bento-wrap .intro{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:16px;flex-wrap:wrap}
 .bento-wrap h2{font-size:clamp(28px,3vw,40px)}
-.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:14px}
-.bcard{position:relative;overflow:hidden;border-radius:24px;padding:20px;min-height:168px;text-decoration:none;color:var(--ink);background:
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(88px,auto);gap:14px}
+.bcard{position:relative;overflow:hidden;border-radius:24px;padding:20px;min-height:0;text-decoration:none;color:var(--ink);background:
   linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.62)),#fff;
   border:1px solid rgba(255,255,255,.85);
   box-shadow:inset 0 1px 0 #fff,0 16px 36px rgba(36,18,68,.08);
-  display:flex;flex-direction:column;gap:8px;transition:transform .2s,box-shadow .2s}
+  display:flex;flex-direction:column;gap:8px;transition:transform .55s cubic-bezier(.16,.84,.32,1),box-shadow .55s}
+.bcard .mark{position:absolute;right:14px;top:8px;font-family:var(--f-display);font-weight:800;font-size:42px;letter-spacing:-.04em;opacity:.16;line-height:1}
 .bcard::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.55) 48%,transparent 64%);transform:translateX(-130%);transition:transform .7s;pointer-events:none}
 .bcard:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #fff,0 22px 44px rgba(36,18,68,.14)}
 .bcard:hover::after{transform:translateX(130%)}
@@ -121,7 +127,7 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .bcard p{color:var(--muted);font-size:14.5px;max-width:36ch}
 .bcard .meta{margin-top:auto;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .bcard .go{position:absolute;right:16px;bottom:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#f6e3a4,#c6a15a);color:#241244;font-weight:800;z-index:1}
-.bcard.ielts{grid-column:span 4;grid-row:span 2;min-height:340px;color:#fbf7f1;background:
+.bcard.ielts{grid-column:span 7;grid-row:span 4;min-height:320px;color:#fbf7f1;background:
   radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.5),transparent 42%),
   radial-gradient(80% 70% at 0% 100%,rgba(160,90,210,.45),transparent 46%),
   linear-gradient(155deg,#7a3aaa,#3a1468 58%,#241244);
@@ -130,8 +136,15 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .bcard.ielts p{color:rgba(251,247,241,.82)}
 .bcard.ielts .kicker,.bcard.ielts .meta{color:#f0d48a}
 .bcard.ielts .code{font-size:clamp(48px,6vw,84px)}
-.bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre,.bcard.spoken{grid-column:span 2}
-.bcard.spoken{padding:0}
+.bcard.pte{grid-column:span 5;grid-row:span 2;background:linear-gradient(180deg,#fff,#f8f1e4)}
+.bcard.toefl{grid-column:span 5;grid-row:span 2;color:#fbf7f1;background:linear-gradient(160deg,#4c1d78,#241244)}
+.bcard.toefl p,.bcard.gmat p{color:rgba(251,247,241,.82)}
+.bcard.toefl .kicker,.bcard.gmat .kicker,.bcard.toefl .meta,.bcard.gmat .meta{color:#f0d48a}
+.bcard.gmat{grid-column:span 3;grid-row:span 2;color:#fbf7f1;background:#241244}
+.bcard.gre{grid-column:span 4;grid-row:span 2;background:linear-gradient(180deg,#fff,#f4e8fb)}
+.bcard.spoken{grid-column:span 5;grid-row:span 3;background:linear-gradient(165deg,#f8e7b0,#c6a15a 55%,#8c6820);color:#241244}
+.bcard.spoken.has-levels{padding:0}
+.bcard.spoken p{color:rgba(36,18,68,.78)}
 .bmain{display:flex;flex-direction:column;gap:8px;padding:20px 20px 8px;text-decoration:none;color:inherit;flex:1;position:relative;z-index:1}
 .lvls{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px;position:relative;z-index:2}
 .lvls a{text-decoration:none;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid rgba(36,18,68,.12)}
@@ -175,9 +188,10 @@ label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
 .fact{padding:16px;border-radius:18px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.7));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 10px 24px rgba(36,18,68,.06)}
 .fact b{display:block;font-family:var(--f-display);font-size:16px}
 .fact span{display:block;margin-top:4px;color:var(--muted);font-size:13.5px}
-.split{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;margin-top:22px;align-items:start}
+.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:18px;margin-top:22px;align-items:start}
+.split>*,.facts>*,.bento>*,.ticks,.gloss,.founder-layout>*{min-width:0}
 .ticks{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.ticks li{padding-left:18px;position:relative}
+.ticks li{padding-left:18px;position:relative;overflow-wrap:anywhere}
 .ticks li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#f0d48a,#8c6820)}
 .gloss{padding:22px;border-radius:22px;background:
   radial-gradient(120% 80% at 100% 0%,rgba(240,212,138,.45),transparent 46%),
@@ -333,14 +347,17 @@ textarea.essay{min-height:340px;line-height:1.65;resize:vertical}
 @keyframes riseLong{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
 .emblem{animation:floaty 8s ease-in-out infinite}
 @keyframes floaty{50%{transform:translateY(-12px)}}
-.bento .bcard{animation:riseLong .95s cubic-bezier(.16,.84,.32,1) both}
-.bento .bcard:nth-child(1){animation-delay:.05s}
-.bento .bcard:nth-child(2){animation-delay:.14s}
-.bento .bcard:nth-child(3){animation-delay:.23s}
-.bento .bcard:nth-child(4){animation-delay:.32s}
-.bento .bcard:nth-child(5){animation-delay:.41s}
-.bento .bcard:nth-child(6){animation-delay:.5s}
-.bcard{transition:transform .55s cubic-bezier(.16,.84,.32,1),box-shadow .55s}
+@keyframes floatSoft{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.bento .bcard{animation:riseLong .95s cubic-bezier(.16,.84,.32,1) both,floatSoft 8s ease-in-out infinite}
+.bento .bcard:nth-child(1){animation-delay:.05s,-.4s}
+.bento .bcard:nth-child(2){animation-delay:.14s,-1.4s}
+.bento .bcard:nth-child(3){animation-delay:.23s,-2.2s}
+.bento .bcard:nth-child(4){animation-delay:.32s,-3s}
+.bento .bcard:nth-child(5){animation-delay:.41s,-3.8s}
+.bento .bcard:nth-child(6){animation-delay:.5s,-4.6s}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 1.05s cubic-bezier(.16,.84,.32,1),transform 1.05s cubic-bezier(.16,.84,.32,1)}
+.reveal.in{opacity:1;transform:none}
+.ring{animation:spin 18s linear infinite}
 .route path{animation-duration:22s}
 
 .founder-bento{grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:minmax(180px,auto)}
@@ -405,9 +422,11 @@ body.desk .toast,body.no-join .toast{bottom:calc(20px + env(safe-area-inset-bott
 
 @media (max-width:980px){
   .hero-grid,.split,.grid2{grid-template-columns:1fr}
-  .bento{grid-template-columns:1fr 1fr}
-  .bcard.ielts,.bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre,.bcard.spoken{grid-column:span 1;grid-row:auto}
-  .bcard.ielts{grid-column:1 / -1;min-height:240px}
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(132px,auto)}
+  .bcard.ielts{grid-column:1 / -1;grid-row:span 2;min-height:240px}
+  .bcard.pte,.bcard.toefl,.bcard.gmat,.bcard.gre{grid-column:span 1;grid-row:span 2}
+  .bcard.spoken{grid-column:1 / -1;grid-row:span 2}
+  body:not(.desk) main .wrap,body:not(.desk) .page .wrap{padding-right:max(68px,env(safe-area-inset-right))}
   .facts,.levelgrid,.quotes,.founder-bento,.founder-layout,.touch{grid-template-columns:1fr}
   .founder-card{grid-row:auto;min-height:240px}
   .founder-bento .wide{grid-column:auto}
@@ -429,14 +448,15 @@ body.desk .toast,body.no-join .toast{bottom:calc(20px + env(safe-area-inset-bott
   footer.site .wrap{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .bento,.facts,.levelgrid,.quotes,.shots,.tiles,.packs,.steps,.sec-grid{grid-template-columns:1fr}
+  .facts,.levelgrid,.quotes,.shots,.tiles,.packs,.steps,.sec-grid{grid-template-columns:1fr}
   .qrbox{grid-template-columns:1fr;justify-items:center;text-align:center}
   .packedit .pr{grid-template-columns:1fr 70px 80px}
   .word b{font-size:11px}
+  .dock button,.dock a.chip{width:46px;height:46px;padding:0;border-radius:50%;font-size:0;gap:0;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rise{opacity:1;transform:none}
+  .rise,.reveal{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -459,6 +479,12 @@ body.desk .toast,body.no-join .toast{bottom:calc(20px + env(safe-area-inset-bott
       <a href="/gmat" data-nav>GMAT</a>
       <a href="/gre" data-nav>GRE</a>
       <a href="/spoken-english" data-nav>Spoken English</a>
+      <a href="/mock/ielts" data-nav>IELTS mock</a>
+      <a href="/mock/pte" data-nav>PTE mock</a>
+      <a href="/mock/toefl" data-nav>TOEFL mock</a>
+      <a href="/mock/gmat" data-nav>GMAT mock</a>
+      <a href="/mock/gre" data-nav>GRE mock</a>
+      <a href="/mock/spoken" data-nav>Speaking drill</a>
     </div>
   </div>
 </div>
@@ -493,39 +519,118 @@ const S={
     {name:"PTE Academic · Mock 1",date:"4 Oct",band:6.0},{name:"IELTS Academic · Mock 3",date:"8 Oct",band:6.5},
     {name:"IELTS General · Mock 1",date:"11 Oct",band:6.5}
   ],
-  lastEmail:null, qrImg:null, test:null, nextId:10, messages:[]
+  lastEmail:null, qrImg:null, test:null, nextId:10, messages:[], paper:"ielts"
 };
 const SERVICES={
-  ielts:{key:"ielts",name:"IELTS",kicker:"Academic and General Training",score:"Band 0–9",
-    lede:"The academy's home paper. Listening, reading, writing and speaking are drawn as a map before the timer starts.",
-    facts:[["Listening","Four recordings, questions in order"],["Reading","Academic passages or General workplace texts"],["Writing","A short task, then the essay"],["Speaking","Interview, cue card, discussion"]],
-    train:["Each question type gets a one-page map, so the shape is familiar before you read.","Task 2 is planned as four branches: position, reason, example, return.","Cue cards are a two-minute route, not a memorised speech.","A TestKaro mock opens reading and Writing Task 2 once the map feels steady."],
-    note:"The mock desk currently times an IELTS-style reading passage and a Writing Task 2. Listening and speaking coaching stays with the academy."},
-  pte:{key:"pte",name:"PTE",kicker:"PTE Academic",score:"Score 10–90",
-    lede:"A computer test that scores how you speak as well as what you write. Short integrated tasks, one sitting.",
-    facts:[["Speaking","Read aloud, repeat, describe, answer short questions"],["Writing","Summaries and an essay"],["Reading","Reorder, fill blanks, multiple choice"],["Listening","Write from dictation and highlight the point"]],
-    train:["Fluency is mapped as pauses, stress and endings, not a script to rush through.","Summaries follow a fixed shape: topic, two supports, a close.","Microphone drills are short, so a stumble is easy to see and fix.","TestKaro opens a PTE-style reading set and essay when you are ready to time it."],
-    note:"PTE Academic is the paper we prepare. The mock desk marks a reading section and an essay. It is practice, not a Pearson score."},
-  toefl:{key:"toefl",name:"TOEFL",kicker:"TOEFL iBT",score:"Score 0–120",
-    lede:"For universities that ask for TOEFL. Campus lectures, academic discussion, and a writing clock.",
-    facts:[["Reading","University passages and purpose questions"],["Listening","Conversations and lectures"],["Speaking","Independent answers and integrated responses"],["Writing","A reading-listening task and an academic discussion"]],
-    train:["Lectures are mapped as claim, example, contrast, so notes stay short.","Speaking answers use a three-beat route: point, reason, detail.","The academic discussion is planned as agree, add, and one careful disagreement.","TestKaro times a TOEFL-style reading set and an academic discussion essay."],
-    note:"This is preparation for TOEFL iBT. The academy is not ETS, and the mock score is an estimate."},
-  gmat:{key:"gmat",name:"GMAT",kicker:"For management programmes",score:"Quantitative · Verbal · Data Insights",
-    lede:"Arguments, data and quant, drawn so a crowded chart becomes a route you can revise.",
-    facts:[["Quantitative","Arithmetic, algebra and word problems"],["Verbal","Critical reasoning and reading"],["Data Insights","Tables, graphs and multi-source sets"],["Timing","Section clocks, not a memory contest"]],
-    train:["Critical reasoning is a map: conclusion, assumption, gap.","Data sets are read for the question first, then the chart.","Quant mistakes are grouped by pattern, so the same slip is not repeated.","Section timing is taught in class. English papers are timed on TestKaro."],
-    note:"GMAT preparation is taught in class. TestKaro times the English papers. Not affiliated with GMAC."},
-  gre:{key:"gre",name:"GRE",kicker:"General Test",score:"Verbal · Quant · Analytical Writing",
-    lede:"Vocabulary in clusters, quant as patterns, and essays as a structure you can see.",
-    facts:[["Verbal","Text completion, sentence equivalence, reading"],["Quant","Arithmetic, algebra, geometry, data"],["Writing","Analyse an issue"],["Use","Graduate and some business programmes"]],
-    train:["Words are stored in small maps, not a flat list.","Reading passages are sketched as claim and turn.","The issue essay uses a visible fork: position, objection, answer.","The issue essay and quant patterns are taught in class. English papers are timed on TestKaro."],
-    note:"Preparation for the GRE General Test. Not affiliated with ETS."},
-  spoken:{key:"spoken",name:"Spoken English",kicker:"Beginner to advanced",score:"Three levels",
-    lede:"From a first sentence to a visa interview. Real travel, campus and workplace speech. No cartoon drills.",
-    facts:[["Beginner","Sounds, greetings, slow conversation"],["Intermediate","Opinions, stories, phone calls"],["Advanced","Interviews, presentations, nuance"],["Setting","Airport, campus, office, not a cartoon classroom"]],
-    train:["Each level has a spoken route you can finish out loud.","Mistakes stay in the lesson. That is the academy line, and it is how the class works.","Pronunciation is marked on stress and endings, not on shame.","Pair a speaking level with a TestKaro writing mock when the exam date is real."],
-    note:"Spoken English is a coaching path. The mock desk still times reading and writing for IELTS, PTE and TOEFL.",
+  ielts:{key:"ielts",short:"IELTS",name:"IELTS",kicker:"Academic and General Training",score:"Band 0–9",
+    lede:"Listening, reading, writing and speaking. This page is only the IELTS paper.",
+    facts:[["Listening","Four recordings, questions in order"],["Reading","Academic passages or General workplace texts"],["Writing","Task 1, then Task 2"],["Speaking","Interview, cue card, discussion"]],
+    desk:["One reading passage written for this IELTS mock","Five questions on that passage","Writing Task 2, at least 250 words","A practice band for this sitting only"],
+    note:"Listening and speaking stay in class. This mock times reading and Writing Task 2. It is not an IELTS result.",
+    mock:{kind:"paper",minutes:60,read:"Reading",write:"Writing Task 2",minWords:250,scale:{max:9,unit:"band",step:0.5},
+      passage:{title:"Late hours at the city library",paras:[
+        "For twenty years the main library in the harbour district closed at six. Students who worked day shifts had to choose between a wage and a quiet table. In 2019 the council kept the reading room open until ten on weeknights.",
+        "The change was not only about hours. Staff moved the noisy returns desk away from the study tables and added a small room where a phone could be used without disturbing other readers. Visits after eight rose through the first year.",
+        "Some residents objected to the cost of evening staff and lighting. The council published a one-page note showing that most of the new visits were from people who had not used the library at all when it shut at six."
+      ]},
+      questions:[
+        {t:"Why did many students avoid the library before 2019?",o:["The building was outside the city","It closed before their shift ended","Books could not be borrowed","The reading room was too loud"],a:1},
+        {t:"The evening opening also moved the returns desk.",o:["True","False","Not given"],a:0},
+        {t:"Evening visits fell during the first year.",o:["True","False","Not given"],a:1},
+        {t:"What did the council's note claim?",o:["Lighting cost nothing","New readers were mostly people who had not come before","Staff refused to work past six","The phone room was closed"],a:1},
+        {t:"The passage is mainly about",o:["A change in library hours and who used them","The price of printing books","A new university campus","Fines for late returns"],a:0}
+      ],
+      prompt:"Some people think public libraries should stay open late on weeknights. Others think the money is better spent on more books. Discuss both views and give your own opinion.",
+      sample:"In many cities, public libraries still close before people finish work. Some residents want those libraries to stay open late on weeknights, while others believe the same money should buy more books. This essay will discuss both views and then give my own opinion.\n\nOn the one hand, late opening helps people who cannot visit during the day. A student with a morning job, or a parent who is free only after dinner, can finally use a quiet table. The library then serves the city for more hours, not only for people with free afternoons. In addition, a later closing time makes the building feel like a public room rather than an office.\n\nOn the other hand, a library with a poor collection is not useful, even if the doors stay open. Books, journals and reliable computers are the reason people come. If the budget is small, buying those materials may help more readers than paying for evening staff and lighting. A large collection can also be used in the morning, so the benefit is not limited to one part of the day.\n\nIn my opinion, the two aims should be balanced, but late opening deserves priority when the current hours shut out working people. A library that closes at six excludes the very readers who need a free place to study. Once those readers can enter, the council can add books with the next round of funding.\n\nIn conclusion, both more hours and more books strengthen a library. Late opening should come first when the present timetable leaves working residents outside."}},
+  pte:{key:"pte",short:"PTE",name:"PTE",kicker:"PTE Academic",score:"Score 10–90",
+    lede:"A computer paper. Speaking, writing, reading and listening are scored in one sitting.",
+    facts:[["Speaking","Read aloud, repeat, describe, short answers"],["Writing","Summaries and an essay"],["Reading","Reorder, blanks, multiple choice"],["Listening","Write from dictation, highlight the point"]],
+    desk:["A PTE reading set, not the IELTS passage","Five questions on a workplace text","An essay of at least 200 words","A practice mark on the 10–90 scale"],
+    note:"This page does not open the IELTS mock. The passage, the essay and the score scale belong to PTE practice. Not a Pearson score.",
+    mock:{kind:"paper",minutes:50,read:"Reading",write:"Write essay",minWords:200,scale:{max:90,unit:"10–90",step:1,floor:10},
+      passage:{title:"Choosing where the week is spent",paras:[
+        "A design studio in Pune let staff work from home on three days and required two days in the office. After six months, managers compared output, sick days and how often people asked a colleague for help.",
+        "Output stayed level. Sick days fell. The drop in quick questions was the part nobody had expected: junior staff waited until an office day to ask something they would once have asked in a minute.",
+        "The studio then kept the split, but added a short morning call on home days so a blocked task did not wait forty-eight hours."
+      ]},
+      questions:[
+        {t:"What did the studio measure after six months?",o:["Only travel time","Output, sick days and requests for help","The cost of laptops","Client complaints"],a:1},
+        {t:"Output went down when people worked from home.",o:["True","False","Not given"],a:1},
+        {t:"Junior staff asked fewer quick questions.",o:["True","False","Not given"],a:0},
+        {t:"Why was a morning call added?",o:["To replace the office entirely","So a blocked task was not left until the next office day","To cut salaries","To record sick days"],a:1},
+        {t:"The studio finally",o:["Ended home working","Kept the split and added a call","Closed the Pune office","Hired only senior staff"],a:1}
+      ],
+      prompt:"Some employers want staff in the office every day. Others allow people to choose where they work. Write an essay of at least 200 words giving your opinion, with reasons and examples.",
+      sample:"Many employers still want every person at a desk in the office. Others let staff choose home or office. I believe a mix is better than either extreme.\n\nDaily office attendance makes quick help easy. A junior designer can turn and ask a question instead of waiting. Clients also like to meet a team in one room. However, a long commute costs time that could be spent on the work itself, and people who are unwell often come in and spread the illness.\n\nHome days protect that time and let someone concentrate. The risk is silence. In one studio, junior staff saved their questions for the next office day, so a small problem sat for two days. A short morning call fixed that without ending home working.\n\nIn my view, two or three office days are enough for help and meetings, and the other days should be chosen by the employee. The goal is finished work and a team that still talks, not a full room for its own sake."}},
+  toefl:{key:"toefl",short:"TOEFL",name:"TOEFL",kicker:"TOEFL iBT",score:"Score 0–120",
+    lede:"The campus paper: reading, lectures, speaking and an academic discussion.",
+    facts:[["Reading","University passages"],["Listening","Conversations and lectures"],["Speaking","Independent and integrated responses"],["Writing","Integrated task and an academic discussion"]],
+    desk:["A campus reading passage used only on this TOEFL mock","Five purpose and detail questions","An academic discussion of at least 100 words","A practice mark toward 120, not an ETS score"],
+    note:"Listening and speaking are coached in class. This mock is the reading passage plus the academic discussion. The academy is not ETS.",
+    mock:{kind:"paper",minutes:45,read:"Reading",write:"Academic discussion",minWords:100,scale:{max:120,unit:"0–120",step:1},
+      passage:{title:"Trees and hot streets",paras:[
+        "Cities store heat in asphalt and dark roofs. A street with mature trees can be several degrees cooler at noon than the same street a block away with none. The shade is only part of the effect. Leaves also release water, and that evaporation cools the air around them.",
+        "Planting is slower than it sounds. A sapling does not shade a lane for years, and roots can lift pavements if the pit is too small. Forestry teams now specify a soil volume before they specify a species.",
+        "A campus study found that students walking the planted path arrived less flushed and rated the walk as shorter, even when the distance was the same."
+      ]},
+      questions:[
+        {t:"What cools the air besides shade?",o:["Darker asphalt","Water leaving the leaves","Taller buildings","Fewer cars"],a:1},
+        {t:"A sapling shades a street in the first season.",o:["True","False","Not given"],a:1},
+        {t:"Roots can damage a pavement when the pit is small.",o:["True","False","Not given"],a:0},
+        {t:"What did the campus study notice about students?",o:["They walked a longer path","They arrived less flushed and felt the walk was shorter","They avoided the trees","They measured the soil"],a:1},
+        {t:"The passage says forestry teams now decide",o:["The paint colour of the road","The soil volume before the species","Which students may walk","The price of water"],a:1}
+      ],
+      prompt:"Professor: Our campus is adding trees along the main walk. Some of you think shade is the whole benefit. Others think the cost of soil and pavement repairs is too high. Write a contribution of at least 100 words. State your view and respond to one of those points.",
+      sample:"I support planting along the main walk, and I do not think shade is the only benefit. The reading on hot streets points to a second effect: leaves release water, and that cools the air itself, so the path is easier to walk at noon.\n\nThe cost objection is fair. A sapling does not help for years, and roots lift a pavement when the pit is too small. That is a reason to specify enough soil at the start, not a reason to leave the walk bare. Repairing a badly planted tree is expensive. Planting it correctly once is cheaper than years of a hotter path.\n\nStudents in the campus study also felt the planted walk was shorter. If the main route feels easier, more people will use it instead of a shuttle. I would spend the money on soil volume and a few mature trees at the hottest corner, rather than on many saplings that will not shade anyone soon."}},
+  gmat:{key:"gmat",short:"GMAT",name:"GMAT",kicker:"Focus Edition practice",score:"Quantitative · Verbal · Data Insights",
+    lede:"A separate GMAT desk. This is not the IELTS reading passage and not the IELTS essay.",
+    facts:[["Quantitative","Arithmetic, algebra, word problems"],["Verbal","Critical reasoning and reading"],["Data Insights","Tables, graphs, multi-source sets"],["Score","Official scale 205–805"]],
+    desk:["One short argument, written for this GMAT mock","Five critical-reasoning questions","A short written note on the flaw, at least 80 words","A practice mark out of 10. Not a GMAC score"],
+    note:"Quant and Data Insights are taught in class. This mock is the verbal argument only. Not affiliated with GMAC.",
+    mock:{kind:"paper",minutes:35,read:"Argument",write:"Name the flaw",minWords:80,scale:{max:10,unit:"practice / 10",step:1},
+      passage:{title:"The bakery chain's new ovens",paras:[
+        "Last spring a bakery chain replaced the ovens in half its shops. Those shops sold more loaves in June than in April. The director concluded that the new ovens caused the increase and ordered the same ovens for every remaining shop.",
+        "June is also the month local schools finish and several neighbourhoods hold food fairs. The shops that kept the old ovens were not included in the June comparison the director quoted."
+      ]},
+      questions:[
+        {t:"The director assumes that",o:["June sales rose only because of the ovens","Customers dislike fresh bread","Old ovens are cheaper to run","Every shop already had the new oven"],a:0},
+        {t:"Which fact weakens the director's conclusion?",o:["The new ovens use less electricity","Schools finish in June and fairs bring extra buyers","Staff prefer the new ovens","Bread is baked in the morning"],a:1},
+        {t:"The comparison left out",o:["Shops that kept the old ovens","The price of flour","The names of the fairs","Morning customers"],a:0},
+        {t:"The argument would be stronger if",o:["April and June were compared in both groups of shops","Only one shop was measured","The director ignored sales","Fairs were cancelled and not mentioned"],a:0},
+        {t:"The conclusion is about",o:["The cause of higher June sales","The taste of the bread","Hiring more bakers","Closing the chain"],a:0}
+      ],
+      prompt:"In your own words, state the flaw in the director's reasoning. Mention one alternative explanation for the June increase. At least 80 words.",
+      sample:"The director sees higher June sales in the shops that received new ovens and treats the ovens as the cause. That does not follow. June is also when schools finish and food fairs bring extra buyers, so the month itself can lift sales.\n\nThe comparison is incomplete. Shops that kept the old ovens were not shown for June, so we cannot tell whether they rose as well. If those shops rose by the same amount, the ovens are not the explanation.\n\nA fair test would compare April and June in both groups. Until that is done, ordering new ovens for every shop rests on a coincidence of timing, not on evidence that the ovens caused the increase."}},
+  gre:{key:"gre",short:"GRE",name:"GRE",kicker:"General Test",score:"Verbal · Quant · Analytical Writing",
+    lede:"A separate GRE desk: a short verbal passage and an issue task.",
+    facts:[["Verbal","Text completion, equivalence, reading"],["Quant","Arithmetic, algebra, geometry, data"],["Writing","Analyse an issue"],["Score","Verbal and Quant 130–170"]],
+    desk:["A verbal passage that is not the IELTS or GMAT text","Five reading questions","An issue essay of at least 120 words","A practice mark out of 10. Not an ETS score"],
+    note:"Quant is taught in class. This mock is verbal plus the issue task. Not affiliated with ETS.",
+    mock:{kind:"paper",minutes:40,read:"Verbal",write:"Analyse an issue",minWords:120,scale:{max:10,unit:"practice / 10",step:1},
+      passage:{title:"A museum label in two lengths",paras:[
+        "A city museum rewrote the labels beside its oldest objects. The old labels were a single sentence. The new ones added where the object was made, who used it, and one reason it survived.",
+        "Visitors spent longer at those cases. Staff worried that people were simply reading more words, not looking more carefully. They then tested a third version: the short sentence on the rail, and the longer note on a card a visitor could pick up.",
+        "Dwell time stayed high, and more visitors could still name the object an hour later. The card let a hurried guest skip the detail without losing the point of the case."
+      ]},
+      questions:[
+        {t:"The new labels added",o:["Only a price","Origin, user, and a reason the object survived","A map of the city","The director's name"],a:1},
+        {t:"Visitors left the rewritten cases more quickly.",o:["True","False","Not given"],a:1},
+        {t:"Staff feared the extra time was only from extra words.",o:["True","False","Not given"],a:0},
+        {t:"The third version put the longer note",o:["On the ceiling","On a card the visitor could pick up","In the café","On the ticket"],a:1},
+        {t:"An hour later, more visitors could",o:["Name the object","Draw the building","Recall the ticket price","Find the exit"],a:0}
+      ],
+      prompt:"Issue: Museums should keep every label to one sentence so visitors look at the object rather than read about it. Write a response of at least 120 words. Say how far you agree, and use a reason and an example.",
+      sample:"I only partly agree. A single sentence can stop a label from becoming a small essay, and it pushes the visitor to look at the object. A hurried guest needs that short line.\n\nA single sentence is not always enough. Knowing where an object was made, who used it, and why it survived changes what a person sees. In one museum, longer labels kept visitors at the case, and a later test still found that people could name the object an hour afterwards.\n\nThe better design is the one that museum tried next: one sentence on the rail, and the longer note on a card. People who want to look can look. People who want the story can read it. Forcing every label into one sentence protects neither the object nor the curious visitor."}},
+  spoken:{key:"spoken",short:"SPEAK",name:"Spoken English",kicker:"Beginner to advanced",score:"Three levels",
+    lede:"A speaking path with its own drill. It does not open a reading passage or an essay.",
+    facts:[["Beginner","Sounds, greetings, a slow exchange"],["Intermediate","An opinion, a reason, a short story"],["Advanced","A two-minute answer and a polite challenge"],["Setting","Airport, campus, office"]],
+    desk:["Three cue cards, one for each level","Two minutes on the card in front of you","No reading passage and no essay","A finished drill, not a band score"],
+    note:"This is the speaking drill. IELTS, PTE and TOEFL keep their own mock pages. Not a cartoon exercise.",
+    mock:{kind:"speak",minutes:6,cards:[
+      {level:"Beginner",prompt:"You are at an airport gate. Ask for a later flight, give your name, and thank the agent. Stay in English the whole way."},
+      {level:"Intermediate",prompt:"Tell a classmate about a teacher who changed how you work. Give one reason and one example. About one minute."},
+      {level:"Advanced",prompt:"A visa officer says your study plan is too vague. Answer in two minutes: what you will study, why this country, and what you will do if the plan slips."}
+    ]},
     levels:[
       {id:"beginner",k:"Level 01",t:"Beginner",d:"For anyone who hesitates before a simple sentence.",points:["Vowel and consonant contrasts that change meaning.","Greetings, directions, a café order, a gate change.","Short answers that stay in English the whole way through."]},
       {id:"intermediate",k:"Level 02",t:"Intermediate",d:"For people who can talk and now need to keep going.",points:["Opinions with a reason and an example.","Campus life, a workplace update, a phone call.","Linking words you can actually say at speed."]},
@@ -541,6 +646,8 @@ function viewFromLocation(){
   let p=location.pathname.replace(/\/index\.html$/,"");
   if(p.length>1&&p.endsWith("/"))p=p.slice(0,-1);
   if(!p)p="/";
+  const mock=p.match(/^\/mock\/(ielts|pte|toefl|gmat|gre|spoken)$/);
+  if(mock){S.paper=mock[1];return "mock"}
   return ({"/":"home","/ielts":"ielts","/pte":"pte","/toefl":"toefl","/gmat":"gmat","/gre":"gre","/spoken-english":"spoken","/founder":"founder","/testimonials":"stories","/student":"student","/admin":"admin"})[p]||"home";
 }
 function toast(msg){const t=$("#toast");t.innerHTML=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,3600)}
@@ -573,16 +680,16 @@ function footer(){
     <p class="fine">Est. 2022. TestKaro is the mock-test desk for this academy. Independent preparation. Not affiliated with IELTS, IDP, the British Council, Pearson, ETS or GMAC.</p>
   </div></footer>`;
 }
-function card(id,href,cls,k,t,d,meta){
-  return `<a class="bcard ${cls}" href="${href}" data-nav><span class="kicker">${k}</span><strong class="code">${t}</strong><p>${d}</p><span class="meta">${meta}</span><span class="go" aria-hidden="true">→</span></a>`;
+function card(id,href,cls,k,t,d,meta,n){
+  return `<a class="bcard ${cls}" href="${href}" data-nav><span class="mark">${n||""}</span><span class="kicker">${k}</span><strong class="code">${t}</strong><p>${d}</p><span class="meta">${meta}</span><span class="go" aria-hidden="true">→</span></a>`;
 }
 function home(){
   const cards=[
-    ["ielts","/ielts","ielts","Flagship paper","IELTS","Academic and General Training. Four skills, mapped before the clock starts.","Band 0–9"],
-    ["pte","/pte","pte","Computer test","PTE","Integrated speaking, reading and writing. The microphone is part of the paper.","Score 10–90"],
-    ["toefl","/toefl","toefl","Campus route","TOEFL","iBT lectures, discussions and a timed essay for university admission.","Score 0–120"],
-    ["gmat","/gmat","gmat","Management","GMAT","Data Insights, verbal arguments and quant, drawn so a chart has a route.","Focus structure"],
-    ["gre","/gre","gre","Graduate school","GRE","Verbal clusters, quant patterns, and an essay you can see.","General Test"]
+    ["ielts","/ielts","ielts","Flagship paper","IELTS","Academic and General Training. Four skills, mapped before the clock starts.","Band 0–9","01"],
+    ["pte","/pte","pte","Computer test","PTE","Integrated speaking, reading and writing. The microphone is part of the paper.","Score 10–90","02"],
+    ["toefl","/toefl","toefl","Campus route","TOEFL","iBT lectures, discussions and a timed essay for university admission.","Score 0–120","03"],
+    ["gmat","/gmat","gmat","Management","GMAT","A verbal argument of its own. Not the English-paper mock.","Practice / 10","04"],
+    ["gre","/gre","gre","Graduate school","GRE","A verbal passage and an issue task, separate from IELTS.","Practice / 10","05"]
   ];
   return `${chrome("home")}
   <main>
@@ -602,13 +709,13 @@ function home(){
         ${cards.slice(0,1).map(c=>card(...c)).join("")}
         ${cards.slice(1,3).map(c=>card(...c)).join("")}
         ${cards.slice(3).map(c=>card(...c)).join("")}
-        <div class="bcard spoken">
-          <a class="bmain" href="/spoken-english" data-nav><span class="kicker">Speaking path</span><strong class="code">Spoken English</strong><p>Beginner, intermediate and advanced. Travel, campus and interviews. No cartoons.</p></a>
+        <div class="bcard spoken has-levels">
+          <a class="bmain" href="/spoken-english" data-nav><span class="mark">06</span><span class="kicker">Speaking path</span><strong class="code">Spoken English</strong><p>Beginner, intermediate and advanced. Travel, campus and interviews. No cartoons.</p></a>
           <div class="lvls"><a href="/spoken-english#beginner" data-nav>Beginner</a><a href="/spoken-english#intermediate" data-nav>Intermediate</a><a href="/spoken-english#advanced" data-nav>Advanced</a></div>
         </div>
       </div>
     </section>
-    <section class="wrap method">
+    <section class="wrap method reveal">
       <span class="kicker">The route</span>
       <h2>Map it. Practise it. Then fly.</h2>
       <svg class="route" viewBox="0 0 640 80" aria-hidden="true"><path d="M8 58 C 120 58, 150 14, 230 16 S 380 66, 470 36 590 18, 632 22" fill="none" stroke="#c6a15a" stroke-width="1.6"/><circle cx="8" cy="58" r="4" fill="#4c1d78"/><circle cx="230" cy="16" r="4" fill="#4c1d78"/><circle cx="470" cy="36" r="4" fill="#4c1d78"/><circle cx="632" cy="22" r="4" fill="#c6a15a"/></svg>
@@ -618,7 +725,7 @@ function home(){
         <li><b>Proof</b><span>After you know the founder, reviews live on the <a href="/testimonials" data-nav>testimonials page</a>.</span></li>
       </ol>
     </section>
-    <section class="wrap bento-wrap" id="founder-home">
+    <section class="wrap bento-wrap reveal" id="founder-home">
       <div class="intro"><div><span class="kicker">Founder</span><h2>Know the teacher before the reviews.</h2></div><p class="lede" style="margin:0">The testimonials page comes after this.</p></div>
       <div class="bento founder-bento">
         <a class="bcard founder-card" href="/founder" data-nav>
@@ -632,7 +739,13 @@ function home(){
         <a class="bcard wide" href="/testimonials" data-nav><span class="kicker">Next</span><strong class="code" style="font-size:28px">Testimonials</strong><p>Reviews and score reports, after the founder.</p><span class="go" aria-hidden="true">→</span></a>
       </div>
     </section>
-    <section class="wrap block" id="mocks">
+    <section class="wrap bento-wrap reveal" id="mocks">
+      <div class="intro"><div><span class="kicker">Mock desk</span><h2>Each paper has its own mock.</h2></div><p class="lede" style="margin:0">The passage, the task and the score scale change with the exam. A credit opens the one you pick.</p></div>
+      <div class="bento">
+        ${["ielts","pte","toefl","gmat","gre","spoken"].map((k,n)=>{const s=SERVICES[k];return card(k,"/mock/"+k,k,s.kicker,s.name,s.desk[0],s.score,String(n+1).padStart(2,"0"))}).join("")}
+      </div>
+    </section>
+    <section class="wrap block reveal" id="packs">
       <div class="sh"><div><span class="kicker">TestKaro mock desk</span><h2>Pay only for the tests you time</h2></div><p>Credits do not expire. Each credit unlocks one timed mock. The score is an estimate for practice.</p></div>
       <div class="packs">${S.packs.map((p,i)=>`<div class="card pack ${i===1?"pop":""}">${i===1?'<span class="pill acc">Most picked</span>':""}
         <div><b>${p.name}</b><div class="muted" style="font-size:13px">${p.tests} mock test${p.tests>1?"s":""}</div></div>
@@ -641,7 +754,7 @@ function home(){
         <button class="btn ${i===1?"":"ghost"}" type="button" data-buy="${p.id}">Buy ${p.tests} test${p.tests>1?"s":""}</button>
       </div>`).join("")}</div>
     </section>
-    <section class="wrap block" id="faq" style="padding-top:0">
+    <section class="wrap block reveal" id="faq" style="padding-top:0">
       <div class="sh"><div><span class="kicker">Questions</span><h2>Before you book</h2></div></div>
       <div class="faq">
         <details class="card" open><summary>What is the process of taking the IELTS writing practice?</summary><p>You map Task 1 and Task 2 first, then sit a timed essay on the TestKaro desk. The note you get is a practice estimate, not a test-centre score.</p></details>
@@ -654,7 +767,7 @@ function home(){
         <details class="card"><summary>How long after I pay?</summary><p>Each UPI payment is checked by hand, usually within a few hours. You get an email when the tests unlock.</p></details>
       </div>
     </section>
-    <section class="wrap block" id="contact">
+    <section class="wrap block reveal" id="contact">
       <div class="touch">
         <div>
           <span class="kicker">Contact</span>
@@ -698,9 +811,31 @@ function servicePage(s){
     <a class="back" href="/" data-nav>← All programmes</a>
     <header class="pagehead"><span class="kicker">${s.kicker}</span><h1>${s.name}</h1><p class="lede">${s.lede}</p><p style="margin-top:14px"><span class="pill acc">${s.score}</span></p></header>
     <div class="facts">${s.facts.map(([n,d])=>`<div class="fact"><b>${n}</b><span>${d}</span></div>`).join("")}</div>
-    <section class="split"><div><h2>How the map is used</h2><ul class="ticks">${s.train.map(t=>`<li>${t}</li>`).join("")}</ul></div>
-      <aside class="gloss"><span class="kicker">On TestKaro</span><p>${s.note}</p><a class="btn" href="/#mocks" data-nav>Open the mock desk</a></aside></section>
+    <section class="split"><div><h2>The ${esc(s.name)} mock</h2><ul class="ticks">${s.desk.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
+      <aside class="gloss"><span class="kicker">This paper only</span><p>${esc(s.note)}</p><a class="btn" href="/mock/${s.key}" data-nav>Open the ${esc(s.name)} mock</a></aside></section>
     ${levels?`<section class="levels"><h2>Beginner to advanced</h2><div class="levelgrid">${levels}</div></section>`:""}
+  </div></article>${footer()}`;
+}
+function mockPage(){
+  const s=SERVICES[S.paper]||SERVICES.ielts;
+  const m=s.mock;
+  const bits=m.kind==="speak"
+    ? m.cards.map(c=>`<li><b>${esc(c.level)}.</b> ${esc(c.prompt)}</li>`)
+    : [`<li>${esc(m.read)} · ${m.questions.length} questions</li>`,`<li>${esc(m.write)} · at least ${m.minWords} words</li>`,`<li>${m.minutes} minutes on the clock</li>`,`<li>Practice scale: ${esc(m.scale.unit)}</li>`];
+  const start=S.credits>0
+    ? `<button class="btn" type="button" data-start="${s.key}">Start the ${esc(s.name)} mock · 1 credit</button>`
+    : `<a class="btn" href="/#packs" data-nav>Buy a credit to start</a>`;
+  return `${chrome(s.key)}<article class="page"><div class="wrap">
+    <a class="back" href="/${s.key==="spoken"?"spoken-english":s.key}" data-nav>← ${esc(s.name)}</a>
+    <header class="pagehead"><span class="kicker">Mock · this paper only</span><h1>${esc(s.name)}</h1><p class="lede">${esc(s.note)}</p></header>
+    <div class="facts">
+      <div class="fact"><b>${m.minutes} min</b><span>${m.kind==="speak"?"Three cue cards":esc(m.read)+" and "+esc(m.write)}</span></div>
+      <div class="fact"><b>${esc(s.score)}</b><span>The scale named on this paper</span></div>
+      <div class="fact"><b>1 credit</b><span>${S.credits} left on this desk</span></div>
+      <div class="fact"><b>Separate</b><span>Not the mock used by the other exams</span></div>
+    </div>
+    <section class="split"><div><h2>What you sit</h2><ul class="ticks">${bits.join("")}</ul></div>
+      <aside class="gloss"><span class="kicker">${esc(s.short)}</span><p>${esc(s.desk.slice(0,3).join(". "))}.</p>${start}</aside></section>
   </div></article>${footer()}`;
 }
 function founderPage(){
@@ -772,14 +907,22 @@ function openBuy(id,step=1){
   const cv=$("#qr");if(cv)qrInto(cv);
 }
 
-let TESTS=[
-  {code:"IELTS",name:"IELTS Academic · Mock 4",meta:"Reading + Writing Task 2 · 60 min"},
-  {code:"IELTS",name:"IELTS General · Mock 2",meta:"Reading + Writing Task 2 · 60 min"},
-  {code:"PTE",name:"PTE Academic · Mock 2",meta:"Reading + Essay · 60 min"},
-  {code:"TOEFL",name:"TOEFL iBT · Mock 1",meta:"Reading + Academic discussion · 60 min"}
-];
+let TESTS=Object.entries(SERVICES).map(([k,s])=>({code:s.short,exam:k,name:s.name+" mock",meta:s.mock.kind==="speak"?"Three cue cards · "+s.mock.minutes+" min":s.mock.read+" + "+s.mock.write+" · "+s.mock.minutes+" min"}));
+function examFromCode(code){
+  const c=String(code||"").toLowerCase();
+  if(c.includes("pte"))return "pte";
+  if(c.includes("toefl"))return "toefl";
+  if(c.includes("gmat"))return "gmat";
+  if(c.includes("gre"))return "gre";
+  if(c.includes("speak"))return "spoken";
+  return "ielts";
+}
+function paperOf(test){return SERVICES[(test&&test.exam)||examFromCode(test&&test.code)]||SERVICES.ielts}
+const showMark=a=>a.mark||(typeof a.band==="number"?a.band.toFixed(1):"—");
 function chart(){
-  const a=S.attempts.slice(-6),W=520,H=190,pl=34,pr=14,pt=14,pb=30,min=4,max=8;
+  const a=S.attempts.filter(d=>typeof d.band==="number").slice(-6);
+  if(!a.length)return `<p class="muted">The band line is for IELTS only. PTE, TOEFL, GMAT, GRE and Spoken English keep their own result.</p>`;
+  const W=520,H=190,pl=34,pr=14,pt=14,pb=30,min=4,max=8;
   const x=i=>pl+(a.length===1?0:i*(W-pl-pr)/(a.length-1)),y=b=>pt+(max-b)/(max-min)*(H-pt-pb);
   const pts=a.map((d,i)=>[x(i),y(d.band)]);
   const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
@@ -789,7 +932,7 @@ function chart(){
   const labels=a.map((d,i)=>`<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="11" fill="var(--muted)">${d.date}</text>`).join("");
   const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?5:3.5}" fill="${i===pts.length-1?"var(--accent)":"var(--surface)"}" stroke="var(--accent)" stroke-width="2"/>`).join("");
   const last=pts.at(-1);
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Band score over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="IELTS band over last ${a.length} attempts">${g}${tgt}<path d="${area}" fill="var(--accent)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${dots}<text x="${last[0]-8}" y="${last[1]-10}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)" font-family="var(--f-mono)">${a.at(-1).band.toFixed(1)}</text>${labels}</svg>`;
 }
 function sideNav(items,cur,role){
   return `<aside class="side"><a class="logo" href="/" data-nav style="font-size:16px;padding:4px 8px;text-decoration:none">${LOGO}TestKaro</a>
@@ -797,17 +940,22 @@ function sideNav(items,cur,role){
   <div class="who"><div class="av">${role==="admin"?"AD":"AM"}</div><div><b>${role==="admin"?"Admin":ME.name}</b><div class="muted" style="font-size:12px">${role==="admin"?"Owner":ME.email}</div></div></div></aside>`;
 }
 function student(){
-  const best=Math.max(...S.attempts.map(a=>a.band)),last=S.attempts.at(-1);
-  const testList=`<div class="tlist">${TESTS.map((t,i)=>`<div class="trow"><div class="badge">${t.code}</div><div class="info"><b>${t.name}</b><span>${t.meta}</span></div><button class="btn sm" type="button" data-start="${i}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("")}</div>
+  const bands=S.attempts.map(a=>a.band).filter(n=>typeof n==="number");
+  const best=bands.length?Math.max(...bands):null,last=S.attempts.at(-1);
+  const testList=`<div class="tlist">${["ielts","pte","toefl","gmat","gre","spoken"].map(k=>{
+    const rows=TESTS.map((t,i)=>({t,i})).filter(x=>(x.t.exam||examFromCode(x.t.code))===k);
+    if(!rows.length)return "";
+    return `<h3 style="margin:14px 0 8px">${esc(SERVICES[k].name)}</h3>`+rows.map(({t,i})=>`<div class="trow"><div class="badge">${esc(t.code)}</div><div class="info"><b>${esc(t.name)}</b><span>${esc(t.meta)}</span></div><button class="btn sm" type="button" data-start="${t.exam||k}" ${S.credits<1?"disabled":""}>Start · 1 credit</button></div>`).join("");
+  }).join("")}</div>
     ${S.credits<1?`<p style="margin-top:12px;font-size:14px">You have no credits left. <a href="#" data-buylink="p5" style="color:var(--accent);font-weight:700">Buy a pack</a> to start another test.</p>`:""}`;
-  const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Date</th><th>Band</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${a.name}</td><td class="muted">${a.date}</td><td><b class="mono">${a.band.toFixed(1)}</b></td></tr>`).join("")}</tbody></table></div>`;
+  const history=`<div class="tablewrap"><table><thead><tr><th>Test</th><th>Date</th><th>Result</th></tr></thead><tbody>${[...S.attempts].reverse().map(a=>`<tr><td>${esc(a.name)}</td><td class="muted">${esc(a.date)}</td><td><b class="mono">${esc(showMark(a))}</b></td></tr>`).join("")}</tbody></table></div>`;
   let content="";
   if(S.sub==="dash") content=`
     <div class="head"><div><span class="muted" style="font-size:14px">Welcome back,</span><h1>${ME.name.split(" ")[0]}</h1></div><button class="btn" type="button" data-buylink="p5">Buy more tests</button></div>
     <div class="tiles">
       <div class="card tile"><span>Test credits left</span><b style="color:${S.credits?"var(--ink)":"var(--bad)"}">${S.credits}</b><small>Each credit = 1 full mock</small></div>
-      <div class="card tile"><span>Latest band</span><b style="color:var(--band)">${last.band.toFixed(1)}</b><small>${last.name.split(" · ")[0]}</small></div>
-      <div class="card tile"><span>Best band</span><b>${best.toFixed(1)}</b><small>Target 7.0</small></div>
+      <div class="card tile"><span>Latest result</span><b style="color:var(--band)">${showMark(last)}</b><small>${esc(last.name.split(" · ")[0])}</small></div>
+      <div class="card tile"><span>Best IELTS band</span><b>${best==null?"—":best.toFixed(1)}</b><small>Target 7.0</small></div>
       <div class="card tile"><span>Tests taken</span><b>${S.attempts.length}</b><small>Since 28 Sep</small></div>
     </div>
     <div class="grid2">
@@ -820,83 +968,116 @@ function student(){
   return `<div class="shell">${sideNav([["dash","Dashboard"],["tests","Mock tests"],["results","My results"],["buy","Buy tests"]],S.sub,"student")}<main class="main">${content}</main></div>`;
 }
 
-const PASSAGE={title:"Farming on the rooftops",paras:[
-  "In the early 2000s, a handful of city restaurants began growing herbs on their own rooftops. Most of these first gardens were abandoned within two years. Owners found that the cost of carrying soil, water and tools up several floors outweighed the savings on fresh produce.",
-  "The second wave of rooftop farming looked very different. Instead of heavy soil, growers used lightweight mixes of coconut fibre and compost, and many switched to hydroponic trays that need no soil at all. Building engineers were brought in early to check how much weight each roof could safely hold.",
-  "Supporters argue that rooftop farms cool the buildings beneath them, reduce storm-water run-off and cut the distance food travels to reach a plate. Critics reply that the total amount of food produced is tiny compared with a city's needs, and that the same roofs could generate more value from solar panels.",
-  "Researchers now suggest the two uses need not compete. Some trial sites place panels on raised frames, with shade-loving crops such as lettuce growing underneath. Early results show that the plants stay cooler and the panels, in turn, run more efficiently."
-]};
-const QS=[
-  {t:"Why were most early rooftop gardens abandoned?",o:["Plants failed to grow at that height","Moving materials up the building cost too much","Restaurants could not find staff","City rules banned them"],a:1},
-  {t:"Second-wave growers often used no soil at all.",o:["True","False","Not given"],a:0},
-  {t:"Building engineers were consulted only after farms were built.",o:["True","False","Not given"],a:1},
-  {t:"What is the critics' main concern about rooftop farms?",o:["They attract pests","They make buildings hotter","They produce very little food for the city","They use too much water"],a:2},
-  {t:"What did the trial sites with raised solar panels find?",o:["Crops grew faster in full sun","Panels and plants both benefited","Panels produced less power","Lettuce could not grow in shade"],a:1}
-];
-const PROMPT="Some people believe city rooftops should be used to grow food, while others think they are better used for solar panels. Discuss both views and give your own opinion.";
-function startTest(i){
-  if(S.credits<1)return;S.credits--;
-  S.test={i,tab:"reading",ans:{},essay:"",left:60*60,phase:"taking"};S.view="test";
+function activePaper(){return paperOf(TESTS[S.test.i])}
+function startTest(key){
+  if(S.credits<1)return;
+  const i=typeof key==="number"?key:TESTS.findIndex(t=>(t.exam||examFromCode(t.code))===key);
+  if(i<0)return;
+  const m=paperOf(TESTS[i]).mock;
+  S.credits--;
+  S.test=m.kind==="speak"
+    ?{i,kind:"speak",card:0,left:120,phase:"taking"}
+    :{i,kind:"paper",tab:"reading",ans:{},essay:"",left:m.minutes*60,phase:"taking"};
+  S.view="test";
   render();window.scrollTo(0,0);
-  clearInterval(timerInt);timerInt=setInterval(()=>{if(!S.test||S.test.phase!=="taking")return;S.test.left--;const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<300)}if(S.test.left<=0)submitTest()},1000);
+  clearInterval(timerInt);
+  timerInt=setInterval(()=>{
+    if(!S.test||S.test.phase!=="taking")return;
+    S.test.left--;
+    const el=$("#timer");if(el){el.textContent=fmt(S.test.left);el.classList.toggle("low",S.test.left<30)}
+    if(S.test.left<=0){if(S.test.kind==="speak")nextCard();else submitTest()}
+  },1000);
   toast(`1 credit used · ${S.credits} left`);
 }
-const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+function nextCard(){
+  const T=S.test;if(!T||T.kind!=="speak"||T.phase!=="taking")return;
+  const cards=activePaper().mock.cards;
+  if(T.card<cards.length-1){T.card++;T.left=120;render();return}
+  clearInterval(timerInt);timerInt=null;T.phase="done";T.result={spoken:true};
+  S.attempts.push({name:TESTS[T.i].name,date:"Today",band:null,mark:"Drill done"});
+  render();window.scrollTo(0,0);
+}
+const fmt=s=>String(Math.max(0,Math.floor(s/60))).padStart(2,"0")+":"+String(Math.max(0,s%60)).padStart(2,"0");
 const words=t=>(t.trim().match(/\S+/g)||[]).length;
 function testRoom(){
-  const T=S.test,meta=TESTS[T.i];
-  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>Marking your test</h2><p class="muted">Checking reading answers and scoring the essay…</p></div></div>`;
+  const T=S.test,meta=TESTS[T.i],paper=paperOf(meta),m=paper.mock;
+  if(T.phase==="eval") return `<div class="troom"><div class="evaluating"><div class="spin"></div><h2>Marking your test</h2><p class="muted">Checking this ${esc(paper.name)} paper…</p></div></div>`;
   if(T.phase==="done") return results();
-  const answered=Object.keys(T.ans).length;
+  if(T.kind==="speak"){
+    const card=m.cards[T.card];
+    return `<div class="troom"><div class="tbar"><div class="wrap">
+      <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${esc(meta.name)}</span></div>
+      <div class="tabs"><button type="button" class="on">Card ${T.card+1} of ${m.cards.length}</button></div>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time on this card</span><span class="timer ${T.left<30?"low":""}" id="timer">${fmt(T.left)}</span></div>
+    </div></div>
+    <div class="wrap" style="padding-block:28px 48px;display:grid;gap:16px;max-width:760px">
+      <span class="kicker">${esc(card.level)}</span>
+      <h2>Say this out loud</h2>
+      <p class="lede">${esc(card.prompt)}</p>
+      <p class="muted">No passage and no essay on this paper. When the two minutes finish, go to the next card.</p>
+      <div><button class="btn" type="button" data-next>${T.card===m.cards.length-1?"Finish the drill":"Next card"}</button></div>
+    </div></div>`;
+  }
+  const qs=m.questions,answered=Object.keys(T.ans).length;
   const left=T.tab==="reading"
-    ? `<span class="kicker">Reading passage</span><h2>${PASSAGE.title}</h2>${PASSAGE.paras.map(p=>`<p>${p}</p>`).join("")}`
-    : `<span class="kicker">Writing Task 2</span><h2>Write at least 250 words</h2><p>${PROMPT}</p><p class="muted" style="font-size:14px">Spend about 40 minutes here. The essay is scored on task response, coherence, vocabulary and grammar. This score is a practice estimate.</p>`;
+    ? `<span class="kicker">${esc(m.read)}</span><h2>${esc(m.passage.title)}</h2>${m.passage.paras.map(p=>`<p>${esc(p)}</p>`).join("")}`
+    : `<span class="kicker">${esc(m.write)}</span><h2>At least ${m.minWords} words</h2><p>${esc(m.prompt)}</p><p class="muted" style="font-size:14px">This task belongs to the ${esc(paper.name)} mock. The mark is a practice estimate.</p>`;
   const right=T.tab==="reading"
-    ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>Questions 1–5</b><div class="palette">${QS.map((q,i)=>`<span class="${T.ans[i]!=null?"a":""}">${i+1}</span>`).join("")}</div></div>
-       ${QS.map((q,i)=>`<div class="q"><div class="qt"><span class="qn">${i+1}</span><span>${q.t}</span></div><div class="opts">${q.o.map((o,j)=>`<label class="opt ${T.ans[i]===j?"sel":""}"><input type="radio" name="q${i}" id="q${i}o${j}" data-ans="${i}:${j}" ${T.ans[i]===j?"checked":""}><span>${o}</span></label>`).join("")}</div></div>`).join("")}
-       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" type="button" data-tab="writing">Next: Writing →</button></div>`
-    : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing your essay here…">${T.essay}</textarea>
-       <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum 250</span></div>
-       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back to Reading</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-model>Insert model answer</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
+    ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b>Questions 1–${qs.length}</b><div class="palette">${qs.map((q,i)=>`<span class="${T.ans[i]!=null?"a":""}">${i+1}</span>`).join("")}</div></div>
+       ${qs.map((q,i)=>`<div class="q"><div class="qt"><span class="qn">${i+1}</span><span>${esc(q.t)}</span></div><div class="opts">${q.o.map((o,j)=>`<label class="opt ${T.ans[i]===j?"sel":""}"><input type="radio" name="q${i}" id="q${i}o${j}" data-ans="${i}:${j}" ${T.ans[i]===j?"checked":""}><span>${esc(o)}</span></label>`).join("")}</div></div>`).join("")}
+       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn" type="button" data-tab="writing">Next: ${esc(m.write)} →</button></div>`
+    : `<label class="f" for="essay">Your answer</label><textarea id="essay" class="essay" placeholder="Start writing here…">${esc(T.essay)}</textarea>
+       <div class="wc"><span id="wc">${words(T.essay)} words</span><span>Minimum ${m.minWords}</span></div>
+       <div style="display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn ghost" type="button" data-tab="reading">← Back</button><span style="display:flex;gap:8px"><button class="btn ghost" type="button" data-model>Insert model answer</button><button class="btn" type="button" data-submit>Submit test</button></span></div>`;
   return `<div class="troom"><div class="tbar"><div class="wrap">
-    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${meta.name}</span></div>
-    <div class="tabs"><button type="button" data-tab="reading" class="${T.tab==="reading"?"on":""}">Reading · ${answered}/5</button><button type="button" data-tab="writing" class="${T.tab==="writing"?"on":""}">Writing</button></div>
-    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<300?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" type="button" data-submit>Submit</button></div>
+    <div class="logo" style="font-size:16px">${LOGO}<span class="muted" style="font-weight:700;font-size:14px">${esc(meta.name)}</span></div>
+    <div class="tabs"><button type="button" data-tab="reading" class="${T.tab==="reading"?"on":""}">${esc(m.read)} · ${answered}/${qs.length}</button><button type="button" data-tab="writing" class="${T.tab==="writing"?"on":""}">${esc(m.write)}</button></div>
+    <div style="margin-left:auto;display:flex;gap:10px;align-items:center"><span class="muted" style="font-size:13px">Time left</span><span class="timer ${T.left<30?"low":""}" id="timer">${fmt(T.left)}</span><button class="btn sm" type="button" data-submit>Submit</button></div>
   </div></div>
   <div class="tbody"><div class="passage">${left}</div><div>${right}</div></div></div>`;
 }
-const SAMPLE="In many crowded cities, space is limited, so people disagree about how rooftops should be used. Some believe these areas should grow food, while others argue that solar panels are a better choice. This essay will discuss both views before giving my own opinion.\n\nOn the one hand, rooftop farms bring clear benefits to local communities. They provide fresh vegetables that travel a very short distance, which reduces transport pollution. In addition, plants cool the buildings below them and absorb rain water, which can reduce flooding during heavy storms. For example, several schools in Mumbai now grow vegetables on their roofs and use them in student meals. Children also learn where their food comes from.\n\nOn the other hand, solar panels can produce a large amount of clean energy from the same space. Since cities use a huge amount of electricity, panels may have a bigger effect on pollution than a small garden. They also need very little care once they are installed, whereas farms need water, workers and regular attention.\n\nIn my opinion, cities do not have to choose only one option. New designs place panels on raised frames with crops growing in the shade underneath, so both uses can share one roof. Governments should support these mixed projects because they combine the benefits of food and energy.\n\nIn conclusion, both rooftop farms and solar panels help cities in different ways. Each option has real strengths, but combining them on the same roof is the most sensible solution for the future of crowded cities.";
 function submitTest(){
-  const T=S.test;if(!T||T.phase!=="taking")return;const ta=$("#essay");if(ta)T.essay=ta.value;
+  const T=S.test;if(!T||T.kind==="speak"||T.phase!=="taking")return;const ta=$("#essay");if(ta)T.essay=ta.value;
   clearInterval(timerInt);timerInt=null;T.phase="eval";render();window.scrollTo(0,0);
   setTimeout(()=>{
-    const correct=QS.filter((q,i)=>T.ans[i]===q.a).length;
-    const rb=[3.5,4.5,5.5,6.5,7.5,8.5][correct];
+    const paper=paperOf(TESTS[T.i]),m=paper.mock,qs=m.questions;
+    const correct=qs.filter((q,i)=>T.ans[i]===q.a).length;
     const w=words(T.essay);
-    let wb=w<50?4.0:w<150?5.0:w<250?6.0:6.5;
-    const lr=/however|whereas|in addition|for example|on the other hand/i.test(T.essay)?0.5:0;
-    const crit=[["Task Response",Math.min(9,wb+(w>=250?0.5:0))],["Coherence & Cohesion",Math.min(9,wb+lr)],["Lexical Resource",wb],["Grammatical Range & Accuracy",Math.max(4,wb)]];
-    const wband=Math.round(crit.reduce((s,c)=>s+c[1],0)/4*2)/2;
-    const overall=Math.round((rb+wband)/2*2)/2;
-    T.result={correct,rb,wband,crit,overall,w};T.phase="done";
-    S.attempts.push({name:TESTS[T.i].name,date:"Today",band:overall});
-    render();window.scrollTo(0,0);
-  },1600);
+    const read=correct/qs.length, write=Math.min(1,w/m.minWords), mix=(read+write)/2;
+    const sc=m.scale;
+    let raw=sc.floor!=null?sc.floor+mix*(sc.max-sc.floor):mix*sc.max;
+    const shown=sc.step===0.5?Math.round(raw*2)/2:Math.round(raw);
+    const labels=paper.key==="ielts"?["Task response","Coherence","Vocabulary","Grammar"]:["Task","Organisation","Word choice","Control"];
+    let base=w<m.minWords*0.4?4:w<m.minWords?5.5:6.5;
+    const crit=labels.map((name,n)=>[name,Math.min(9,base+(n%2?0.5:0))]);
+    T.result={correct,shown,w,crit,qn:qs.length,spoken:false};
+    const mark=paper.key==="ielts"?shown.toFixed(1)+" band":shown+" "+sc.unit;
+    S.attempts.push({name:TESTS[T.i].name,date:"Today",band:paper.key==="ielts"?shown:null,mark});
+    T.phase="done";render();window.scrollTo(0,0);
+  },1200);
 }
-function ring(b){const r=62,c=2*Math.PI*r,f=b/9;return `<svg class="ring-score" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--gold)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="80" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="40" fill="var(--ink)">${b.toFixed(1)}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">out of 9</text></svg>`}
+function ring(b,max,unit){
+  const r=62,c=2*Math.PI*r,f=Math.max(0,Math.min(1,b/max));
+  const label=max>20?String(Math.round(b)): (max===9?Number(b).toFixed(1):String(b));
+  return `<svg class="ring-score" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--gold)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 75 75)"/><text x="75" y="78" text-anchor="middle" font-family="var(--f-display)" font-weight="800" font-size="${label.length>3?28:40}" fill="var(--ink)">${label}</text><text x="75" y="102" text-anchor="middle" font-size="12" fill="var(--muted)">${esc(unit)}</text></svg>`;
+}
 function results(){
-  const T=S.test,R=T.result;
-  const fb=R.w<250?[["bad",`The essay has ${R.w} words. Under 250 words loses marks on task response.`],["warn","Plan four paragraphs: introduction, one view, the other view with your opinion, conclusion."]]:[["good","Both views are discussed and the opinion is clear."],["good","Linking words such as \"On the other hand\" and \"In addition\" guide the reader."],["warn","\"very\" can be swapped for a more precise word."],["warn","One relative clause would lift the grammar range."]];
+  const T=S.test,R=T.result,paper=paperOf(TESTS[T.i]),m=paper.mock;
+  if(R.spoken) return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
+    <div class="head" style="margin:0"><div><span class="kicker">Speaking drill</span><h1 style="font-size:28px;margin-top:6px">${esc(TESTS[T.i].name)}</h1></div><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div>
+    <div class="card panel"><h3>Three cards finished</h3><p>Beginner, intermediate and advanced. This paper does not give a band, a PTE score, or a TOEFL score.</p></div></div>`;
+  const qs=m.questions;
+  const fb=R.w<m.minWords?[["bad",`The answer has ${R.w} words. This ${paper.name} task asks for at least ${m.minWords}.`],["warn","Stay on the task printed for this paper."]]:[["good","The answer meets the length asked for on this paper."],["warn","A practice mark is not an official result."]];
   return `<div class="wrap" style="padding-block:28px 48px;display:grid;gap:18px">
-    <div class="head" style="margin:0"><div><span class="kicker">Practice result</span><h1 style="font-size:28px;margin-top:6px">${TESTS[T.i].name}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div></div>
-    <div class="card res-top">${ring(R.overall)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Estimated overall ${R.overall.toFixed(1)}</b><p class="muted" style="font-size:14px">Practice estimate from this desk. Official scores come only from the exam body.</p></div>
-      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,220px));margin:0"><div class="sec"><span>Reading · ${R.correct}/5 correct</span><b>${R.rb.toFixed(1)}</b><div class="meter"><i style="width:${R.rb/9*100}%"></i></div></div><div class="sec"><span>Writing · ${R.w} words</span><b>${R.wband.toFixed(1)}</b><div class="meter"><i style="width:${R.wband/9*100}%"></i></div></div></div></div></div>
+    <div class="head" style="margin:0"><div><span class="kicker">${esc(paper.name)} practice</span><h1 style="font-size:28px;margin-top:6px">${esc(TESTS[T.i].name)}</h1></div><div style="display:flex;gap:8px"><button class="btn ghost" type="button" data-go="student">Back to dashboard</button></div></div>
+    <div class="card res-top">${ring(R.shown,m.scale.max,m.scale.unit)}<div style="display:grid;gap:14px;min-width:0"><div><b style="font-size:18px">Practice ${esc(showMark(S.attempts.at(-1)))}</b><p class="muted" style="font-size:14px">Estimate for this ${esc(paper.name)} mock only. Official scores come from the exam body.</p></div>
+      <div class="sec-grid" style="grid-template-columns:repeat(2,minmax(0,220px));margin:0"><div class="sec"><span>${esc(m.read)} · ${R.correct}/${R.qn}</span><b>${R.correct}</b></div><div class="sec"><span>${esc(m.write)} · ${R.w} words</span><b>${m.minWords}</b><div class="meter"><i style="width:${Math.min(100,R.w/m.minWords*100)}%"></i></div></div></div></div></div>
     <div class="grid2">
       <div class="card panel"><h3>Writing notes <span class="pill acc">Estimate</span></h3>
-        <div class="crit">${R.crit.map(c=>`<div class="sec"><span>${c[0]}</span><b class="mono">${c[1].toFixed(1)}</b></div>`).join("")}</div>
+        <div class="crit">${R.crit.map(c=>`<div class="sec"><span>${esc(c[0])}</span><b class="mono">${c[1].toFixed(1)}</b></div>`).join("")}</div>
         <div class="fb" style="margin-top:14px">${fb.map(f=>`<div><span class="dot" style="background:var(--${f[0]==="warn"?"band":f[0]})"></span><span>${f[1]}</span></div>`).join("")}</div>
       </div>
-      <div class="card panel"><h3>Reading answers</h3><div class="review">${QS.map((q,i)=>{const ok=T.ans[i]===q.a;return `<div><span class="pill ${ok?"good":"bad"}">${ok?"✓":"✗"} Q${i+1}</span><span style="min-width:0;white-space:normal">${q.o[q.a]}${!ok&&T.ans[i]!=null?` <span class="muted">(you chose: ${q.o[T.ans[i]]})</span>`:""}${T.ans[i]==null?' <span class="muted">(not answered)</span>':""}</span></div>`}).join("")}</div></div>
+      <div class="card panel"><h3>${esc(m.read)} answers</h3><div class="review">${qs.map((q,i)=>{const ok=T.ans[i]===q.a;return `<div><span class="pill ${ok?"good":"bad"}">${ok?"✓":"✗"} Q${i+1}</span><span style="min-width:0;white-space:normal">${esc(q.o[q.a])}${!ok&&T.ans[i]!=null?` <span class="muted">(you chose: ${esc(q.o[T.ans[i]])})</span>`:""}${T.ans[i]==null?' <span class="muted">(not answered)</span>':""}</span></div>`}).join("")}</div></div>
     </div></div>`;
 }
 
@@ -954,10 +1135,11 @@ function admin(){
 function render(){
   const a=$("#app");
   const v=S.view;
-  const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",founder:"Founder",student:"Student desk",admin:"Admin",test:"Mock test"};
-  const label=SERVICES[v]?.name||titles[v]||"IELTS Mind Map Academy";
+  const titles={home:"IELTS Mind Map Academy",stories:"Testimonials",founder:"Founder",student:"Student desk",admin:"Admin",test:"Mock test",mock:"Mock"};
+  const paperName=S.view==="mock"?(SERVICES[S.paper]||SERVICES.ielts).name:"";
+  const label=paperName||SERVICES[v]?.name||titles[v]||"IELTS Mind Map Academy";
   document.title=v==="home"?"IELTS Mind Map Academy · TestKaro":`${label} · IELTS Mind Map Academy`;
-  const marketing=v==="home"||v==="stories"||v==="founder"||!!SERVICES[v];
+  const marketing=v==="home"||v==="stories"||v==="founder"||v==="mock"||!!SERVICES[v];
   document.body.classList.toggle("desk",!marketing);
   const join=document.getElementById("join");
   const wa=document.getElementById("join-wa");
@@ -969,8 +1151,16 @@ function render(){
     if(WHATSAPP){join.target=wa.target="_blank";join.rel=wa.rel="noopener"}
   }
   a.className=marketing?"enter":"";
-  a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():v==="founder"?founderPage():SERVICES[v]?servicePage(SERVICES[v]):home();
+  a.innerHTML=v==="student"?student():v==="test"?testRoom():v==="admin"?admin():v==="stories"?stories():v==="founder"?founderPage():v==="mock"?mockPage():SERVICES[v]?servicePage(SERVICES[v]):home();
   const cv=a.querySelector("#qr");if(cv)drawQR(cv);
+  armMotion();
+}
+function armMotion(){
+  const nodes=[...document.querySelectorAll(".reveal")];
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){nodes.forEach(n=>n.classList.add("in"));return}
+  if(typeof IntersectionObserver!=="function"){nodes.forEach(n=>n.classList.add("in"));return}
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12});
+  nodes.forEach(n=>io.observe(n));
 }
 function focusHash(){
   if(!location.hash)return;
@@ -979,7 +1169,7 @@ function focusHash(){
 }
 document.addEventListener("click",e=>{
   if(e.target.id==="library"){e.target.hidden=true;return}
-  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-tab],[data-submit],[data-model],[data-grant],[data-reject],[data-savepacks],[data-toast],[data-library],[data-lib-close],[data-top],[data-join-close]");
+  const t=e.target.closest("a[data-nav],[data-menu],[data-filter],[data-go],[data-buy],[data-buylink],[data-buystep],[data-close],[data-scrim],[data-scroll],[data-sub],[data-start],[data-next],[data-tab],[data-submit],[data-model],[data-grant],[data-reject],[data-savepacks],[data-toast],[data-library],[data-lib-close],[data-top],[data-join-close]");
   if(!t)return;
   if(t.matches("a[data-nav]")){
     const url=new URL(t.getAttribute("href"),location.origin);
@@ -1014,9 +1204,10 @@ document.addEventListener("click",e=>{
   if(t.dataset.buystep){const[id,s]=t.dataset.buystep.split(":");openBuy(id,+s);return}
   if(t.dataset.scroll){document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"});return}
   if(t.dataset.sub){const[,k]=t.dataset.sub.split(":");S.sub=k;render();return}
-  if(t.dataset.start){startTest(+t.dataset.start);return}
+  if(t.dataset.start!==undefined&&t.dataset.start!==""){const v=t.dataset.start;startTest(/^\d+$/.test(v)?+v:v);return}
+  if(t.hasAttribute("data-next")){nextCard();return}
   if(t.dataset.tab){const ta=$("#essay");if(ta)S.test.essay=ta.value;S.test.tab=t.dataset.tab;render();window.scrollTo(0,0);return}
-  if(t.hasAttribute("data-model")){S.test.essay=SAMPLE;render();return}
+  if(t.hasAttribute("data-model")){const m=activePaper().mock;if(m.sample){S.test.essay=m.sample;render()}return}
   if(t.hasAttribute("data-submit")){submitTest();return}
   if(t.dataset.grant){const i=S.pending.findIndex(p=>p.id==t.dataset.grant),p=S.pending[i];S.pending.splice(i,1);
     S.granted.unshift({...p,at:"Just now"});const P=pk(p.pack);S.lastEmail={to:p.email,price:P.price,tests:P.tests,utr:p.utr};
@@ -1043,7 +1234,7 @@ document.addEventListener("submit",e=>{
   if(e.target.id==="addtest"){
     const name=$("#nt-name").value.trim(),code=$("#nt-code").value.trim().toUpperCase(),meta=$("#nt-meta").value.trim();
     if(!name||!code||!meta){toast("Add a name, a code and the sections");return}
-    TESTS.push({code,name,meta});
+    TESTS.push({code,name,meta,exam:examFromCode(code)});
     render();
     toast(`${name} is live on the student desk`);
     return;
